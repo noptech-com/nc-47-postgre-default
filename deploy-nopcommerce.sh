@@ -76,6 +76,13 @@ server {
     listen 80;
     server_name $domain_name;
 
+    client_max_body_size 250M;
+
+    if (\$host = 'www.$domain_name') {
+        return 301 https://$domain_name$request_uri;
+    }
+
+
 #    location / {
 #        proxy_pass http://localhost:5001;
 #        proxy_http_version 1.1;
