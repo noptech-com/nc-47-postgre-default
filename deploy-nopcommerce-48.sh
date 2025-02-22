@@ -203,12 +203,11 @@ sed -i '/"HostingConfig": {/,/}/c\
 # Inport default DB
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 
-# Remove all lines referencing citext and pgcrypto
-sed -i '/citext/d' nopcommerce48_default_db.sql
-sed -i '/pgcrypto/d' nopcommerce48_default_db.sql
-
-# Remove all lines containing "postgres" to strip out role-related commands
-sed -i '/postgres/d' nopcommerce48_default_db.sql
+# Remove only the problematic role/ownership clauses
+sed -i 's/OWNER TO postgres//g' nopcommerce48_default_db.sql
+sed -i '/^SET ROLE postgres/d' nopcommerce48_default_db.sql
+sed -i '/^RESET ROLE/d' nopcommerce48_default_db.sql
+sed -i '/^ALTER EXTENSION.*postgres/d' nopcommerce48_default_db.sql
 
 # Create required extensions in the target database
 sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
@@ -217,6 +216,5 @@ sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcry
 # Restore the dump using the non-superuser account (extensions are already created)
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 rm nopcommerce48_default_db.sql
-
 
 systemctl restart nopCommerce-$domain_name.service
