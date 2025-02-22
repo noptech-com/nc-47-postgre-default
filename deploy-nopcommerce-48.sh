@@ -203,11 +203,9 @@ sed -i '/"HostingConfig": {/,/}/c\
 # Inport default DB
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 
-# Remove extension creation commands from the dump file to prevent permission errors
-sed -i '/CREATE EXTENSION IF NOT EXISTS citext/d' nopcommerce48_default_db.sql
-sed -i '/CREATE EXTENSION IF NOT EXISTS pgcrypto/d' nopcommerce48_default_db.sql
-sed -i '/CREATE EXTENSION citext/d' nopcommerce48_default_db.sql
-sed -i '/CREATE EXTENSION pgcrypto/d' nopcommerce48_default_db.sql
+# Create required extensions in the target database
+sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
+sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
 
 # Restore the dump using the non-superuser account (extensions are already created)
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
