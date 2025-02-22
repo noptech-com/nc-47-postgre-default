@@ -207,6 +207,9 @@ wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/he
 sed -i '/citext/d' nopcommerce48_default_db.sql
 sed -i '/pgcrypto/d' nopcommerce48_default_db.sql
 
+# Remove all lines containing "postgres" to strip out role-related commands
+sed -i '/postgres/d' nopcommerce48_default_db.sql
+
 # Create required extensions in the target database
 sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
 sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
