@@ -4,6 +4,12 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+#if [ -z "$1" ]; then
+#   echo "${RED}Missing: nopCommerce version!\n${NC}";
+#   echo "${YELLOW}Format to use: ./script-Name nopCommerce-version database-name database-user database-password domain-name\n${NC}";
+#   exit 1
+#fi
+
 if [ -z "$1" ]; then
    echo -e "${RED}Missing: PostgreSQL database name or other argument!\n${NC}";
    echo -e "${YELLOW}Format to use: ./$(basename "$0") database-name database-user database-password domain-name\n${NC}";
@@ -76,6 +82,15 @@ server {
         return 301 https://$domain_name$request_uri;
     }
 
+
+#    location / {
+#        proxy_pass http://localhost:5001;
+#        proxy_http_version 1.1;
+#        proxy_set_header Upgrade \$http_upgrade;
+#        proxy_set_header Connection keep-alive;
+#        proxy_set_header Host \$host;
+#        proxy_cache_bypass \$http_upgrade;
+#    }
     location / {
         proxy_pass http://localhost:5001;  # Assuming NopCommerce is running on port 5001
         proxy_set_header Host \$host;
@@ -201,19 +216,10 @@ sed -i '/"HostingConfig": {/,/}/c\
 #dotnet Nop.Web.dll
 
 # Inport default DB
+#wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce_default_db.sql
+#sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce_default_db.sql
+#rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
-
-# Remove only the problematic role/ownership clauses
-sed -i 's/OWNER TO postgres//g' nopcommerce48_default_db.sql
-sed -i '/^SET ROLE postgres/d' nopcommerce48_default_db.sql
-sed -i '/^RESET ROLE/d' nopcommerce48_default_db.sql
-sed -i '/^ALTER EXTENSION.*postgres/d' nopcommerce48_default_db.sql
-
-# Create required extensions in the target database
-sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
-sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
-
-# Restore the dump using the non-superuser account (extensions are already created)
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 rm nopcommerce48_default_db.sql
 
