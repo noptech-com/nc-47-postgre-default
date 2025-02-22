@@ -223,9 +223,15 @@ sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citex
 sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;"
 
 # Grant necessary privileges to the database user
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $database_name TO $database_user;"
 sudo -u postgres psql -d $database_name -c "GRANT USAGE ON SCHEMA public TO $database_user;"
-sudo -u postgres psql -d $database_name -c "GRANT EXECUTE ON FUNCTION public.citext(internal) TO $database_user;"
-sudo -u postgres psql -d $database_name -c "GRANT EXECUTE ON FUNCTION public.gen_random_uuid() TO $database_user;"
+sudo -u postgres psql -d $database_name -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO $database_user;"
+sudo -u postgres psql -d $database_name -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO $database_user;"
+sudo -u postgres psql -d $database_name -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO $database_user;"
+
+# Manually clean up SQL file if necessary
+sed -i '/ALTER EXTENSION citext OWNER TO postgres;/d' nopcommerce48_default_db.sql
+sed -i '/ALTER EXTENSION pgcrypto OWNER TO postgres;/d' nopcommerce48_default_db.sql
 
 # Import the SQL file
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
