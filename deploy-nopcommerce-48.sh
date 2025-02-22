@@ -203,6 +203,12 @@ sed -i '/"HostingConfig": {/,/}/c\
 # Inport default DB
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 
+# Remove commands that alter extension ownership or assign ownership to postgres
+sed -i '/ALTER EXTENSION citext/d' nopcommerce48_default_db.sql
+sed -i '/ALTER EXTENSION pgcrypto/d' nopcommerce48_default_db.sql
+sed -i '/OWNER TO postgres/d' nopcommerce48_default_db.sql
+sed -i '/SET ROLE postgres/d' nopcommerce48_default_db.sql
+
 # Create required extensions in the target database
 sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
 sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
