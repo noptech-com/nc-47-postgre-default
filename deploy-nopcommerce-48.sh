@@ -215,28 +215,12 @@ sed -i '/"HostingConfig": {/,/}/c\
 #dotnet ef database update
 #dotnet Nop.Web.dll
 
-# Download the SQL file
+# Inport default DB
+#wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce_default_db.sql
+#sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce_default_db.sql
+#rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
-
-# Ensure extensions exist
-sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;"
-sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;"
-
-# Grant necessary privileges to the database user
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $database_name TO $database_user;"
-sudo -u postgres psql -d $database_name -c "GRANT USAGE ON SCHEMA public TO $database_user;"
-sudo -u postgres psql -d $database_name -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO $database_user;"
-sudo -u postgres psql -d $database_name -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO $database_user;"
-sudo -u postgres psql -d $database_name -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO $database_user;"
-
-# Manually clean up SQL file if necessary
-sed -i '/ALTER EXTENSION citext OWNER TO postgres;/d' nopcommerce48_default_db.sql
-sed -i '/ALTER EXTENSION pgcrypto OWNER TO postgres;/d' nopcommerce48_default_db.sql
-
-# Import the SQL file
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
-
-# Clean up
 rm nopcommerce48_default_db.sql
 
 systemctl restart nopCommerce-$domain_name.service
