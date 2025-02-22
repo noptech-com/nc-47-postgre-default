@@ -215,12 +215,15 @@ sed -i '/"HostingConfig": {/,/}/c\
 #dotnet ef database update
 #dotnet Nop.Web.dll
 
-# Inport default DB
-#wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce_default_db.sql
-#sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce_default_db.sql
-#rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
+
+# Create required extensions as postgres superuser
+sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
+sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+
+# Import the SQL file as the database user
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
+
 rm nopcommerce48_default_db.sql
 
 systemctl restart nopCommerce-$domain_name.service
