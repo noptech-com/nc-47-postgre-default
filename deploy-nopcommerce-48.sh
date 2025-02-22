@@ -217,11 +217,16 @@ sed -i '/"HostingConfig": {/,/}/c\
 
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 
-# Create required extensions as postgres superuser
-sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext;"
-sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+# Ensure the extensions exist and set ownership
+sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;"
+sudo -u postgres psql -d $database_name -c "CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;"
+sudo -u postgres psql -d $database_name -c "ALTER EXTENSION citext OWNER TO $database_user;"
+sudo -u postgres psql -d $database_name -c "ALTER EXTENSION pgcrypto OWNER TO $database_user;"
 
-# Import the SQL file as the database user
+# Grant role membership
+sudo -u postgres psql -c "GRANT postgres TO $database_user;"
+
+# Import the SQL file
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 
 rm nopcommerce48_default_db.sql
