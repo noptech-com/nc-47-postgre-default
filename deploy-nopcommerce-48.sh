@@ -126,6 +126,10 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $database_name TO $da
 
 sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext; CREATE EXTENSION IF NOT EXISTS pgcrypto;"
 
+sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext;"
+sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+sudo -u postgres psql -c " ALTER USER $database_user WITH SUPERUSER;"
+
 # Switch back to the original user
 #exit
 #echo "after exit"
@@ -222,5 +226,6 @@ sed -i '/"HostingConfig": {/,/}/c\
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 rm nopcommerce48_default_db.sql
+sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
 systemctl restart nopCommerce-$domain_name.service
