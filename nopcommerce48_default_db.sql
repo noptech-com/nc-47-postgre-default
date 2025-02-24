@@ -321,44 +321,6 @@ ALTER SEQUENCE public."Affiliate_Id_seq" OWNED BY public."Affiliate"."Id";
 
 
 --
--- Name: AvalaraItemClassification; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."AvalaraItemClassification" (
-    "Id" integer NOT NULL,
-    "ProductId" integer NOT NULL,
-    "HSClassificationRequestId" public.citext,
-    "CountryId" integer NOT NULL,
-    "HSCode" public.citext,
-    "UpdatedOnUtc" timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public."AvalaraItemClassification" OWNER TO postgres;
-
---
--- Name: AvalaraItemClassification_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."AvalaraItemClassification_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."AvalaraItemClassification_Id_seq" OWNER TO postgres;
-
---
--- Name: AvalaraItemClassification_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."AvalaraItemClassification_Id_seq" OWNED BY public."AvalaraItemClassification"."Id";
-
-
---
 -- Name: BackInStockSubscription; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1405,57 +1367,6 @@ ALTER SEQUENCE public."ExternalAuthenticationRecord_Id_seq" OWNED BY public."Ext
 
 
 --
--- Name: FacebookPixelConfiguration; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."FacebookPixelConfiguration" (
-    "Id" integer NOT NULL,
-    "PixelId" public.citext,
-    "AccessToken" public.citext,
-    "PixelScriptEnabled" boolean NOT NULL,
-    "ConversionsApiEnabled" boolean NOT NULL,
-    "DisableForUsersNotAcceptingCookieConsent" boolean NOT NULL,
-    "StoreId" integer NOT NULL,
-    "PassUserProperties" boolean NOT NULL,
-    "UseAdvancedMatching" boolean NOT NULL,
-    "TrackPageView" boolean NOT NULL,
-    "TrackAddToCart" boolean NOT NULL,
-    "TrackPurchase" boolean NOT NULL,
-    "TrackViewContent" boolean NOT NULL,
-    "TrackAddToWishlist" boolean NOT NULL,
-    "TrackInitiateCheckout" boolean NOT NULL,
-    "TrackSearch" boolean NOT NULL,
-    "TrackContact" boolean NOT NULL,
-    "TrackCompleteRegistration" boolean NOT NULL,
-    "CustomEvents" public.citext
-);
-
-
-ALTER TABLE public."FacebookPixelConfiguration" OWNER TO postgres;
-
---
--- Name: FacebookPixelConfiguration_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."FacebookPixelConfiguration_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."FacebookPixelConfiguration_Id_seq" OWNER TO postgres;
-
---
--- Name: FacebookPixelConfiguration_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."FacebookPixelConfiguration_Id_seq" OWNED BY public."FacebookPixelConfiguration"."Id";
-
-
---
 -- Name: Forums_Forum; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1935,41 +1846,6 @@ ALTER SEQUENCE public."GiftCard_Id_seq" OWNER TO postgres;
 --
 
 ALTER SEQUENCE public."GiftCard_Id_seq" OWNED BY public."GiftCard"."Id";
-
-
---
--- Name: GoogleAuthenticatorRecord; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."GoogleAuthenticatorRecord" (
-    "Id" integer NOT NULL,
-    "Customer" public.citext,
-    "SecretKey" public.citext
-);
-
-
-ALTER TABLE public."GoogleAuthenticatorRecord" OWNER TO postgres;
-
---
--- Name: GoogleAuthenticatorRecord_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."GoogleAuthenticatorRecord_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."GoogleAuthenticatorRecord_Id_seq" OWNER TO postgres;
-
---
--- Name: GoogleAuthenticatorRecord_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."GoogleAuthenticatorRecord_Id_seq" OWNED BY public."GoogleAuthenticatorRecord"."Id";
 
 
 --
@@ -2652,48 +2528,6 @@ ALTER SEQUENCE public."Order_Id_seq" OWNER TO postgres;
 --
 
 ALTER SEQUENCE public."Order_Id_seq" OWNED BY public."Order"."Id";
-
-
---
--- Name: PayPalToken; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."PayPalToken" (
-    "Id" integer NOT NULL,
-    "CustomerId" integer NOT NULL,
-    "VaultId" public.citext,
-    "VaultCustomerId" public.citext,
-    "TransactionId" public.citext,
-    "Title" public.citext,
-    "Expiration" public.citext,
-    "Type" public.citext,
-    "ClientId" public.citext NOT NULL,
-    "IsPrimaryMethod" boolean NOT NULL
-);
-
-
-ALTER TABLE public."PayPalToken" OWNER TO postgres;
-
---
--- Name: PayPalToken_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."PayPalToken_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."PayPalToken_Id_seq" OWNER TO postgres;
-
---
--- Name: PayPalToken_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."PayPalToken_Id_seq" OWNED BY public."PayPalToken"."Id";
 
 
 --
@@ -4366,54 +4200,6 @@ ALTER SEQUENCE public."Shipment_Id_seq" OWNED BY public."Shipment"."Id";
 
 
 --
--- Name: ShippingByWeightByTotalRecord; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."ShippingByWeightByTotalRecord" (
-    "Id" integer NOT NULL,
-    "WeightFrom" numeric(18,4) NOT NULL,
-    "WeightTo" numeric(18,4) NOT NULL,
-    "OrderSubtotalFrom" numeric(18,4) NOT NULL,
-    "OrderSubtotalTo" numeric(18,4) NOT NULL,
-    "AdditionalFixedCost" numeric(18,4) NOT NULL,
-    "PercentageRateOfSubtotal" numeric(18,4) NOT NULL,
-    "RatePerWeightUnit" numeric(18,4) NOT NULL,
-    "LowerWeightLimit" numeric(18,4) NOT NULL,
-    "Zip" public.citext,
-    "StoreId" integer NOT NULL,
-    "WarehouseId" integer NOT NULL,
-    "CountryId" integer NOT NULL,
-    "StateProvinceId" integer NOT NULL,
-    "ShippingMethodId" integer NOT NULL,
-    "TransitDays" integer
-);
-
-
-ALTER TABLE public."ShippingByWeightByTotalRecord" OWNER TO postgres;
-
---
--- Name: ShippingByWeightByTotalRecord_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."ShippingByWeightByTotalRecord_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."ShippingByWeightByTotalRecord_Id_seq" OWNER TO postgres;
-
---
--- Name: ShippingByWeightByTotalRecord_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."ShippingByWeightByTotalRecord_Id_seq" OWNED BY public."ShippingByWeightByTotalRecord"."Id";
-
-
---
 -- Name: ShippingMethod; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -4755,49 +4541,6 @@ ALTER SEQUENCE public."StoreMapping_Id_seq" OWNED BY public."StoreMapping"."Id";
 
 
 --
--- Name: StorePickupPoint; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."StorePickupPoint" (
-    "Id" integer NOT NULL,
-    "Latitude" numeric(18,8),
-    "Longitude" numeric(18,8),
-    "Name" public.citext,
-    "Description" public.citext,
-    "AddressId" integer NOT NULL,
-    "PickupFee" numeric(18,4) NOT NULL,
-    "OpeningHours" public.citext,
-    "DisplayOrder" integer NOT NULL,
-    "StoreId" integer NOT NULL,
-    "TransitDays" integer
-);
-
-
-ALTER TABLE public."StorePickupPoint" OWNER TO postgres;
-
---
--- Name: StorePickupPoint_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."StorePickupPoint_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."StorePickupPoint_Id_seq" OWNER TO postgres;
-
---
--- Name: StorePickupPoint_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."StorePickupPoint_Id_seq" OWNED BY public."StorePickupPoint"."Id";
-
-
---
 -- Name: Store_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -4852,84 +4595,6 @@ ALTER SEQUENCE public."TaxCategory_Id_seq" OWNER TO postgres;
 --
 
 ALTER SEQUENCE public."TaxCategory_Id_seq" OWNED BY public."TaxCategory"."Id";
-
-
---
--- Name: TaxRate; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."TaxRate" (
-    "Id" integer NOT NULL,
-    "StoreId" integer NOT NULL,
-    "TaxCategoryId" integer NOT NULL,
-    "CountryId" integer NOT NULL,
-    "StateProvinceId" integer NOT NULL,
-    "Zip" public.citext,
-    "Percentage" numeric(18,4) NOT NULL
-);
-
-
-ALTER TABLE public."TaxRate" OWNER TO postgres;
-
---
--- Name: TaxRate_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."TaxRate_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."TaxRate_Id_seq" OWNER TO postgres;
-
---
--- Name: TaxRate_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."TaxRate_Id_seq" OWNED BY public."TaxRate"."Id";
-
-
---
--- Name: TaxTransactionLog; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."TaxTransactionLog" (
-    "Id" integer NOT NULL,
-    "StatusCode" integer NOT NULL,
-    "Url" public.citext,
-    "RequestMessage" public.citext,
-    "ResponseMessage" public.citext,
-    "CustomerId" integer NOT NULL,
-    "CreatedDateUtc" timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE public."TaxTransactionLog" OWNER TO postgres;
-
---
--- Name: TaxTransactionLog_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."TaxTransactionLog_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."TaxTransactionLog_Id_seq" OWNER TO postgres;
-
---
--- Name: TaxTransactionLog_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."TaxTransactionLog_Id_seq" OWNED BY public."TaxTransactionLog"."Id";
 
 
 --
@@ -5332,51 +4997,6 @@ ALTER SEQUENCE public."Warehouse_Id_seq" OWNED BY public."Warehouse"."Id";
 
 
 --
--- Name: ZettleRecord; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."ZettleRecord" (
-    "Id" integer NOT NULL,
-    "Active" boolean NOT NULL,
-    "Uuid" public.citext,
-    "ProductId" integer NOT NULL,
-    "VariantUuid" public.citext,
-    "CombinationId" integer NOT NULL,
-    "ImageUrl" public.citext,
-    "OperationTypeId" integer NOT NULL,
-    "PriceSyncEnabled" boolean NOT NULL,
-    "ImageSyncEnabled" boolean NOT NULL,
-    "InventoryTrackingEnabled" boolean NOT NULL,
-    "ExternalUuid" public.citext,
-    "UpdatedOnUtc" timestamp without time zone
-);
-
-
-ALTER TABLE public."ZettleRecord" OWNER TO postgres;
-
---
--- Name: ZettleRecord_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public."ZettleRecord_Id_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER SEQUENCE public."ZettleRecord_Id_seq" OWNER TO postgres;
-
---
--- Name: ZettleRecord_Id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public."ZettleRecord_Id_seq" OWNED BY public."ZettleRecord"."Id";
-
-
---
 -- Name: AclRecord Id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -5423,13 +5043,6 @@ ALTER TABLE ONLY public."AddressAttributeValue" ALTER COLUMN "Id" SET DEFAULT ne
 --
 
 ALTER TABLE ONLY public."Affiliate" ALTER COLUMN "Id" SET DEFAULT nextval('public."Affiliate_Id_seq"'::regclass);
-
-
---
--- Name: AvalaraItemClassification Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."AvalaraItemClassification" ALTER COLUMN "Id" SET DEFAULT nextval('public."AvalaraItemClassification_Id_seq"'::regclass);
 
 
 --
@@ -5594,13 +5207,6 @@ ALTER TABLE ONLY public."ExternalAuthenticationRecord" ALTER COLUMN "Id" SET DEF
 
 
 --
--- Name: FacebookPixelConfiguration Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."FacebookPixelConfiguration" ALTER COLUMN "Id" SET DEFAULT nextval('public."FacebookPixelConfiguration_Id_seq"'::regclass);
-
-
---
 -- Name: Forums_Forum Id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -5682,13 +5288,6 @@ ALTER TABLE ONLY public."GiftCard" ALTER COLUMN "Id" SET DEFAULT nextval('public
 --
 
 ALTER TABLE ONLY public."GiftCardUsageHistory" ALTER COLUMN "Id" SET DEFAULT nextval('public."GiftCardUsageHistory_Id_seq"'::regclass);
-
-
---
--- Name: GoogleAuthenticatorRecord Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."GoogleAuthenticatorRecord" ALTER COLUMN "Id" SET DEFAULT nextval('public."GoogleAuthenticatorRecord_Id_seq"'::regclass);
 
 
 --
@@ -5794,13 +5393,6 @@ ALTER TABLE ONLY public."OrderItem" ALTER COLUMN "Id" SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public."OrderNote" ALTER COLUMN "Id" SET DEFAULT nextval('public."OrderNote_Id_seq"'::regclass);
-
-
---
--- Name: PayPalToken Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."PayPalToken" ALTER COLUMN "Id" SET DEFAULT nextval('public."PayPalToken_Id_seq"'::regclass);
 
 
 --
@@ -6084,13 +5676,6 @@ ALTER TABLE ONLY public."ShipmentItem" ALTER COLUMN "Id" SET DEFAULT nextval('pu
 
 
 --
--- Name: ShippingByWeightByTotalRecord Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."ShippingByWeightByTotalRecord" ALTER COLUMN "Id" SET DEFAULT nextval('public."ShippingByWeightByTotalRecord_Id_seq"'::regclass);
-
-
---
 -- Name: ShippingMethod Id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -6154,31 +5739,10 @@ ALTER TABLE ONLY public."StoreMapping" ALTER COLUMN "Id" SET DEFAULT nextval('pu
 
 
 --
--- Name: StorePickupPoint Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."StorePickupPoint" ALTER COLUMN "Id" SET DEFAULT nextval('public."StorePickupPoint_Id_seq"'::regclass);
-
-
---
 -- Name: TaxCategory Id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."TaxCategory" ALTER COLUMN "Id" SET DEFAULT nextval('public."TaxCategory_Id_seq"'::regclass);
-
-
---
--- Name: TaxRate Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."TaxRate" ALTER COLUMN "Id" SET DEFAULT nextval('public."TaxRate_Id_seq"'::regclass);
-
-
---
--- Name: TaxTransactionLog Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."TaxTransactionLog" ALTER COLUMN "Id" SET DEFAULT nextval('public."TaxTransactionLog_Id_seq"'::regclass);
 
 
 --
@@ -6249,13 +5813,6 @@ ALTER TABLE ONLY public."Video" ALTER COLUMN "Id" SET DEFAULT nextval('public."V
 --
 
 ALTER TABLE ONLY public."Warehouse" ALTER COLUMN "Id" SET DEFAULT nextval('public."Warehouse_Id_seq"'::regclass);
-
-
---
--- Name: ZettleRecord Id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."ZettleRecord" ALTER COLUMN "Id" SET DEFAULT nextval('public."ZettleRecord_Id_seq"'::regclass);
 
 
 --
@@ -6450,8 +6007,7 @@ COPY public."ActivityLogType" ("Id", "SystemKeyword", "Name", "Enabled") FROM st
 --
 
 COPY public."Address" ("Id", "CountryId", "StateProvinceId", "FirstName", "LastName", "Email", "Company", "County", "City", "Address1", "Address2", "ZipPostalCode", "PhoneNumber", "FaxNumber", "CustomAttributes", "CreatedOnUtc") FROM stdin;
-1	237	1751	John	Smith	admin@yourStore.com	Nop Solutions Ltd	\N	New York	21 West 52nd Street		10021	12345678		\N	2025-01-18 16:38:31.381716
-2	237	1751	\N	\N	\N	\N	\N	New York	21 West 52nd Street	\N	10021	\N	\N	\N	2025-01-18 16:39:17.855222
+1	237	1751	John	Smith	admin@yourStore.com	Nop Solutions Ltd	\N	New York	21 West 52nd Street		10021	12345678		\N	2025-02-24 09:16:23.922879
 \.
 
 
@@ -6476,14 +6032,6 @@ COPY public."AddressAttributeValue" ("Id", "Name", "AddressAttributeId", "IsPreS
 --
 
 COPY public."Affiliate" ("Id", "AddressId", "AdminComment", "FriendlyUrlName", "Deleted", "Active") FROM stdin;
-\.
-
-
---
--- Data for Name: AvalaraItemClassification; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."AvalaraItemClassification" ("Id", "ProductId", "HSClassificationRequestId", "CountryId", "HSCode", "UpdatedOnUtc") FROM stdin;
 \.
 
 
@@ -6822,17 +6370,17 @@ COPY public."CrossSellProduct" ("Id", "ProductId1", "ProductId2") FROM stdin;
 --
 
 COPY public."Currency" ("Id", "Name", "CurrencyCode", "DisplayLocale", "CustomFormatting", "Rate", "LimitedToStores", "Published", "DisplayOrder", "CreatedOnUtc", "UpdatedOnUtc", "RoundingTypeId") FROM stdin;
-1	US Dollar	USD	en-US		1.0000	f	t	0	2025-01-18 16:38:27.359	2025-01-18 16:38:27.359	0
-2	Australian Dollar	AUD	en-AU		1.3400	f	f	2	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-3	British Pound	GBP	en-GB		0.7500	f	f	3	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-4	Canadian Dollar	CAD	en-CA		1.3200	f	f	4	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-5	Chinese Yuan Renminbi	CNY	zh-CN		6.4300	f	f	5	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-6	Euro	EUR		€0.00	0.8600	f	f	6	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-7	Hong Kong Dollar	HKD	zh-HK		7.8400	f	f	7	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-8	Japanese Yen	JPY	ja-JP		110.4500	f	f	8	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-9	Russian Rouble	RUB	ru-RU		63.2500	f	f	9	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
-10	Swedish Krona	SEK	sv-SE		8.8000	f	f	10	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	60
-11	Indian Rupee	INR	en-IN		68.0300	f	f	12	2025-01-18 16:38:27.36	2025-01-18 16:38:27.36	0
+1	US Dollar	USD	en-US		1.0000	f	t	0	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+2	Australian Dollar	AUD	en-AU		1.3400	f	f	2	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+3	British Pound	GBP	en-GB		0.7500	f	f	3	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+4	Canadian Dollar	CAD	en-CA		1.3200	f	f	4	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+5	Chinese Yuan Renminbi	CNY	zh-CN		6.4300	f	f	5	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+6	Euro	EUR		€0.00	0.8600	f	f	6	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+7	Hong Kong Dollar	HKD	zh-HK		7.8400	f	f	7	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+8	Japanese Yen	JPY	ja-JP		110.4500	f	f	8	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+9	Russian Rouble	RUB	ru-RU		63.2500	f	f	9	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
+10	Swedish Krona	SEK	sv-SE		8.8000	f	f	10	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	60
+11	Indian Rupee	INR	en-IN		68.0300	f	f	12	2025-02-24 09:16:19.399	2025-02-24 09:16:19.399	0
 \.
 
 
@@ -6841,10 +6389,9 @@ COPY public."Currency" ("Id", "Name", "CurrencyCode", "DisplayLocale", "CustomFo
 --
 
 COPY public."Customer" ("Id", "Username", "Email", "EmailToRevalidate", "FirstName", "LastName", "Gender", "Company", "StreetAddress", "StreetAddress2", "ZipPostalCode", "City", "County", "Phone", "Fax", "VatNumber", "TimeZoneId", "CustomCustomerAttributesXML", "DateOfBirth", "SystemName", "LastIpAddress", "CurrencyId", "LanguageId", "BillingAddress_Id", "ShippingAddress_Id", "CustomerGuid", "CountryId", "StateProvinceId", "VatNumberStatusId", "TaxDisplayTypeId", "AdminComment", "IsTaxExempt", "AffiliateId", "VendorId", "HasShoppingCartItems", "RequireReLogin", "FailedLoginAttempts", "CannotLoginUntilDateUtc", "Active", "Deleted", "IsSystemAccount", "CreatedOnUtc", "LastLoginDateUtc", "LastActivityDateUtc", "RegisteredInStoreId", "MustChangePassword") FROM stdin;
-1	admin@yourStore.com	admin@yourStore.com	\N	John	Smith	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	1	9f028bd8-56d2-45d7-b21b-574c21cafb74	0	0	0	\N	\N	f	0	0	f	f	0	\N	t	f	f	2025-01-18 16:38:31.363745	\N	2025-01-18 16:38:31.363794	1	f
-2	\N	builtin@search_engine_record.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	SearchEngine	\N	\N	\N	\N	\N	802b02aa-1837-466e-b389-62f1ea556022	0	0	0	\N	Built-in system guest record used for requests from search engines.	f	0	0	f	f	0	\N	t	f	t	2025-01-18 16:38:31.564015	\N	2025-01-18 16:38:31.564015	1	f
-3	\N	builtin@background-task-record.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	BackgroundTask	\N	\N	\N	\N	\N	6fd6fe2e-5224-401b-a603-0c507f257b12	0	0	0	\N	Built-in system record used for background tasks.	f	0	0	f	f	0	\N	t	f	t	2025-01-18 16:38:31.586054	\N	2025-01-18 16:38:31.586054	1	f
-4	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	127.0.0.1	\N	\N	\N	\N	820f5acb-b19c-47b6-8db3-e8583c893d5a	0	0	0	\N	\N	f	0	0	f	f	0	\N	t	f	f	2025-01-18 16:39:24.457735	\N	2025-01-18 16:39:24.457735	0	f
+1	admin@yourStore.com	admin@yourStore.com	\N	John	Smith	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1	1	93f4ce15-d859-448b-a19f-fd0831cb1844	0	0	0	\N	\N	f	0	0	f	f	0	\N	t	f	f	2025-02-24 09:16:23.898267	\N	2025-02-24 09:16:23.898373	1	f
+2	\N	builtin@search_engine_record.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	SearchEngine	\N	\N	\N	\N	\N	e3e157c9-d24a-4fcd-9f8b-4df14d7079cb	0	0	0	\N	Built-in system guest record used for requests from search engines.	f	0	0	f	f	0	\N	t	f	t	2025-02-24 09:16:24.184835	\N	2025-02-24 09:16:24.184835	1	f
+3	\N	builtin@background-task-record.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	BackgroundTask	\N	\N	\N	\N	\N	d07230d9-286c-4226-a717-1b4e8a9a56fb	0	0	0	\N	Built-in system record used for background tasks.	f	0	0	f	f	0	\N	t	f	t	2025-02-24 09:16:24.216952	\N	2025-02-24 09:16:24.216952	1	f
 \.
 
 
@@ -6878,7 +6425,7 @@ COPY public."CustomerAttributeValue" ("Id", "Name", "CustomerAttributeId", "IsPr
 --
 
 COPY public."CustomerPassword" ("Id", "CustomerId", "Password", "PasswordFormatId", "PasswordSalt", "CreatedOnUtc") FROM stdin;
-1	1	D9B1A0F1F49FA20A4741B2B0397A5612AB090A53F1A021606F55D8716C79249A9C5C82FB8C0C13764F101C97E125FE1B6EE67CDAC4320B2D9DA110A0A3A12768	1	MqFQHbY=	2025-01-18 16:38:31.538684
+1	1	9346AA8F3A580B3E1CD81E219E6C7313DC0C55818108FCDE55992D87005E9DA68098ECC827B280A388B7994E2A4C779811AA55786A599C2F6F57091735E07EE5	1	SON5lfg=	2025-02-24 09:16:24.151408
 \.
 
 
@@ -6905,7 +6452,6 @@ COPY public."Customer_CustomerRole_Mapping" ("Customer_Id", "CustomerRole_Id") F
 1	3
 2	4
 3	4
-4	4
 \.
 
 
@@ -6990,14 +6536,6 @@ COPY public."EmailAccount" ("Id", "DisplayName", "Email", "Host", "Username", "P
 --
 
 COPY public."ExternalAuthenticationRecord" ("Id", "CustomerId", "Email", "ExternalIdentifier", "ExternalDisplayIdentifier", "OAuthToken", "OAuthAccessToken", "ProviderSystemName") FROM stdin;
-\.
-
-
---
--- Data for Name: FacebookPixelConfiguration; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."FacebookPixelConfiguration" ("Id", "PixelId", "AccessToken", "PixelScriptEnabled", "ConversionsApiEnabled", "DisableForUsersNotAcceptingCookieConsent", "StoreId", "PassUserProperties", "UseAdvancedMatching", "TrackPageView", "TrackAddToCart", "TrackPurchase", "TrackViewContent", "TrackAddToWishlist", "TrackInitiateCheckout", "TrackSearch", "TrackContact", "TrackCompleteRegistration", "CustomEvents") FROM stdin;
 \.
 
 
@@ -7094,14 +6632,6 @@ COPY public."GiftCard" ("Id", "PurchasedWithOrderItemId", "GiftCardTypeId", "Amo
 --
 
 COPY public."GiftCardUsageHistory" ("Id", "GiftCardId", "UsedWithOrderId", "UsedValue", "CreatedOnUtc") FROM stdin;
-\.
-
-
---
--- Data for Name: GoogleAuthenticatorRecord; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."GoogleAuthenticatorRecord" ("Id", "Customer", "SecretKey") FROM stdin;
 \.
 
 
@@ -8106,6 +7636,7 @@ COPY public."LocaleStringResource" ("Id", "ResourceName", "ResourceValue", "Lang
 983	admin.catalog.products.fields.discounts.hint	Select discounts to apply to this product. You can manage discounts by selecting Discounts from the Promotions menu.	1
 984	admin.catalog.products.fields.discounts.nodiscounts	No discounts available. Create at least one discount before mapping.	1
 985	admin.catalog.products.fields.displayattributecombinationimagesonly	Display only uploaded images of attribute combination	1
+986	admin.catalog.products.fields.displayattributecombinationimagesonly.hint	You may choose pictures associated to each product attribute value or attribute combination (these pictures will replace the main product image when this product attribute value or attribute combination is selected). Enable this option if you want to display only images of a chosen product attribute value or an attribute combination (other pictures will be hidden). Otherwise, all uploaded pictures will be displayed on the product details page.	1
 987	admin.catalog.products.fields.displayorder	Display order	1
 988	admin.catalog.products.fields.displayorder.hint	Display order of the product. 1 represents the top of the list.	1
 989	admin.catalog.products.fields.displaystockavailability	Display availability	1
@@ -9258,6 +8789,8 @@ COPY public."LocaleStringResource" ("Id", "ResourceName", "ResourceValue", "Lang
 2134	admin.configuration.settings.catalog.showproductreviewstabonaccountpage.hint	Check to show product reviews tab on 'My account' page.	1
 2135	admin.configuration.settings.catalog.showproductsfromsubcategories	Include products from subcategories	1
 2136	admin.configuration.settings.catalog.showproductsfromsubcategories.hint	Check if you want a category details page to include products from subcategories.	1
+2137	admin.configuration.settings.catalog.showsearchboxcategories	Show categories for the search box	1
+2138	admin.configuration.settings.catalog.showsearchboxcategories.hint	Check to display the category drop-down list next to the search box.	1
 2139	admin.configuration.settings.catalog.showsharebutton	Show a share button	1
 2140	admin.configuration.settings.catalog.showsharebutton.hint	Check to show share button on product details page.	1
 2141	admin.configuration.settings.catalog.showshortdescriptiononcatalogpages	Show short description on catalog pages	1
@@ -12590,6 +12123,7 @@ COPY public."LocaleStringResource" ("Id", "ResourceName", "ResourceValue", "Lang
 5464	admin.vendors.fields.picture.hint	The vendor picture.	1
 5465	admin.vendors.fields.pmcustomerid	Customer for PM	1
 5466	admin.vendors.fields.pmcustomerid.choose	Choose	1
+5467	admin.vendors.fields.pmcustomerid.hint	Choose the customer for using private messages. Then customers will see the "Send private message" button on the vendor details page.	1
 5468	admin.vendors.fields.pmcustomerid.remove	Remove	1
 5469	admin.vendors.fields.pricefrom	Price 'from'	1
 5470	admin.vendors.fields.pricefrom.greaterthanorequalzero	The price 'from' should be greater than or equal '0'.	1
@@ -13611,84 +13145,112 @@ COPY public."LocaleStringResource" ("Id", "ResourceName", "ResourceValue", "Lang
 6493	search.searchterm	Search keyword	1
 6494	search.searchtermminimumlengthisncharacters	Search term minimum length is {0} characters	1
 6495	search.vendor	Vendor	1
-6509	security.permission.catalog.productsimportexport	Admin area. Products. Import and export	1
-6498	security.permission.catalog.categoriesview	Admin area. Categories. View	1
 6496	security.permission.catalog.categoriescreateeditdelete	Admin area. Categories. Create, edit, delete	1
 6497	security.permission.catalog.categoriesimportexport	Admin area. Categories. Import and export	1
-6503	security.permission.catalog.manufacturerview	Admin area. Manufacturer. View	1
+6498	security.permission.catalog.categoriesview	Admin area. Categories. View	1
+6499	security.permission.catalog.checkoutattributescreateeditdelete	Admin area. Checkout attributes. Create, edit, delete	1
+6500	security.permission.catalog.checkoutattributesview	Admin area. Checkout attributes. View	1
 6501	security.permission.catalog.manufacturercreateeditdelete	Admin area. Manufacturer. Create, edit, delete	1
 6502	security.permission.catalog.manufacturerimportexport	Admin area. Manufacturer. Import and export	1
-6507	security.permission.catalog.productreviewsview	Admin area. Product reviews. View	1
-6506	security.permission.catalog.productreviewscreateeditdelete	Admin area. Product reviews. Create, edit, delete	1
-6512	security.permission.catalog.producttagsview	Admin area. Product tags. View	1
-6511	security.permission.catalog.producttagscreateeditdelete	Admin area. Product tags. Create, edit, delete	1
-6505	security.permission.catalog.productattributesview	Admin area. Product attributes. View	1
+6503	security.permission.catalog.manufacturerview	Admin area. Manufacturer. View	1
 6504	security.permission.catalog.productattributescreateeditdelete	Admin area. Product attributes. Create, edit, delete	1
+6505	security.permission.catalog.productattributesview	Admin area. Product attributes. View	1
+6506	security.permission.catalog.productreviewscreateeditdelete	Admin area. Product reviews. Create, edit, delete	1
+6507	security.permission.catalog.productreviewsview	Admin area. Product reviews. View	1
+6508	security.permission.catalog.productscreateeditdelete	Admin area. Products. Create, edit, delete	1
+6509	security.permission.catalog.productsimportexport	Admin area. Products. Import and export	1
+6510	security.permission.catalog.productsview	Admin area. Products. View	1
+6511	security.permission.catalog.producttagscreateeditdelete	Admin area. Product tags. Create, edit, delete	1
+6512	security.permission.catalog.producttagsview	Admin area. Product tags. View	1
 6513	security.permission.catalog.specificationattributescreateeditdelete	Admin area. Specification attributes. Create, edit, delete	1
-6500	security.permission.catalog.checkoutattributesview	Admin area. Checkout attributes. View	1
-6499	security.permission.catalog.checkoutattributescreateeditdelete	Admin area. Checkout attributes. Create, edit, delete	1
-6729	shoppingcart.updatecart	Update shopping cart	1
-6552	security.permission.customers.customersimportexport	Admin area. Customers. Import and export	1
-6551	security.permission.customers.customersimpersonation	Admin area. Customers. Allow impersonation	1
-6549	security.permission.customers.customerrolesview	Admin area. Customer roles. View	1
-6548	security.permission.customers.customerrolescreateeditdelete	Admin area. Customer roles. Create, edit, delete	1
-6556	security.permission.customers.vendorsview	Admin area. Vendors. View	1
-6555	security.permission.customers.vendorscreateeditdelete	Admin area. Vendors. Create, edit, delete	1
-6547	security.permission.customers.activitylogview	Admin area. Activity Log. View	1
+6514	security.permission.catalog.specificationattributesview	Admin area. Specification attributes. View	1
+6515	security.permission.configuration.manageacl	Admin area. ACL. Manage	1
+6516	security.permission.configuration.managecountries	Admin area. Countries. Manage	1
+6517	security.permission.configuration.managecurrencies	Admin area. Currencies. Manage	1
+6518	security.permission.configuration.manageemailaccounts	Admin area. Email Accounts. Manage	1
+6519	security.permission.configuration.manageexternalauthenticationmethods	Admin area. External Authentication Methods. Manage	1
+6520	security.permission.configuration.managelanguages	Admin area. Languages. Manage	1
+6521	security.permission.configuration.managemultifactorauthenticationmethods	Admin area. Multi-factor Authentication Methods. Manage	1
+6522	security.permission.configuration.managepaymentmethods	Admin area. Payment Methods. Manage	1
+6523	security.permission.configuration.manageplugins	Admin area. Plugins. Manage	1
+6524	security.permission.configuration.managesettings	Admin area. Settings. Manage	1
+6525	security.permission.configuration.manageshippingsettings	Admin area. Shipping Settings. Manage	1
+6526	security.permission.configuration.managestores	Admin area. Stores. Manage	1
+6527	security.permission.configuration.managetaxsettings	Admin area. Tax Settings. Manage	1
+6528	security.permission.configuration.managewidgets	Admin area. Widgets. Manage	1
+6529	security.permission.contentmanagement.blogcommentscreateeditdelete	Admin area. Blog comments. Create, edit, delete	1
+6530	security.permission.contentmanagement.blogcommentsview	Admin area. Blog comments. View	1
+6531	security.permission.contentmanagement.blogcreateeditdelete	Admin area. Blog. Create, edit, delete	1
+6532	security.permission.contentmanagement.blogview	Admin area. Blog. View	1
+6533	security.permission.contentmanagement.forumscreateeditdelete	Admin area. Forums. Create, edit, delete	1
+6534	security.permission.contentmanagement.forumsview	Admin area. Forums. View	1
+6535	security.permission.contentmanagement.messagetemplatescreateeditdelete	Admin area. Message Templates. Create, edit, delete	1
+6536	security.permission.contentmanagement.messagetemplatesview	Admin area. Message Templates. View	1
+6537	security.permission.contentmanagement.newscommentscreateeditdelete	Admin area. News comments. Create, edit, delete	1
+6538	security.permission.contentmanagement.newscommentsview	Admin area. News comments. View	1
+6539	security.permission.contentmanagement.newscreateeditdelete	Admin area. News. Create, edit, delete	1
+6540	security.permission.contentmanagement.newsview	Admin area. News. View	1
+6541	security.permission.contentmanagement.pollscreateeditdelete	Admin area. Polls. Create, edit, delete	1
+6542	security.permission.contentmanagement.pollsview	Admin area. Polls. View	1
+6543	security.permission.contentmanagement.topicscreateeditdelete	Admin area. Topics. Create, edit, delete	1
+6544	security.permission.contentmanagement.topicsview	Admin area. Topics. View	1
 6545	security.permission.customers.activitylogdelete	Admin area. Activity Log. Delete	1
 6546	security.permission.customers.activitylogmanagetypes	Admin area. Activity Log. Manage types	1
+6547	security.permission.customers.activitylogview	Admin area. Activity Log. View	1
+6548	security.permission.customers.customerrolescreateeditdelete	Admin area. Customer roles. Create, edit, delete	1
+6549	security.permission.customers.customerrolesview	Admin area. Customer roles. View	1
+6550	security.permission.customers.customerscreateeditdelete	Admin area. Customers. Create, edit, delete	1
+6551	security.permission.customers.customersimpersonation	Admin area. Customers. Allow impersonation	1
+6552	security.permission.customers.customersimportexport	Admin area. Customers. Import and export	1
+6553	security.permission.customers.customersview	Admin area. Customers. View	1
 6554	security.permission.customers.gdprmanage	Admin area. GDPR. Manage	1
+6555	security.permission.customers.vendorscreateeditdelete	Admin area. Vendors. Create, edit, delete	1
+6556	security.permission.customers.vendorsview	Admin area. Vendors. View	1
 6557	security.permission.orders.currentcartsmanage	Admin area. Current Carts. Manage	1
-6562	security.permission.orders.ordersview	Admin area. Orders. View	1
+6558	security.permission.orders.giftcardscreateeditdelete	Admin area. Gift cards. Create, edit, delete	1
+6559	security.permission.orders.giftcardsview	Admin area. Gift cards. View	1
 6560	security.permission.orders.orderscreateeditdelete	Admin area. Orders. Create, edit, delete	1
 6561	security.permission.orders.ordersimportexport	Admin area. Orders. Import and export	1
-6568	security.permission.orders.shipmentsview	Admin area. Shipments. View	1
-6567	security.permission.orders.shipmentscreateeditdelete	Admin area. Shipments. Create, edit, delete	1
-6566	security.permission.orders.returnrequestsview	Admin area. Return requests. View	1
-6565	security.permission.orders.returnrequestscreateeditdelete	Admin area. Return requests. Create, edit, delete	1
-6564	security.permission.orders.recurringpaymentsview	Admin area. Recurring payments. View	1
+6562	security.permission.orders.ordersview	Admin area. Orders. View	1
 6563	security.permission.orders.recurringpaymentscreateeditdelete	Admin area. Recurring payments. Create, edit, delete	1
-6559	security.permission.orders.giftcardsview	Admin area. Gift cards. View	1
-6558	security.permission.orders.giftcardscreateeditdelete	Admin area. Gift cards. Create, edit, delete	1
-6514	security.permission.catalog.specificationattributesview	Admin area. Specification attributes. View	1
-6576	security.permission.promotions.discountsview	Admin area. Discounts. View	1
-6575	security.permission.promotions.discountscreateeditdelete	Admin area. Discounts. Create, edit, delete	1
-6570	security.permission.promotions.affiliatesview	Admin area. Affiliates. View	1
+6564	security.permission.orders.recurringpaymentsview	Admin area. Recurring payments. View	1
+6565	security.permission.orders.returnrequestscreateeditdelete	Admin area. Return requests. Create, edit, delete	1
+6566	security.permission.orders.returnrequestsview	Admin area. Return requests. View	1
+6567	security.permission.orders.shipmentscreateeditdelete	Admin area. Shipments. Create, edit, delete	1
+6568	security.permission.orders.shipmentsview	Admin area. Shipments. View	1
 6569	security.permission.promotions.affiliatescreateeditdelete	Admin area. Affiliates. Create, edit, delete	1
-6574	security.permission.promotions.campaignsview	Admin area. Campaigns. View	1
+6570	security.permission.promotions.affiliatesview	Admin area. Affiliates. View	1
 6571	security.permission.promotions.campaignscreateedit	Admin area. Campaigns. Create and Edit	1
 6572	security.permission.promotions.campaignsdelete	Admin area. Campaigns. Delete	1
 6573	security.permission.promotions.campaignssendemails	Admin area. Campaigns. Send emails	1
-6544	security.permission.contentmanagement.topicsview	Admin area. Topics. View	1
-6543	security.permission.contentmanagement.topicscreateeditdelete	Admin area. Topics. Create, edit, delete	1
-6536	security.permission.contentmanagement.messagetemplatesview	Admin area. Message Templates. View	1
-6540	security.permission.contentmanagement.newsview	Admin area. News. View	1
-6539	security.permission.contentmanagement.newscreateeditdelete	Admin area. News. Create, edit, delete	1
-6538	security.permission.contentmanagement.newscommentsview	Admin area. News comments. View	1
-6537	security.permission.contentmanagement.newscommentscreateeditdelete	Admin area. News comments. Create, edit, delete	1
-6532	security.permission.contentmanagement.blogview	Admin area. Blog. View	1
-6531	security.permission.contentmanagement.blogcreateeditdelete	Admin area. Blog. Create, edit, delete	1
-6530	security.permission.contentmanagement.blogcommentsview	Admin area. Blog comments. View	1
-6529	security.permission.contentmanagement.blogcommentscreateeditdelete	Admin area. Blog comments. Create, edit, delete	1
-6542	security.permission.contentmanagement.pollsview	Admin area. Polls. View	1
-6541	security.permission.contentmanagement.pollscreateeditdelete	Admin area. Polls. Create, edit, delete	1
-6534	security.permission.contentmanagement.forumsview	Admin area. Forums. View	1
-6533	security.permission.contentmanagement.forumscreateeditdelete	Admin area. Forums. Create, edit, delete	1
-6528	security.permission.configuration.managewidgets	Admin area. Widgets. Manage	1
-6516	security.permission.configuration.managecountries	Admin area. Countries. Manage	1
-6520	security.permission.configuration.managelanguages	Admin area. Languages. Manage	1
-6524	security.permission.configuration.managesettings	Admin area. Settings. Manage	1
-6522	security.permission.configuration.managepaymentmethods	Admin area. Payment Methods. Manage	1
-6519	security.permission.configuration.manageexternalauthenticationmethods	Admin area. External Authentication Methods. Manage	1
-6521	security.permission.configuration.managemultifactorauthenticationmethods	Admin area. Multi-factor Authentication Methods. Manage	1
-6527	security.permission.configuration.managetaxsettings	Admin area. Tax Settings. Manage	1
-6525	security.permission.configuration.manageshippingsettings	Admin area. Shipping Settings. Manage	1
-6517	security.permission.configuration.managecurrencies	Admin area. Currencies. Manage	1
-6515	security.permission.configuration.manageacl	Admin area. ACL. Manage	1
-6518	security.permission.configuration.manageemailaccounts	Admin area. Email Accounts. Manage	1
-6526	security.permission.configuration.managestores	Admin area. Stores. Manage	1
-6523	security.permission.configuration.manageplugins	Admin area. Plugins. Manage	1
+6574	security.permission.promotions.campaignsview	Admin area. Campaigns. View	1
+6575	security.permission.promotions.discountscreateeditdelete	Admin area. Discounts. Create, edit, delete	1
+6576	security.permission.promotions.discountsview	Admin area. Discounts. View	1
+6729	shoppingcart.updatecart	Update shopping cart	1
+6577	security.permission.promotions.subscriberscreateeditdelete	Admin area. Newsletter Subscribers. Create, edit, delete	1
+6578	security.permission.promotions.subscribersimportexport	Admin area. Newsletter Subscribers. Import and export	1
+6579	security.permission.promotions.subscribersview	Admin area. Newsletter Subscribers. View	1
+6580	security.permission.publicstore.accessclosedstore	Public store. Access a closed store	1
+6581	security.permission.publicstore.displayprices	Public store. Display Prices	1
+6582	security.permission.publicstore.enableshoppingcart	Public store. Enable shopping cart	1
+6583	security.permission.publicstore.enablewishlist	Public store. Enable wishlist	1
+6584	security.permission.publicstore.publicstoreallownavigation	Public store. Allow navigation	1
+6585	security.permission.reports.bestsellers	Admin area. Reports. Bestsellers	1
+6586	security.permission.reports.countrysales	Admin area. Reports. Country sales	1
+6587	security.permission.reports.customersbynumberoforders	Admin area. Reports. Customers by number of orders	1
+6588	security.permission.reports.customersbyordertotal	Admin area. Reports. Customers by order total	1
+6589	security.permission.reports.lowstock	Admin area. Reports. Low stock	1
+6590	security.permission.reports.productsneverpurchased	Admin area. Reports. Products never purchased	1
+6591	security.permission.reports.registeredcustomers	Admin area. Reports. Registered customers	1
+6592	security.permission.reports.salessummary	Admin area. Reports. Sales summary	1
+6593	security.permission.security.accessadminpanel	Access admin area	1
 6594	security.permission.security.enablemultifactorsuthentication	Security. Enable Multi-factor authentication	1
+6595	security.permission.system.htmleditor.managepictures	Admin area. HTML Editor. Manage pictures	1
+6596	security.permission.system.manageappsettings	Admin area. App Settings. Manage	1
+6597	security.permission.system.managemaintenance	Admin area. Maintenance. Manage	1
+6598	security.permission.system.managemessagequeue	Admin area. Message Queue. Manage	1
+6599	security.permission.system.managescheduletasks	Admin area. Schedule Tasks. Manage	1
+6600	security.permission.system.managesystemlog	Admin area. System Log. Manage	1
 6601	sendpmtovendor	Send private message	1
 6602	shipping.estimateshipping.city.required	City is required	1
 6603	shipping.estimateshipping.country.required	Country is required	1
@@ -13735,27 +13297,6 @@ COPY public."LocaleStringResource" ("Id", "ResourceName", "ResourceValue", "Lang
 6644	shoppingcart.discountcouponcode.activated	Coupon code ({0}) is activated! The discount will be applied to your order.	1
 6645	shoppingcart.discountcouponcode.applied	The coupon code was applied	1
 6646	shoppingcart.discountcouponcode.button	Apply coupon	1
-6592	security.permission.reports.salessummary	Admin area. Reports. Sales summary	1
-6586	security.permission.reports.countrysales	Admin area. Reports. Country sales	1
-6589	security.permission.reports.lowstock	Admin area. Reports. Low stock	1
-6585	security.permission.reports.bestsellers	Admin area. Reports. Bestsellers	1
-6590	security.permission.reports.productsneverpurchased	Admin area. Reports. Products never purchased	1
-6591	security.permission.reports.registeredcustomers	Admin area. Reports. Registered customers	1
-6588	security.permission.reports.customersbyordertotal	Admin area. Reports. Customers by order total	1
-6587	security.permission.reports.customersbynumberoforders	Admin area. Reports. Customers by number of orders	1
-6579	security.permission.promotions.subscribersview	Admin area. Newsletter Subscribers. View	1
-6578	security.permission.promotions.subscribersimportexport	Admin area. Newsletter Subscribers. Import and export	1
-6600	security.permission.system.managesystemlog	Admin area. System Log. Manage	1
-6598	security.permission.system.managemessagequeue	Admin area. Message Queue. Manage	1
-6597	security.permission.system.managemaintenance	Admin area. Maintenance. Manage	1
-6595	security.permission.system.htmleditor.managepictures	Admin area. HTML Editor. Manage pictures	1
-6599	security.permission.system.managescheduletasks	Admin area. Schedule Tasks. Manage	1
-6596	security.permission.system.manageappsettings	Admin area. App Settings. Manage	1
-6581	security.permission.publicstore.displayprices	Public store. Display Prices	1
-6582	security.permission.publicstore.enableshoppingcart	Public store. Enable shopping cart	1
-6583	security.permission.publicstore.enablewishlist	Public store. Enable wishlist	1
-6584	security.permission.publicstore.publicstoreallownavigation	Public store. Allow navigation	1
-6580	security.permission.publicstore.accessclosedstore	Public store. Access a closed store	1
 6647	shoppingcart.discountcouponcode.cannotbefound	The coupon code cannot be found	1
 6648	shoppingcart.discountcouponcode.currentcode	Entered coupon code - {0}	1
 6649	shoppingcart.discountcouponcode.empty	The coupon code is empty	1
@@ -13910,731 +13451,6 @@ COPY public."LocaleStringResource" ("Id", "ResourceName", "ResourceValue", "Lang
 6800	wishlist.updatecart	Update wishlist	1
 6801	wishlist.wishlistof	Wishlist of {0}	1
 6802	wishlist.yourwishlisturl	Your wishlist URL for sharing	1
-6803	enums.nop.plugin.payments.paypalcommerce.domain.buttonplacement.cart	Shopping cart	1
-6804	enums.nop.plugin.payments.paypalcommerce.domain.buttonplacement.product	Product	1
-6805	enums.nop.plugin.payments.paypalcommerce.domain.buttonplacement.paymentmethod	Checkout	1
-6806	enums.nop.plugin.payments.paypalcommerce.domain.paymenttype.authorize	Authorize	1
-6807	enums.nop.plugin.payments.paypalcommerce.domain.paymenttype.capture	Capture	1
-6808	plugins.payments.paypalcommerce.applepay.discount	Discount	1
-6809	plugins.payments.paypalcommerce.applepay.shipping	Shipping	1
-6810	plugins.payments.paypalcommerce.applepay.subtotal	Subtotal	1
-6811	plugins.payments.paypalcommerce.applepay.tax	Tax	1
-6812	plugins.payments.paypalcommerce.card.button	Pay now with Card	1
-6813	plugins.payments.paypalcommerce.card.new	Pay by new card	1
-6814	plugins.payments.paypalcommerce.card.prefix	Pay by	1
-6815	plugins.payments.paypalcommerce.card.save	Save your card	1
-6816	plugins.payments.paypalcommerce.configuration	Configuration	1
-6817	plugins.payments.paypalcommerce.configuration.error	Error: {0} (see details in the <a href="{1}" target="_blank">log</a>)	1
-6818	plugins.payments.paypalcommerce.credentials.valid	The specified credentials are valid	1
-6819	plugins.payments.paypalcommerce.credentials.invalid	The specified credentials are invalid	1
-6820	plugins.payments.paypalcommerce.fields.clientid	Client ID	1
-6821	plugins.payments.paypalcommerce.fields.clientid.hint	Enter your PayPal REST API client ID. This identifies your PayPal account and determines where transactions are paid.	1
-6822	plugins.payments.paypalcommerce.fields.clientid.required	Client ID is required	1
-6823	plugins.payments.paypalcommerce.fields.customerauthenticationrequired	Use 3D Secure	1
-6824	plugins.payments.paypalcommerce.fields.customerauthenticationrequired.hint	3D Secure enables you to authenticate card holders through card issuers. It reduces the likelihood of fraud when you use supported cards and improves transaction performance. A successful 3D Secure authentication can shift liability for chargebacks due to fraud from you to the card issuer.	1
-6825	plugins.payments.paypalcommerce.fields.displaybuttonsonproductdetails	Display buttons on product details	1
-6826	plugins.payments.paypalcommerce.fields.displaybuttonsonproductdetails.hint	Determine whether to display PayPal buttons on product details pages, clicking on them matches the behavior of the default 'Add to cart' button.	1
-6827	plugins.payments.paypalcommerce.fields.displaybuttonsonshoppingcart	Display buttons on shopping cart	1
-6828	plugins.payments.paypalcommerce.fields.displaybuttonsonshoppingcart.hint	Determine whether to display PayPal buttons on the shopping cart page instead of the default checkout button.	1
-6829	plugins.payments.paypalcommerce.fields.displaylogoinfooter	Display logo in footer	1
-6830	plugins.payments.paypalcommerce.fields.displaylogoinfooter.hint	Determine whether to display PayPal logo in the footer. These logos and banners are a great way to let your buyers know that you choose PayPal to securely process their payments.	1
-6831	plugins.payments.paypalcommerce.fields.displaylogoinheaderlinks	Display logo in header links	1
-6832	plugins.payments.paypalcommerce.fields.displaylogoinheaderlinks.hint	Determine whether to display PayPal logo in header links. These logos and banners are a great way to let your buyers know that you choose PayPal to securely process their payments.	1
-6833	plugins.payments.paypalcommerce.fields.logoinfooter	Logo source code	1
-6834	plugins.payments.paypalcommerce.fields.logoinfooter.hint	Enter source code of the logo. Find more logos and banners on PayPal Logo Center. You can also modify the code to fit correctly into your theme and site style.	1
-6835	plugins.payments.paypalcommerce.fields.logoinheaderlinks	Logo source code	1
-6836	plugins.payments.paypalcommerce.fields.logoinheaderlinks.hint	Enter source code of the logo. Find more logos and banners on PayPal Logo Center. You can also modify the code to fit correctly into your theme and site style.	1
-6837	plugins.payments.paypalcommerce.fields.merchantid	Merchant ID	1
-6838	plugins.payments.paypalcommerce.fields.merchantid.hint	PayPal account ID of the merchant.	1
-6839	plugins.payments.paypalcommerce.fields.merchantid.required	Merchant ID is required	1
-6840	plugins.payments.paypalcommerce.fields.paymenttype	Payment type	1
-6841	plugins.payments.paypalcommerce.fields.paymenttype.hint	Choose a payment type to either capture payment immediately or authorize a payment for an order after order creation. Notice, that alternative payment methods don't work with the 'authorize and capture later' feature.	1
-6842	plugins.payments.paypalcommerce.fields.secretkey	Secret	1
-6843	plugins.payments.paypalcommerce.fields.secretkey.hint	Enter your PayPal REST API secret.	1
-6844	plugins.payments.paypalcommerce.fields.secretkey.required	Secret is required	1
-6845	plugins.payments.paypalcommerce.fields.setcredentialsmanually	Specify API credentials manually	1
-6846	plugins.payments.paypalcommerce.fields.setcredentialsmanually.hint	Determine whether to manually set the credentials (for example, there is already the REST API application created, or if you want to use the sandbox mode).	1
-6847	plugins.payments.paypalcommerce.fields.skiporderconfirmpage	Skip 'Confirm Order' page	1
-6848	plugins.payments.paypalcommerce.fields.skiporderconfirmpage.hint	Determine whether to skip the 'Confirm Order' step during checkout so that after approving the payment on PayPal site, customers will redirected directly to the 'Order Completed' page.	1
-6849	plugins.payments.paypalcommerce.fields.usealternativepayments	Use Alternative Payments Methods	1
-6850	plugins.payments.paypalcommerce.fields.usealternativepayments.hint	With alternative payment methods, customers across the globe can pay with their bank accounts, wallets, and other local payment methods.	1
-6851	plugins.payments.paypalcommerce.fields.useapplepay	Use Apple Pay	1
-6852	plugins.payments.paypalcommerce.fields.useapplepay.hint	Apple Pay is a mobile payment and digital wallet service provided by Apple Inc.	1
-6853	plugins.payments.paypalcommerce.fields.useapplepay.warning	Don't forget to enable 'Serve unknown types of static files' on the <a href="{0}" target="_blank">App settings page</a>, so that the domain association file is processed correctly.	1
-6854	plugins.payments.paypalcommerce.fields.usecardfields	Use Custom Card Fields	1
-6855	plugins.payments.paypalcommerce.fields.usecardfields.hint	Advanced Credit and Debit Card Payments (Custom Card Fields) are a PCI compliant solution to accept debit and credit card payments.	1
-6856	plugins.payments.paypalcommerce.fields.usegooglepay	Use Google Pay	1
-6857	plugins.payments.paypalcommerce.fields.usegooglepay.hint	Google Pay is a mobile payment and digital wallet service provided by Alphabet Inc.	1
-6858	plugins.payments.paypalcommerce.fields.usesandbox	Use sandbox	1
-6859	plugins.payments.paypalcommerce.fields.usesandbox.hint	Determine whether to use the sandbox environment for testing purposes.	1
-6860	plugins.payments.paypalcommerce.fields.useshipmenttracking	Use shipment tracking	1
-6861	plugins.payments.paypalcommerce.fields.useshipmenttracking.hint	Determine whether to use the package tracking. It allows to automatically sync orders and shipment status with PayPal.	1
-6862	plugins.payments.paypalcommerce.fields.usevault	Use Vault	1
-6863	plugins.payments.paypalcommerce.fields.usevault.hint	Determine whether to use PayPal Vault. It allows to store buyers payment information and use it in subsequent transactions.	1
-6864	plugins.payments.paypalcommerce.googlepay.discount	Discount	1
-6865	plugins.payments.paypalcommerce.googlepay.shipping	Shipping	1
-6866	plugins.payments.paypalcommerce.googlepay.subtotal	Subtotal	1
-6867	plugins.payments.paypalcommerce.googlepay.tax	Tax	1
-6868	plugins.payments.paypalcommerce.googlepay.total	Total	1
-6869	plugins.payments.paypalcommerce.onboarding.accessrevoked	Profile access has been successfully revoked.	1
-6870	plugins.payments.paypalcommerce.onboarding.button	Sign up for PayPal	1
-6871	plugins.payments.paypalcommerce.onboarding.button.sandbox	Sign up for PayPal (sandbox)	1
-6872	plugins.payments.paypalcommerce.onboarding.buttonrevoke	Revoke access	1
-6873	plugins.payments.paypalcommerce.onboarding.completed	Onboarding is sucessfully completed	1
-6874	plugins.payments.paypalcommerce.onboarding.error	An error occurred during the onboarding process, the credentials are empty	1
-6875	plugins.payments.paypalcommerce.onboarding.inprocess	Onboarding is in process, see details below	1
-6876	plugins.payments.paypalcommerce.onboarding.process.account.success	PayPal account is created	1
-6877	plugins.payments.paypalcommerce.onboarding.process.email.success	Email address is confirmed	1
-6878	plugins.payments.paypalcommerce.onboarding.process.payments.success	Billing information is set	1
-6879	plugins.payments.paypalcommerce.onboarding.sandbox	After you finish testing the plugin in the PayPal sandbox, move it into the production environment so you can process live transactions. To take the plugin live: 1. Revoke access to the sandbox account, 2. Disable 'Use sandbox' setting, 3. Sign up for the live PayPal account.	1
-6880	plugins.payments.paypalcommerce.onboarding.title	Connect PayPal account	1
-6881	plugins.payments.paypalcommerce.order.adjustment.name	Adjustment item	1
-6882	plugins.payments.paypalcommerce.order.adjustment.description	Used to adjust the order total amount when applying complex discounts or/and calculations	1
-6883	plugins.payments.paypalcommerce.order.error	Failed to get order details	1
-6884	plugins.payments.paypalcommerce.order.id	PayPal order ID	1
-6885	plugins.payments.paypalcommerce.order.placement	PayPal component placement	1
-6886	plugins.payments.paypalcommerce.paymenttokens	Payment methods	1
-6887	plugins.payments.paypalcommerce.paymenttokens.default	Default	1
-6888	plugins.payments.paypalcommerce.paymenttokens.expiration	Expires	1
-6889	plugins.payments.paypalcommerce.paymenttokens.none	No payment methods saved yet	1
-6890	plugins.payments.paypalcommerce.paymenttokens.markdefault	Make default	1
-6891	plugins.payments.paypalcommerce.paymenttokens.title	Method	1
-6892	plugins.payments.paypalcommerce.paylater	Pay Later	1
-6893	plugins.payments.paypalcommerce.prominently	Feature PayPal Prominently	1
-6894	plugins.payments.paypalcommerce.paymentmethoddescription	PayPal Checkout with using methods like Venmo, PayPal Credit, credit card payments	1
-6895	plugins.payments.paypalcommerce.roundingwarning	It looks like you have <a href="{0}" target="_blank">RoundPricesDuringCalculation</a> setting disabled. Keep in mind that this can lead to a discrepancy of the order total amount, as PayPal rounds to two decimals only.	1
-6896	plugins.payments.paypalcommerce.shipment.carrier	Carrier	1
-6897	plugins.payments.paypalcommerce.shipment.carrier.hint	Cpecify the carrier for the shipment (e.g. UPS or FEDEX_UK, see allowed values on PayPal site).	1
-6898	plugins.payments.paypalcommerce.webhookwarning	Webhook was not created, so some functions may not work correctly (see details in the <a href="{0}" target="_blank">log</a>. Please ensure that your store is under SSL, PayPal service doesn't send requests to unsecured sites.)	1
-6899	plugins.discountrules.customerroles.fields.customerrole	Required customer role	1
-6900	plugins.discountrules.customerroles.fields.customerrole.hint	Discount will be applied if customer is in the selected customer role.	1
-6901	plugins.discountrules.customerroles.fields.customerrole.select	Select customer role	1
-6902	plugins.discountrules.customerroles.fields.customerroleid.required	Customer role is required	1
-6903	plugins.discountrules.customerroles.fields.discountid.required	Discount is required	1
-6904	plugins.exchangerate.ecbexchange.error	You can use ECB (European central bank) exchange rate provider only when the primary exchange rate currency is supported by ECB	1
-6905	plugins.misc.brevo.accountinfo	Account info	1
-6906	plugins.misc.brevo.accountinfo.hint	Display account information.	1
-6907	plugins.misc.brevo.activatesmtp	On your Brevo account, the SMTP has not been enabled yet. To request its activation, simply send an email to our support team at contact@brevo.com and mention that you will be using the SMTP with the nopCommerce plugin.	1
-6908	plugins.misc.brevo.addnewsmsnotification	Add new SMS notification	1
-6909	plugins.misc.brevo.billingaddressphone	Billing address phone number	1
-6910	plugins.misc.brevo.customerphone	Customer phone number	1
-6911	plugins.misc.brevo.edittemplate	Edit template	1
-6912	plugins.misc.brevo.fields.allowedtokens	Allowed message variables	1
-6913	plugins.misc.brevo.fields.allowedtokens.hint	This is a list of the message variables you can use in your SMS.	1
-6914	plugins.misc.brevo.fields.apikey	API v3 key	1
-6915	plugins.misc.brevo.fields.apikey.hint	Paste your Brevo account API v3 key.	1
-6916	plugins.misc.brevo.fields.campaignlist	List	1
-6917	plugins.misc.brevo.fields.campaignlist.hint	Choose list of contacts to send SMS campaign.	1
-6918	plugins.misc.brevo.fields.campaignsendername	Send SMS campaign from	1
-6919	plugins.misc.brevo.fields.campaignsendername.hint	Input the name of the sender. The number of characters is limited to 11 (alphanumeric format).	1
-6920	plugins.misc.brevo.fields.campaigntext	Text	1
-6921	plugins.misc.brevo.fields.campaigntext.hint	Specify SMS campaign content. The number of characters is limited to 160 for one message.	1
-6922	plugins.misc.brevo.fields.list	List	1
-6923	plugins.misc.brevo.fields.list.hint	Select the Brevo list where your nopCommerce newsletter subscribers will be added.	1
-6924	plugins.misc.brevo.fields.makey	Tracker ID	1
-6925	plugins.misc.brevo.fields.makey.hint	Input your Tracker ID.	1
-6926	plugins.misc.brevo.fields.sender	Send emails from	1
-6927	plugins.misc.brevo.fields.sender.hint	Choose sender of your transactional emails.	1
-6928	plugins.misc.brevo.fields.smssendername	Send SMS from	1
-6929	plugins.misc.brevo.fields.smssendername.hint	Input the name of the sender. The number of characters is limited to 11 (alphanumeric format).	1
-6930	plugins.misc.brevo.fields.smtpkey	SMTP key	1
-6931	plugins.misc.brevo.fields.smtpkey.hint	Specify SMTP key (password).	1
-6932	plugins.misc.brevo.fields.storeownerphonenumber	Store owner phone number	1
-6933	plugins.misc.brevo.fields.storeownerphonenumber.hint	Input store owner phone number for SMS notifications.	1
-6934	plugins.misc.brevo.fields.trackingscript	Tracking script	1
-6935	plugins.misc.brevo.fields.trackingscript.hint	Paste the tracking script generated by Brevo here. {TRACKING_ID} and {CUSTOMER_EMAIL} will be dynamically replaced.	1
-6936	plugins.misc.brevo.fields.usemarketingautomation	Use Marketing Automation	1
-6937	plugins.misc.brevo.fields.usemarketingautomation.hint	Check for enable Brevo Automation.	1
-6938	plugins.misc.brevo.fields.usesmsnotifications	Use SMS notifications	1
-6939	plugins.misc.brevo.fields.usesmsnotifications.hint	Check for sending transactional SMS.	1
-6940	plugins.misc.brevo.fields.usesmtp	Use Brevo SMTP	1
-6941	plugins.misc.brevo.fields.usesmtp.hint	Check for using Brevo SMTP for sending transactional emails.	1
-6942	plugins.misc.brevo.general	General	1
-6943	plugins.misc.brevo.importprocess	Your import is in process	1
-6944	plugins.misc.brevo.manualsync	Manual synchronization	1
-6945	plugins.misc.brevo.syncnow	Sync now	1
-6946	plugins.misc.brevo.marketingautomation	Marketing Automation	1
-6947	plugins.misc.brevo.myphone	Store owner phone number	1
-6948	plugins.misc.brevo.phonetype	Type of phone number	1
-6949	plugins.misc.brevo.phonetype.hint	Specify the type of phone number to send SMS.	1
-6950	plugins.misc.brevo.sms	SMS	1
-6951	plugins.misc.brevo.sms.campaigns	SMS campaigns	1
-6952	plugins.misc.brevo.sms.campaigns.sent	Campaign successfully sent	1
-6953	plugins.misc.brevo.sms.campaigns.submit	Send campaign	1
-6954	plugins.misc.brevo.smstext	Text	1
-6955	plugins.misc.brevo.smstext.hint	Enter SMS text to send.	1
-6956	plugins.misc.brevo.synchronization	Contacts	1
-6957	plugins.misc.brevo.transactional	Transactional emails	1
-6958	plugins.misc.brevo.usebrevotemplate	Brevo template	1
-6959	plugins.misc.omnisend.cantgetbrandid	Failed to get the required data from the Omnisend server. Please check if the API key is correct and save the settings again. Error details can be found in the Log page	1
-6960	plugins.misc.omnisend.credentials	Credentials	1
-6961	plugins.misc.omnisend.synchronization	Synchronization	1
-6962	plugins.misc.omnisend.synccontacts	Sync contacts	1
-6963	plugins.misc.omnisend.syncproducts	Sync products	1
-6964	plugins.misc.omnisend.syncorders	Sync orders	1
-6965	plugins.misc.omnisend.synccategories	Sync categories	1
-6966	plugins.misc.omnisend.batchesinprocess	Batches in process	1
-6967	plugins.misc.omnisend.batchesinprocess.startedat	Started at	1
-6968	plugins.misc.omnisend.batchesinprocess.status	Status	1
-6969	plugins.misc.omnisend.batchesinprocess.totalcount	Total count	1
-6970	plugins.misc.omnisend.batchesinprocess.finishedcount	Finished count	1
-6971	plugins.misc.omnisend.batchesinprocess.errorscount	Error count	1
-6972	plugins.misc.omnisend.batchesinprocess.endedat	Ended at	1
-6973	plugins.misc.omnisend.batchesinprocess.synctype	Type of sync	1
-6974	plugins.misc.omnisend.fields.apikey	API key	1
-6975	plugins.misc.omnisend.fields.apikey.hint	Enter the Omnisend integration API key.	1
-6976	plugins.misc.omnisend.fields.apikey.required	API key is required	1
-6977	plugins.misc.omnisend.fields.usetracking	Use tracking	1
-6978	plugins.misc.omnisend.fields.usetracking.hint	Determine whether to use tracking to get statistics with Omnisend, such as the behavior of individual subsribers on your website, including purchases made, movements on your site and subsequent segmentation.	1
-6979	plugins.misc.zettle.credentials	Credentials	1
-6980	plugins.misc.zettle.credentials.accessrevoked	Access to PayPal Zettle organization has been revoked. You need to reconfigure the plugin.	1
-6981	plugins.misc.zettle.credentials.connected	Connected	1
-6982	plugins.misc.zettle.credentials.disconnected	Disconnected	1
-6983	plugins.misc.zettle.credentials.revoke	Revoke Access	1
-6984	plugins.misc.zettle.credentials.signup	Sign Up	1
-6985	plugins.misc.zettle.credentials.status	Status	1
-6986	plugins.misc.zettle.configuration.error	Error: {0} (see details in the <a href="{1}" target="_blank">log</a>)	1
-6987	plugins.misc.zettle.configuration.fields.clientid	Client ID	1
-6988	plugins.misc.zettle.configuration.fields.clientid.hint	Enter the Client ID. The Client ID is used together with the API key to identify the merchant.	1
-6989	plugins.misc.zettle.configuration.fields.apikey	API Key	1
-6990	plugins.misc.zettle.configuration.fields.apikey.hint	Enter the API Key. The API key contains merchant identity information, and is valid until the merchant revokes it.	1
-6991	plugins.misc.zettle.configuration.fields.apikey.required	API key is required	1
-6992	plugins.misc.zettle.configuration.fields.disconnectonuninstall	Disconnect on uninstall	1
-7037	plugins.misc.zettle.sync.addproduct.success	Products successfully added	1
-7038	plugins.misc.zettle.sync.addproduct.warning	{0} products were not added because their SKU are not specified	1
-7039	plugins.misc.zettle.sync.deleteselected	Delete selected	1
-6993	plugins.misc.zettle.configuration.fields.disconnectonuninstall.hint	Determine whether to disconnect an app (Revoke Access) from an associated PayPal Zettle organisation when the plugin is uninstalled. In this case you will need to go through the signing-up process again. If disabled, you can use the same credentials after reinstalling the plugin.	1
-6994	plugins.misc.zettle.configuration.fields.autosyncenabled	Enable auto synchronization	1
-6995	plugins.misc.zettle.configuration.fields.autosyncenabled.hint	Determine whether to enable auto synchronization. This will automatically synchronize changes for the selected products and add new ones. If disabled, synchronization must be started manually on this page.	1
-6996	plugins.misc.zettle.configuration.fields.autosyncperiod	Auto synchronization period	1
-6997	plugins.misc.zettle.configuration.fields.autosyncperiod.hint	Set the period (in minutes) for auto synchronization.	1
-6998	plugins.misc.zettle.configuration.fields.autosyncperiod.invalid	Period is invalid	1
-6999	plugins.misc.zettle.configuration.fields.deletebeforeimport	Delete products before sync	1
-7000	plugins.misc.zettle.configuration.fields.deletebeforeimport.hint	Determine whether to delete existing library items before importing products to PayPal Zettle. It may be required on the first synchronization if you want to keep only products from nopCommerce catalog. After that, it's recommended to disable this setting.	1
-7001	plugins.misc.zettle.configuration.fields.syncenabled	Sync enabled	1
-7002	plugins.misc.zettle.configuration.fields.syncenabled.hint	Determine whether to synchronize the selected products by default. If disabled, the selected products will be inactive and will not be imported until you enable them.	1
-7003	plugins.misc.zettle.configuration.fields.pricesyncenabled	Price sync enabled	1
-7004	plugins.misc.zettle.configuration.fields.pricesyncenabled.hint	Determine whether to synchronize prices of the selected products by default. If disabled, prices will have to be set manually in PayPal Zettle.	1
-7005	plugins.misc.zettle.configuration.fields.imagesyncenabled	Image sync enabled	1
-7006	plugins.misc.zettle.configuration.fields.imagesyncenabled.hint	Determine whether to synchronize images of the selected products by default. A product in PayPal Zettle library can have a single image assigned.	1
-7007	plugins.misc.zettle.configuration.fields.inventorytrackingenabled	Inventory tracking enabled	1
-7008	plugins.misc.zettle.configuration.fields.inventorytrackingenabled.hint	Determine whether to track inventory balance for products by default. The product in nopCommerce catalog must also have the appropriate inventory method selected. Tracking is enabled on sync. Then when tracking is enabled for a product, the inventory data on both sides is updated immediately and doesn't require synchronization.	1
-7009	plugins.misc.zettle.configuration.fields.defaulttaxenabled	Use default tax	1
-7010	plugins.misc.zettle.configuration.fields.defaulttaxenabled.hint	Determine whether to use the country's default VAT rate or default sales tax rate for new products. If disabled, taxes will have to be set manually in PayPal Zettle.	1
-7011	plugins.misc.zettle.configuration.fields.discountsyncenabled	Add discounts	1
-7012	plugins.misc.zettle.configuration.fields.discountsyncenabled.hint	Determine whether to import discounts from nopCommerce catalog (assigned to order subtotal only) to PayPal Zettle.	1
-7013	plugins.misc.zettle.configuration.webhook.warning	Webhook was not created (see details in the <a href="{0}" target="_blank">log</a>), so some functions may not work correctly. Please ensure that your store is under SSL, PayPal Zettle doesn't send requests to unsecured sites.	1
-7014	plugins.misc.zettle.account.pending	Before your account is activated, you will go through a process to verify your identity. This process may take some time. See details <a href="{1}" target="_blank">here</a>. The current customer status is {0}.	1
-7015	plugins.misc.zettle.account.fields.name	Name	1
-7016	plugins.misc.zettle.account.fields.name.hint	Displays the name of the connected account.	1
-7017	plugins.misc.zettle.account.fields.currency	Currency	1
-7018	plugins.misc.zettle.account.fields.currency.hint	Displays the currency of the connected account.	1
-7019	plugins.misc.zettle.account.fields.currency.warning	The <a href="{2}" target="_blank">primary store currency</a> ({0}) doesn't match the currency of the merchant's PayPal Zettle account ({1}). In this case, prices will not be synchronized and will have to be set manually	1
-7020	plugins.misc.zettle.account.fields.taxationtype	Tax type	1
-7021	plugins.misc.zettle.account.fields.taxationtype.hint	Displays the taxation type of the connected account. This setting determines which VAT/tax model is used for products and their prices.	1
-7022	plugins.misc.zettle.account.fields.taxationtype.vat.warning	The VAT settings don't match the settings of the merchant's PayPal Zettle account. See <a href="{0}" target="_blank">Tax settings</a>	1
-7023	plugins.misc.zettle.account.fields.taxationtype.salestax.warning	Default sales tax rate not set. Please complete your PayPal Zettle account setup before continuing, otherwise, no sales tax information will be applied to the imported products.	1
-7024	plugins.misc.zettle.account.fields.taxationmode	Price type	1
-7025	plugins.misc.zettle.account.fields.taxationmode.hint	Displays the taxation mode of the connected account. Product prices may be inclusive taxes (net prices) or exclusive taxes (gross prices). This setting only provides information how product prices are stored.	1
-7026	plugins.misc.zettle.account.fields.taxationmode.warning	The store price type doesn't match the price type of the merchant's PayPal Zettle account. See 'Prices include tax' in <a href="{0}" target="_blank">Tax settings</a>	1
-7027	plugins.misc.zettle.import.fields.startdate	Start date	1
-7028	plugins.misc.zettle.import.fields.startdate.hint	Displays the start date and time of the import.	1
-7029	plugins.misc.zettle.import.fields.enddate	End date	1
-7030	plugins.misc.zettle.import.fields.enddate.hint	Displays the end date and time of the import.	1
-7031	plugins.misc.zettle.import.fields.state	State	1
-7032	plugins.misc.zettle.import.fields.state.hint	Displays the current state of the import.	1
-7033	plugins.misc.zettle.import.fields.items	Imported items	1
-7034	plugins.misc.zettle.import.fields.items.hint	Displays the number of imported items.	1
-7035	plugins.misc.zettle.sync	Synchronization	1
-7036	plugins.misc.zettle.sync.addproduct	Add product	1
-7040	plugins.misc.zettle.sync.fields.active	Active	1
-7041	plugins.misc.zettle.sync.fields.product	Product	1
-7042	plugins.misc.zettle.sync.fields.pricesyncenabled	Price sync enabled	1
-7043	plugins.misc.zettle.sync.fields.imagesyncenabled	Image sync enabled	1
-7044	plugins.misc.zettle.sync.fields.inventorytrackingenabled	Inventory tracking enabled	1
-7045	plugins.misc.zettle.sync.fields.updateddate	Updated	1
-7046	plugins.misc.zettle.sync.last	Last import	1
-7047	plugins.misc.zettle.sync.start	Start Synchronization	1
-7048	plugins.misc.zettle.sync.start.confirm	\r\n                    <p>\r\n                        You want to start synchronization with the connected account.\r\n                    </p>\r\n                    <ol>\r\n                        <li>Discounts assigned to order subtotal will be added if the setting is enabled.</li>\r\n                        <li>Existing library items will be removed before products are imported if the setting is enabled.</li>\r\n                        <li>Products removed from the catalog will be removed.</li>\r\n                        <li>Updated images will be replaced.</li>\r\n                        <li>Added and updated products will be imported with the appropriate settings (prices, images, inventory tracking, default tax).</li>\r\n                    </ol>\r\n                    <p>\r\n                        Synchronization may take some time.\r\n                    </p>	1
-7049	plugins.multifactorauth.googleauthenticator.businessprefix	Business prefix	1
-7050	plugins.multifactorauth.googleauthenticator.businessprefix.hint	Provide your business prefix so users can differentiate the account information for your store in the GoogleAuthenticator app.	1
-7051	plugins.multifactorauth.googleauthenticator.qrpixelspermodule	QRPixelsPerModule	1
-7052	plugins.multifactorauth.googleauthenticator.qrpixelspermodule.hint	Sets the number of pixels per unit. The module is one square in the QR code. By default is 3 for a 171x171 pixel image.	1
-7053	plugins.multifactorauth.googleauthenticator.instructions	To use Google Authenticator, the app is first installed on a smartphone. The plugin provides a shared secret key to the user over a secure channel, to be stored in the Google Authenticator app. This secret key will be used for all future logins to the site.	1
-7054	plugins.multifactorauth.googleauthenticator.fields.customer	Customer	1
-7055	plugins.multifactorauth.googleauthenticator.fields.secretkey	Secret key	1
-7056	plugins.multifactorauth.googleauthenticator.customer.verificationtoken	Google Authenticator Code	1
-7057	plugins.multifactorauth.googleauthenticator.customer.manualsetupcode	Manual entry setup code	1
-7058	plugins.multifactorauth.googleauthenticator.customer.sendcode	Confirm	1
-7059	plugins.multifactorauth.googleauthenticator.customer.instruction	Please download the app Google Authenticator to scan this QR code. If you already have a verified account with Google Authenticator, then you can change the parameters of your account by registering on this page. Your data in the system will be updated. Since the user is authenticated by email, make sure it is specified for your account.	1
-7060	plugins.multifactorauth.googleauthenticator.customer.instructionmanual	You can not scan code? You can add the entry manually, please provide the following details to the application on your phone.	1
-7061	plugins.multifactorauth.googleauthenticator.customer.account	Account: 	1
-7062	plugins.multifactorauth.googleauthenticator.customer.typekey	Time based : Yes	1
-7063	plugins.multifactorauth.googleauthenticator.customer.key	Key: 	1
-7064	plugins.multifactorauth.googleauthenticator.multifactorauthenticationmethoddescription	Google Authenticator is a software-based authenticator by Google that implements two-step verification services, for authenticating users	1
-7065	plugins.multifactorauth.googleauthenticator.fields.code.required	Field cannot be empty. Enter the code from the Google Authenticator app no your mobile phone.	1
-7066	plugins.multifactorauth.googleauthenticator.fields.code.wrong	Field must be 6 digits. Enter the code from the Google Authenticator app no your mobile phone.	1
-7067	plugins.multifactorauth.googleauthenticator.token.unsuccessful	Invalid token or its lifetime has expired.	1
-7068	plugins.multifactorauth.googleauthenticator.token.successful	Configuration of Google Authenticator for current customer saved successful.	1
-7069	plugins.multifactorauth.googleauthenticator.record.notfound	Failed to match user credentials to active authentication provider settings record.	1
-7070	enums.nop.plugin.payments.amazonpay.enums.buttoncolor.darkgray	Dark gray	1
-7071	enums.nop.plugin.payments.amazonpay.enums.buttoncolor.gold	Gold	1
-7072	enums.nop.plugin.payments.amazonpay.enums.buttoncolor.lightgray	Light gray	1
-7073	enums.nop.plugin.payments.amazonpay.enums.buttonplacement.cart	Cart	1
-7074	enums.nop.plugin.payments.amazonpay.enums.buttonplacement.checkout	Checkout	1
-7075	enums.nop.plugin.payments.amazonpay.enums.buttonplacement.minicart	Flyout shopping cart	1
-7076	enums.nop.plugin.payments.amazonpay.enums.buttonplacement.paymentmethod	Payment method	1
-7077	enums.nop.plugin.payments.amazonpay.enums.buttonplacement.product	Product	1
-7078	enums.nop.plugin.payments.amazonpay.enums.paymentregion.eu	Europe	1
-7079	enums.nop.plugin.payments.amazonpay.enums.paymentregion.jp	Japan	1
-7080	enums.nop.plugin.payments.amazonpay.enums.paymentregion.uk	United Kingdom	1
-7081	enums.nop.plugin.payments.amazonpay.enums.paymentregion.us	United States	1
-7082	enums.nop.plugin.payments.amazonpay.enums.paymenttype.authorize	Authorize	1
-7083	enums.nop.plugin.payments.amazonpay.enums.paymenttype.capture	Capture	1
-7084	plugins.payments.amazonpay.cantuseamazonpay	The cart contains product that violates the <a href="https://pay.amazon.com/help/6023" target="_blank">Acceptable Use Policy (AUP)</a> of Amazon Pay	1
-7085	plugins.payments.amazonpay.checkoutwithamazon	\r\n                    <div class='pay-with-amazon'>\r\n                        <h2>Checkout with Amazon</h2>\r\n                        <ul>\r\n                            <li>No need to register, use your amazon account to log in</li>\r\n                            <li>Skip manually entering shipping address and payment details, simply use the information that is already stored within your Amazon account</li>\r\n                            <li>Fully benefit from Amazon's A-z guaranty</li>\r\n                        </ul>\r\n                    </div>	1
-7086	plugins.payments.amazonpay.configure	Configuration	1
-7087	plugins.payments.amazonpay.confirm.changebutton	Change	1
-7088	plugins.payments.amazonpay.confirm.placeorder	Place order	1
-7089	plugins.payments.amazonpay.credentials	Credentials	1
-7090	plugins.payments.amazonpay.currency.incorrect.warning	The <a href="{0}" target="_blank">primary store currency</a> ({1}) cannot be used by AmazonPay in your payment region ({2}).	1
-7091	plugins.payments.amazonpay.currency.warning	The <a href="{0}" target="_blank">primary store currency</a> is not supported by AmazonPay. Check the supported currencies <a href="https://developer.amazon.com/docs/amazon-pay-checkout/multi-currency-integration.html#supported-currencies" target="_blank">here</a>.	1
-7092	plugins.payments.amazonpay.donotusewithamazonpay	Do not use with Amazon Pay	1
-7093	plugins.payments.amazonpay.donotusewithamazonpay.hint	Indicates whether Amazon Pay can be used as a payment method.	1
-7094	plugins.payments.amazonpay.paymentmethoddescription	Pay by Amazon Pay	1
-7095	plugins.payments.amazonpay.settings.buttoncolor	Button color	1
-7096	plugins.payments.amazonpay.settings.buttoncolor.hint	Choose a color of the Amazon Pay button.	1
-7097	plugins.payments.amazonpay.settings.buttonplacement	Button placement	1
-7098	plugins.payments.amazonpay.settings.buttonplacement.hint	Choose a placement of the Amazon Pay button on the store.	1
-7099	plugins.payments.amazonpay.settings.enablelogging	Enable logging	1
-7100	plugins.payments.amazonpay.settings.enablelogging.hint	Determine whether to enable logging of all requests to Amazon Pay services.	1
-7101	plugins.payments.amazonpay.settings.merchantid	Merchant ID	1
-7102	plugins.payments.amazonpay.settings.merchantid.hint	Specify the merchant ID.	1
-7103	plugins.payments.amazonpay.settings.merchantid.required	Merchant ID is required	1
-7104	plugins.payments.amazonpay.settings.paymentregion	Payment region	1
-7105	plugins.payments.amazonpay.settings.paymentregion.hint	Choose a payment region.	1
-7106	plugins.payments.amazonpay.settings.paymenttype	Payment type	1
-7107	plugins.payments.amazonpay.settings.paymenttype.hint	Choose a payment type to either capture payment immediately or authorize a payment for an order after order creation.	1
-7108	plugins.payments.amazonpay.settings.privatekey	Private key	1
-7109	plugins.payments.amazonpay.settings.privatekey.hint	Specify the PEM private key to access the Amazon Pay services.	1
-7110	plugins.payments.amazonpay.settings.privatekey.required	Private key is required	1
-7111	plugins.payments.amazonpay.settings.publickeyid	Public key ID	1
-7112	plugins.payments.amazonpay.settings.publickeyid.hint	Specify the public key ID to access the Amazon Pay services.	1
-7113	plugins.payments.amazonpay.settings.publickeyid.required	Public key ID is required	1
-7114	plugins.payments.amazonpay.settings.storeid	Store ID	1
-7115	plugins.payments.amazonpay.settings.storeid.hint	Specify the store ID	1
-7116	plugins.payments.amazonpay.settings.storeid.required	Store ID is required	1
-7117	plugins.payments.amazonpay.settings.usesandbox	Use sandbox	1
-7118	plugins.payments.amazonpay.settings.usesandbox.hint	Determine whether to use the sandbox environment for testing purposes.	1
-7119	plugins.payments.amazonpay.settings.setcredentialsmanually	Specify credentials manually	1
-7120	plugins.payments.amazonpay.settings.setcredentialsmanually.hint	Determine whether to manually set the credentials (for example, there is already an account created, or if you want to use the sandbox mode).	1
-7121	plugins.payments.amazonpay.settings.payload	Payload	1
-7122	plugins.payments.amazonpay.settings.payload.hint	Specify the plain text credential payload (JSON format) from Seller Central. Use this option if the credentials were not set automatically for some reason.	1
-7123	plugins.payments.amazonpay.settings.ipnurl	IPN URL	1
-7124	plugins.payments.amazonpay.settings.ipnurl.hint	Set up Instant Payment Notifications (IPN) to receive notifications for events related to Amazon Pay transactions. IPN is used to update your order states and process transactions.	1
-7125	plugins.payments.amazonpay.onboarding	Account	1
-7126	plugins.payments.amazonpay.onboarding.button	Create account	1
-7127	plugins.payments.amazonpay.onboarding.error	Error: {0} (see details in the <a href="{1}" target="_blank">log</a>)	1
-7128	plugins.payments.amazonpay.onboarding.region.warning	Automated key sharing is not applicable in your payment region, please provide your credentials yourself	1
-7129	plugins.payments.amazonpay.signin.associatebutton	Link accounts	1
-7130	plugins.payments.amazonpay.signin.createbutton	Create account	1
-7131	plugins.payments.amazonpay.signin.signoutbutton	Sign out	1
-7132	plugins.payments.amazonpay.signin.createaccount	You can create a new customer account in this store with your Amazon Pay account, use 'Create account' button below	1
-7133	plugins.payments.amazonpay.signin.linkaccounts	You can associate your Amazon Pay account with the current customer account, use 'Link accounts' button below	1
-7134	plugins.payments.amazonpay.signin.linkaccounts.byemail	There is already a customer account registered for your email address in this store, you can associate it with your Amazon Pay account, use 'Link accounts' button below	1
-7135	plugins.payment.checkmoneyorder.additionalfee	Additional fee	1
-7136	plugins.payment.checkmoneyorder.additionalfee.hint	The additional fee.	1
-7137	plugins.payment.checkmoneyorder.additionalfeepercentage	Additional fee. Use percentage	1
-7138	plugins.payment.checkmoneyorder.additionalfeepercentage.hint	Determines whether to apply a percentage additional fee to the order total. If not enabled, a fixed value is used.	1
-7139	plugins.payment.checkmoneyorder.descriptiontext	Description	1
-7140	plugins.payment.checkmoneyorder.descriptiontext.hint	Enter info that will be shown to customers during checkout	1
-7141	plugins.payment.checkmoneyorder.paymentmethoddescription	Pay by cheque or money order	1
-7142	plugins.payment.checkmoneyorder.shippableproductrequired	Shippable product required	1
-7143	plugins.payment.checkmoneyorder.shippableproductrequired.hint	An option indicating whether shippable products are required in order to display this payment method during checkout.	1
-7318	plugins.tax.avalara.fields.entityusecode.none	None	1
-7144	plugins.payments.manual.instructions	This payment method stores credit card information in database (it's not sent to any third-party processor). In order to store credit card information, you must be PCI compliant.	1
-7145	plugins.payments.manual.fields.additionalfee	Additional fee	1
-7146	plugins.payments.manual.fields.additionalfee.hint	Enter additional fee to charge your customers.	1
-7147	plugins.payments.manual.fields.additionalfeepercentage	Additional fee. Use percentage	1
-7148	plugins.payments.manual.fields.additionalfeepercentage.hint	Determines whether to apply a percentage additional fee to the order total. If not enabled, a fixed value is used.	1
-7149	plugins.payments.manual.fields.transactmode	After checkout mark payment as	1
-7150	plugins.payments.manual.fields.transactmode.hint	Specify transaction mode.	1
-7151	plugins.payments.manual.paymentmethoddescription	Pay by credit / debit card	1
-7152	plugins.pickup.pickupinstore.addnew	Add a new pickup point	1
-7153	plugins.pickup.pickupinstore.fields.description	Description	1
-7154	plugins.pickup.pickupinstore.fields.description.hint	Specify a description of the pickup point.	1
-7155	plugins.pickup.pickupinstore.fields.displayorder	Display order	1
-7156	plugins.pickup.pickupinstore.fields.displayorder.hint	Specify the pickup point display order.	1
-7157	plugins.pickup.pickupinstore.fields.latitude	Latitude	1
-7158	plugins.pickup.pickupinstore.fields.latitude.hint	Specify a latitude (DD.dddddddd°).	1
-7159	plugins.pickup.pickupinstore.fields.latitude.invalidprecision	Precision should be less then 8	1
-7160	plugins.pickup.pickupinstore.fields.latitude.invalidrange	Latitude should be in range -90 to 90	1
-7161	plugins.pickup.pickupinstore.fields.latitude.isnullwhenlongitudehasvalue	Latitude and Longitude should be specify together	1
-7162	plugins.pickup.pickupinstore.fields.longitude	Longitude	1
-7163	plugins.pickup.pickupinstore.fields.longitude.hint	Specify a longitude (DD.dddddddd°).	1
-7164	plugins.pickup.pickupinstore.fields.longitude.invalidprecision	Precision should be less then 8	1
-7165	plugins.pickup.pickupinstore.fields.longitude.invalidrange	Longitude should be in range -180 to 180	1
-7166	plugins.pickup.pickupinstore.fields.longitude.isnullwhenlatitudehasvalue	Latitude and Longitude should be specify together	1
-7167	plugins.pickup.pickupinstore.fields.name	Name	1
-7168	plugins.pickup.pickupinstore.fields.name.hint	Specify a name of the pickup point.	1
-7169	plugins.pickup.pickupinstore.fields.openinghours	Opening hours	1
-7170	plugins.pickup.pickupinstore.fields.openinghours.hint	Specify opening hours of the pickup point (Monday - Friday: 09:00 - 19:00 for example).	1
-7171	plugins.pickup.pickupinstore.fields.pickupfee	Pickup fee	1
-7172	plugins.pickup.pickupinstore.fields.pickupfee.hint	Specify a fee for the shipping to the pickup point.	1
-7173	plugins.pickup.pickupinstore.fields.store	Store	1
-7174	plugins.pickup.pickupinstore.fields.store.hint	A store name for which this pickup point will be available.	1
-7175	plugins.pickup.pickupinstore.fields.transitdays	Transit days	1
-7176	plugins.pickup.pickupinstore.fields.transitdays.hint	The number of days of delivery of the goods to pickup point.	1
-7177	plugins.pickup.pickupinstore.nopickuppoints	No pickup points are available	1
-7178	plugins.shipping.fixedbyweightbytotal.addrecord	Add record	1
-7179	plugins.shipping.fixedbyweightbytotal.fields.additionalfixedcost	Additional fixed cost	1
-7180	plugins.shipping.fixedbyweightbytotal.fields.additionalfixedcost.hint	Specify an additional fixed cost per shopping cart for this option. Set to 0 if you don't want an additional fixed cost to be applied.	1
-7181	plugins.shipping.fixedbyweightbytotal.fields.country	Country	1
-7182	plugins.shipping.fixedbyweightbytotal.fields.country.hint	If an asterisk is selected, then this shipping rate will apply to all customers, regardless of the country.	1
-7183	plugins.shipping.fixedbyweightbytotal.fields.datahtml	Data	1
-7184	plugins.shipping.fixedbyweightbytotal.fields.limitmethodstocreated	Limit shipping methods to configured ones	1
-7185	plugins.shipping.fixedbyweightbytotal.fields.limitmethodstocreated.hint	If you check this option, then your customers will be limited to shipping options configured here. Otherwise, they'll be able to choose any existing shipping options even they are not configured here (zero shipping fee in this case).	1
-7186	plugins.shipping.fixedbyweightbytotal.fields.lowerweightlimit	Lower weight limit	1
-7187	plugins.shipping.fixedbyweightbytotal.fields.lowerweightlimit.hint	Lower weight limit. This field can be used for "per extra weight unit" scenarios.	1
-7188	plugins.shipping.fixedbyweightbytotal.fields.ordersubtotalfrom	Order subtotal from	1
-7189	plugins.shipping.fixedbyweightbytotal.fields.ordersubtotalfrom.hint	Order subtotal from.	1
-7190	plugins.shipping.fixedbyweightbytotal.fields.ordersubtotalto	Order subtotal to	1
-7191	plugins.shipping.fixedbyweightbytotal.fields.ordersubtotalto.hint	Order subtotal to.	1
-7192	plugins.shipping.fixedbyweightbytotal.fields.percentagerateofsubtotal	Charge percentage (of subtotal)	1
-7193	plugins.shipping.fixedbyweightbytotal.fields.percentagerateofsubtotal.hint	Charge percentage (of subtotal).	1
-7194	plugins.shipping.fixedbyweightbytotal.fields.rate	Rate	1
-7195	plugins.shipping.fixedbyweightbytotal.fields.rateperweightunit	Rate per weight unit	1
-7196	plugins.shipping.fixedbyweightbytotal.fields.rateperweightunit.hint	Rate per weight unit.	1
-7197	plugins.shipping.fixedbyweightbytotal.fields.shippingmethod	Shipping method	1
-7198	plugins.shipping.fixedbyweightbytotal.fields.shippingmethod.hint	Choose shipping method.	1
-7199	plugins.shipping.fixedbyweightbytotal.fields.stateprovince	State / province	1
-7200	plugins.shipping.fixedbyweightbytotal.fields.stateprovince.hint	If an asterisk is selected, then this shipping rate will apply to all customers from the given country, regardless of the state.	1
-7201	plugins.shipping.fixedbyweightbytotal.fields.store	Store	1
-7202	plugins.shipping.fixedbyweightbytotal.fields.store.hint	If an asterisk is selected, then this shipping rate will apply to all stores.	1
-7203	plugins.shipping.fixedbyweightbytotal.fields.transitdays	Transit days	1
-7204	plugins.shipping.fixedbyweightbytotal.fields.transitdays.hint	The number of days of delivery of the goods.	1
-7205	plugins.shipping.fixedbyweightbytotal.fields.warehouse	Warehouse	1
-7206	plugins.shipping.fixedbyweightbytotal.fields.warehouse.hint	If an asterisk is selected, then this shipping rate will apply to all warehouses.	1
-7207	plugins.shipping.fixedbyweightbytotal.fields.weightfrom	Order weight from	1
-7208	plugins.shipping.fixedbyweightbytotal.fields.weightfrom.hint	Order weight from.	1
-7209	plugins.shipping.fixedbyweightbytotal.fields.weightto	Order weight to	1
-7210	plugins.shipping.fixedbyweightbytotal.fields.weightto.hint	Order weight to.	1
-7211	plugins.shipping.fixedbyweightbytotal.fields.zip	Zip	1
-7212	plugins.shipping.fixedbyweightbytotal.fields.zip.hint	Zip / postal code. If zip is empty, then this shipping rate will apply to all customers from the given country or state, regardless of the zip code.	1
-7213	plugins.shipping.fixedbyweightbytotal.fixed	Fixed Rate	1
-7214	plugins.shipping.fixedbyweightbytotal.formula	Formula to calculate rates	1
-7215	plugins.shipping.fixedbyweightbytotal.formula.value	[additional fixed cost] + ([order total weight] - [lower weight limit]) * [rate per weight unit] + [order subtotal] * [charge percentage]	1
-7216	plugins.shipping.fixedbyweightbytotal.shippingbyweight	By Weight	1
-7217	enums.nop.plugin.shipping.ups.packingtype.packbydimensions	Pack by dimensions	1
-7218	enums.nop.plugin.shipping.ups.packingtype.packbyoneitemperpackage	Pack by one item per package	1
-7219	enums.nop.plugin.shipping.ups.packingtype.packbyvolume	Pack by volume	1
-7220	plugins.shipping.ups.fields.accountnumber	Account number	1
-7221	plugins.shipping.ups.fields.accountnumber.hint	Specify UPS account number (required to get negotiated rates).	1
-7222	plugins.shipping.ups.fields.additionalhandlingcharge	Additional handling charge	1
-7223	plugins.shipping.ups.fields.additionalhandlingcharge.hint	Enter additional handling fee to charge your customers.	1
-7224	plugins.shipping.ups.fields.availablecarrierservices	Carrier Services	1
-7225	plugins.shipping.ups.fields.availablecarrierservices.hint	Select the services you want to offer to customers.	1
-7226	plugins.shipping.ups.fields.clientid	Client ID	1
-7227	plugins.shipping.ups.fields.clientid.hint	Specify UPS client ID.	1
-7228	plugins.shipping.ups.fields.clientsecret	Client secret	1
-7229	plugins.shipping.ups.fields.clientsecret.hint	Specify UPS client secret.	1
-7230	plugins.shipping.ups.fields.customerclassification	UPS Customer Classification	1
-7231	plugins.shipping.ups.fields.customerclassification.hint	Choose customer classification.	1
-7232	plugins.shipping.ups.fields.dimensionstype	Dimensions type	1
-7233	plugins.shipping.ups.fields.dimensionstype.hint	Choose dimensions type (inches or centimeters).	1
-7234	plugins.shipping.ups.fields.insurepackage	Insure package	1
-7235	plugins.shipping.ups.fields.insurepackage.hint	Check to insure packages.	1
-7236	plugins.shipping.ups.fields.packagingtype	UPS Packaging Type	1
-7237	plugins.shipping.ups.fields.packagingtype.hint	Choose UPS packaging type.	1
-7238	plugins.shipping.ups.fields.packingpackagevolume	Package volume	1
-7239	plugins.shipping.ups.fields.packingpackagevolume.hint	Enter your package volume.	1
-7240	plugins.shipping.ups.fields.packingtype	Packing type	1
-7241	plugins.shipping.ups.fields.packingtype.hint	Choose preferred packing type.	1
-7242	plugins.shipping.ups.fields.passdimensions	Pass dimensions	1
-7243	plugins.shipping.ups.fields.passdimensions.hint	Check if you want to pass package dimensions when requesting rates.	1
-7244	plugins.shipping.ups.fields.pickuptype	UPS Pickup Type	1
-7245	plugins.shipping.ups.fields.pickuptype.hint	Choose UPS pickup type.	1
-7246	plugins.shipping.ups.fields.saturdaydeliveryenabled	Saturday Delivery enabled	1
-7247	plugins.shipping.ups.fields.saturdaydeliveryenabled.hint	Check to get rates for Saturday Delivery options.	1
-7248	plugins.shipping.ups.fields.tracing	Tracing	1
-7249	plugins.shipping.ups.fields.tracing.hint	Check if you want to record plugin tracing in System Log. Warning: The entire request and response will be logged (including Client Id/secret, AccountNumber). Do not leave this enabled in a production environment.	1
-7250	plugins.shipping.ups.fields.usesandbox	Use sandbox	1
-7251	plugins.shipping.ups.fields.usesandbox.hint	Check to use sandbox (testing environment).	1
-7252	plugins.shipping.ups.fields.weighttype	Weight type	1
-7253	plugins.shipping.ups.fields.weighttype.hint	Choose the weight type (pounds or kilograms).	1
-7254	plugins.shipping.ups.tracker.arrived	Arrived	1
-7255	plugins.shipping.ups.tracker.booked	Booked	1
-7256	plugins.shipping.ups.tracker.delivered	Delivered	1
-7257	plugins.shipping.ups.tracker.departed	Departed	1
-7258	plugins.shipping.ups.tracker.exportscanned	Export scanned	1
-7259	plugins.shipping.ups.tracker.notdelivered	Not delivered	1
-7260	plugins.shipping.ups.tracker.originscanned	Origin scanned	1
-7261	plugins.shipping.ups.tracker.pickup	Pickup	1
-7262	enums.nop.plugin.tax.avalara.domain.taxoriginaddresstype.defaulttaxaddress	Default tax address	1
-7263	enums.nop.plugin.tax.avalara.domain.taxoriginaddresstype.shippingorigin	Shipping origin address	1
-7264	plugins.tax.avalara.addressvalidation.confirm	For the correct tax calculation we need the most accurate address, so we clarified the address you entered ({0}) through the validation system. Do you confirm the use of this updated address ({1})?	1
-7265	plugins.tax.avalara.addressvalidation.error	For the correct tax calculation we need the most accurate address. There are some errors from the validation system: {0}	1
-7266	plugins.tax.avalara.configuration	Configuration	1
-7267	plugins.tax.avalara.configuration.certificates	Exemption certificates	1
-7268	plugins.tax.avalara.configuration.certificates.inprogress	Exemption certificates	1
-7269	plugins.tax.avalara.configuration.certificates.notprovisioned	The selected company isn't configured to use exemption certificates, use the button 'Request certificate setup' below to access this feature	1
-7270	plugins.tax.avalara.configuration.certificates.provisioned	The selected company is configured to use exemption certificates	1
-7271	plugins.tax.avalara.configuration.certificates.button	Request certificate setup	1
-7272	plugins.tax.avalara.configuration.common	Common settings	1
-7273	plugins.tax.avalara.configuration.credentials.button	Check connection	1
-7274	plugins.tax.avalara.configuration.credentials.declined	Credentials declined	1
-7275	plugins.tax.avalara.configuration.credentials.verified	Credentials verified	1
-7276	plugins.tax.avalara.configuration.taxcalculation	Tax calculation	1
-7277	plugins.tax.avalara.exemptioncertificates	Tax exemption certificates	1
-7278	plugins.tax.avalara.exemptioncertificates.add.exposurezone	State	1
-7279	plugins.tax.avalara.exemptioncertificates.add.fail	An error occurred while adding a certificate	1
-7280	plugins.tax.avalara.exemptioncertificates.add.success	Certificate added successfully	1
-7281	plugins.tax.avalara.exemptioncertificates.description	\r\n                    <h3>Here you can view and manage your certificates.</h3>\r\n                    <p>\r\n                        The certificate document contains information about a customer's eligibility for exemption from sales.<br />\r\n                        When you add a certificate, it will be processed and become available for use in calculating tax exemptions.<br />\r\n                    </p>\r\n                    <p>\r\n                        You can also go to <a href="{0}" target="_blank">CertExpress website</a> where you can follow a step-by-step guide to enter information about your exemption certificates.\r\n                    </p>\r\n                    <p>\r\n                        The certificates entered will be recorded and automatically linked to your account.\r\n                    </p>\r\n                    <p>If you have any questions, please <a href="{1}" target="_blank">contact us</a>.</p>	1
-7282	plugins.tax.avalara.exemptioncertificates.expirationdate	Expiration date	1
-7283	plugins.tax.avalara.exemptioncertificates.exposurezone	State	1
-7284	plugins.tax.avalara.exemptioncertificates.none	No downloaded certificates yet	1
-7285	plugins.tax.avalara.exemptioncertificates.orderreview	Tax	1
-7286	plugins.tax.avalara.exemptioncertificates.orderreview.applied	Exemption certificate applied	1
-7287	plugins.tax.avalara.exemptioncertificates.orderreview.none	You have no valid certificates in the selected region. You can add them in your account on <a href="{0}" target="_blank" style="color: #4ab2f1;">this page</a>.	1
-7288	plugins.tax.avalara.exemptioncertificates.signeddate	Signed date	1
-7289	plugins.tax.avalara.exemptioncertificates.status	Status	1
-7290	plugins.tax.avalara.exemptioncertificates.view	View	1
-7291	plugins.tax.avalara.fields.accountid	Account ID	1
-7292	plugins.tax.avalara.fields.accountid.hint	Specify Avalara account ID.	1
-7293	plugins.tax.avalara.fields.accountid.required	Account ID is required	1
-7294	plugins.tax.avalara.fields.alloweditcustomer	Allow edit info	1
-7295	plugins.tax.avalara.fields.alloweditcustomer.hint	Determine whether to allow customers to edit their info (name, phone, address, etc) when managing certificates. If disabled, the info will be auto updated when customers change details in their accounts.	1
-7296	plugins.tax.avalara.fields.autovalidatecertificate	Auto validate certificates	1
-7297	plugins.tax.avalara.fields.autovalidatecertificate.hint	Determine whether the new certificates are automatically valid, this allows your customers to make exempt purchases right away, otherwise a customer is not treated as exempt until you validate the document.	1
-7298	plugins.tax.avalara.fields.committransactions	Commit transactions	1
-7299	plugins.tax.avalara.fields.committransactions.hint	Determine whether to commit tax transactions right after they are saved.	1
-7300	plugins.tax.avalara.fields.company	Company	1
-7301	plugins.tax.avalara.fields.company.currency.warning	The default currency used by '{0}' company ({1}) does not match the primary store currency ({2})	1
-7302	plugins.tax.avalara.fields.company.hint	Choose a company that was previously added to the Avalara account.	1
-7303	plugins.tax.avalara.fields.company.notexist	There are no active companies	1
-7304	plugins.tax.avalara.fields.countries	Country of destination to HS classify	1
-7305	plugins.tax.avalara.fields.countries.hint	Add a countries where you collect tax.	1
-7306	plugins.tax.avalara.fields.countries.required	Country of destination to HS classify is required	1
-7307	plugins.tax.avalara.fields.customerroles	Limited to customer roles	1
-7308	plugins.tax.avalara.fields.customerroles.hint	Select customer roles for which exemption certificates will be available. Leave empty if you want this feature to be available to all customers.	1
-7309	plugins.tax.avalara.fields.displaynovalidcertificatesmessage	Display 'No valid certificates' message	1
-7310	plugins.tax.avalara.fields.displaynovalidcertificatesmessage.hint	Determine whether to display a message that there are no valid certificates for the customer on the order confirmation page.	1
-7311	plugins.tax.avalara.fields.enablecertificates	Enable exemption certificates	1
-7312	plugins.tax.avalara.fields.enablecertificates.hint	Determine whether to enable this feature. In this case, a new page will be added in the account section, so customers can manage their exemption certificates before making a purchase.	1
-7313	plugins.tax.avalara.fields.enablecertificates.warning	To use this feature, you need the following information from customers: name, country, state, city, address, postal code. Ensure that the appropriate Customer form fields are enabled under <a href="{0}" target="_blank">Customer settings</a>	1
-7314	plugins.tax.avalara.fields.enablelogging	Enable logging	1
-7315	plugins.tax.avalara.fields.enablelogging.hint	Determine whether to enable logging of all requests to Avalara services.	1
-7316	plugins.tax.avalara.fields.entityusecode	Entity use code	1
-7317	plugins.tax.avalara.fields.entityusecode.hint	Choose a code that can be used to designate the reason for a particular sale being exempt. Each entity use code stands for a different exemption reason, the logic of which can be found in Avalara exemption reason documentation.	1
-7319	plugins.tax.avalara.fields.gettaxratebyaddressonly	Tax rates by address only	1
-7320	plugins.tax.avalara.fields.gettaxratebyaddressonly.hint	Determine whether to get tax rates by the address only. This may lead to not entirely accurate results (for example, when a customer is exempt to tax, or the product belongs to a tax category that has a specific rate), but it will significantly reduce the number of GetTax API calls. This applies only to tax rates in the catalog, on the checkout full information is always used in requests.	1
-7321	plugins.tax.avalara.fields.licensekey	License key	1
-7322	plugins.tax.avalara.fields.licensekey.hint	Specify Avalara account license key.	1
-7323	plugins.tax.avalara.fields.licensekey.required	Account license key is required	1
-7324	plugins.tax.avalara.fields.taxcodedescription	Description	1
-7325	plugins.tax.avalara.fields.taxcodetype	Type	1
-7326	plugins.tax.avalara.fields.taxcodetype.hint	Choose a tax code type.	1
-7327	plugins.tax.avalara.fields.taxoriginaddresstype	Tax origin address	1
-7328	plugins.tax.avalara.fields.taxoriginaddresstype.defaulttaxaddress.warning	Ensure that you have correctly filled in the 'Default tax address' under <a href="{0}" target="_blank">Tax settings</a>	1
-7329	plugins.tax.avalara.fields.taxoriginaddresstype.hint	Choose which address will be used as the origin for tax requests to Avalara services.	1
-7330	plugins.tax.avalara.fields.taxoriginaddresstype.shippingorigin.warning	Ensure that you have correctly filled in the 'Shipping origin' under <a href="{0}" target="_blank">Shipping settings</a>	1
-7331	plugins.tax.avalara.fields.useitemclassification	Use item classification	1
-7332	plugins.tax.avalara.fields.useitemclassification.hint	Item classification is when a harmonized system (HS) code is assigned to a product based on its physical properties. Avalara assigns HS codes to customer products through its item classification service.	1
-7333	plugins.tax.avalara.fields.usesandbox	Use sandbox	1
-7334	plugins.tax.avalara.fields.usesandbox.hint	Determine whether to use sandbox (testing environment).	1
-7335	plugins.tax.avalara.fields.usetaxratetables	Use tax rate tables to estimate 	1
-7336	plugins.tax.avalara.fields.usetaxratetables.hint	Determine whether to use tax rate tables to estimate. This will be used as a default tax calculation for catalog pages and will be adjusted and reconciled to the final transaction tax during checkout. Tax rates are looked up by zip code (US only) in a file that will be periodically updated from the Avalara (see Schedule tasks).	1
-7337	plugins.tax.avalara.fields.validateaddress	Validate address	1
-7338	plugins.tax.avalara.fields.validateaddress.hint	Determine whether to validate entered by customer addresses before the tax calculation.	1
-7339	plugins.tax.avalara.itemclassification	Item Classification	1
-7340	plugins.tax.avalara.itemclassification.addproduct	Add product	1
-7341	plugins.tax.avalara.itemclassification.product	Product	1
-7342	plugins.tax.avalara.itemclassification.country	Country	1
-7343	plugins.tax.avalara.itemclassification.deleted	The item classification entry has been deleted successfully.	1
-7344	plugins.tax.avalara.itemclassification.hsclassificationrequestid	HS classification Id	1
-7345	plugins.tax.avalara.itemclassification.hscode	HS Code	1
-7346	plugins.tax.avalara.itemclassification.updateddate	Updated on	1
-7347	plugins.tax.avalara.itemclassification.search.country	Country	1
-7348	plugins.tax.avalara.itemclassification.search.country.hint	If an asterisk is selected, then this will apply to all products, regardless of the country.	1
-7349	plugins.tax.avalara.itemclassification.sync	Synchronization	1
-7350	plugins.tax.avalara.itemclassification.sync.confirm	\r\n                    <p>\r\n                        You want to start classification products with the connected account.\r\n                    </p>\r\n                    <p>\r\n                        Classification may take some time.\r\n                    </p>	1
-7351	plugins.tax.avalara.itemclassification.sync.success	The launch of the product classification procedure was successful.	1
-7352	plugins.tax.avalara.itemclassification.sync.button	Sync now	1
-7353	plugins.tax.avalara.items.export	Export to Avalara (selected)	1
-7354	plugins.tax.avalara.items.export.alreadyexported	Selected products have already been exported	1
-7355	plugins.tax.avalara.items.export.error	An error has occurred on export products	1
-7356	plugins.tax.avalara.items.export.success	Successfully exported {0} products	1
-7357	plugins.tax.avalara.log	Log	1
-7358	plugins.tax.avalara.log.backtolist	back to log	1
-7359	plugins.tax.avalara.log.clearlog	Clear log	1
-7360	plugins.tax.avalara.log.createddate	Created on	1
-7361	plugins.tax.avalara.log.createddate.hint	Date and time the log entry was created.	1
-7362	plugins.tax.avalara.log.customer	Customer	1
-7363	plugins.tax.avalara.log.customer.hint	Name of the customer.	1
-7364	plugins.tax.avalara.log.deleted	The log entry has been deleted successfully.	1
-7365	plugins.tax.avalara.log.hint	View log entry details	1
-7366	plugins.tax.avalara.log.requestmessage	Request message	1
-7367	plugins.tax.avalara.log.requestmessage.hint	The details of the request.	1
-7368	plugins.tax.avalara.log.responsemessage	Response message	1
-7369	plugins.tax.avalara.log.responsemessage.hint	The details of the response.	1
-7370	plugins.tax.avalara.log.statuscode	Status code	1
-7371	plugins.tax.avalara.log.statuscode.hint	The status code of the response.	1
-7372	plugins.tax.avalara.log.url	Url	1
-7373	plugins.tax.avalara.log.url.hint	The requested URL.	1
-7374	plugins.tax.avalara.log.search.createdfrom	Created from	1
-7375	plugins.tax.avalara.log.search.createdfrom.hint	The creation from date for the search.	1
-7376	plugins.tax.avalara.log.search.createdto	Created to	1
-7377	plugins.tax.avalara.log.search.createdto.hint	The creation to date for the search.	1
-7378	plugins.tax.avalara.taxcodes	Avalara tax codes	1
-7379	plugins.tax.avalara.taxcodes.delete	Delete Avalara system tax codes	1
-7380	plugins.tax.avalara.taxcodes.delete.error	An error has occurred on delete tax codes	1
-7381	plugins.tax.avalara.taxcodes.delete.success	System tax codes successfully deleted	1
-7382	plugins.tax.avalara.taxcodes.export	Export tax codes to Avalara	1
-7383	plugins.tax.avalara.taxcodes.export.alreadyexported	All tax codes have already been exported	1
-7384	plugins.tax.avalara.taxcodes.export.error	An error has occurred on export tax codes	1
-7385	plugins.tax.avalara.taxcodes.export.success	Successfully exported {0} tax codes	1
-7386	plugins.tax.avalara.taxcodes.import	Import Avalara system tax codes	1
-7387	plugins.tax.avalara.taxcodes.import.error	An error has occurred on import tax codes	1
-7388	plugins.tax.avalara.taxcodes.import.success	Successfully imported {0} tax codes	1
-7389	plugins.tax.avalara.testtax	Test tax calculation	1
-7390	plugins.tax.avalara.testtax.button	Submit	1
-7391	plugins.tax.avalara.testtax.error	An error has occurred on tax request	1
-7392	plugins.tax.avalara.testtax.success	The tax was successfully received	1
-7393	plugins.tax.fixedorbycountrystatezip.fixed	Fixed rate	1
-7394	plugins.tax.fixedorbycountrystatezip.tax.categories.manage	Manage tax categories	1
-7395	plugins.tax.fixedorbycountrystatezip.taxcategoriescannotloaded	No tax categories can be loaded. You may manage tax categories by <a href='{0}'>this link</a>	1
-7396	plugins.tax.fixedorbycountrystatezip.taxbycountrystatezip	By Country	1
-7397	plugins.tax.fixedorbycountrystatezip.fields.taxcategoryname	Tax category	1
-7398	plugins.tax.fixedorbycountrystatezip.fields.rate	Rate	1
-7399	plugins.tax.fixedorbycountrystatezip.fields.store	Store	1
-7400	plugins.tax.fixedorbycountrystatezip.fields.store.hint	If an asterisk is selected, then this shipping rate will apply to all stores.	1
-7401	plugins.tax.fixedorbycountrystatezip.fields.country	Country	1
-7402	plugins.tax.fixedorbycountrystatezip.fields.country.hint	The country.	1
-7403	plugins.tax.fixedorbycountrystatezip.fields.stateprovince	State / province	1
-7404	plugins.tax.fixedorbycountrystatezip.fields.stateprovince.hint	If an asterisk is selected, then this tax rate will apply to all customers from the given country, regardless of the state.	1
-7405	plugins.tax.fixedorbycountrystatezip.fields.zip	Zip	1
-7406	plugins.tax.fixedorbycountrystatezip.fields.zip.hint	Zip / postal code. If zip is empty, then this tax rate will apply to all customers from the given country or state, regardless of the zip code.	1
-7407	plugins.tax.fixedorbycountrystatezip.fields.taxcategory	Tax category	1
-7408	plugins.tax.fixedorbycountrystatezip.fields.taxcategory.hint	The tax category.	1
-7409	plugins.tax.fixedorbycountrystatezip.fields.percentage	Percentage	1
-7410	plugins.tax.fixedorbycountrystatezip.fields.percentage.hint	The tax rate.	1
-7411	plugins.tax.fixedorbycountrystatezip.addrecord	Add tax rate	1
-7412	plugins.tax.fixedorbycountrystatezip.addrecordtitle	New tax rate	1
-7413	plugins.tax.fixedorbycountrystatezip.switchrate	\r\n                    <p>\r\n                        You are going to change the way the tax rate is calculated. This will cause the tax rate to be calculated based on the settings specified on the configuration page.\r\n                    </p>\r\n                    <p>\r\n                        Any current tax rate settings will be saved, but will not be active until you return to this tax calculation method.\r\n                    </p>	1
-7414	plugins.widgets.facebookpixel.configuration	Configuration	1
-7415	plugins.widgets.facebookpixel.configuration.cookiesettingswarning	It looks like you have <a href="{0}" target="_blank">DisplayEuCookieLawWarning</a> setting disabled.	1
-7416	plugins.widgets.facebookpixel.configuration.customevents	Configure custom events	1
-7417	plugins.widgets.facebookpixel.configuration.customevents.savebeforeedit	You need to save the configuration before edit custom events.	1
-7418	plugins.widgets.facebookpixel.configuration.customevents.fields.eventname	Event name	1
-7419	plugins.widgets.facebookpixel.configuration.customevents.fields.eventname.hint	Enter a name of the custom event (e.g. BlogView).	1
-7420	plugins.widgets.facebookpixel.configuration.customevents.fields.widgetzones	Widget zones	1
-7421	plugins.widgets.facebookpixel.configuration.customevents.fields.widgetzones.hint	Choose widget zones in which the custom event will be tracked (e.g. blogpost_page_top).	1
-7422	plugins.widgets.facebookpixel.configuration.customevents.search.widgetzone	Widget zone	1
-7423	plugins.widgets.facebookpixel.configuration.customevents.search.widgetzone.hint	Search custom events by the widget zone.	1
-7424	plugins.widgets.facebookpixel.configuration.fields.accesstoken	Access token	1
-7425	plugins.widgets.facebookpixel.configuration.fields.accesstoken.hint	Enter the Facebook Conversions API access token.	1
-7426	plugins.widgets.facebookpixel.configuration.fields.accesstoken.required	Access token is required	1
-7427	plugins.widgets.facebookpixel.configuration.fields.disableforusersnotacceptingcookieconsent	Disable for users not accepting Cookie Consent	1
-7428	plugins.widgets.facebookpixel.configuration.fields.disableforusersnotacceptingcookieconsent.hint	Check to disable the Facebook Pixel for users not accepting Cookie Consent. You may want this if you conduct business in countries that are subject to General Data Protection Regulation (GDPR). You also need to activate the "DisplayEuCookieLawWarning" setting on the General settings page in order to display Cookie Consent for users.	1
-7429	plugins.widgets.facebookpixel.configuration.fields.pixelscriptenabled	Pixel enabled	1
-7430	plugins.widgets.facebookpixel.configuration.fields.pixelscriptenabled.hint	Toggle to enable/disable Facebook Pixel for this configuration.	1
-7431	plugins.widgets.facebookpixel.configuration.fields.conversionsapienabled	Conversions API enabled	1
-7432	plugins.widgets.facebookpixel.configuration.fields.conversionsapienabled.hint	Toggle to enable/disable Facebook Conversions API for this configuration.	1
-7433	plugins.widgets.facebookpixel.configuration.fields.pixelid	Pixel ID	1
-7434	plugins.widgets.facebookpixel.configuration.fields.pixelid.hint	Enter the Facebook Pixel ID.	1
-7435	plugins.widgets.facebookpixel.configuration.fields.pixelid.required	Pixel ID is required	1
-7436	plugins.widgets.facebookpixel.configuration.fields.passuserproperties	Include User properties	1
-7437	plugins.widgets.facebookpixel.configuration.fields.passuserproperties.hint	Check to include User properties, data about the User, in a pixel. Then you can view User properties in the Facebook Analytics dashboard under People > User Properties.	1
-7438	plugins.widgets.facebookpixel.configuration.fields.passuserproperties.forbidden	User Properties cannot be used together with Advanced Matching	1
-7439	plugins.widgets.facebookpixel.configuration.fields.store	Store	1
-7440	plugins.widgets.facebookpixel.configuration.fields.store.hint	Choose a store in which the Facebook Pixel is used.	1
-7441	plugins.widgets.facebookpixel.configuration.fields.trackaddtocart	Track "AddToCart" event	1
-7442	plugins.widgets.facebookpixel.configuration.fields.trackaddtocart.hint	Check to enable tracking standard event, when a product is added to the shopping cart.	1
-7443	plugins.widgets.facebookpixel.configuration.fields.trackaddtowishlist	Track "AddToWishlist" event	1
-7444	plugins.widgets.facebookpixel.configuration.fields.trackaddtowishlist.hint	Check to enable tracking standard event, when a product is added to the wishlist.	1
-7445	plugins.widgets.facebookpixel.configuration.fields.trackcompleteregistration	Track "CompleteRegistration" event	1
-7446	plugins.widgets.facebookpixel.configuration.fields.trackcompleteregistration.hint	Check to enable tracking standard event, when a registration form is completed.	1
-7447	plugins.widgets.facebookpixel.configuration.fields.trackcontact	Track "Contact" event	1
-7448	plugins.widgets.facebookpixel.configuration.fields.trackcontact.hint	Check to enable tracking standard event, when a person person submits a question via contact us form.	1
-7449	plugins.widgets.facebookpixel.configuration.fields.trackinitiatecheckout	Track "InitiateCheckout" event	1
-7450	plugins.widgets.facebookpixel.configuration.fields.trackinitiatecheckout.hint	Check to enable tracking standard event, when a person enters the checkout flow prior to completing the checkout flow.	1
-7451	plugins.widgets.facebookpixel.configuration.fields.trackpageview	Track "PageView" event 	1
-7452	plugins.widgets.facebookpixel.configuration.fields.trackpageview.hint	Check to enable tracking standard event, when a person lands on the website pages.	1
-7453	plugins.widgets.facebookpixel.configuration.fields.trackpurchase	Track "Purchase" event	1
-7454	plugins.widgets.facebookpixel.configuration.fields.trackpurchase.hint	Check to enable tracking standard event, when an order is placed.	1
-7455	plugins.widgets.facebookpixel.configuration.fields.tracksearch	Track "Search" event	1
-7456	plugins.widgets.facebookpixel.configuration.fields.tracksearch.hint	Check to enable tracking standard event, when a search is made.	1
-7457	plugins.widgets.facebookpixel.configuration.fields.trackviewcontent	Track "ViewContent" event	1
-7458	plugins.widgets.facebookpixel.configuration.fields.trackviewcontent.hint	Check to enable tracking standard event, when a person lands on a product details page.	1
-7459	plugins.widgets.facebookpixel.configuration.fields.useadvancedmatching	Advanced Matching	1
-7460	plugins.widgets.facebookpixel.configuration.fields.useadvancedmatching.hint	Check to enable Advanced Matching for tracked conversion events. In this case, some of the visitor's data (in the hashed format) will be collected by the Facebook Pixel. If you automatically implement advanced matching using the Events Manager, uncheck this setting.	1
-7461	plugins.widgets.facebookpixel.configuration.fields.useadvancedmatching.forbidden	Advanced Matching cannot be used together with User Properties	1
-7462	plugins.widgets.facebookpixel.configuration.search.store	Store	1
-7463	plugins.widgets.facebookpixel.configuration.search.store.hint	Search configuration by the store.	1
-7464	plugins.widgets.googleanalytics.usesandbox	UseSandbox	1
-7465	plugins.widgets.googleanalytics.usesandbox.hint	Determine whether to use the sandbox environment for testing purposes. This setting only applies to sending eCommerce information via the Measurement Protocol.	1
-7466	plugins.widgets.googleanalytics.googleid	ID	1
-7467	plugins.widgets.googleanalytics.googleid.hint	Enter Google Analytics ID.	1
-7468	plugins.widgets.googleanalytics.apisecret	API Secret	1
-7469	plugins.widgets.googleanalytics.apisecret.hint	Enter API Secret.	1
-7470	plugins.widgets.googleanalytics.trackingscript	Tracking code	1
-7471	plugins.widgets.googleanalytics.trackingscript.hint	Paste the tracking code generated by Google Analytics here. {GOOGLEID} and {CUSTOMER_TRACKING} will be dynamically replaced.	1
-7472	plugins.widgets.googleanalytics.enableecommerce	Enable eCommerce	1
-7473	plugins.widgets.googleanalytics.enableecommerce.hint	Check to pass information about orders to Google eCommerce feature.	1
-7474	plugins.widgets.googleanalytics.includecustomerid	Include customer ID	1
-7475	plugins.widgets.googleanalytics.includecustomerid.hint	Check to include customer identifier to script.	1
-7476	plugins.widgets.googleanalytics.includingtax	Include tax	1
-7477	plugins.widgets.googleanalytics.includingtax.hint	Check to include tax when generating tracking code for eCommerce part.	1
-7478	plugins.widgets.googleanalytics.instructions	<p>Google Analytics is a free website stats tool from Google. It keeps track of statistics about the visitors and eCommerce conversion on your website.<br /><br />Follow the next steps to enable Google Analytics integration:<br /><ul><li><a href="http://www.google.com/analytics/" target="_blank">Create a Google Analytics account</a> and follow the wizard to add your website</li><li>Copy the <b>MEASUREMENT ID</b> into the <b>ID</b> box below</li><li>In Google Analytics click on the <b>Measurement Protocol API secrets</b> under <b>Events</b></li><li>Click on <b>Create</b> button and follow the instructions to create a new API secret</li><li>Copy the API secret into the <b>API Secret</b> box below</li><li>Click the 'Save' button below and Google Analytics will be integrated into your store</li></ul><br /></p>	1
-7479	plugins.widgets.swiper.slide	Slide	1
-7480	plugins.widgets.swiper.slidelist	Add new slide	1
-7481	plugins.widgets.swiper.slide.add	Add	1
-7482	plugins.widgets.swiper.settings	Settings	1
-7483	plugins.widgets.swiper.picture	Picture	1
-7484	plugins.widgets.swiper.picture.hint	Upload picture.	1
-7485	plugins.widgets.swiper.picture.required	Picture is required	1
-7486	plugins.widgets.swiper.titletext	Title	1
-7487	plugins.widgets.swiper.titletext.hint	Enter title for picture. Leave empty if you don't want to display any text.	1
-7488	plugins.widgets.swiper.linkurl	URL	1
-7489	plugins.widgets.swiper.linkurl.hint	Enter URL. Leave empty if you don't want this picture to be clickable.	1
-7490	plugins.widgets.swiper.alttext	Image alternate text	1
-7491	plugins.widgets.swiper.alttext.hint	Enter alternate text that will be added to image.	1
-7492	plugins.widgets.swiper.autoplay	Autoplay	1
-7493	plugins.widgets.swiper.autoplay.hint	Check to enable autoplay.	1
-7494	plugins.widgets.swiper.lazyloading	Lazy loading	1
-7495	plugins.widgets.swiper.lazyloading.hint	Check to enable lazy loading of pictures.	1
-7496	plugins.widgets.swiper.autoplaydelay	Delay	1
-7497	plugins.widgets.swiper.autoplaydelay.hint	Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled.	1
-7498	plugins.widgets.swiper.shownavigation	Show navigation arrows	1
-7499	plugins.widgets.swiper.shownavigation.hint	Check to display navigation arrows for the slider.	1
-7500	plugins.widgets.swiper.showpagination	Show pagination	1
-7501	plugins.widgets.swiper.showpagination.hint	Check to display pagination for the slider.	1
-7502	plugins.widgets.what3words.configuration	Configuration	1
-7503	plugins.widgets.what3words.configuration.fields.enabled	Enabled	1
-7504	plugins.widgets.what3words.configuration.fields.enabled.hint	Toggle to enable/disable what3words service.	1
-7505	plugins.widgets.what3words.configuration.failed	Failed to get the generated API key	1
-7506	plugins.widgets.what3words.address.field.label	what3words address	1
-7507	plugins.widgets.what3words.address.field.tooltip	Is your property hard to find? To help your delivery driver find your exact location, please enter your what3words delivery address.	1
-7508	plugins.widgets.what3words.address.field.tooltip.link	Find yours here	1
-7509	plugins.externalauth.facebook.authenticationdatadeletedsuccessfully	Data deletion request completed	1
-7510	plugins.externalauth.facebook.authenticationdataexist	Data deletion request is pending, please contact the admin	1
-7511	plugins.externalauth.facebook.clientkeyidentifier	App ID/API Key	1
-7512	plugins.externalauth.facebook.clientkeyidentifier.hint	Enter your app ID/API key here. You can find it on your FaceBook application page.	1
-7513	plugins.externalauth.facebook.clientsecret	App Secret	1
-7514	plugins.externalauth.facebook.clientsecret.hint	Enter your app secret here. You can find it on your FaceBook application page.	1
-7515	plugins.externalauth.facebook.instructions	<p>To configure authentication with Facebook, please follow these steps:<br/><br/><ol><li>Navigate to the <a href="https://developers.facebook.com/apps" target ="_blank"> Facebook for Developers</a> page and sign in. If you don't already have a Facebook account, use the <b>Sign up for Facebook</b> link on the login page to create one.</li><li>Tap the <b>+ Add a New App button</b> in the upper right corner to create a new App ID. (If this is your first app with Facebook, the text of the button will be <b>Create a New App</b>.)</li><li>Fill out the form and tap the <b>Create App ID button</b>.</li><li>The <b>Product Setup</b> page is displayed, letting you select the features for your new app. Click <b>Get Started</b> on <b>Facebook Login</b>.</li><li>Click the <b>Settings</b> link in the menu at the left, you are presented with the <b>Client OAuth Settings</b> page with some defaults already set.</li><li>Enter "{0:s}signin-facebook" into the <b>Valid OAuth Redirect URIs</b> field.</li><li>From User data deletion dropdown menu select "Data deletion instructions URL" </li><li> Enter "{0:s}facebook/data-deletion-callback/" into the <b> User data deletion </b> input field.</li><li>Click <b>Save Changes</b>.</li><li>Click the <b>Dashboard</b> link in the left navigation.</li><li>Copy your App ID and App secret below.</li></ol><br/><br/></p>	1
-986	admin.catalog.products.fields.displayattributecombinationimagesonly.hint	You may choose pictures associated to each product attribute value or attribute combination (these pictures will replace the main product image when this product attribute value or attribute combination is selected). Enable this option if you want to display only images of a chosen product attribute value or an attribute combination (other pictures will be hidden). Otherwise, all uploaded pictures will be displayed on the product details page	1
-2137	admin.configuration.settings.catalog.showsearchboxcategories	Show product categories for the search box	1
-2138	admin.configuration.settings.catalog.showsearchboxcategories.hint	Check to display the drop-down list with product categories next to the search box.	1
-5467	admin.vendors.fields.pmcustomerid.hint	Choose the customer for receiving private messages. Customers will see the "Send private message" button on the vendor details page.	1
-7516	security.permission.security.enablemultifactorauthentication	Security. Enable Multi-factor authentication	1
-6593	security.permission.security.accessadminpanel	Access admin area	1
-6553	security.permission.customers.customersview	Admin area. Customers. View	1
-6550	security.permission.customers.customerscreateeditdelete	Admin area. Customers. Create, edit, delete	1
-6510	security.permission.catalog.productsview	Admin area. Products. View	1
-6508	security.permission.catalog.productscreateeditdelete	Admin area. Products. Create, edit, delete	1
-6577	security.permission.promotions.subscriberscreateeditdelete	Admin area. Newsletter Subscribers. Create, edit, delete	1
-6535	security.permission.contentmanagement.messagetemplatescreateeditdelete	Admin area. Message Templates. Create, edit, delete	1
 \.
 
 
@@ -14651,7 +13467,6 @@ COPY public."LocalizedProperty" ("Id", "LocaleKeyGroup", "LocaleKey", "LocaleVal
 --
 
 COPY public."Log" ("Id", "ShortMessage", "IpAddress", "CustomerId", "LogLevelId", "FullMessage", "PageUrl", "ReferrerUrl", "CreatedOnUtc") FROM stdin;
-1	Application started		\N	20				2025-01-18 16:39:15.596307
 \.
 
 
@@ -14761,59 +13576,33 @@ COPY public."MessageTemplate" ("Id", "Name", "BccEmailAddresses", "Subject", "Em
 --
 
 COPY public."MigrationVersionInfo" ("Version", "AppliedOn", "Description") FROM stdin;
-637160666562551771	2025-01-18 16:38:25	Nop.Data base schema
-637196889689037677	2025-01-18 16:38:25	Nop.Data base indexes
-637200411689037680	2025-01-18 16:38:25	Add FK on RewardPointsHistory into order table
-637273440000000010	2025-01-18 16:38:25	nopCommerce version 4.40. Update Localization
-637273440000000015	2025-01-18 16:38:25	nopCommerce version 4.40. Update Settings
-637547328000000010	2025-01-18 16:38:25	nopCommerce version 4.50. Update Localization
-637547328000000015	2025-01-18 16:38:25	nopCommerce version 4.50. Update Settings
-637691616000000000	2025-01-18 16:38:25	Pseudo-migration to update appSettings.json file
-638016480000000000	2025-01-18 16:38:25	Move uploaded images to disk
-638081280030000010	2025-01-18 16:38:25	nopCommerce version 4.70. Update Localization
-638108568030000015	2025-01-18 16:38:25	nopCommerce version 4.70. Update Settings
-638259768000000015	2025-01-18 16:38:25	nopCommerce version 4.60. Update Settings
-638259768100000010	2025-01-18 16:38:25	nopCommerce version 4.60. Update Localization
-638357760000000000	2025-01-18 16:38:25	Pseudo-migration to update appSettings.json file
-637192635689037680	2025-01-18 16:38:25	Specification attribute grouping
-637273440000000005	2025-01-18 16:38:25	nopCommerce version 4.40. Update Data
-637547328000000005	2025-01-18 16:38:25	nopCommerce version 4.50. Update Data
-637829856000000000	2025-01-18 16:38:25	Product video
-637938720100000000	2025-01-18 16:38:25	SchemaMigration for 4.60.0
-638059361410000000	2025-01-18 16:38:25	Added new fields to store table
-638081280000000005	2025-01-18 16:38:25	nopCommerce version 4.70. Update Data
-638259768000000005	2025-01-18 16:38:25	nopCommerce version 4.60. Update Data
-638261280000000000	2025-01-18 16:38:25	Update datetime type precision
-638374891800000000	2025-01-18 16:38:25	AddIndexesMigration for 4.70.0
-638491680000000000	2025-01-18 16:38:25	SchemaMigration for 4.70.0
-638674848000000000	2025-01-18 16:38:25	SchemaMigration for 4.80.0
-638680896000000000	2025-01-18 16:38:25	AddIndexesMigration for 4.80.0
-638532288000000000	2025-01-18 16:39:15	Payments.PayPalCommerce base schema
-638532288010000000	2025-01-18 16:39:15	Payments.PayPalCommerce 4.70.10. Advanced cards
-637673472000000000	2025-01-18 16:39:16	ExchangeRate.EcbExchange 1.30. Add setting for url for ECB
-638203716000000000	2025-01-18 16:39:16	Misc.Brevo 4.70.4. Rename Sendinblue to Brevo.
-637988400000000000	2025-01-18 16:39:17	Misc.Zettle base schema
-638488224000000000	2025-01-18 16:39:17	Misc.Zettle 4.70.5 Inventory balance tracking
-637317072000000000	2025-01-18 16:39:17	Nop.Plugin.MultiFactorAuth.GoogleAuthenticator schema
-637163190176455422	2025-01-18 16:39:17	Pickup.PickupInStore base schema
-638525376000000000	2025-01-18 16:39:17	Pickup.PickupInStore 4.70.7. Increase precision of Longitude/Latitude fields
-637163160551687541	2025-01-18 16:39:18	Shipping.FixedByWeightByTotal base schema
-637711020000000000	2025-01-18 16:39:18	Shipping.FixedByWeightByTotal change decimal precision
-638278812000000000	2025-01-18 16:39:18	Shipping.FixedByWeightByTotal add LoadAllRecord setting
-638380944000000000	2025-01-18 16:39:18	Shipping.UPS Update to v2.0
-637163177576455442	2025-01-18 16:39:18	Tax.Avalara base schema
-637664832000000000	2025-01-18 16:39:18	Tax.Avalara 2.50. Add certificates feature
-637743456000000000	2025-01-18 16:39:18	Tax.Avalara 2.60. New schedule task
-637932672020000000	2025-01-18 16:39:18	Tax.Avalara 2.65. Update datetime type precision
-638184960020000000	2025-01-18 16:39:18	Tax.Avalara 4.70.2. Add Item classification feature
-637163188436455432	2025-01-18 16:39:18	Tax.FixedOrByCountryStateZip base schema
-638491248000000000	2025-01-18 16:39:18	Tax.FixedOrByCountryStateZip 4.70.5. Update localizations
-637207344000000000	2025-01-18 16:39:18	Widgets.FacebookPixel base schema
-637832016000000000	2025-01-18 16:39:18	Widgets.FacebookPixel 2.00. Conversions API
-637847748000000000	2025-01-18 16:39:18	Widgets.GoogleAnalytics 1.74. Update localizations
-638132868000000000	2025-01-18 16:39:18	Widgets.GoogleAnalytics 2.00. Update localizations
-637915392000000000	2025-01-18 16:39:19	ExternalAuth.Facebook 1.77. Data deletion feature
-638349552000000000	2025-01-18 16:39:19	ACL. Added advanced permissions
+637160666562551771	2025-02-24 09:16:17	Nop.Data base schema
+637196889689037677	2025-02-24 09:16:18	Nop.Data base indexes
+637200411689037680	2025-02-24 09:16:18	Add FK on RewardPointsHistory into order table
+637273440000000010	2025-02-24 09:16:18	nopCommerce version 4.40. Update Localization
+637273440000000015	2025-02-24 09:16:18	nopCommerce version 4.40. Update Settings
+637547328000000010	2025-02-24 09:16:18	nopCommerce version 4.50. Update Localization
+637547328000000015	2025-02-24 09:16:18	nopCommerce version 4.50. Update Settings
+637691616000000000	2025-02-24 09:16:18	Pseudo-migration to update appSettings.json file
+638016480000000000	2025-02-24 09:16:18	Move uploaded images to disk
+638081280030000010	2025-02-24 09:16:18	nopCommerce version 4.70. Update Localization
+638108568030000015	2025-02-24 09:16:18	nopCommerce version 4.70. Update Settings
+638259768000000015	2025-02-24 09:16:18	nopCommerce version 4.60. Update Settings
+638259768100000010	2025-02-24 09:16:18	nopCommerce version 4.60. Update Localization
+638357760000000000	2025-02-24 09:16:18	Pseudo-migration to update appSettings.json file
+637192635689037680	2025-02-24 09:16:18	Specification attribute grouping
+637273440000000005	2025-02-24 09:16:18	nopCommerce version 4.40. Update Data
+637547328000000005	2025-02-24 09:16:18	nopCommerce version 4.50. Update Data
+637829856000000000	2025-02-24 09:16:18	Product video
+637938720100000000	2025-02-24 09:16:18	SchemaMigration for 4.60.0
+638059361410000000	2025-02-24 09:16:18	Added new fields to store table
+638081280000000005	2025-02-24 09:16:18	nopCommerce version 4.70. Update Data
+638259768000000005	2025-02-24 09:16:18	nopCommerce version 4.60. Update Data
+638261280000000000	2025-02-24 09:16:18	Update datetime type precision
+638374891800000000	2025-02-24 09:16:18	AddIndexesMigration for 4.70.0
+638491680000000000	2025-02-24 09:16:18	SchemaMigration for 4.70.0
+638674848000000000	2025-02-24 09:16:18	SchemaMigration for 4.80.0
+638680896000000000	2025-02-24 09:16:18	AddIndexesMigration for 4.80.0
 \.
 
 
@@ -14866,123 +13655,10 @@ COPY public."OrderNote" ("Id", "Note", "OrderId", "DownloadId", "DisplayToCustom
 
 
 --
--- Data for Name: PayPalToken; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."PayPalToken" ("Id", "CustomerId", "VaultId", "VaultCustomerId", "TransactionId", "Title", "Expiration", "Type", "ClientId", "IsPrimaryMethod") FROM stdin;
-\.
-
-
---
 -- Data for Name: PermissionRecord; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public."PermissionRecord" ("Id", "Name", "SystemName", "Category") FROM stdin;
-1	Security. Enable Multi-factor authentication	Security.EnableMultiFactorAuthentication	Security
-2	Access admin area	Security.AccessAdminPanel	Security
-3	Admin area. Customers. View	Customers.CustomersView	Customers
-4	Admin area. Customers. Create, edit, delete	Customers.CustomersCreateEditDelete	Customers
-5	Admin area. Customers. Import and export	Customers.CustomersImportExport	Customers
-6	Admin area. Customers. Allow impersonation	Customers.CustomersImpersonation	Customers
-7	Admin area. Customer roles. View	Customers.CustomerRolesView	Customers
-8	Admin area. Customer roles. Create, edit, delete	Customers.CustomerRolesCreateEditDelete	Customers
-9	Admin area. Vendors. View	Customers.VendorsView	Customers
-10	Admin area. Vendors. Create, edit, delete	Customers.VendorsCreateEditDelete	Customers
-11	Admin area. Activity Log. View	Customers.ActivityLogView	Customers
-12	Admin area. Activity Log. Delete	Customers.ActivityLogDelete	Customers
-13	Admin area. Activity Log. Manage types	Customers.ActivityLogManageTypes	Customers
-14	Admin area. GDPR. Manage	Customers.GDPRManage	Customers
-15	Admin area. Current Carts. Manage	Orders.CurrentCartsManage	Orders
-16	Admin area. Orders. View	Orders.OrdersView	Orders
-17	Admin area. Orders. Create, edit, delete	Orders.OrdersCreateEditDelete	Orders
-18	Admin area. Orders. Import and export	Orders.OrdersImportExport	Orders
-19	Admin area. Shipments. View	Orders.ShipmentsView	Orders
-20	Admin area. Shipments. Create, edit, delete	Orders.ShipmentsCreateEditDelete	Orders
-21	Admin area. Return requests. View	Orders.ReturnRequestsView	Orders
-22	Admin area. Return requests. Create, edit, delete	Orders.ReturnRequestsCreateEditDelete	Orders
-23	Admin area. Recurring payments. View	Orders.RecurringPaymentsView	Orders
-24	Admin area. Recurring payments. Create, edit, delete	Orders.RecurringPaymentsCreateEditDelete	Orders
-25	Admin area. Gift cards. View	Orders.GiftCardsView	Orders
-26	Admin area. Gift cards. Create, edit, delete	Orders.GiftCardsCreateEditDelete	Orders
-27	Admin area. Reports. Sales summary	Reports.SalesSummary	Reports
-28	Admin area. Reports. Country sales	Reports.CountrySales	Reports
-29	Admin area. Reports. Low stock	Reports.LowStock	Reports
-30	Admin area. Reports. Bestsellers	Reports.Bestsellers	Reports
-31	Admin area. Reports. Products never purchased	Reports.ProductsNeverPurchased	Reports
-32	Admin area. Reports. Registered customers	Reports.RegisteredCustomers	Reports
-33	Admin area. Reports. Customers by order total	Reports.CustomersByOrderTotal	Reports
-34	Admin area. Reports. Customers by number of orders	Reports.CustomersByNumberOfOrders	Reports
-35	Admin area. Products. View	Catalog.ProductsView	Catalog
-36	Admin area. Products. Create, edit, delete	Catalog.ProductsCreateEditDelete	Catalog
-37	Admin area. Products. Import and export	Catalog.ProductsImportExport	Catalog
-38	Admin area. Categories. View	Catalog.CategoriesView	Catalog
-39	Admin area. Categories. Create, edit, delete	Catalog.CategoriesCreateEditDelete	Catalog
-40	Admin area. Categories. Import and export	Catalog.CategoriesImportExport	Catalog
-41	Admin area. Manufacturer. View	Catalog.ManufacturerView	Catalog
-42	Admin area. Manufacturer. Create, edit, delete	Catalog.ManufacturerCreateEditDelete	Catalog
-43	Admin area. Manufacturer. Import and export	Catalog.ManufacturerImportExport	Catalog
-44	Admin area. Product reviews. View	Catalog.ProductReviewsView	Catalog
-45	Admin area. Product reviews. Create, edit, delete	Catalog.ProductReviewsCreateEditDelete	Catalog
-46	Admin area. Product tags. View	Catalog.ProductTagsView	Catalog
-47	Admin area. Product tags. Create, edit, delete	Catalog.ProductTagsCreateEditDelete	Catalog
-48	Admin area. Product attributes. View	Catalog.ProductAttributesView	Catalog
-49	Admin area. Product attributes. Create, edit, delete	Catalog.ProductAttributesCreateEditDelete	Catalog
-50	Admin area. Specification attributes. View	Catalog.SpecificationAttributesView	Catalog
-51	Admin area. Specification attributes. Create, edit, delete	Catalog.SpecificationAttributesCreateEditDelete	Catalog
-52	Admin area. Checkout attributes. View	Catalog.CheckoutAttributesView	Catalog
-53	Admin area. Checkout attributes. Create, edit, delete	Catalog.CheckoutAttributesCreateEditDelete	Catalog
-54	Admin area. Discounts. View	Promotions.DiscountsView	Promotions
-55	Admin area. Discounts. Create, edit, delete	Promotions.DiscountsCreateEditDelete	Promotions
-56	Admin area. Affiliates. View	Promotions.AffiliatesView	Promotions
-57	Admin area. Affiliates. Create, edit, delete	Promotions.AffiliatesCreateEditDelete	Promotions
-58	Admin area. Newsletter Subscribers. View	Promotions.SubscribersView	Promotions
-59	Admin area. Newsletter Subscribers. Create, edit, delete	Promotions.SubscribersCreateEditDelete	Promotions
-60	Admin area. Newsletter Subscribers. Import and export	Promotions.SubscribersImportExport	Promotions
-61	Admin area. Campaigns. View	Promotions.CampaignsView	Promotions
-62	Admin area. Campaigns. Create and Edit	Promotions.CampaignsCreateEdit	Promotions
-63	Admin area. Campaigns. Delete	Promotions.CampaignsDelete	Promotions
-64	Admin area. Campaigns. Send emails	Promotions.CampaignsSendEmails	Promotions
-65	Admin area. Topics. View	ContentManagement.TopicsView	ContentManagement
-66	Admin area. Topics. Create, edit, delete	ContentManagement.TopicsCreateEditDelete	ContentManagement
-67	Admin area. Message Templates. View	ContentManagement.MessageTemplatesView	ContentManagement
-68	Admin area. Message Templates. Create, edit, delete	ContentManagement.MessageTemplatesCreateEditDelete	ContentManagement
-69	Admin area. News. View	ContentManagement.NewsView	ContentManagement
-70	Admin area. News. Create, edit, delete	ContentManagement.NewsCreateEditDelete	ContentManagement
-71	Admin area. News comments. View	ContentManagement.NewsCommentsView	ContentManagement
-72	Admin area. News comments. Create, edit, delete	ContentManagement.NewsCommentsCreateEditDelete	ContentManagement
-73	Admin area. Blog. View	ContentManagement.BlogView	ContentManagement
-74	Admin area. Blog. Create, edit, delete	ContentManagement.BlogCreateEditDelete	ContentManagement
-75	Admin area. Blog comments. View	ContentManagement.BlogCommentsView	ContentManagement
-76	Admin area. Blog comments. Create, edit, delete	ContentManagement.BlogCommentsCreateEditDelete	ContentManagement
-77	Admin area. Polls. View	ContentManagement.PollsView	ContentManagement
-78	Admin area. Polls. Create, edit, delete	ContentManagement.PollsCreateEditDelete	ContentManagement
-79	Admin area. Forums. View	ContentManagement.ForumsView	ContentManagement
-80	Admin area. Forums. Create, edit, delete	ContentManagement.ForumsCreateEditDelete	ContentManagement
-81	Admin area. Widgets. Manage	Configuration.ManageWidgets	Configuration
-82	Admin area. Countries. Manage	Configuration.ManageCountries	Configuration
-83	Admin area. Languages. Manage	Configuration.ManageLanguages	Configuration
-84	Admin area. Settings. Manage	Configuration.ManageSettings	Configuration
-85	Admin area. Payment Methods. Manage	Configuration.ManagePaymentMethods	Configuration
-86	Admin area. External Authentication Methods. Manage	Configuration.ManageExternalAuthenticationMethods	Configuration
-87	Admin area. Multi-factor Authentication Methods. Manage	Configuration.ManageMultifactorAuthenticationMethods	Configuration
-88	Admin area. Tax Settings. Manage	Configuration.ManageTaxSettings	Configuration
-89	Admin area. Shipping Settings. Manage	Configuration.ManageShippingSettings	Configuration
-90	Admin area. Currencies. Manage	Configuration.ManageCurrencies	Configuration
-91	Admin area. ACL. Manage	Configuration.ManageACL	Configuration
-92	Admin area. Email Accounts. Manage	Configuration.ManageEmailAccounts	Configuration
-93	Admin area. Stores. Manage	Configuration.ManageStores	Configuration
-94	Admin area. Plugins. Manage	Configuration.ManagePlugins	Configuration
-95	Admin area. System Log. Manage	System.ManageSystemLog	System
-96	Admin area. Message Queue. Manage	System.ManageMessageQueue	System
-97	Admin area. Maintenance. Manage	System.ManageMaintenance	System
-98	Admin area. HTML Editor. Manage pictures	System.HtmlEditor.ManagePictures	System
-99	Admin area. Schedule Tasks. Manage	System.ManageScheduleTasks	System
-100	Admin area. App Settings. Manage	System.ManageAppSettings	System
-101	Public store. Display Prices	PublicStore.DisplayPrices	PublicStore
-102	Public store. Enable shopping cart	PublicStore.EnableShoppingCart	PublicStore
-103	Public store. Enable wishlist	PublicStore.EnableWishlist	PublicStore
-104	Public store. Allow navigation	PublicStore.PublicStoreAllowNavigation	PublicStore
-105	Public store. Access a closed store	PublicStore.AccessClosedStore	PublicStore
 \.
 
 
@@ -14991,140 +13667,6 @@ COPY public."PermissionRecord" ("Id", "Name", "SystemName", "Category") FROM std
 --
 
 COPY public."PermissionRecord_Role_Mapping" ("PermissionRecord_Id", "CustomerRole_Id") FROM stdin;
-1	1
-1	3
-2	1
-2	5
-3	1
-4	1
-5	1
-6	1
-7	1
-8	1
-9	1
-10	1
-11	1
-12	1
-13	1
-14	1
-15	1
-16	1
-16	5
-17	1
-18	1
-19	1
-20	1
-21	1
-22	1
-23	1
-24	1
-25	1
-26	1
-27	1
-28	1
-29	1
-29	5
-30	1
-30	5
-31	1
-31	5
-32	1
-33	1
-34	1
-35	1
-35	5
-36	1
-36	5
-37	1
-37	5
-38	1
-39	1
-40	1
-41	1
-42	1
-43	1
-44	1
-44	5
-45	1
-45	5
-46	1
-46	5
-47	1
-47	5
-48	1
-48	5
-49	1
-49	5
-50	1
-51	1
-52	1
-53	1
-54	1
-54	5
-55	1
-55	5
-56	1
-57	1
-58	1
-59	1
-60	1
-61	1
-62	1
-63	1
-64	1
-65	1
-66	1
-67	1
-68	1
-69	1
-70	1
-71	1
-72	1
-73	1
-74	1
-75	1
-76	1
-77	1
-78	1
-79	1
-80	1
-81	1
-82	1
-83	1
-84	1
-85	1
-86	1
-87	1
-88	1
-89	1
-90	1
-91	1
-92	1
-93	1
-94	1
-95	1
-96	1
-97	1
-98	1
-99	1
-100	1
-101	1
-101	3
-101	4
-101	2
-102	1
-102	3
-102	4
-102	2
-103	1
-103	3
-103	4
-103	2
-104	1
-104	3
-104	4
-104	2
-105	1
 \.
 
 
@@ -15133,8 +13675,6 @@ COPY public."PermissionRecord_Role_Mapping" ("PermissionRecord_Id", "CustomerRol
 --
 
 COPY public."Picture" ("Id", "MimeType", "SeoFilename", "AltAttribute", "TitleAttribute", "IsNew", "VirtualPath") FROM stdin;
-1	image/webp	banner_1	\N	\N	f	\N
-2	image/webp	banner_2	\N	\N	f	\N
 \.
 
 
@@ -15143,8 +13683,6 @@ COPY public."Picture" ("Id", "MimeType", "SeoFilename", "AltAttribute", "TitleAt
 --
 
 COPY public."PictureBinary" ("Id", "PictureId", "BinaryData") FROM stdin;
-1	1	\\x5249464688ac000057454250565038207cac0000709c029d012ab004f4013e91449d4b25a3a62a2554f9e94012094dc15b7b67ec1890fe879615c7ff3e7eafd3fd1ce6f1c7436fff1e89bebfcf83ffff33bfe4ffffdec3c4b7e5a26d1b2c11b98f204e6bfdb7fd56fedfa3df00659fd137fe87993ff99fd55cf2da0bd40fe8bbe4e35f657ebbfbffeef7f88f7bde3fed9fe4ff75ff25eb43c57ec5f31ce7ffd39f919f32bfccfdc77cabfd1dec11fd87fc5faadffa3fb91ee87fb4ffcdf505fd03fd87ef3fba5ff8cfd93f735fd97fdb7ed17fc2f905feb5fe4bffffb607fd2ffffee51fe77ff37fffffedf02bfd8bff07ffffff1eef9ffbbf7cbe14ffb67fe6fdddffedef91fffffe47b807ffff6fee927f2cff77fddfd357ceff8fff67f963e81fe69f6fff0bf2ffe3c7f42ccdf673f517aadfce7f1eff07fc37e457d20fed7fe67dc8fa87fb1ff23ff1bee2be423f2efe8dfe83fbe7e43fd237e576c5dc3ffd3fe97d823d95fb17fc8fefffe7bdd47effcd5fb4dec03fd17cfbffc7e259f92ffa7ec0dfd17fcbfed8fbd3ffb5e4dbf62ff87ec25fd1bfc6f9fffffff86ffbebecf64841f3daf54da9f5564de0191fd595b3e011a2845e1a78f88aa918efb4d04cacadba8f95b751f2b67c01991ade027474ad9f00510aa112ea502a18fa4f30c615093972a24fee66f4b16b93d86be04aed8aace9555a463ee2040b317ac74df00fd702c265317f796ffa20633b2c13421496a76e8c46d9879cd446bd137b3a77bbe59ace2e378ebce8de392c6e9e0eb31dde66850efb19c1b760168f1111c2dcfcf090bd4da304db3a4c7a79fe8d70b6e0c1b62bc20aaec77ceaceb0d1b59613b888aa959afaae063d5ed3fba6a22fecdf10249aa8dc047ec71db1f2ccaf7acdc46f3952604bcd4b789f5971a4b4a61e1da3ecca44ac3552b81bcb567729b1e844da82b5c1ab9c2509c67003338a8492c4858adc09461bdbfd637d1d8bf860d36ab2f5882cb435490456667893f41a4b7e85bb0f4e29453fc922b9a1753776409873d0e9628a89f0ada6539215819d9d196953c2e4a8e24c58bcf173829d5edb2bd83012853acdef2433c722d24cba2c29bce61cfb875ea1df9f14182c0867e27dd2e9c6c6a14926797a93aacb9e8706d8adaea4eb73b7998a61b5f9fa35f6377421b448a7837245e58a592363f96fac7769707f3103523d3c9c4ec6f0de9096d414fe5def9d44e576f79e3a048acc9422c23efd58e7fd0e7ba3e073d26c127f4e901921f1dd0059f906270797aa02e0b8d068a54104363ee5ff233a1f0251e9134e4a4524cec1f58fb25020b35e8ed45908c9d42bd0bd4fb314df9b8b1846f068f0f6842bd4a30c85fedaaf2e01304aec0133a7e580bb26ea142b11e72a01f66e1257a722f7021305c610c47084ea44aad6bd245ec4029e0daf27a57eefa7f30e4fc760bb7e4cd5bd76f6e2e8f2b526757e2f2df07b14eb853f4e5a314bb3d7bc11b54d662bc58a9aaefbfed66f26e18f9c3707f091bb4e65520a0849f24164c32f5b8059bef58c274fd4571f15ad78d034d5052b58cf6ffe26430aff1848fff29800da46325d4f8f6465622076f4905c53c35e52c6401eeade115aaf00528eb530db786d0bcefa7d95ad203f043a178cae0e4341db39f4796e2268a8bbe1cb8b9f9134ff4e69d1b36fe4015e335cd9f6d54fd640c46b16846cd768988a92304e963c048ae2ef1072737ba292d64d9ff7dcbe2246cc7c38a6a00ec9454778898b163eba3e27f147dbbe22ea08d5db4dbd1f3458e74e03e2afdb682f5d90492ff123477dee5a078677f8fea2667f3451f5599d0696c2e2b7e6a834e214f6aa4d795dc80a1c9b2117185e39b8b052e0b8a0def5899956a7a784c8289f5f05f1bbe461cb911839880ed81a00119e9e92bcfe2b6d325afb6420f620754bf7e236b56865206abc546205c7ef3326b319b554817fcbf4613f6f4bcb68e8f7425e943f74d287228f8cad9c5c7b4b33a23d4ec99827aa49a0b00e21f557fa032d1b49d57bc3366fb3b6abf3785c410f3f906ca52818b72c9a0dd0b7d9dd7c16484a35c43ef8c4bb5117784c1e541cb4255e8909adaab5835f27a8077ff297eee28b7a90d614d6fa3a789544bfc8a2485646f5dcc6ecdd00b7451ef5a6bb89c6b6aad014b23289f6150ab13a00b88d576c51d58d47bbbccb6eeef09e487b62be6ea3d6141e85cce24a82988bfd9b4e8afc9b1afbcffc4dfc66bcd3566e2fa96e7f896ea982fd22aff636bc319d15a2c972d43a56eac00921357e919eb87d75e4f2370b7f3211c14d0702992e5fc388f1dc66dcc4c64f69e330a7be315f377cb8515d27ac048a8bf1fde35b69bc72b2ab28a2209518fad5e18c39298e5a00183034893a738b52e0c312f21e6ede87dad1156401e4e89f5d6d01cb2f0f30038f3b638ad49d16498062eea6daff9a8fe7e78cd6a7836b3b684d44882b21e6a2398cd9641d95ca22ad03e108361cfe75a2930d5fe79f0070baa14307888fd9c4aa3250ee0189ccbd2906c4310b1688e6d56ea00e5d87208fcc31e81600493d0197224c02c9264edc8c0b747fb762c1f321bca600bac779e0a341df0d3bc837efc72c2e14d41e0548eff81b2050476dc78f9a7fe54fe6b2e38a6253f9cf1d17c26d7c04835726ca032b69ea9374e9469bd830f6cf942d3f1dfd4013f22c980d1f41d797608a544db8e242c8123936c80cde3c627634cf65e3b2c87963b769eb5abfc28977de5c03997fab3fc41b77c15048fb2cd2c78e55bbc803327b87f3910f731e109e64d7d03cd8502f640d0dca238aa225b8a6d25731c90a5bb660cc5e9d81a9b87d379a35febc4d99a3b80abda6070fcbcaa7ecd03977ef774636e3f3927924cc287f9505bc005e8194dcfdedb6e2e5ccf76190934966ab489a32a6225158099d48216ece69f3f2e943ba9d3f84771c5b37a07e86c004bda0782b7adcd3a1beb1fe9327601c5e6c21d4bf56bb29358595e1b25a8770db72c61e3e0c0500772dab2a5a2eec189338efbe63bfe5f326404e1a472781a8d4dce6bd84bc2dc2e25470a5267910d14050d02ecfdea660a3c44a4ab321d8ee315bf292c84d308d7875f7c2bece0790619090fc68d40973762d0ece51136718f82687ef02405741d43f8bf7252e2b40f38af2895fdc6fb0b6a4509791083bb2c64f72de60053052224fa2eae04a067b33310ba9890899ebe0803798e9c76836e03090e3824fe4a11442ace0f9d429af1f3073dcca1e15923e64fd42f94e65498d06af01c78dac246fee5f190ed534d8bd28ddfd423654bb6f3e42c2c58c8d9f57161430c410b6c2b752d017e0c79121f6cc50ad0adff8cab99a74adbbb3daaf579f66eb5ed0e93be70798c3f84bb8347e1f63ed94ca4f67b997c5ea224d940ace4cc32d5f8e3bed34f0be38d8cdfec93d4ea47f700c4b53a5bc17888028499fbb1d4cdabea92ac32ccfa8224554872791071e004e46963b691c9a4c46dfe12f631cc23effc7b1eabc03995877c34c7fc8c09db8b944176214d1224a246692bfc880cfce2939cb12bb866189b4b2d3f67ac1676b1c266b8a5348be09a42b4e7596511d3554ad8591a278802e6d0e685784a012644202be8483fc53106cea14d610ace0bb4b0fcc2b7539f74bbd18a53d5cc5f80b43e5878b0545f6a65b41d60f79a935340f598a36fabf1171f4078213c2fdcd1d05247b83add38c09022425eee706f7ade4e69da5fe8578d30dbc2996c8a88fd13066962d970d1981702d56e12263a579eedbb263c52bc06bd8ce8a74c0b4391c57f6320670d819e42ca7d0f2ebe14ac7578e54e42605841b36b4dbeb4089de5e9f1213697b1214e8fb693613a98276d10480c1996dd5e08e8470e7f953e266b711ce4df325c12fd158dac9fd88dd7c9e7b99c7acd04750964a990bf690032a37a600e47ba4f3b772145dcf93252f03c32fdd75cc3f5c0d852ab648649f368b2e0684da0920813423a91fd88e069b40a6999628c8b5a755a074633966d352f94b185d24250a6e2254f5fad9c41fcec4d6b6fe548df9558dc02a2609f0bbc09a2f5d3477bb4d89d569456f59c27f33aa57824a77f718dde44c32e20a7980cd6e372b35c01aea8282e869aec47e38692eaa2049f4540db31c6c653a1c9e679a66380c077613c4c47f53a3734606df944cdd298341ca9456d76adc39722898ec401e9dbb4c312034987ee2de65619048c0f0c6f0e17858fd185769edbfd3d476c698f90acb88d95242271bb0fc3915cdf503cb730073de73ba3dbff93d9ef23f3e308b6ee809d84c76d958ce143c60d2bdbb91d2823d8813ca8f54ec9b16ba78d3a6c835307f2ec8c83794fea3fca5d1124218ade0ee441d2314d39be94662c43f228ae75673979aacb4334bced11eb60cb1b9d203b3396109a71f085758d348abda257adb8851481d2abc1f6c67ed015742f3c4e2abd0aa82ee5cbbd03b2d4d49fa1fc04bfdd6bda1f83047ddca3361d3b55a4a6223d89323afdc058c645a969ebc28ad76a3472bafd6a9f445d74380329d43d2243aee951b0cf83e2f798447c109fe5b043ba78f42296a199af2aa8e6c48b9b6d3b601379b4450e6c5149629e6543aa0baeb2b4faf34ca55aa0262022192583b934b1a6a6b6a7436663c9b5a38b00e623fcde6dcc51a5b1fc79ba3f63508c5142d3db7190c1104d98c354a0b9a7d82cf44584be4c3a26a88d3c101ff5744fa0c3b4ee6578fca136bae0152e3a463bebe9ef1e401b458e6a171cab726ea22eb1e5492e5544c817a7b240bb4f21a60dc7034d3b71911f95e9b1bd9389d818ec8c71fd35743ef6020aab06ce2f5be573d0d8941db24c2f3e1bf02c9df7e4f0cc5cb23b74dc6b39f5b86c5adc6240d6cc3569ee44c63a753194baae4c04b13d650b84aeaafe10452373a1bdcaa45e70ec9259c0e439b6ac0f4459388363d3e983c98a0fd0dbe8cad231b899bd7d86d7888470b07852661888271de811fc29a343d2db6c60f40572928e9851f69aa3d8ae061f86987f8c01597fe3b380ef7e7958fba6c6dbf6227ac5572fecf9e019a5c4e61aec580d1e53404da1de35f3ef8acdc6b5eab92c60ce1e42cf170582ba5486ef805febab387ab57c80a721825d042329d217c9b584660a09341fc3e1df3073ef0c7a51f488e1d360c2afedff9c66051ead4ffa1b9f8ed1ba8d3b179ddd10fb19bb4aae1ce2195318998a30d3bcb0bf8c1cf8d107a4a6e8f7968279e87762ada57209343792718f05790ab0fd5409437ce9c3f06ac910fd584c5058b2e132acf3537f010b9f644b7452b28edc3a65103c00629d76371c37fd197e78dbaa00fd34fd4c3f3a77808f604ed5d04384f89f78d2f8f9ec26bf461fc9396625730e07cc11342d9546d2055b5ebb3d62f63f317e790e9653b13e4fa567d222b1068354cd7019578e69c8906e957f17fc335dc73f558999039bba6b127bd32ae8925741ad5d09ede0576a18d6c754c1aa77808690c5d54bd3e8729e4c1cdc87b7f3c0b6107a9c2ce8c4e99013894546cc3eea2bcdd87c9b0b1f8354eccb44a9387f0a1fbfcdaa0c11aaf47e0bf21fe0075715506537ec2d6b5c23f09b24a226ec366bb8d2ed1515d6c36b60da84493d62177bccb27f6962534ecd8e0581a43f2fbd504a3632e53e2792e4d699d47e6ecea2a8f37ee20d1f327630c86f99650f1761755645abe47cc1662deec439280b07d5f43b66704dbd0e77184b2dd36b1a0e69151922bd420fe8e5c586e6be7da089de2d203d0c280f6211e1a0985630ba409a9de074a04140df6a62c8f8fe581cebdd8ed875fb1d2f813ea114d2e0f41ca5864140316093f29bc1c265b2fe21da73ab9a47e646b1db05427e9816f8be248965f25118f4df73bfa47d92adfddcd6a783a9c94de632d0d2d156c7dd57bea092bf371f0867ff3c2cc4a58b4ef3672f7b1d7320857614b292644ce8af343034ffd1f48429de9c4030f7b8001d898efae5d2b98b86cc48d778fc9f2d522c755c52b8bd7a1a6d25dc8968a72c8c8c03b64c13ab6575c2c74d142665206531457394450b56a14f464b39362c06f277488f69ff0666ae6ec25e3f277de63a1d9c4ab5d4444deb673714e3fa388418285113a62a3823ae095036da150c48fdbe6390b9592b510d28776fdeb21888d4d9b66f5439dabc572e6897e8aa8ff5d0ba5de05c67c5acdb04bf511af2e4ca5287ada2e951239f9e8e2a0072e75f72b0154f838836e8b194a36fafb4e50585bb1eaca471c1dea26b3a79db83fc19ca32e718556ab88362adeeffe6ab39f7241a1c8ff30337a73b429ee6f95de4f3eeb2eb023176476cbb492e389b2bec62990442eb5b2cd0ec39cd1a9a1aa26c7e0ad288163b6e0e09695b110111623fee2051940ea830fbb540478fce74d82523422122e088c674eecade81b9ec8a0be3ba4d976962d9575df9c8a0488a47afeaf324fd2821ce314f229db141259861e15b16552ecbfb9c13887e00dea172f110f9f6aa8fda7a5ba3f81cbe9b100be80f909b5a35242e765ba03a0b3c292e4d22bffefe87a53ae037d3c516231ffb1fcec48294e26ef902a36d1225f8f2247c34d1ffc41820ecc65f1965a3c771363497498b76bcc60968168e652153a9ff3c55cfa7d0aa0381ce9e10a07c8149898b692af0143b26e1b46f8ca8c64c72fbed5abf9b7988d0a3f24843c8319788d939365ec4712b07f562c0ba336b687adb9a96c8e65e0eb321d39d322eed9d485e7b3fe386d9814a8c39056dfcd422c29727e0b563027016044677c796c55d1857b97fced3ec3a94c6aa073d438d0a0557fec16553c5bba65be6b573a97539b51d24247fe2a06eb0d19116e159f93db63154fd6e5774ef2bb1c852c73ace8abcf1231e5d89c7714dfedafae034eb27c678abb08988a6baf4aa431bc08c9286bdf9160f90b002ff53ff3aea28de82361ca0e7b5beb4af7ecca92de0a2f09b0d2b8f1388b136ff39f2e512c096cb90e47b03183b308fb845abba8e79e9db5cd488070e015b984678f6ab4a6aee36c7943ca51c730dc7f4ee90f1c8339c5058bbb7989fcdb8ed6a7b06b92e4d1c1e38cb8ba9bc012b704dd771e6dccc622ff4755de88e78f5c8ef0eafbc03098574ca44ff10eb2c7806b19ca25b091e9c3cef9fcc3245833968316df61526b8fb7b6295d0876c8b08f136a7ac55dd9f90f63941065bf8431965c9f88914029d348250288a3dc05cf0e1aef8a5cf1dcbbf8ace420e82a30f19923c25aba0ec46293339d96a6c5d558f786b278ca76016937b43114700ac0cf30599e118fe6eaf9e27117a7a41e2df4209222b765ee321291bbef83782a2e2656d79e3e5a3f07c390d506270192172ec576551851c8a6d95fe62e0e3348bb31bdd310d19cdc694b693b0411a8abe00d4db807463a53a296da225101a7a02832dfb95427a5510d12e92585a95c25c155997398eed498ec81e38317dd6b9cdc0928838071dcef516ce7aafc96dc0c0d6b3b712fd983ba9a74e50b432d8cf7726799ea4aaded3f2c0569803b26a674d8eb88492c4a9dd763cd58b977ede6d1591780d0312f534d893ed369508b40d6ce0000feabaedff19d73e9bbdbe9fff34fbd59f5b3b53274d755930aece66f130ae2b3dff403d76d700bc9a4bfdaadb3bf04ed151857a3915258157bb5e83ce1c585119f4cdfa04047dac61fc47c01d28304a81f4a2f847194b3656f0420a164052c184b226892c3bba32cf3becd1bb9e6bd03ec3bc0fa9507371fdecdddaab52d518c2f90c0f2c435b834215d5f501fb78bd39bcd5348e984e671a686f1f3e05933cd515ee264333a6d2ef5715a61a1e5d533ab376a694eca18579c5c0be945e17fb345005b0b33ab8d08e1d181e0ca8ce62b0a62b759eea45c108e8b8632a44c9e0c50f3101a8038ade137e73b00e0200183007dc00d339aacc36b4a8d5a94ae0e05381be3680aab5a5cd142619c002456ac80000000000020179d46f3eb7ad3dc2dfd27c3a3d616d835b6e95feaa3bac16464447252a057ccf78c5c1cc40c928f4cd44f3109eaf8ded0fda1537a19e2407a724b8a15e55c8028d39d4f8061d63daa9773842a6c0a8b0ecb53247a18f80e3d0b4e7da1a4e9ae7e62fa35800a3c9c531801f4ec0000000024ddf2d6feda8fe69b67b932ba3ff8c86db7e078eb7ae6e17373676a467ea460b425aa8788892129b07fafbfc742478238619b38b753fdcd64572ea7786dee35141bc69b47c4367d15b6c8ba18e99a111de66310d3a80599ab19bb90c5d1d1115bd01a0eaffb427de6c0166004ad800a84d60550ad2d8bcb220ace240000000015c4b99af4641ba11992ec7c012c2326ea6f1403f9cc5aa0089fe234ceb4591615df1ac91ac5febd8099f2a9bd6d71bf197ba46ba5ffa44b48494c6d69f6e5fb616f24ead073b8a14eed66816b4578644be2a99e4933f5f0fa3f54dcdc48a351cf42f4b5299d465c9caec3069a35cb01c7ab3bcfac8cde6aecea07a394539e8123349c65a7d4b662d14f6b1b85ae109f65a1198a1057fbc1be22278db885812e516fbe7efd534062fe14b2f7756ac59b3857931b1bccf45640c329e3bd617cf6557c9c484c7bd55ae29658172524819f5f878dc77707c90aeba56ad25f82aa0ffe40ba8107b869178a80bdb1d815d1322e15d67b509465a800ef0115806bc63a1a0d4caef05e79a6fd1b568b3d5d7677c3a4d33d33075e1f592892a9b74c5019b7f87674a24974badd9499053ef38c2a6152b8b98483871517d89e7e1e86de9c6e7f7dbff1bf3896fa4792a86c86dc8ecbe0e789e787bf47c908b39f86a91480b88dd958da48f1975aa232ec6b49fbc490d99ca7f70396305293144d68be876db40be2d71af687c76b7a329c13168972a18cb197b04d7efbfb90895cd155b36ebdbbfd9ceb29ab906843582f4c31823ed7c5470df8c7175363c9a142f634957df5669b46a94a88c8914bea32e6f3c884148cafd19932040aacef5a94c276e362305102f6fac9400a7ca28098604a0565402bcff0e1dd536cb6f2463d87cb58db0ed8ca10d9ac9134171727a824620f51a5e08d8e45601e08c7f7003db46522ea6ff084ebea47db2f9bc6507a23ded28e4742e3c49738348a449f8c5503872e0ead93f61acd3544e2efde40bb6d6476a3598d065889de704b4a21b87ce7fa357260cf4b800e734d5dae7cd9c2b5ad4ae6810afb463b22fe30b4049d036323bdb3fcc14b3cffce2b3e715ebbbe7006c81c999520d338a1ca9e05d564d14199f947f13616e629dfabc2a8b116fcd4a7bd07ad5020005e4464e8fc99be2fd9d0ae2ece8ed73fb5f97b3a32c0cdee69c8e3c40aa1b00ff4b8d18579dd43dd2109e96f003284dbd695e919cff131d39fcee87e7e12ed4864e3cf9000019396a23e4b191a50198eeffefe0e32fabba63b379f853846560c5ebd347ba1c456901e9732ed196b2bd64cb373ed53565a336968cb3598f88e3e2f4b5dbc43db9ecd9e961c530182128af0c03e06cc1f726ea20cb7c23dadf2c900be081eace19d25d60322f5af218e2ed6b4b61e93b99b89d02173fca6a65a73b7ed1ac51f27330d16640981691f1bf3795b52c79bf2b3dbecddc34415762cda137ff3765326cde6aba547deca8773d37a88754fdef8d2f33f2d118fdf34a57f9e11d80cb1fa6c405e30000000754f09f78ce65813696e74bbfb0097fc0144a8e3f1f8db830811985594efaaf1c9064279969f589b7f050eecf5a6382e560f03b805578368adc6572eb05649a15280af48072121e9cf5430118fe024a925be3d45285d0fc43e16ff5d50cb58a1dec35d3c078ce02efff1d8522ad3fa30443e473453a45579090077d6a81ebfb5559686580ead1c46722ce217a579d34774ff770116d41a87aa0c18351f4c5609c6e3266e1df2e7958678f2266354410b8af7e63aa4cf4f814d491c2278301fadcba4b0d6ce42cdca83c95bb3540a1fdbdd64184f60d850b5eb5ea24e920e77a4060af2ea49f138c4d6378b7c2f73587f1856e6d3e2c099a37cb1f76f4b22865f0e8533077409ff9cc4af5510e49b3335946c585c943f1b88e3463841694ad5f513d375c959c579ab556a6bcb2c590c7538449b3f483bf67db15c1be3bc2980a102a097bbbc4c23a0f1d8bc25ef357e984ed4fc4024be5cca30ada4f5ffa117389d5a265521e5e4a25e3a4baa5318ed71894cab2acfa8a00bc18dc84865bc8f32211da7168679570bd2e87f6ce7cd846d026c4b96d93ad1a13835ce82f8c213744d84ddc752b5de5841ed07535d2f8f584e2d10c95d0a21b6b01012dec7d2b45afe0fd417c936640fd35832da82e82e8eac09fb99dea4f751e266e3580c03bdeb0311ad8c21e2df701593dca6714ebb293d556c44fd44592b6e6d02604c804846bde5413acd6ef99718259c228f80a672b7caf01bebd2e6eab61130e089006cf3df5d7234c833e1a334c05097410d56038e617b7cb1c52d9abad0f3efbc243fc2423f3069b7954d64162968362ec1db8a3f31e1a0386b89b323cac61cf9a9ef0f12cd1bf0bd3f4f498575d673fe085b98701f00fb394e6f2ada404ec0875514b9e20498d9b70c44a962f9ab719c9135c7b19da8a1adf309269eb5dc204ae5a04650daf426c8b1d16dae311b1bcfbfb8115f9e57d57c4e7e630d593112ce59a7388de3ffca4c439a89b327ed066c2683df013c8a9eb823e94f93fe96e79ce1f77ef684ded777724afc7d9a74496489b86b870c2a84aa8eeed1a4843702080589e83f81e942ef37e2c23e83e8669d0bc9bbdead41c24582fa1edb5e88025d1d2e5bc59ee23d7e336412d2003d68f099da41f3a20654cc0248736e381f2fe01d770bc87c53c49be3a7a575935da8b3458563bb8739b65211f9066a8dfcd0f026a8871fc520f428b7973ddee0997ceeddaed806c94f766a1108b27d7ea05eed3aa04f1452be7aca61b81816510e2aa738efcec42a3559d5b30397e7c647786cdae4a344b117eee920353930db079b0e42c84ce541ff24ac07c70b7120d1a983cbe1bd33983cb8636652b1fd7ba857ae6e2b2055adcc02df94ca888021072a2d9b96057b6318b6e69039a29cbc6dfb571354af3600c1bfaad5dbf6e58c73aa93cb92df520a0fba9a7a2a8b7ea956a01c923ac29073f44a11899bbf0f66cab9956413afe5d84cd6cf4f3fa1d6200d758d3fa3e4dab6b1711ff30f05e3a9df1047716ce073404f2e6b46083b4011f5f4e143edf811204ccee3c9cdd6a837a638126a584aa62e445aee6b61fb0640afe6148d5ffb75ef62d1e76816d00a964d9136198be26bcbc49b3929f394e623e6a895f6f9984044728e2ed33a808a85f9a403785bfc00275e3ee14448e1e188cac2a9c3876ed5ee3634b42711f44e5a0e1d8ed0279d885f80c347d5c96296a98d67a7f9c2c28280ff155150ecb488917153213e9a3e29cca917f8ff1ef39bb05581047220d15352646f46f96e1dbf37d0956ca73395989d4dc22bd930475d6007aa0a900faf43347b1911121a5391f642bf0f5b84769c5bd0010136f2ed15260227c763e34c715a2280d007b4c485624b03c5eecb7b9cb49d5723f5b8dddd1f65cc3424e6ee4966c5afbfdb5cb7d60d6f2bb60f5bfd436dc1391f4fa6243c17aa4528007d92961e163620dd6f6d8c12911ea56ed197945b915abe3e1901c25f4aceb2fae3876e5424d956d500b1f802e06336fa2e2aa353cf64d801319429869c9f9f8e877e0a7ddba71215add24cb33815aed15c0ac2ef32fba8e20a735bbbbd227cc554673ea5b4851e8014bee6b4b0c16c43f17d9333218767006217d609d5e0f14e77383d2ea529076db00d683027efdd7abe9fa485796a83807d93338e682f0b7d4b737a002ad67fc3e4ceab4e9fb1d39cad9548850daac69076bcaf5dc79c740e68405cd1e1b654d0a22259618200bccabdf01253f7f8e2cde2c4e32a32cb41db1c30fc4218463c1b5a92cf74f1cc0e648783c9b19bb0c0f08b98f8d5a6cf4871797f871f941f205738e2f7536a8b534e0b2f1534efa44d631f976adb99310d177dc72db9417d6ec1b1b9a470b1183102b6c0f5ebe75839a72a04ca9835b8697072d8d3faed6cf0adb27abd69e9a8903df374badf8e8ba831b6052ec43ac4b4eddebfde34a0fe577b3a7f49e3fc7e5cb12c2b449e39d100021f865d2dcecb37641d2fddd82b17ad72368188aba9f9b65d6f60e328f73d17dd7fbc7cbd194c1c09d393bbd40430e7537effae4cd562676d28d0d082b39b83c1b3c01f13af9e4b447bbc813040a9a7febd82eb26c398a40c8fc1b37ee9e5615cc32af1c1d1a7f1136c365fb08a7599834a5cec9e45d40323f11b8902f3fbc2cfd53178d3187a1dd2dad05f6762e97eae4f141ce0ce5e29a2593ec8e4286295b5dd209ea266020498b2425e790f5add3edbae80f7433644c783e122835dcb91b6f6956684aa83dee194b5dbda22bff80c1c30d45093fc4ea2b3dec83663d8c7173b90faacf46c54423b6f217d0c01ebd659e531c18751241b6091e2dd496af17a191970560593b874515ae94e5c724dd96deff2d9f1f5cc2a61a726666610d2421d6628807c003f90e859666e6cd472e72cb27c1a67cebd7ff1d137b8cebaf5313574d73761acb10df01de44fbd2ae06eaf798a90ea3da3572621f669a1fdf4e336215976e6f2c27df6a95acf448fe248f032c46f9db671509f3147380cc3bc01f2dde9b562eb2740d3bc7731990936057c2c5c899ae3800000053c79c4811626f0ef090a12229420a6141c80907941c423a973c73fe36d42ffa4c36dc35e7ebea09185162f938493f8da784820f69e2f9872fcca21167bb20f4ee3f3193973bee2ca4f0f9ce53d173cc77712e82a20e640bc905111639c6920c3275ab1cb84b16aa4c916773c38fed9c0fa40fb1762fec67a88c728907dc576ba79c5dfb05f0105ec7caefb1fe719fa2fc21c0a7a8cbb4c43db8f6dfbbbbb192419c991e465f91430d135a7e7c44b8eb6d2a9a03e9cac46b6f70e49a499a63413d0b1b1da2654533a9c52d79da928a970126de383ef1ab114b2750238c39dcd39d884134e12fba8f469ee02d147014541c3f44affc7237dacaadf20bbf7d3993df6f9d9079a425f0f4543466e598a0fbe05d890e2645649b4912fad1fd0638265b8f23cef474627917357e8c85a12d0d2e207a148b448a3b336a1e99124b1e0c099e119ef94e818eb32ce92e6d90cb396b1a234fd14e91511f90e7edaec758d844229c87edb12e4ce70d9f5f680343272f5584ebc56c23feefef2a774482620d0bc07d177de9da68cf2599c0b2ea99f60af41ae742b721f36be1ebc93a0b21b51d552181a2ae28b59494f0a420968124a46ddcd35ac86e462ac9151436461fc8b35994cd6e2e55f931e45ae48f5e026f5636203abb6cd32b8398e1d98d270f78ff5f80cbe4db0c43d09a00cef809649cc3543ca7a5646e4a774ccdd1a5c6f98026d39a1a1dd67ecb703777a4daf86ef852f0b7dd4ea3aec9ec9ed3f89d26d5452852a5b9b561e1f9b53f5827edbd292e53d32c5b5e48201dae5fc93e0bd6de037c9bc92fe1116f7036d121761d11366d2e25651f06141d6a6646ac0033e731e865c1db033ceeaf79a42661c5de4e709968e01de141c55ac83e4313d077e41af5156fd90c810d829c56bec8b59a65cedf6748d5b421c6ed81e1775b01a50beb273c55ffe8195975a22ed26129024a36294716f1f4692b473d3bf864bd69d6b61fbcfea1d60c906afc836d4e057977965aa8c82fae6814051e2657ed82d393094ade50c210fdb8f26c29998f44625a9cc853c260845c3d6f0848c6d44c02ae1f2f31b8b5e9d07d9e67cdc5603846a1a51d8f29d45194f3af2f0d97d487891d8b61750405ec5896c902c2a739775acd4e7e7dfcafc11f9df111a37bf765ff629af2c61b98d31e19ae1dd936e7443c3ef5d22a5e4cb983571af44413df97ab24eacd1d2941850cab2a8339a35d22bb251dfd5a6b361ca8702eebd156c4ceeae4cc6cedcf8383898daf7c92755b120982ed064e90b461e30bdf19c3d23352d859ba0d45d1d39706bd3e00555323c158287fdf0c0e7ae9a8e478a5dd3410c7db25dc48118fb6ccab7d60859a0289928ce6bfe33bf4b85addee8279b03dc6a755dfa2baaf0808a3f236f9e8d698a43cb9f1354a34f130a88af20e159b34208b19b80b18aca006e7e8751caa17c23486b033c9ec56d96b419898f070eb8f78837185296709e04442aca699529b759b0c7224e34c8ed5e185c7b4315a0f581c8d60662a1ebb43a4c7681a4604569d9b886674fd7cf2deb5c1449e1ad3880fcb1976794651076306ed17776b8f829c8054cde7953a55eac7ef07ee61205ec7ce3420b65c6834fac3032d5fdb72c901333f818625b67538a0972ac335a3e63b03bc511fe648381d13ab26a8ad8cbaca04af8bd6119d1ddc4691416b7aa4271958ced001889f039c31e000d5054aa2075270e8efb10f3ea756d13545a75ba9341fec94e3dfc5ef20c0ab6a9ba3b9191431ad00a67e641b6e477bf46cd4c5924b60d833cac0bdaef3171344511df553a93cfa5a63638031c1c6e15c2062d76c2df147c4b325928530ddefc0557af5794c5f34ca709602056d58c36f3be2d6aa2074841074ac0e0898cd9f72f3eb0a1f719ecbddfa3c334deb27f2ae2e96ea9cf6b2471925cb5d6256d3074a16d5c0bed5d3b690f5997ddeecc00fcd0b5ac4cfe8f1ae00dc8aa244d2cf653fd87a3289bf451c989866ea943d3a499abeb5bad81c60a80c1fd215c73e0953399e2d1d252d8be257cade97d4623c63fca15253ff2cd58339c6a2d0e929b248b9f6771e08c7e535212579e756a3f5f26751f3a557fbc2b63798e7d60ccf356e5eb79cd7b4a05bbbb7af75e6d609886a01c263639307dbab245b9d260bccc43209ee50b02b99350b90da991397581f6528ede5f890ae26af1f9e6bd4017b7afa84b8725f6786bb20f6286e1226c2ff64e0dd00a04012cff2ec198fa85920a301ce076b16f2fefbd3212502ddf0c1c8020a68300000aebc406317a75e1109785b6ba048202965679c0470372668cd48ac5200527984a56538897acc4dcb2acf69177ece66047dff98abe4f1cc78a5908c25f4761abdb30420b12cf7b42eb595e794c438a9b1077d522fd5ad0dc5fedaf52459fbc71c8320345c5ba7bbd37dce504dfb69a0974b427f420a511f5e400e3f970b3e2cf417abdc450b5e52b96928bc6cd2695829035622478cba287c089e29c36f35f2912049a31778dbff3b22c3f9efc3a591bec0321895a3db032f82b0dbb4f8c4f97951e6a4bd8298fd71b7b745d4cd82426e699b2e970f8671a8f7a851cdb0cb8ea76d3ed1add83f32009017faf48c13217424182c0e2646b768c608bdae5adbe87ed0d35d1f26802ec9a49b2c3a9dba082d7e15b5daf150f7737ead606f787261705f3387e43dbdc9e70697dd95fdc0fd6237a5e8c747207347bd31c395e6e1cf73ede57eebbc91af6a0d10d384c7e2212f135d909b4478cc89807d862245d5107f2d79900ce1ce6a6e72d9f4a77079371cf60f61968236333b7456c7db1895637873c9f72d9c899d7524c7c16fe4bacc46e41de315b6f6958d766ffc4712389f3ad82ff066a3ffd57c835dcab076fb1d913967e9125cb591458d2d01cfb380597d0e4fba9306c555d665692ee82e98f66537f475e8f9e5ef9e3f4ff59f511a8c7ca9bf9a18be103ab63f2026481c5da7c8ec74e44d88721c55e534a790f769cebfac7570f309a4dd683ed9a2c4e06855c1a062a25e791b7591545fcba2a88430fd57fa1793459fe71c7264e7c7b816ea69b3d614630cba150777436c06c968998e3b7c107d8e026d6d90115e255d19687b001f48e9e2235fad6aa480bf4c61feb03a4a8bd6e614a8caa844cfdadb50ca8e51aeeb8c5b746edfcec990cda501c77a9d942a597e15b08d03556e840bec2c119d9a5764e7c7a576034bd281286f228b270ca788652ee85dc391d40bc35c08310b2b198971ff36a481aa7d21f5517bc8c643768ffe358574900747d3f7bacb3cde81c3aacda4f8e915372f9c89ee5fcae6979c967b92ec684891732e2800ab43b9a862c91bc1c604c0dc06cb0fd04f86946012d01d9be0d2dfe6e71bb5c08eca48838d56bd604d0819c597ee9629de06f2a43f3bc476bbc9023b43d5b0dfcd300a567d9b32d83a233fdb05606a0eb4accaa08bd4d2d3bc100724ad71ef0163a4fcacf1174b9aeb2d58d62a0d60a36916f63f39cb94fce229dbbf4327bffdb6e52a4c5c7c5f9f0424bbf018182252395b4dd822e67be49db113da7d11a7f55657e02c928fe642537b21d04538ac849b901b0e90de1f984380ccf03bd1f0661369700347e4a5557c80dcf3a040e42c9aea9fd3dee68f4680c7d0ff8000002fbd1ac94f8f6b703408c2a9041662e4a8ae08f9a2573640f2bc990dbd6af4fe626bdfb03fde0383be66adcb699cadcb3828275cbd8b35d264ea424b31b4af8c32503911d8e9ef251daf648a8c2f470fd011b3f60abe8e57b5a7fe242a2cce8aa58c46fcf23409b3de1e087f0702d2476d85143d90e7a13eeceb74407e6eba00a96709dd5a2d91aaaee948022532506dc94ea073abddaf1553e9a6a9da12f7dfe0cbd3ec151fc5d674a758c2d1d61e3648692018759b4d1f1d7899dcfdb59d879b9ee6cc6a25f2a328c052d9dc5857ff5db0f401512b15d90709bc222b1a15a59988066c82489c1ed8771219ec864188534c2ff8cae6ef6fe31e8f28ad33c6c43948891170ca9c94863062c7ba17f2fe4909d3364fd2dca6c91e43d48759c2db890fc24f6a5aab603df40a8f648ee15670c196456bd420d25952b1350c8a8c48b46e1791e6c0f7a88ad2fa1986c24ef187d1813b2b4e0a7181008f6097143318f596fc898c05229db7a25456c76f7af6fff49fa1076328823682951126f90883f884cf92e1b35fdd19642d3b1267e9ed25a6a53b200b1ff9dc0687f4e6a980582c39021e8e243b0a3e26293f21a70c46541f4ea9607bc36cf7c17ddfcffb402ab360c4c5f2f8f922249e5e3eea7bc35cac3d0939de7561fa6c7fc6189d4c8543ef46655e9b9febff318209401335c01a92d50bb4ca0f8a80b3125aeafc505527ff1598a7d521a4f8e7895ba7882013f629d134edcce906c55b3419af47b224d14b7adad3eae481770594e8b85ab6cbacda36d6fd396a79b190222e58af6b9ca4ff43d67cb3f656b87e888aca9c7f7af183771c3bedec0545d49e2fcd9d4899fbe55978b90453d8b849faf6372d60f0c6176b2bd64e1e3ffcacaf9ec306459cb1b3f8c8530d951813da5fb4881a48b02f3c627457f0a09aad71c1ab65012fd65dbb95f760d814c1639a30783b73db1d90fe2260aed2330954265f59aaef0521b0aefee35ce4f8746d1be6b51f13a62c053c99fb45dee5079f455980e0f4c0354d5d0389f86fbdf897ff70271b42b0596aaf5b5659ae7179e1fde7e123a2e3a5e27bcd866a6ae35d9a6c4e1c7ca6fa4d80ef26aa03ff332e95c2b7bd85eb4bc964aa433c207046578e0346723af49e11a57e830a94211ce89bb1a47262170f4a8b265e60eb6a44c2f65fba500952ae5cb64201f1e0d998684b7c206ed230e9d141eb51a19d8a0924ea74f36632f578c0bfff5fe92bb153b66a2944459cf5588a0124bb0d0876186dc1ef07445d45d82edd077b4c4d1a18caca4f41482d857599f1656a3ca8a0ed663866921f3161bd7290786aa6304ccc2e1978134ff6c35c7d327ef37c305c58280f703a4dde7e0cf1778af2bfa6abf843e774444ed5c1653f405d14288662f767be5115b767878ea94edb40d19e541e5b647a9b632214c6c5138fb60b6be4ad9d54d1261d63b677c62dde91ac0c32fb5707a7877a8182e21b0354b1265c3aa7827e446000000b003bfd4f998dd839fef30118f40e08088f1b2318ea01cf473ab62402da86a6d9ed36bcf527d238296ce3afd249b1486dbe089f2acbed64d039a72126006dad65febd9405bc527d70c5deb1bdd8131596d557ccd088d3c5322724e07bdb3c387d417ce5b96987db3f6ad76c7d042e4463afc2610f09d64c30858ab1965777c593b6ded3e05444bbdbb52e0d7fa76f90995176dc6bfa04c9e2f9dc1e23d3a4e7fe418df825b04fb2f44c6e31f16dad6458f464c45ad91f6af63dbd501dedb791fa8e4a996571474ff9dd1858329ed2b88d248e1ed29c97842fab79c09584a0ef533a671111bc594ac2fc19408f96d1c2349b578463a7855db91d50e3d1cc36a29f5c7c4f476d4c8ede379223e4e7602bdb186fdb416f6b78c0ba1650f8f15ab827860b52a4b8818a658dfed5cbd9babbc2a6c312b06303893a498249992a79c38488543ba0eaae432c59a155ccc6da95f01bd26d5b56e63e373859b7243b480d0659bd36bb34d39a27807686267f12c83114e4099bdca07c3b5ccef9fa313d347cbcc4ee5e2a01c71b4544396d05f01c52b4c337d9341ae7b861935724c51b9ace0d3d7a4e3388e19f1fd4fc445e1973713556240208234c9df7c3e90d4517c82b893893c831c08974e348b4f343890c87fe533f3c814f32ff8787ffc536cf5b9741f2ec32820675a2f380146f392f03ad1fc52bfd9abb714cc0cd250f35fcf65efa0a53ec4c742cf931ccc0aad98a658b165b76775319db68db47381cf52ecfee2ed1c31008a1f7e8ea34e9de5b456b1be0c928b2245a2c14fe22a03d43272cf6c7fdbe7a9745746bedde3663f6f4bfac3c2eb2b243ad2262a0c1122d3a7a90f7490a98beb1c6e4417fb524ec735fc42eb3a216b73a4524433b51e744257ca5fe38d366f7c7746a3e600548c670bb4c5cfab17d9e2652d99936e647ad00fddaae241a43887b1f174e509baae1bff17b494c8bcc20ed16a55e2933e5b5602e0586edc548f007a97379383535b9552d929e70b0eda3eee41f73ce7a0d6494411a30b7bdfab77f589717e428806a7eb5b612ac5c1711139648dbed32956698dd98df2fd659b6a11e391ed103bb7a7f7e4bbae2c2a6149a61fd5233f667e8837cd8c62a640ac239f995283e29a8d36406c78ce934b9b9659c0a110f430ca20d1b60785150e89ab4e8fb0e329cc68d5599973d3ee46c91471bae12ca15405e4e6a288ba5601f42d0da507d9650125b27c137bfb30121be8e8113256d5afa0647dab087c38837485b82958593dabde880cce2a992d82dbf06d47fb5c64a894d82bbb9f8fcfa0dbe094588d79041e3249ea6b642f78594cb23c9ae12c8ff07aa5806d9a4b80370d9c0fd82ef4eae530408f02f89629b2867a6a344ab838c502de5cf1c6a28740ca001e25a25d8a2a6f15697b0892229963b388fa268a3298a9a0040b142a3ad6009979035bcbc742e879851730e443252ff83593487709b5a6138d87968ea4309a749a42a182da7caf494a947bde2c537cc45d5aa4028466f3c9f5a4ca91f21412d8d03d82041f71d682b95b1dbe4d1a6018c9cb12114d7cc1360925049da0e8d309e326b02e76dc89357bb36d386da888bded7b3cd04da6391676ad7559814e5542201045e9987cd0d0a05a373ffa2ab1972ebb9ea27edfec6fa230835b5a18885ac3c1c1462f015003673b74b3350cac6a16077f7bf5eceabd168a0ef296460be9be0e07c73041bbcd1350f74a5d434682cebf18772c9688330ca9fec6bf7f0efe14df343d48f7451eb844817521f1a653bc5ca7ae889129a4a206ecdaf96192c557e7c7a7c1510cdcbae0506bd80aeaf960a3cef4a4f2f3e2bab115f0acfbac9d6f1a519095f10c305a6e41c6016f136cb5fef4ce12a4f95d7652d081385328ed0771eda3bbfbe451494b5de358bc2662c6e954164216a4267ceca9ac5a2e486feb81eaee8ea87463c72196e9704f4012fff44841423e38d1bdc87b78d3272d3056e76eb7bf54a30e39bbfb37908c9c5a8dc107d911275d8b6fe4e896068b495aaab7489d4ef83b19f4f826a1c6736a49e9ac18f213beb0e058281444b971d21db1ccd3e43a16515fa64d336bcfc9228439575ca6dde7bd6c145554f5d7660619aec92088133ebb890c66dc313ac3beaa0eb4b96c2b8b29601d7b3e07b47643a6f18fc18647568eeaef8fa2ce055fbe12fc81d048950a9286cc89f76f0986828ab0e859304dffcd451dea5efec8f01af95902dc14ca5a234e601c0ca3d4bd74e0635cb1226de045616824f2b0d220d39ba6dc8718dc1668b8d7181d699743c302507b15076958202e17a6f167914b72a06c7f450925b10208fb7dc0104e478de2319d0632d7d4b901b81fc1ab54fc33e4be16a51555c251132324afb5e616194b38b0414edd27f6f9574eb74802b95aff141e8c963c31c5c42bcca21b60b26a5d1641ff9261d68dc50a45b9437e6da8ae6240a0e689df75e1b67d8f719b1c1bb42bcbd4fda429fe41632aaa58fdb32ae26cf70794f5ba67e19f61e5c765a94653ece67656bf25257d5d183a6053bca86c746e0b9b0f3ea5481db8039547d64093cbf2f4da8ef8313d7d9a08e874c7e463f90b96761093df382e6e7f1638c5f3b12c09d6be609b7c5713209005ad625df08f5d14bf0dd3e93eddea81244833730a18c3fa3503ca04a53838660b191fef7192910a2cb6879aa18965366951067a78e5c9365f0064b8309e5ee17026bcc903c2a710301077cde1582fa7e8105c2a14d2c1b77007351be82b51e98a0eb5c107798afa8f5ee8a1150fefd571c87e0c68ad6388ce53fa0f1e2895c30efa2ffa23f8ece46a7a7951fb12ae0b47be3472c2f6d8f0a51ea443c4b4f0a6f65e894fedf03c304bac4e38e056068b32ffb99112693ded75ada3e09bac7f0119d8b054371da14f50d2cd24ba1cdd130bb0e1665e1b6a9229bb5ed2c7ff4074fa7e5498d01ca865faf5c739bce302794596cfa68e950d9422e27ee86c1cfdbf10a02d5a3d3aabc941cbda70ed6e56b94a07d7cbab810b53db81650612369dedd1cb0f167bb96ca6a5ffd063fc535299bfbbee03ca7a1c23d5f68e63bba68882b156e1ffa7fd7c8adf36beb38ba2b7c210b8c7f8fad774a3e639481fd9cb8c739c64d61542a4fc50cdc478e1b86621570e87b9b6ddaf5f7e6f5b4f630d54d20e9cd1586e467af8fe1ad1f3deadd55ee666b86a2d46574f6876ad44743e6013edab28e75fdd56d5612d519e332fca01e0e2316c964c1662371bb1b0b66734eeffe50bd292766dd4194b7d5c2a013381833bb05118ea5d86a5eccaffdfd40427fbee28cd96ad3f10d9ec748bd0e0e0ed71fdd30b0754e454ca8a609f84fc53ce956510983d4e63242c9ab13f215c7564d2e710c576421c85c662b7e5e02c56632aee416a955276b278823a7469519aae7e73d497d98a384172a801fe0572ab5887e0d980bf0a9af16a29a53a32f356716e658d519eda1c2e092c716e33c571009c5b786c97c5ca78718abe5e06cdebf67c2e61d850f15e1254e2bc30f91512edbe55190f927e7fc2505be3da547cd253030f526638dd8571f1dd6e558d219f5bce9b46259f0b630e7b6edbbbb6cff60a74962a9aebe4cfd3396750237ee24ce14cbebf2b1fc98c2eba78e801f037c6f4e615315d7bdc25edc845f46d72c4f709f7752d77be031ca85379c2efb2931b721333a9e3e6f5b585c8bab245fa5877ee89433c485bc4440e4e3c55045f663fa4b42058b8bceccb9df92df832a7db8e7153bce76a9a83e16b7d3e014465309e86607bad6628cd6b1403984f8cfcbae9b1d02b3bd5e096150366c65d1b3abd7985314c59e1b24919c9be78bc98b97a287edb595746a6ab8bc74fd650beac978774a8d61999462be9f94bc3076aa3d2e3819ce830f4b00614e33073b752266eb860386e524e08de74495cf2e95e3e9cea721baf562c4d0d7b0d044c2313c6dd2f6a9727d4145662235132556fda0e7c6db8e73f73c5d55a9b823c975e5122f1704f8d9117c504b8da9e21072c5b1e8dd3d6fe3edcc5d3f2a3b0c29ba3f98941b8810c66baf4cbedc4d551d47aba556c668919ff744c1cae8676587ecc2241d3a51a39478f02939bb96d3ec2217e188c3a8f7826f417cb26d2410c7c26640c17bd6bdc22ab2a82d1c8b3cb623cfc94fce2fd0a8654cffa2b2ba08b841a516222def07fe379f019acb6e8ef622dad0230ddce65eecb645623dd2c3282870cd4977c51da0caefb7c3dfc777d0e0a83176761cea440399539f22d82223435f7d938bbdf4f68037d3143eb8d314fd15642a24241db6c08d6389b078bfdb3c6ae23c1c1279bd3cf56fe9d97fa408698bf37c8a32ebb523128d6600400efc397ec2e952d31d35c003148f272f9528bd8041dc679e7232c6203681aa974c0af957328e95d172e11d2528553a46782364b1b59293c91318a2d08e561bf2569a32956af1b5bdf1197ed45c5aeac48a7cf765e9fe7a711b883b38d29d5621390a9520848d08c9ce99b2751e3a3de5bedcc7eaf9d582481e9ee4c842791f7261a6de09548a61bc35f4abbd2d8fb2f0dd2b1f0a9cebce9f4467c8948a25a23392560730f0d32becf51fae2830b2779121eae6974e68b8c5f6437b11cd896a43de6a8f2ba75342c6a99e858cfb3d92cb91f9d60835d2992a1f851aa4e30c92620203f24a247fe914ca14c5e87edc11b66fcff4b55ee69a8f5accb11fa266b31bff9106b0778d2dd34f9769ceb799ccfa2000c2ba86cf4846158b6b0523f28b1722327a6108be435f0c2b246bbf7163757f643e0317ee040af785fb042960fdf4955ed23a4d5b7fb8b709c4f4bf3fb9c6f6cbaf40f1766c0cd14cbe582993e7acd2eccc9fa384f9738f39b7b04a2027d200e951356247c6ccd7676590ce369beab7e7f636ff067a661f8e455fb655cc86a939aee1235a03df32aead9ff36c95e331141ea147429d55a52a9b3ebf13cac97303e5aaad72aaa3a0d5117161f1e760f63356b8133394a24b320a2eb6e8ea2adb4259339e6db2501ffcc7de1d13ef9c9e3826ddd6c6a5aa866c1ec30a04435f051af292d540d3a45ac264c7de39fe3bac39d5a9d06bf764822cd05e2cae0d46231035dab04645de805578112c521ad4a289bc565b0cd04dd042151ffb617ecbb11f98657fe76a154b16de3538185e082e06c65e2a8f4e74123b2dadb6ceb69f5d6fd5450ed1d5936f9037ad624daa6c21988812c1284d739cc8e322c0b88dbe80af860fad8cbe7c49c6f27bcf2ff108550bbc95e2ed47fe60317e61e2d287b65c3b24337bbdcff2205641eb18ccf95c7fed7f47239daaaffedae7ae51df4d1ae37ddca9df042aaf3371a933e66e512545f9eae11bdae8c79cb155547d63c093c3369f1f6ce7dcbcfd3c6ae565d397498bd017912f7f286a9183b7ce8c80b8a3b13ab455f2313083356b55bd06a53c7f204f411034db8670a475914f3cdf14a003026e4b9b6664827c274fb93694e13b2a1b90e70b8ecf68ceaa42209b3ccccc0c276b0f3b2b3c09cf08cf34913211dc9845a3761a31de146b4c9a47c1d4b7965638097309e4fc9e5ef3c0bcd4b595f0006e8fd561cea2403f7014106a695b61d53f9976874d8b040999bc39ba48e92caa49f2aab8b2971b64147c57e7ce37f2457c1dafafb42b03f7f884f9cb41c47c3c0835eb165e35b85e921733e48cb52815008c433f3a0eff0fc6cd1f8d3ef5f424d371a0fc45414ce2e47d3c8ddcb7cfa24a348b9fe4cf4559e0aa8c32b3ac876ff55f1ce575e395438b8a79a31f021709e0d7f16ab26c35d543f81ca146e53c8665b8a1172e31af9b84e4083f97d65752dd70fd6e0d62e27d2527212efc6e8e593f57acde8e232eff4eed1d5278e65ba138658cc3896f7acfc41084c754e94a221381a8cbc7816b00cf05eb280870e9975f91c91c3e2e0f7fd4a17ab95be5b2bdb8bc40d7908536936da8ab198c9d33e3d72ad52f40f038aa3769219898fbf9d7898da0871191eb61cb0d20a57d0ccffa77271416d87907147fd831641edb3ddc66887cd43ff7747597cd5bcec8fb5eb7acec2f15e14c16c33f2a1770e29f52a8d3dea94f7fb15d44f675a7c7ba332e4ce0cb111ef2ce045906735761d071ffbb99283efc59cb0267cf52caee9a0f64a9535709a51f1a7a79f801700565df7065411f1f04ab99410ac032b1506d25224abf57ebb10639a9be86052b5859988a0e7481d01e55df9b182d7eeb5cbfa9d4d8b5757ce46f4935e4a1a8139c5819ffed81acdf4abb1ab312ced9c93527c1f915f6397e2d21b5471f5fe4409e8c2302e41f1da11fd34195c43aa1d50f9226107a397226a1a59f9703d6374fe6150b8195250baa24d01891528cd587827504d72219a275f4398cad4925c85717cd1b0e1b0b7cae54a0175f858988d0e01d50660b38db2ed17999016e75ff57d1319464e630cf2d58ae39eb647363198f9659f232d3b0757c94844feca98874b451111e0ed385f4270e2bf08e84eac77b2870b5d2bfc1dc782aef5343f426b8b79ec720054ae397072f0032a9fe06d23c43ddfd784bb5521b4cdf5c6e88305767cde43503ce3dfb38efaea2d92f36e803b75036735c85148d99622d50cb8c63e833d33c12d1c41116d52443c36e59b24a168be436562637fbec1d5ffd00b84f29ade92ffda31f1843c1bce973a3d22627ffbf538705a5d7e4fc2dad3bed5489847a9f65f3159f4e20f4f50c6c4b7c82c03269ce3e2fdfd022e68ccd8882fc8061892f2dc767bfa81c9fbf33b5a0d3049f2621185b68a0a3e31b95a46c895f6212bc6d5eaaea8956111e2d799db8f1e98ec91dc57e7eaf88614389fa07d60c065420035409c6f1cf63106c9d24d9a935f88b7b712226bb69dcad4480459223ae2e7d34b6b2302e0fdf5a1d05f1c5068a7ce9dfaa0693c74b3071198fba40be85ca17ddcdbcbe6be9300b54c77651ea9ef04a803bec92c6ec0da5408751bee74c7faf01db5aaa2de58ccae9aac9fcc8f33f2399da44d52d2b1f85c1d09910e469122b95ee43f79e49e2d59bee865258a41f5dabceeeae595b29ed01ceda0a68319cb46142ccab02a69c5a7aa1edec8ca3cd8364e1ae27a4b00f90263f9b9e41ab0745083cdbbc94302f368b0c91d3f0816676335c870f3599e7b91f5af3a25e5b4b9b0492e2eaf2d35f3a5da1b956aeebcc92ab277be006f2b0105abdde83d76acd90c70002feb4f9108dc4a04f1f7d1759a5d0b04e0e8d3746349bc09a72d5a455c18fac6e2a72182e1cc6924d630b1c2c702894b3168df14eab6478805145991e09992111259cd856ba46aed66a24980bbb80e09ba96dbee773189da75b6805d6abfca0db2c132be3c29974a7baf65aa2770301f132de0fe63982feb426e74cdce731337db8e11de29ac67c7af1421e4536054410a76626bfcfac975878015deb6e3642d68d3fea2a2fd5bc3b368881f9902815d303450682df56f86f1818bbef6fa1cd9fc17e9c9b21c9919dcb4a0c9b904a8a2916bcf3743a4d56e8d7aa473b792ba175e698fa9df178c9d7bfcd4c8581ea8148a4619dd2444c42cdd87d9d7f8f09909ab63aaf713364e71b541c10e1b7660965b928c126be781f694ccd2205e2c4d282dc7e774cfa5b3e510a5571d829aaacf4222c936aa25391c5b1e8de3f33ccc5e332bacfe0a7c5bb02249eb217812b64ee2f1ccd58445e3e3e3b399cc3f27f3c0c200cdd69ab93c3e5c6f7d83a89f07f8ce0ccad6490b85344064cd3fff3d653c7847fb0518090563efbfe2481e3699f849b443c29f968753d9868a569be7ffd371453907e5299221a32c167f36bae96493891bd52b847199c7f00505730c9254aafcaa279dda3cb5d533240c36a47375f499226c5fda628db82ca3fd60b4cb001f9c9b4fd1f954effd4e6f85f0c7b5741cdd883e6ec99ef80cc7450e0de85c6e852cf13eeb377fd7be7e903cd346adb9d3ccbea211406718a1953ac496bf6e237981c261ff53b914a47aa9444d33aee827f32349a5d5354cfe1f708f5534d5e6677ddda36801f080d8144d3b9bbcddb9272905f425dad6546b6f856480e5f992f78d287f14ff6a7201da4405f0dd8ad4a408d5ab4930152fdf33fbd86bc26b0017496d373813dea6d68a5c1286a10ff6464aee6b98ac65ebe2df0c793b7d357be997ceeb1d9dbc1cffe4546d87185bbd2cc27bfc620b883844f548eb3fbc83b2fd6a439988c042d5d53db8c396218af7a745a5372d9abf739e53bcd8f95d956eecc38dd7c8cb1b67cb6f37ed5834c4c8b3706e3f3a1e03fab38c21795d8382cc44c91a661877b2c1596c0e1e1514d847f5c3cd20fbe61666000a61dd7903382de1c05eed59e80484eee69cbfe74c1b6d1848cfbf14d7d6fb86ffa267503a5595c7613ab8832cc7eabb1205c9847fc9be2d9dbd0bafc5585c0b3654bf6531cb40b7258dcf2af7a95051a47f6e1e970b82685470bb03d0157a0a1dc40b0d67d47d484ef248d52710c9e87707449004a1093c7cead0898d962e10157743ec6c6b17d7b2667078a4b526d6a0a4674de35fb978c2d914a66e8d2680cbdd718f365061cf96a1a1773be3d89889bdd842aedc4b22faa336fad0bb2c6d02c743316696bdec61811e1d9d47b384e5b20cd9187f0ecc9a007d8e6d162c9bd7b3be046bb19f81a0b88332db1c1f99a2116584fd1d5cb93ab577d6fbee452986ba8e232b9754b68a44cf30f3b421a4114744919773fe5e382028a900471de54dcb52609f0ed47a687d1f0b46dbd6e8d9752ab94d75f52541c0a92e0040dd9a4ba66df2c7389a8f89fdade8f76fed66e40c82f248c2437445d172d9ebb958ff6efaf2aa5743be932a5bf7d4073997110a623ddb2edd739cabe1973d419ad41759337ac47cecb86412e8cdd1dcbe0a7af7e0ff65527089093962daf6185b571a91e673bc2a7f8fe6a1210aa7f46a7697a951ffb6694a282f8b48f308f35015e1bf6bd87c24fbaf22f5e6ca1811f0db7607afabae4814fc79dd8fe44e71d7d63e0ced77281e4680475770c42564a04a02dbf952f096bc436ec5d5495e862a2c316b1022cfe754626121e180c4448b2bf85303934a599e68587ec23ceb89f952ee357ebf79fbc82cd2cd06a702636ebaa8c3fe9ea1d93421dea96818cd1e26fc5d0a47cd66f1fb865705abf85781ff30b80c4e991013b82edcbe1f1b30d7f63a38ea9ce987a4ef865d3e657abbb47a0b6c29e9b9ca04a137da78815b359c18ef45d59539534d11731bc81fa9bf79117b1856ed09afec0c73245575158cd26b8aba96a6cfd1d32f0cd81b6c3e73a8331a2d111e4e4067ad53a05da40d4cec70b6fb83a74b6cbfd30d83810e56032f67ceb0c15cb9bdd830a25760d864eb9e326dfec6c0a187047a6bdef95e554e13e608cc054b53ce8e878b27bb83536af0efa8b86f7aa81d8adf657f5694e32f7a8b7015eb3f04392f196f749771243e6e898fed03158d442924e5891046f2c6a71687ed0ce9e92ac6502d452f312cb61515c0023c15452ef67f58d8296c8d23cec25dcb7dd2c30765e632f34cea350c97fd6c310ff7607e4a4ef4d75b363e5511266bf367cb277df1d0097643fd0f2a693bf2b43a36db9022b1bd070326feba38d02a538492778aa252368876adc5847b205994e1978100507040565bf6630350ca665598722d6488b86caa353b1c0ff534a66f58d5ac74ba4a9bbb2d0fbc6adbe579e71dee51e116295e6b53fc66504c708c1591f0f9ff868b1e93d38ad82c5fb2190c95a593b83bfe4ef564d0bf87b831667dd1e700753db608af7bd7fad5b3b9dbf930edd24f7c08866b2fe44eddc6091ff4240559de6752d4a53725b8c70005106f4608ee7c66b7c8374f8a59490d80532b6ec76f8bee08cbc971c9c04e34d799415a9aab0249aec793a30ac8d472a452663ff0b42bc00e4593ad266279da660dda77f7d511f8d6977d6a4c13656e9b04aca78159f41be6d5edfa2d8eeccfb794f1878bdb6582c27275330f998c6ab4f5ce38c719655c78fb12a57dc336b7ff18bbe3903acd40df078d68e0a46dd91f5a397509a661ec9a7d263ef70f02204b23c76de6da85e5bcd1b348c8485cfa9f353911b9ad9e2abb1d5b73dea602c833bd1c886d515be241a4047481535c38079daa898bff37597cb0686ad8c20653ceab7939482e8f89ec2130c77f05fd973a4ca5247eb9e48466072402b8a56461ee8a21ef89d0115664a06644df0fd9afbcc375771134772437d9d49f1d6b6a1046c5d6e04c0a6010e21dc75e44a8128e6f4ecd29e11157f66b7a925e58786880448e051ebfca59d4a568a7c51144ec581481dbbf6cce954d8dd8d85e72255694c80b6e9d278a6c155d9995084def910a0cb01eb24431837ef513132b59da106018f427c91f41dca5fbb14aa30c9d777632fdfd2519845e7867f7473046c79efc7c3ece3911786b1867d1de7c60cd719447a8b72bced5a0c738ae91634440408502cef230503e08e18e55c9c030d605006eccf017a58aa371b24b0f1fcbdd4e5bd4e92e6d75e163161027b18b622b29f840821d7fa694f8490d2b35e89350d06051ba6f1f1d9774b33c45bf9411580e55a493beeb8e0a02f798d5de1f006937b00a1c3348a052a782f96bf8b20d2833f21482576268d581f32152b0c01cc4aa0165ba46e3a352ae9f51db71ee72468f9d6201b01c25a1b5056be51d8414a088372bbec6296882818f75cfb6c0909862eda4fa8b6fa13a26f97cf9c53e1d4a10f51c25caaa53949c753757317ac767c69edb9e025ae5f843ee128b339d740fecaafd8a1db1313bd046747ed62e52a47a1175377c1d6a65dcb0a6ff182ce61307fd645257e398e471868b8d0e428843cc2705db265734e237010e36992f3abafda74418812ed08dbf6f1aabe5baa7d6294ff419200ab3ec1927763f897391067d5685fb302058599f70b7c85102b61d3a3b16fce56d66abbdbe9c2d52766d6744786c92d1c38df08fb90082297fb79a6f1818438942928d54f119ebb0e7f9058eca083ade98248663b2257f766958eb3fad93a69161c9e8622ea944b13465c137b33d0de75b2ea77870fcfcad65e705b7238adc11ed1254c6c55db4bea03a1222354d9e62806e6c739a5096acd02ab4d420bd9faf92f94bf8a83259b5010d3c61ef0071b1a3b92b99643f0efb3b487e42dd008dfc86475ec70fb7dff94052d0c24d8c03ade898510418161d8b97d9615a947d826eb7be1f5e076c8d916d67c884f6519e8c62edb2fb913ac99d44a66ead685eec970f50ca32f9aefcbaec1ee889d65a11c544dd080ccbdb992b84f824bb98667c6ee8fcd6b109037568cc99d1fe0e01df6a5d0cdd28ecef8e12eb4d6e3cf23f2b136748381fb412e667fd6cf9d96985dda278c9fad324d6dbb9e1920c79acb1b3ed4cc7483da0b22da9fdf516e9e891d38d68168e7b90bb517a699fda8183ea8bb253f150605c82fcb7a22d04a7759d4f2c9d5f9865960d1cd12d6d50e861dddbfd6d1af9c3ed0518ae10dfa7b2f4c5d8cfc54f8f2540aa96c15401251d4204611b7c8b08d55ad2b8f4cf1c14c9cba4904b2a327b00a291d50cd75316ce8c359f33b065ddbbb8e8538ab57f6e7dc5323cc7d2eeea14e43b6487e3a65e7bfa2f6e4b8c267a1bacc824b6c133dbf553dceee09c3a70af4243e63e372083cdf7fdc8833f23759cb68cb9a85900476fd5fb4ed0950f7dac45cba60523c847ad5bca34e95a1c7e4e694fb6f74cfce0c72b0e4f32f632155c0a8adef1d85879a7dfee860dbc47da99c9d50f184212c3cccd0655585d7feb3c1d2daa03ba2c9d93bd61fa7b35cb74aee80549f127aa2598d4571682fcfbb34aafdb7ff0fb296b4ca39ff9e5b0fe8a0ab14a37bb16ca848c139576ca46456ea5bd518c87e099625fecb9889d6cce178a559a10d7659ad47ff00a59a0643eaa7843490b87765827ff8333412f1ebfa0f32d4356a7dac2cb25c8e76db854b1399ce9511a4837f75497eda64e53465551ba0848d608332e432b636b4027e1805c7c166582955227eb09cafe08d6c4c80fad6be8a9359387dc72f7ed3fc63d436bc910dd7a1fea951c4cecb056071f1941fca2bdeb11da6a305d89c485ca8753ba27c46e1c7dfa6dab7ba1fae9f2c98e1ef22c8437b8a7acf7652c836158c5cbd806f19a03ce415250abad18e6e1440fcaac20b2e0644903b29b045469f1f3320723024b2278ac7c520b754b696588cbdebbeafa996115f2c6c3e78721a8fa51088370392502bad55b9b727b2da018b275fe8771705a4117aed9365cc9a2ac9d7ef4484e79ada765f73bcab60ea97a3974764823867de8f27db8d5d406fa7222e25acf6a53596513db3e7249be42f2f964bf1cfe9204deeba94479ed7ed0b552df9b496b70e70d8a048d2c284fda999cf972c34d798ced059bba247b1503e07ce02097264192556f5e4cd1d8daaa01bfae4207261fb2176ab259fb22ea49f132599357a2f240f66d4b3a1cd06783afe3385d3e30a62bac85d7e52264fc93746c290c33c6587ae9a661a93b892a2ca55424510b7d638b717e934961e0f634b72c191fa0b043c3f1725e4c20159169944c78c29183dc57f0d77752ccc589a8eb7b8c65f1f484192c4a5978e64beb1536302a15998cb9b38651e6e48b3905964142bc0dec3848b602a3d87852a9ae744b3c8f9e36fda9ed72a0758cf08c67746177469ee0f75d5d824b77b25ff935bf70098cb9cf066892e935f7c3f9f5a4925f64bc1dde3bcf2ede0cbddac30d53238df6a2c595329ef6091d7b47e5c9b7bb105763d33a19e9335bfd602f69856fff6ea4fe03e54138487be0d6f8944517a15aa12b9898ec3ac37725ce329c5d2575afe9ef0a49a1fc05088833a9c7ab9e7ab013fe0f5a6c83aad6e9e6e78dd5d6d68955148ebd2da0d98cb7508b0e90439e1566b6377a9b9768d85aff2fe0b110ad8235f76ad34776fa1227d0dd2302a2c0d7498d1d047de052d42dc3cf99f01613f6a442761e77bc503b24bf231df682a6ab09a48322e3e8da3cc7ebf746db27cef0da37aca9e575a262577c2c1d1a6efe7dee52e273b09257e85149e96a0022806d1a0b53d0b4edb1a7d788cb41e043220441bf7841da094b938a77b8145e712f004f79a455f3e5532c4287e37b829c4353286fa72a2d5edbf365eb5be96f72445e45ac64596fbdcbc42b0b21ae10dcd6c15976578c23b96fe430b2a0079901c17f12f23563cccc7efc5ccc7d1c2e11b6bf72fcc9c669e9ab754c7b0c1137ec11f5e4d0eb6a4620f7873fbe7c026b383cdcdfa204db87ebd46f8d3b216d6213141b4f39dd73cd5d3af7c13f699f2dbf8125681a2bb01539a8c0b4c1921654914228316343192c0184be1fced15dfde916a3e5fd92b3c35b688477ba234fd2d0382add06a3d377488485ab44fafe5b11042a52fd503ff3f4bab66443a9b79f76534ab3af4abcc898f90477031ec2d0e1819bb02280a7860f5d51d24b646995fc033dddbb66365f87438420d2a7615eb10118bf64c824fc7fcb2d970ee59a68835ba72263a270b0b61be08f7e604f1d6fb4016d28b296b205ea1dce7abbf363008ae1d15ee4c852494cea7a9025b7d92dc0745aebe1260b15032a48845fc213aed413c772d147c13783e328998a35e3865bb7c97a52c1626361fb8bcbd00266f4952561e6f1db7e9728c8c215f7fcc11c17825bd72792956e722a02183de169e418429210c4e667b6e951a4a0619f0d2be99999ccc41e8c872f65e268e3b3da0ffafae0b60df61c152b425b26cfc1efc950c2e74f1342b4db55ad7e37607073f115e67ba653e12b8305597b5a7adbff295e687c018afbc79ecbb9f2e012a127e1a91a6149ad7b8b088d54c9d32b89b801044e05c2a5cd87e02db3b4ec28fb9dfaddf0e38f17fab15b3c9b4499b70633ea95fb2c01a6ce7fb5af92abfbfb8b123fb0abe8bab6c9174e86c1c4453350fd0d813e112ce9942d095e394ab0b2573d100ec8301c818b3f9bc0aa0c1562345d43ea07bcf066c5c3dbece9ea1e0f859671b7984ddf0665c5b3a0f420bd976d90c75946bf0f0cae7f9ade373338479c70695a888aba0045c3a4f03c23b5669c508526f13a96bf1046bea47858282be18043d46846c6824fef750f2b4543ce99e97b5a7dd301151ec06652eba98a91cfcdff8af8e025b2549003b0b561986917af455f41c9ae6595f28f8a9f98bb3d71254b245a65feedffdc8477245b88ae247291c24b793a4f79e14a15fb78e928e18461d7e9b4175df6f52299b596a555657e4cee541812dec810fb9b0f9a4ce048134302b7d7b69891d363d8e94df2026fc3a0bf4a6dd78bb50b045c0827853ab4a3cf2d9f472faea2a47f055071a5789024dc99ce680716e6ce5b2f76b581876db53b6c4fb05a021977c69f5ae0e87aa99fcd9c5f64153f3a78ee162e35a6fa0351d5c13eb425eeb418d68236254cec2e65d8c7bd180700a857d6a3de4fc7c405ad4bf24e6a132de1ae963fbfee03037b6d9b9cf7db38b664591e786cf7b35dd16e83aa1d7e8982d13f9b7b7f8b701b90fb8a32621fb1b4f0dfe11efc582118f3eb492b3aea3a5e92bb657af332bcfb5f3ed73a71ca4c19315f96483d2747fbcffd1b1fcab86b74672fe166f3bbaf33e75c419d55a982a516a89e3474ee40cd6dc623c290945b52e44b4d9b79e5c6b7246457bb0457312c3c6ad0364467601716d0b3bbbefa01657be1aeb371413977a59806dc7f64c639bdffb723ef2a662a9fcceb1dbe2839431e52aeab77df547d25e38bd0a2e7cba7088f032a144d9da6fb7299a0be5475acad6ae3d6c040971f09f94ea6a19cae2d195d920f7700b883cae3a5d499522458273c24ddb19188cf623c2ea3d010a2873dee06d3de8fe563c12e02f8f1b06209d6dd2baa8cb9d3614051652d904afe6c265f80567f34f7b6e4c58c250e8b4364b0b54302df0ac9317720f9154256cad66ded7cfab6ea134063a7b29e63301cefc2043585b18f23587fe416cb2148b6e02daea53bcacc54b5ee6cb2926e41c2db185dc125200afc3066e6eb75844397aaa6adc982c8593339e4ca4b0c61f5d644e1eea41ff908dd6321a5d6bde02737c215e8178d03d4f2374bca2ab072a894dc173b748234736defbaf326eab9c53a714f6647e9b1285e19ee61366b30380f3b1c1125a2d4833002579a613fa5e787e136838ac770d7876e993693384a283a4b10e8828ba53974f7d7f9d9505bafa9aba506870d104c66bed23eb9419e5d680fe1495376b4eb0578e61711750d5d695ddb962fbc0b9a810efab8f43e616c03edf2f177d4ca1849b0c6764bc1bb19719959924dfcb7ca095c8fbf647debeaf3557d8ebfdbd8418dd95d1a0ed064e2ece4857e38e0d3c577236774993496e3de0f0be643c5949f51bc8f034091392ca3e7a92c2cecd51f61af69e445f67f2306c91918d52106a45be61bb39871ea1dcf0b7cc1047e1a3bb43ffa66764cc638293bd018f8faf6e01f4da05386c61121fdebb97b3914c60074ec81cc322b29dcbd91b9cc98f781d857acde99d012ad4b8f4accb35c6d1bcc25386d6d47aa1a8fa7b622eced2420344d7c6dcd0b381caefc861dc3802faf465ff54815ed306f4b21cf6475a05eebf3f4cdffbe94d240b078de8fefc3a997afbad735ba4d1212874f222f421cb88afa4f457cae2bed1ee424e63956eb4d10ca7937fc20d2daa223758f48c031668afe956e65c6e11d65125c27ab6dd766928479d43c26066fa6816da3037707532c0df513264b398597b7c4a11ea35bc9100e18bb29911ae4c140c49b0b23a151743ef75731afe8f02cc78188aa7be9fcc6a79b651d737c018c03943ec5fd85edb20e8fd6a53ad1067759d00236c3805c886cea88d44b74f31e0b16d8babdda75caead8beb20c241f92239ee8c2859d624992dc1edb3cff9a965191540e680e2292bf71ff034ba8ee96fbf04c15550ebc5354894d7c34d2c8e156634a20991599936a6c3c0ef459d8893893deafc282b16a4baa3a66456b3d1728108b29a65f6f92a3c271f8c0c41db25546bbc2fdb05af55db306256b3c6bac72f9c4bd51da40659a385133af09942287f416082e68b3a592c71d591007ee62cf7a91b40406893562b5178f658578a125443ba97c8d09b74a24a76c4d4e3b9c3e0c170a41c784848461b6f15bad2485608f34d0af9676d2841db0c6ca09336f7a32023906356bf5057c7c0583749077fe3eb18ab3f4c2b1ced1c0f1a27fdffa71f1fd3be451d850453a883b9c814036b123f9eeb9ec8c2917d606f983d07eee29899fd0a2e3ceb6247f77e464576b1ee57ef707bbec15a60067fbebd1c33d31b8256606783968916f0f8afe64b8fa242a4f6268d19c777a8220947ee1120f3a5f9407d760e2566ac5bd3c1e0ed9665a50ba55087de4a52e472d9367a83e4ebd3b96a669e9d505c1f02f973dd68a0297fe9e98e8dcf44f0cc0e8b5e1c389672f303e07a31d84a643dfb5c53111733c00533ba6f82aebaf00553f897893afce1ce700f6e226434ffc0dced657c0342c16c0f8c4d9a2c2be481d0ae425d3a37273e824efe551f6f6f7f6bd7c8c4b4e0f099eba10ac32000237b6ee1d6e3917e00f07a758b54671d184eb0a092f05249c6f4e1add5af616753b4a497519c8e257d3661e3e14db09966f444be552bec45e8fbf3fa43f11e2167fa180af175500352a7e7f891d5cd58072c59ccd4d1491a03120ae686f8efdf4fb5c657d2e69d5e5574a4e84cce2a0a58e0f0d87fb9a032a8633d2073e00c2704c3a5b88a796235bd902ae2a8ab2646b09bd183fe7902ac7536cfb4ebe80b01d27471f34a36e3e51482ebb485d68d17567eb5317b334416f59ea7b9a0a6bed2f2ef7ff59bc2d87ea5d53781d7b59ee3bb1482fe89c713c30b0f1a00d286c5301fafbbbcc48712e990538b7583bcecee7cb8feecf0f40cd449fd0aed0de1b08e07124860295db28588cf090d9433b69cc9d43e2bcfbf8eee201c28d5419fb35b4b8cf0cee07b0f8332162fd884af0d0d6aeccd1981d50b83a5ef56d14e45c4a34cd48605c46dbde1c44c75c3d7fedd1fcd568cdd0e030fc55e0c7b883743cd42afb738ca425caee1881e3369000906deef50b18c4388344817eb013ee444178f1bb34f553e3f6b8d94873de21348a240191eb136540c4e46a2d3626ad3a55acf753cbd15c67179b3c9717a78caf9156dc2abfd0e2990a80c3467f8a1bb61007bac6a8c5341a5ecaaefbe02c9a94d876c8ff6be9c9d97b8579a815f41ee0c7cca2e82b81da2ff7d40d3c45b178cae535c600b67894f9170dc6dcfde8cd1493174d0b26f83d650156d70137ec096d8fe451af73cd2580989d90bf594c03ccf73b8d0d8461b90a3fe87f4b017d1a4a1b3eb0f7b9385c997b1fa4854457280b9e1160f46a07efaf544aef981d6546fcaf851edb534f9f9c1ef3371571c7159b677b91247dc789d1725857624d419cdb28d9bfe0901e3b8f660e92e9e3cec6fc8a53c0238ad810a1a847d13d983369d049ab39498770a238ed4d3d04b8f6b2634e9620f2eedd286bbf4595f865166d5036b4e7184a6edc594787b8a818b73ea86a19b88554a76947b5fab67c69052f8d156a3808db01ba2cb9fbc27ed686f679154c37cbddca4eb4c025fdbf7dfcca76dba22b72451688cb7cb547f1e6558fbec53ec981aefaac021b3c94e0bc082ed3f0cd7a51d42e782f844af528bf1666b9852ff2275fe548f0889d4b25893b1e76eb9ee1260f05f5160a13ccda42ab469d277db610cbcad08ce9c9eff956d6e5687e593f85276740f778167a4628edc45b5b9be14262a609a7711a795b22757cdeeb31340bb25de3d712b5be5a6cec9e75ec84dac34bcfb3ced0cd3e612fd9fb4c0f487da928f77680fb281d9bc24e018c9daeca073fc906e4e8478849f96e676249d5b38f91ac769331312ae5e7cc8a87b3e9a33f24883d1a6bad44108996087389c692ff84b34ac0f0243cf4e810d08059e1f4080f232f70fd695b8c8503a99cf26c5038634f840ff9b9d3b5960798b8ad837788b0625bff4a2d0dae76993d9d6066a240555d79ffb1dcd0b3cfa0a315f15280d32e504aa12aa0dca0c499d9baf27a9fe31e7c747ae353ffcd7a9c921c8442e9bfe0887a8787f7d3fba72d077498ed362fc6e0879406065c5b241bd66b364bc8a6e62a2780f08f834b6436f2d9a2a643c3918766f13f16c4b65f6f5ba769a72211671f5a52465813659f788be34eeedd96375166c8975cc1322b09d7eaaa3ab0948b808fd97f743f47d7565b613d457c5f85dc23049a3358da4ab1cc6382bb305bcf13868ac0a00921f2c9fefcf6821e98c49f492dad0276b92ae583e2231fb4e6a12a9af86cb64f3a85c65dcd408da552141f236e2c76af8836487a9b91469e42b5ee12ad0e490cdc9ed69664d1cac177cc92efc2fd62aa958d47d4a8f7bff7a99d13408e4472584f564621579f6ed002c3de8fc8a842d0ca981570a73e82bb2939ab2878e0e23b3c57def754081e4585daeb379a4a9e332b7174815c94dac5ca2c85dcfc58ad771480aa7de12ea0736c22d28a66104b83bfcddd03ea26ebd2e9f27c3ae9104f58f0ddda311b61b7dfeddd6265dc4e7aebc4845e66718fbf036fb9906775c4a5ba154bceb639fc17d84ef3848185d3a7220e811bed32e9e9b8cd7c10f438ab088bcad0262b172568b79abdc51e7f676575d24abf5b696ef168a598a393243b1b99162c4b4cb82ab5ea5f578341e109d5205573b5a68aee9e09890f190bf2fd6f9dd49f80d19c0c24509b9b5d272fb941bcd165e700d083684446fa93dee64c3bda3d493b5e43f1730ffe3bd35f7147bc9bfe52d85a7e53532bb05544d467678755776213a97171a0837c845e6546a96ccf533fada58c34eae2aa5b3519b88d5ed6a4c4b57aea7214bd7191d2e6b9b8b135f2fb5c92507464f43e6d9fe2a0b28b68e5370dd1ae23f070f8a79f9ce75f11d81eb8a47707f36335fcad9d1cb4cf6e0ed09d1a9b41ad3df4be07575cf44ad50407002215296237601ec8a1f9be0cab0f36edf6d30f9f46474152c1cefa841c03dc0f4c1839371f4a7d1705b892a70d1f3661b9fbceac8fd210ab2c58f0c38ec067b05f4c625fcd10e2825324691550e3d5998b42336f5416d88a527fc54d5189e8f0b6da8898323cef0d444897622a4eb25d4107207eaa468f98f06a22739f30c1432093cc6d6c31580a6b10122fa08dc65890d48ea21d322ef2b8599b5c55d42851f0c845a4ba951eeaa95c4971aebb36d0678724d7dbc51fbf89a080639f2c4e93c01989d55fb18077f49af53a665e104fc097e0325990a2d7290a18a3f7e44c03711e82801e931624b1f47d4366d5055bfea67f84681f9f865eefdaf5d27bd1d75c538b8f6a86998a1ef4f81f63f05f8434eb1802eadb5a34828e18ddb4159d2e09520694ff738db5c5e3ee8131be57e8483a4269b386d9b04bf19c69342a255ad2b9f801f2a4c932217feb314a62bced3ec2c9500c5113829a9c0bff20fdc55fed9075da57e46f7003d46b674a9d7b0a20400d43bc2db9f26adef84daf2832c5054123111cb52822759c12fed008d08b714308cf1237e4974f088e3091fb671cbbcaca99e69e86a12944883b511b3e66f5351b148ff8cafde936fc0f5df3e41464a7141cfa403bb04f00dcb574a89cbff4035a1ab6d04c943bb28342f8ac9df7d23882ecc68657d2c72f95ab8d26aba709ced522f9287b3393d4bd246376090a41c653233a0922e732dd68bd5b924774233a88d32a2db188b600cc23bf37178316466e3d4306c1a3e1ead69ff9d9e8f77b499c12a9945714f84901d8f86e9155d176989c214de248f551e72588e106e6ade8b471865b58fbcdd7a8ace0315373ed086401832e0cc66dbb52df13ef18dabf0add97f8172587365979e8dbcc4ff59b85e2a5d457fab176771fc994b1b6f8ece903bbc56b92a9837fa91e337514a892b31f4b56b89e4941d97c93c0065d1825374f533932427f803fa59ecac590d20e3906e4749ed56f73603d91736af8dc86c972f9f207f18ffcf1dde50b37026e9481f1304a4386fb86634ac32802e1218ccb0f64d92c579af8c943fb67e8d5f9eaf19403afe5a76de5704658bb8614158f997543c75059ab250e3c95d7a6585ea936d24c14773462e818e835908e6487d724eaecc56090db23eaa2397aaf306d78c3028cb159aaf93836e4e27b9f3ac50bdcc210aeca0f6b7bb7f6af8c6cb971597821f1949d22d9fdf68191623f7c035dc0288977e5b1794bd7310f93e7b0329db9ae72ba359f4eb93a40d51daac065410ff43d922764012064591ae80eddd959fc971dda03bfbea853198335cf3796e332a31f395f6be6181e21ee2eced36f1ab10bd51f194496b9c42c1d51b12c76a79c7329ac1f14bbed9f20df44f9291a5ecfe561a95a80f329115c84c227672f166c5062d5656a4eceabaff910f6f30a1826857d5e8f8cb7ab7e40678b3d461b588013f254c3a52333b05298cc798198f09415de4fa053ef16be1e2fb6f97b4db2683a3c6d5d15efa0f607cd24dd88fdd841744b95c2de9af435b98ae05a45a7dc5d509f3c67febe496bd220168eba4f0212f5ab024b6b784eaa0aec5c51fe246c3484d7c548886a5c8956e6efc5f353b53a48cd03029b01e415db363479000e809cd54a17dff5fd439e77f0c929a89a25f6b264a6ac3b0c44ce676b8f1ddb019c2c3fc07f38fed0b6a1e1b5ab57c7b3c9aa007c436f00d6e0a6400d9b31d289ebe125a5c2905c402fad10b080aa4f66de75c957bab1a6a0c5392951b78b69a95c4aa20b3d32de93efd9ae2c87bf0a4d7c2f25fd615f05b080f293d4d1ed6f06b90be7915ad34b5e2f5184fe094b792f31e90d915c3ba5df3fd27e4e0a3f430dfaf5621d6a1f4980152f4c90e787e3db871360e15177228ac5e7450e32ba5e9cd8b3aa403d10cf4bd7b3fc14c316f07c7d77be614560edc43cf0b9dc4d6764f23a70b4e488860bd83247d1c8b9152e2e5606160b4795c9050b415ccf0d2434ae10071bac4cef36b482872d8f45353f084c8733f23e99c095a6a0021d1577cf5dcde58d97f2df958294d6443ecc3164cfc719a08b5a360ec95c0afcaad0e74e3b1d0bbfbe89de69ac1ee6c8da4a16f1bbd040fa48f20279e38d85621fcb0d4eecd3dc86bf3aad4ddf8570e3376a2df4beb8e70dcb1bec6a3e2ca16152639ad981954b53ef74fea4aa9de66eb1617896f93cf953317e66bfcd29f4ca7a3ff1cebfe9471687babbf00ceca23a0a0c2b5f540b5489f1ca18d47ddb8b430674d1abb604c2f8dc1c1e22ef5604fc37bcc837a2321340cf2e4a48a6aa8d73852e0396898b37232df7ffc60722636d261b84b0c2fb1112cd84a1fbda521f709c5091e015dc3d06f3e306ec01c59df446182a3f4c841f1ada99946a9fccf428b91be0359378a51f586538027d46631cec1f023d550523f23ef89441feb75224c0465ea9edbadab9f339dd533d00b57d05f7146daa0904d53e530004e29fac7f023670088623cbe85c68a53476d63dc16f25817927998134677dc8fd51fa8e15f73ad6076ec73be4f40a89d6d651d1c1f65fea6c09cdccf7a65e29e3898ec379b9160b53f9e5c8ff54596451c790888c6f2f852898ad508c2c7034e04f6f2280b4d89c3381c8b38c17eb035109ae6c559a259e7b60284ccbace0e6b8dfbbdb8db77f31a43a04ac0540d2f35ee9ff1bc2208b3544752f0c9995fa6217ed0f8a4ae2a54d38f18015b5973726a9292a24f0223c37b229c8423b8ff994c0d691d15be4ecd8b3c04d0e5e7b4ac2824ba7791bb26f7d7a50a36a1db752b285b163dbf64259ece7d1f267fcbf1f928798ba0f7768e3357fa06d68554de0f1bc039ed16ccddf4444d0dcd15876d25a98427593fd5cfe60d7e0db30572956232edf727ba4276dddda326ef720abd236ab33df6e161f499524f47f009fe20a9a746dcdb334d23f3516ba09b0ba3758142115c4777e799ed793a2aa74f6955d229a8536d33fdca8f117b13930fb9f784db24d1dda79a19c0f480681447cb429283f619299461afef55d43fa338830ad81e18961b3df40957c834e20cd0e35cb0910b5e8926a3bfbb62280b4fafb9ba821be1bc099b142a48b6bb027b80610a6ff6c07b7055e62bbf1beb74728e40300c3430ab32e8577a1c7ea0086f46c4df5756485172dde28a457655d3ea7c0b82ea6e04ede6bf9cb3c973411b38a2cd08f232626cbd54b18b8802d3aff622cbf9a7c405697586481abda65b27708577c6a24b156fbba1723fccf7aa754d6793f8b47055b78dc771e3c041213fe48405c183cae1ac1d410df07f7be83331fd740d3d04224e38724b3abd079db7f7eee8026e6cfd26d4cf87ffd26ea362e7405cd767748444d814cefe1dc37dcdbaa1fe7cb678a9878ddd08200ea2118fabc5e74b47fa64a2f8ac94aa89fe8d879758bfef9e8e454a80527a66e96aaf68d2a74435b608271b460708b0909de1e5e82f4e6e81315504b8668b55eedaf1725b99759b5c3805c1b9a749d33a671bbbdc25470a449889b5d89006608a49e928c56e747cdb135695f20090baf3a21012764247f15f4e1d8cc02c56fe74d978823933efe546448d9a89e74ec9b1e75faff19425a7fbeafc45fdbd1126bfe1eb20f053f14b60af4e67b4d24ec9d1905abcb8c8c3fc2b4a8b24b57f4ea2b17dfd54da6338229a592a730f7534f929de5621ecee23d63f34b396493076d8f58e8e6372c8381f7e3414c8025fb478d9352755ff6bfd272459b366970b07869427cff49f9382e405f3d93bc9b78d42182ce28e0980fe82e5d10b2c820b072ada5a8d5faab3c567746cc8ebb2c3d0b52f304e1492be9f784b9d22ba3736dcc212bc439c684f80f48cc6c6922dc1b32041f5c29985b51a9b7e433359ddffe065609ace75ddb60278991939635c3e5b0a637b02ff092c7298cfa6ce582409a01a56e7a90e0de3b4f28ecd8b1aca9ac2e4adf8d67f11fd38cd4169e3f5d446380e918004f6f687cd32c9321aefead995406010ae3dae21f92d8513bf3b27f75c8c470efd7d00da0db71da3b95561157601c1951152a13b95aa9e05a8f43c632d27cdca90e17323b9d3854b74c429fa6731fae39b5e0d57f76866f7159f1d38f4bdb4132abed168933e3ed5518d716a67eb61dcc5bbea25796f5b2f30a4281021b13a0abe5c4aaed7ede3687a0fd49ba8f9fd5b285487f34322d548beb9c53a7e420ba64cf0e32b487c7347ea74dac986b7cc56d5be2fb505d41f15d9d21ea62d3a196eb51358b4195a9dd11c31cf3f4c75744f2a69530b0e0e89e57408c8de828b08495531095d1ac610b164f6967b73f26bb85fd5bdcccb5bc0994e5f1a2669477ea428d75926d5445aa2aa23a9d138e1771c5b0191b705016d7bab37a934e46595b9564b0c59b56fc3d59bbe6a9a45605ce5f86c47328a37d27b182b51c159546263c6dba2a8cfef4fac43ac3aeaab495ae19e97fc6d2b4e0054634001f8703f5eaed03ff2abf5ae35a29f5fdaa7bcc92f850058b125143043c861ffb656baedf414a905878c9f1cc7fd63444485948b46681d0f3f0a76fd867a9d778fedaec89e68257ce3c4d22bf72c1042a709a78f41a218689a7a04c5bd1a2b9c7ede6b65e6fc6b7fcab2afca7f91187a6eae6b205240bbc972ad46af7841ce83e46d0624ad88656cdcc9992b82668e968ba63ed57dfff52f4fc9a07bd3faa34420c1c19b1de24f7443fa3f944e3014940e7b610bfce2ff61c09695a76e92b382bb5fd49a9cd1fbe9ce1d0a5fe75560b219ef551275e5925daf7cfa2d649e7902e0251e99ee259fded810bac6eccdee113b3cf83a459194c67bc312f5315b87d4534327f5142b62dfe6d6ccec941c5f09ecee4508de3a59b2eb67dedd85dc7838aaee58a3912ed91533971d529f2c6f4b867124fbe98b89e4d8b9076a86eee87a74e3d39dc54a3920f3830774c4bb327b0f45f0b4d9447535f055713200914d1b51af6599901fe3757a3b6e2939abb164407d16fcc738881f60989473ae1aef67e9ad27edb75264dc1bdda06378897742924bf7e8c1a1576969c68aba7950e6db7c9667b6440897253e8f42d8d3554b6c56d8aa6d365dd3f3166de65d4e96892b6e5acaa947443dc08b0b14c484b27e21c1d93413fde4dde214cad3998c31c619cf090be24b05d37d65b95453161ceb1a9a779a7998d7c4961c1f3e572ffee8779becadcd6fe4bce447d4a99af96e99e1deb6cca8286f481c972911f54ae1f9f6444d89d9a642a11490afeee083def1d6a2db907fbda556ff5c9b6959105335fe8dd672b5af085f42dee122ef8c62aa33d62999e56a358d420c5495d3493703ef9027fc10909bc46d8f223d50b66f2dd6424cd309088c0d5eac1f6d35bb9b20b991f7b20e782f76c106bf9b754efb7e9c4e190ade2f2411e829dc609c0a11a9aa9cb26798bb779ceaef5dd1f66816b2e0c33bdbe7f6cb56a747b3a2d52785c36c1914324b87c221470fb79e8c7b8db407ab34e86f2ab979877cfadae01b941d6277d523727f9608ba73df6698732be8d28d6228139cff17e13cd6db2db59d6969158cd93106ad8dd8cd4fbc0c426d31aeb0991114a5591ae74001d6b3ff0fb02a0e03411a331f980534ca9e1d1f8fbe2232c18da1b553aace394db3bb609076a0feca0c532fab630f99e482ee82977cf073c37d62e8748d63b7929e85decbcdd1f666daada8ef806671d33b207ac388af144b041e77141a016c1b357669c8f2c68e15a3bec6bb88a4421c542d1af638a8af2a14aaf7960ea2ea52161d67bc31a5077ff174eabb66ba2b5eeea8f26e270371c1de492cc460c3826619bd81a906daf11b077c6c45386ecea94bca9c38b4d43fab880b3983f1cf409f9c004bb3c227a5dac81eb33e6ac77010407a7ed54a132c27fd013c8c8c1ab3bbcb3ebe4fceeba294e81e83ce142210694bef88ac87bb5a0a9f4b3f53921109f06ba8dfff09e8c61a6860c9aa71ccc6bf41e725ab7f767bd2f25280a9bcf6bd759f009decdaeede94b876cc07131b1b93013747f5b9ab2db5cc5fa6c00b19c3a863a336ec53972336ec5be913dfd1a8ca56305662681dbbd7bdc474ac4128b52e1e82fbea384a321b1eb1f9fcc1477a43ee1a24fbfe1c01274bd754228d6673aedfe77b32dd6832aaaf3670ed75b5a81191ed43a3aaf65a68c1d6a2282ff01c4924b50621cd47b659e7c7c41a0f3e0c07cffb95cf6bd94da84ef97468acf952296cd9dfc90c247b66e0e5325f7f613cea362d863fd17454b4c90ab819699a52e7991f50743db0d3e6bbe75716be8fd405f000452e2aa7d79f318cd99104fdef2c056086b40917fcfb6515eb66db0996ee13a3c64b96577f2158b2c7c8a4d57b1eaf0bc91197dc0bc3987d654b8b7ea3330fcda537c347a964c46cad4f4c80de229914cc138e83135cd6c9fcaf252ba3db991c0a5828a2108e370bf00b312b6e952dba7a225db4d887d7463ce1a0bf8958d3ec8c0de86b7d930cad80000718d941084524ae2831889f2cb7e100c49f6f81a7c7ab673bde3e5a94e67dc836629a6fc7972567671f95be5a1089236a89b72f852ef5e8a621153932bd24e331c47967fd148f7082db7a0bc03de91196abe8e4a84d1d1386cc590c7cdf2884ea065d99e93bc77eb6218d152dd9de1f80c446cf508c610deb258cf3b3640d23ef9d993d223a7ea811d4c67899a1831b8fafc60bc5f7ce20ec5888c331e7455d4f57046d7a0d81be61bee44e748dbed7d5d11ba6b66843791575ba2ac71405b61cb616c93575e699bd4ee1bbddb2152bddb780bf225984349a531e5473501e25e79facad32719e16c215b1d5dbe3dbfb26a1e75d8efcabcc143e446f8d292a13698c3037fb963f941b4f36323fe364ae31609c8d2cd94c91cfdcb6b3dfa39cbff4633d6138bbcb7d548e7ea96dcebe1c74379334b0455ac2a2f31084bc0b3c7670b743cb095c7ed5d4f4a7603ee357eadeab1c677d48aa6ecdccc021a1e23d60737e0a84402792d1e6ee5aac33435521b666affd39e72ad36f4b68d46fde4e727665f7be7c1917e1efa536c8b90b2972db0ea8330792eb871237d74f9009137f0c9564ea38919ae669afb85c1053db98fbb9eadd50bb084d86b922bdfb015e9afa469f5335d0c5c13b8eeb77682651d5dfa4f619085d7f481d9d64ec88800005395e6722c6a3696e02dc09a097f261b8f62dd445ff77eacc7949828b16b74cfa22312a8fbe617b8af201f841510993bc0ca6d61bbee9fa2b1fc26f8189a6aee19110545df3d4cd8c0445d9e051034dfbab3f3ccba3556d561fb954e5d3b24bb3c8af42b7366f36a5d471e1e6fe830913d0793bd5206e12c7b4d8f4fc5c6fb115edc4d1cad82b6a6372c40b4214577980290442dd5a13dea88d27f0b1d8136dd142f3050d8339efc9ef6f4446f4988cdfa9b3b4d6426e5007e3746160ce1dfd0ff1190ca3ff07698f65a544ea0fdf139eb2aa10701c7cbd264bfcc5e171e591d3c620b4daaaa5921b691deb600bbde9bf28829cb7d690aa9ed9d701759d20f2d85cff6323c167a89f35c5707ca789f0117c7a98ebd0e6f6405debfdd62c4b4be6e0997d3950f5c9d97f3f20c9a0866d177dc6013ebdbaa19b821241baa838843a7e8f01de4c45edea50fc55d851b4f78875952ebc2ffdda38227db8ee137cde7da111937ee6335e9a8c16ebbb6f112bbfe6a6e5eee47ec0f998cfcee4f3bc0c848b757ec9884dfd6471b71f4f07ab237a797afa61ae663e928cd82745a26035a69bc4afeeff2fba9328710a6da84806ed796f65bafd3f87edce1a3eaca0c0d3fd6e33834bc3e7054d70b00f6c5fac0ac089883dd199dee0afdef3b793d72aac1ff5ecb27c623298160a1dfb508e77fbec7657b63a9fd55fd2494eed60417221c038c6e59d7f2998f9657aa7a6827d793c08c5f7e4edc358bb97b638169577102fefbe3bbb50a90204d0bb1b12aae05fa29aca7970beb3bdbf3a86dcf343636fa97b791952612aa98c78ba1097378d67bd07a9b336be34e363103a750b6d1f7f2b416f9eb67676dbfe45de11746d904953b36a6ded06ee5d23f1aff4f3e081b67e0a93cf86694c3491b83d9514fabed1c3b70aa4fb6caf8850c00a61dc228e72e7274494a6cdb8098da617823e2846bd4526e1dc85b36621ae8bda9a47234b1264a2e6a8d466590e68ff6cc56dc069b98c7d791b116444eab2d947c01692ce620d110040c28141668c726f6718729105db6facc43c8362379f9f229e8ad354811af6029d3b640501e9d81c10f2044ef8f88d61f67f281a75b2da73ff192ad4e603ffb233a873d43d242dc29d6b0d36ad4d9fe45726416354621bb57be1c5bee6de3f847019adfbc2a857287ac5eaaba5d611e964b42ea0bcb882aa973774a5d3ef266213fbc74da3b6d2aaa5c1b7f9ebae8193893d259cfc1b6d5bb9e98418a4cb7f62ae6e18a4b1293da11d760dddef007b3c1dda2814d436fc8113827038d77649b6a2e64c5cacac09021d77c95c48e03ed2693d5acefb21eb327279d52b0924acb29cf411d312ef24106892fc03305ba6b93a66b392d75d493882a0ff1ced6580cc669bea8a85a79b4356a72516ec51aa6f5e76c0ad8c7f7b83caf2a476e6130557674ded675ddc19be7e808123b6edc90490b6b4c1dccf3bab94bc15ce845b8070145c4ecedf3c0eaa0221b3a68fbe3c71dd23fcb83ae2baaf5e09c70abe6255797b57ee4cf4dc1462153c93373bb5966b18885a3920473bc864e049ce012393fbd639a864d8d012edf40edb3b09c4a253ba51a699d426da7db7b952527f576b557166ad1d8aa0fb88cb9b4ca88a4be711b657c6be22e3a4f06333884b1a1b83c900070384238cda1d1ee370478f26420dc56b743abcc4cdbc7eaaf856def85ed685b9dcfce128c9335f7d7ce2c700eb086f4d2fa94abaf98b2a92119fa43bf4249bba3eca459e4ece39f64e254daf4613d607427136096ed99a567dfe5b09c9ab834ee88c44e454eb3b7ddbd958416e935949677842de01e3949d6d5be5e7c9f11566e562391d068b063b5ec2816215cdf64caf3f67b2abfcb0f75b7be439151383b1b63db2417f1ac7cbe351ad8c8fe3d0e345f4f7ce672fbd48fb6e80db90e105ecb355ccdc06df0aece3596d2fd47215f1283fc8807afc0ed5510664ba82e9b8e49a7f332d46cf53ab79018a7063da8dad88e5850e0fa4bfff349c344b95a594fd6bca70d524ce3c5d18214785521594e9d229edb8e9b6fc93648d13f4de6d1387c4e3a097b5715c6950129108f2ceaaa46ed54168d67112be817887e7cc392f84f29c1953a2e032fda4069458af7da28eb8bafc9037206cc446c01465d023f5a967245a141bfe17d93675cdcd62948da7cc97dd977d826589db5d3ad5ce67d4325d2e3b5a6105b55bc5cebfc5a6140b03d6f4e7e8da7ce46e1bfc44878aa9ad7ab50c947dcee2b0548ac07fe3e8e7fb2bec93b5673ea149e79475a6c9aff4d52942fbb7b87669a75edd2d4e0bbeaf8421a4f19da980e07514ebab11cdb9171e33ed59e2ffdc0be5da3c295fa5fefa55dcdd511e5a4ca43f2306a6dac8febe39a931985350fdd34a1b45e909a0c8f6fd542330a7ee82afc471f3cbe2e19b6bfd3378d38162e7e4aa2a0a63903066baaf413f79969d91900a196c21bcb6a04da832b26c0bdf2ab4b71949a81f786f55a9f1e78efa5cf3edbc77569c277b610e14789994418ade4d286834f0a004c96ba9d0ecbe07d67f6e77314a2934e688e44c03161b89041f35d58c9ea15fbdaf6d50a4b1ff7ed67349e123156931c0c01fa3b6b45bfa610438f97c0ac0f1b10ce388221ec78c770e1b3b0d686d13bf0dfbe5f16ef38128ca8e9815d65f6b1b2e6fd449c27b7e00136e18505e6e79a64cd35d0ed422d38bc293a73b6ce8c1c4edd893bd14a24f563a984414a82537b9e78222f9e888397fe2d21f9883d73e8c2fa6b19218bfbe2da01ae69875756013b3f8a0afe17786b020a8902370c19a7fdd0cfeced177f0313071141b32b249cf34075b30ddb8d75bea14bf3cc111fb1beb8d6775011677e24bdce5fd2586fdec98fc2749eed4ace1fd872818a30d99378cf7d97945752b76bf3b7b358e214ce7a7b742b8dd1bfdc0e677c3efc1375eec4e0e6bfea812f7c5601b7b6520122e19b99ec75e5987f18837405ec6df7ea12297168adeb2b244561fd9e44d9db2bab5603c3bef713bce7152cafac8d039cd86f36a15f225b69a6a6e7555cb1b88e72ae2c5763afd0f901393b1b3bfea02d795df1ec7358b51c7e9b38b62cc13e60d8ba48ae567da8dbb453883fcd536c4dc5c381c3863591755b36bc55861c424f16fc4a91b0f65bb7a1b660ca935ab0129bed0c75478c53b3306c2ee8cf74e8f67a83807a3c6d9945f1b371661311f8cd8d13324937581122a8e2a22d22f148c7196a1da83721901877d52095d4514c13b48584da0d1a532733956ecdbe7db169de913c1b4f5016a5893061bcb60fc2a4162b731377901e53f6005682ef6f8c3efca1d2e82dfd4c4d09d4c71ab7a6c71ab79f91901f46c6c9bbc8ea4f9bed7cab43f92bd5e16ff70a3c4b983cb0986baa2cc9703e8dc7dee3941ca151ec013b911857f15279b0da109fa491606d755153ff68bdb605afcc73ac25d17903e3dd9c4835f94d49f5baf07beb5f623ffd4176348d64d03019cb48c13c491d31a5da94331309edfff17c2d019ab779f67b6b5d60185bbd9ced3aec57ddb0e96a9f98935b597a211e1395dd14506ce3b6ef5564340389f922706b0d9fdfe966c34394f025df7196e00f93efd3ee985d953cf3b2befb88fc3cddb13863cac5d1eb3ac0540ef2bf11c5b996f85bbacc40d52d2d2110fae01761faa8ec56904ea3c240c2e675929bb76457bc9722dd96600c759d94681dcf0eaf681a56f050078ef111cf56fef4efc6c904a8742998bf67f5b4cb70fb8ac0aadcd46e3400a25d87037a191b18afc4de844915b8a023a559906e794c4f0827e1ba5495f07f4ccceb6dff28da0741c8d041e7fe17d9cc184eb767876a7e596bda60f0e9ca50c554c222f33947764e8f06932550763d5dad3d6db24dbcb1b46972b1c1c495e868f62869ed6c8b3c9096a3daf1f511e479d4bdfbc6de23cb5e3ca8907c91f4ad74df72eac099cc9cb936e89a3d2a435145af988527d31a8ea6543f92a2edf06d3eef77dcd324bf55b5734e42113f1de6fe5071b435ed4abdfdd5b088aacdabccee7791f1219cf8009c5cb4256605b6e093fbc3e13a841c87b91138b2c3794d645db6d603f635ec5a6d3440fe5dd56f0c5032a7290afe40e5a9ae86be15c0937136db45a4ef225a5046943e608ac42b580a54b7d38ba99b640a4f945ca4c67e43d3c5e4a6f2c324025edb7bc85e8a856002b182aeb89230b0ac7b8d2f1dc56a5b153677cf70602ec55000c795ac341423d31687a21f0e82c3a6c38e4c8c3c393f335c24bb5d2e293494fd3def87d6a2588517396013469950e291c3dbffc1068079c0b6da25e0626c7ece0a4c922681dda5122a1133fdd6cf00dcd22a44b4b73f8ec1454a614c038910fd698a4430fd6aa42369df36bbe8b40672108545ee7736ece7d3e03bdeab431bec7cb26182f6d965a9f249cba0cb0db3b32f30f2f916464cfaf0433181a3aa1799a7fca26c5974c1ff90e95248b50a4d18ee045a98636a0a291fc695c931908508004236e39a484f71299def164c59afcee0af3cd5dfacb8583c0ee2cc84cb94feb3df56ffb16c7093dca5ce95bdfbe33961df5aab0a916c227944f542c911787c131c10658ae06b83001d3fb0472e588db37feee790994d2bb23e00e3d002420c78971643cc80f1beb03bca2bd58dfdbcfc9f293bdd37d7eeb76bc831be48980d39941e80ccae584c0759e182cd1c5b3f8e3974a0fb7438b5e0251e44e130b4ed14076ec9cef410963e2e68d6f62e4bb85af1184a8ad586a4c023949fb0b4cfec439e7b69aab55d5dcda8cf265cdea21e46e20d14a56fb0e7435e27edb5fe3df4023317c00d176c6bc025843763e7cd13b77b91063297a77f5b970f9d289b5349fe08b5bae7bd78177535dda593ac75ba86623c09850306617a41b394a8bc0a9bfb93728ae83ae9e9ea7eed654a97831673fccc5db92083faef0d202f86a692c3934c5ccf6f4dcbcb56e9d5fbbfc5debd416f39963b7aed1b0a1002ec26c225c9825ed9a5dc7f3d7d4391a05817e7f58f6ef4b47a3434c356725f89c7c14b83001f2c336af95be2640ea300a240f1a4c727436186146959632463c927b2eed1baa5afa783aaa2be5815525093c4a5d46e5fe7ae19c3bd1fa23f3cbe5b6d3d4cd6c3b16255b4a7c3e529ad4a8edeb77ba6da28d2e91fca9200948332475df273e3fc175793b0bc04da5ed56713fa9be7123d49ede0624d59574abb8fd4e16f00275f2b9971b4683d50d1f264a539fd40b16045d13c3b049cdbebd057f5c23fbdf18a586e3603f0ab850aaba8f7fd3a3c4fb6ba7c76cf93c1ba5b530a325b9e5c5fd9c7bd6e6e2bb4ce83e6f9312dbe937ab37ceff31380ca0ca5b1d935520e731cac52ccc49f4424eca8ef64e0d827f7e2cff09edd5e06cabf30b42849f39f29fbc13af16eb77f1e3fccbfd98e1655e68992576b83c78d832569e36c5d821056277c1e5da1b15227322f0bf6ebe0c9eecacc4e9409f22a3ffb7522d9d7a84740447436f19c248bd0113325c08460a2afc3087680a1c9ac00ebc6e14198c6386c7a6dacc1555ed344dbc46c5c6b0b1b29a4920826b0452561696706e90ea7c3b7600edc99e80765fef6431e4fc73ff3ecc1b41d1fc53a47c19dfdf32cc9e1a8854f4c8f7da31edc456f24aec3c3f6b6a9242afbdc3613c5e3564f68526c97242a1261f6a15da67644f32241dd19d54427d9da5f376cb193f129a46092ae5f03c55edb11f436a5eb3b6cc48a652e376bb374a6b90afe5a0431453c93a32a32bb924d20750e3c439938de6bd6a44907ef3a48aef9ceceaa1eed85eea9030065c33d80e4aee5bba034edb17394074ef4a5fe5a23815939db150f783c04126431f9fcfc6fe6e259ca95b113e12211ac0b9bd939669d717149b3c06cfc20d02f86b96c5ef81641d112ef405a3084dfe9722a5cff667e9072c005972b261fe3157d39dca28d6d4d4b0f0a43734947aab168769b576c32fe7f15222b63b9d1bfbcd9a05aba1e03e1f9a9074b5ff4d0c96074ea719505e7907233732f75b0d20df2ae17f2b375d8222a01e4c11a37451edc621d76caeaea3cc5ff6f91a2c698ea5b9740988442fe07bd93aa372a0d2ca7d23756e880da734f92afc1389b8258d231527c056e864f87241debf8818c5b7398fa26df0071acee274ef4727b362604240773245e00cdf4c0886d893d207d1d12098ca9431c1d77684d513d1a96d256052e441022b974526162048f555504fae0c8e4384ffa276c8235bd9bab4d48015148d9462ac7d37fe2c6734ebe9ffb209a548f8e7ab91a3b1a717ad007a2316466f3bf52bc55b13173a9005e8bf53bc916c605d61071dff903f1bc507aefe64036aa453cbeb66af5bf9b38a4a79afd6ed13a6e80f8ef25c3634c996decc02ae0f6d5c550f6b517c4ded20725507e23a2db44e8b6469507a07d6d1c666e46d368e7ed3283b7a2f1af04089501ef1710e891ed569342ed0956af51a5de1b9eec29d9feae0848d622b63f5a984b517a3b8ef2982c09b39a119cf71f8caf5f5610fc22dc23b15e06aaf7f2e9ab5679c4570edc7b43820b864611ed7835d554b6471f6c40f30ccf848f56ff8ef5739a45563599826cc2a79cadef9d1890afece37c9a5fc4fa92ed18b658812eb71bb54dbd166b9e92d2f9bbbcedb74f923c46f186fce3569577fbf327f5926d463b95b5390c673f1685e3a4efb44941dcfd3357296abb3a38ab1b34a951cf381f23050b9034d2c567854763a19fe43f497fdf8400d6c8d559d00374af9cd728d8ffabab13c314bff293abb2fb77b93079a3b53b0fa53204e220da54aac9dada39952a6887dcca5e48bb979887e01af6fdc3208dd4eea34e02f8a42d2ee8fbf119f4418e926434ad867a2681accb589c60b49e84fec6274fd250b290b178d1e7b0f47f178e633f3bc85a5799c34f734f4899014525a55b454c842e8e7ee60e5d26025b7bf2cd32b11d50a8d5080616fb6e3926231a268a17f7a81f0ed2ec9a7d221e3654fec7a6b5bb5e8c08acfe13081c54cb006ccb2550778f255eb2b9c55ee61eed813fabbcf2ae8044331f511d1db3db716fffd686f79f9f08388c8799763a8d47e4fb8590820a0bc38f2b40d999a750c138f5c546317e5fef75a82ac8d8e6b19e305c1d0fbfcc0edb871b198f0af0f874f9aa6dc0bf59593dc19107fcabf3b1c613d4f548b267bbdae22300f53b112ebdba873156822c748a60b18932a08ac7db86a698ca4609910ac81b4a792673c5d8060845ec76c3bb189edab8123bce8e0334ee08c8b4137e0bd25818623b648216622cd8d07522dd23b109e420c3497997831a30521130fb07c567499478d761f1ced5de3a52b8223c8bba507049233076ed8812c1f58754a0e8c12df85754a82dc5c62799095b7de7aaa7fa6f77b254faea7592133f9d84588c8e602476ec4488e3166b6bb381db6746aa982d08866d45b73ef1474e04af943de0358a222e680ef15f3b9266cf65831f0339013c4f5a34885d8034588a35d6c7a336d1b919c9bb56050ea3cdbf045ab110333a4ef309fc26327789cd2ea233a70d8a1a376246656e30aa25bb4805042d818c86e34dce8f49a0cd97fce470b51c75c32d5195de9a0b626ee591523c9b5c24a5c9e91a9e35ff0beb1e7e765c00b3e76c0e0ca653a273714fc12baec8cad34d01838ce11c5fcdcdcd6ee28ecf479b190d60a0854b5d201bc422c2a49608543d28a648d0d1e55a2975d5bce6f4cfc9813d78ab30b5bd0d658c4bad3f68d9fae64ad7343d1ac64f45c4ea076feaa3c613d939dd21634108c499aed5cfb8014d57c1e4eb31d1cf3123b47233dd2eeaa29f762863c0fa882491ccf8cfac2532f4569b8d2f35ec44ae1795d892d0560f7e561f7014bcc31f14042bea2fbd904266f9d9b168465ca6588788470881d484fd870314afad6b6a9448b407d8f95ffee67f6f641f8751b4b154b7f61903768df463f77a3f0b6f729b2d3506ac063cd973fd3cbe72716b19e9ae742ee1a4d514bc4ecd38f459a670f9609edad59a09d1851e4c8e6632725be65e28940d6726fbdfad6eab619fe410a1559f8f5aea64e6364ce88413a3fd755afdeec03d9d86f6d86f955f0ba83827983ee2f68a9507529f3f026a62505fba0e6eca0812f966a9afae43d67e3d3eb88ec83a53f5a87e2a3bedcc91921adc882155d2a8b92d38b791003ccf1088d0f324ba3152cf07972bc39aa9ac4fe504b0846bfbd0a91608f0b920593470a5e32c16c64ae9ec84561fb3998a5a75bd1091fe28a3d996ea819a4d9fc846c3472fbfda5991f3e6a2633c5396484b421392b85fcf115f88b8da229e73aad28801488a08bc91f3aaa1b6731eda4bf38dc07ae223c8d997442b7d12a69b52465ca6c026589e4e2f3a7d3194f81a081b8eef9bba9b1e9c3f254f93fddba0f7138ea3242d7c398178db92aff65cb1ae2322657aa0bb1c06ab3ecd0189334fe99779a4214dff7d5e7bdf9bb6fe093964178377795d395fb093c3070635e484151fa1a2d9f682e9a2f01ee2a1da4cc91243fefada1b9320fe3bc437334a95d193ab0d82604ca90f0f7d57a7beb51b127cfd210c9263bec9a5aa0db4adf2de23129579a9c433f6b8a6a3924f61210639828c5f3c73b05d0af3c48f231a80826b17f9b7f8683e4ea4e296f9db820f5be9396ed14551a8886a946b486d3a95a38ba87b9d214ba712ba0d43526d7186e282177ddc8d6a062071176f6cd26e4bccaba4ba61d61d3c9a4a229219461846413c6fe987b9abd045d837a20189edef918063c11df513e7d94d6c625b79bdac032eacf7d6906fd768d998716d89260a27383bcf6e69c49908706143ee3dc707245845f379f7106d67ad81d443f3f23baf98b0ce36ca4cc4ac7139e50cc6c7f758b519a912bf58727cb257fab6797bce3f1efcbfb02f34c3c6602f5c7d2c488cd3a4b945ece4d2d19939a1604e47e5acc8e03180525b7302877e3ca0c2c61f56b2731ec77ab49740fc6f48e9a0182ff2685402a77597f1fb4688512fec4327e4849a43c82bc08d2d587de1af7066bde0bef99bf8f715d0cc257a55bb25680faa7884e5112a1ade1262949872fc68daa18a34d6a84795288d6da88400bbc2009b9e8d540918ab47dbf04f65a5a7377d0c07a4241af86cc03bb413ed6d5efb1202d063460597fe65d39724973222af4c47bffbe86410691acfa0baf175f136a2ae63986422d4721918891e10bb9cf830973776b3e982d20ae99163042447130c087d9f0332aa24ff366cd6cb60a93ad03190885df4f429ee02c6f5b43a3c3bc1c23053869b1d8fd3cec84274c8437c8eb253ca9ce0baacd4ee41e098cd2640aac8f86cd78f3f8dd1a522f539682658e080a4f8da9f9b73367f324c334616892fd9482d04adf929f4a87b6779a237a030e14e9f3362d5c58854ec422fcd1bc6c409c19b26f117404a0b261d1588ecdfba1d058ab1afb696be94b825aedfb80838e43e31ec13a37bb5466f47076a95a49902c724a2026581553e61e5252d94cc311ac490db1acab3b23dcc5f034548da858390f1ce6349296b3ed6173845dbbe4ff39e002c4484d4ec0b73d4048d802fb7bfa6b76cf90269fde226eb1f39565400d5b9153f24e66accac12636719dbe1ca2a1364a46584ff8965dc0ab4dbdd06590f12004adec3d810ecc78065d4f2b406cc336e41a503676772c9f09656db0895159a23c9b14c6e40f8612d7c1583aaeb9aa25a23423bde01b3fae3dd5d66d263987709568bd08a24156b7af4e67cad865b42c4960dfc8f5395cadf59b74ad5522802a8611cd590633f51ee8f383dc0e0e542bd8ac07838f133e00891da6c86dcc806c001ed9f85f56abbc91ab6bf6277fbed8ce8498c813b6f3031ec041582226d10b96ce8b004c8edd282c5c40852280000c71b71390e092624545a942de3494189f102544f482e0cfcf695cf0406dd84cadc217f11ec91b09cc27677dc3a9a6f87c2096c564b4c346787eedcd11dfc7b7cbb3904793e9c2e72bd43d30e401f9366c24b4a478da2cc6ba1d3df509aadd7b6a784507b092b4df6bfdcabc8e101fa276c074f6e070c20a23757b11031b15e25f238ce2978d1f84fbb3f4c3ad2926131109104d1ef8fc3e447ce151d6220b7097001ef64877c220cff59688ae40ffdffd5c1415e11c277c4c611a317ea150cdae06ee958a95a13436f7f980583ebfba79fae01ec4f2ee856042bb14402ccdd08472bf8490961c4c5d430ce4e3c649acc4055b695fb1671022f6f048f2a8807f113d12633a801e20e14d68de268214907adafdadf5602637f998fce2bb149b4de0830ecbd760960a12152bafd7b89088375ce19b151caa65882d0e703b26228afea21bb14808f9406afaa8a1110256d41fb2bfeff17d663df6a5d0a95ba9cca9604dc9339166880a231ded8480b1b50d89dbcea30bcca045c3ff77d58a437c1d5b05a69258a1cae10bbe335bf6703d7c4420ade53c0cf60e2709801960c08e0a644363c0457f71a43f477841c14d9f490a571ccea78f92eba169bca15ca9a31dc4b1f827ff0a30f35848cbd77e02d6a0e3c13eb2d282267f3b4f64842d842fbebd36fcdb9e85f829452a9042df25eeb152df5d574e9d54e4de4bf163b5e95e540488ed78446b460250451c6f73eb3348d207d7669870a5ba7c590a7d0d8111fb11e7715633911d2f315bcd0e54b29f8897e8098f74a01b7cd0403a577e648bfa2127c70c46596fa8c4581333e8cc1aceda7389493212d67568deb0ce84f39f1b20d90e2dd9eb2cc0880b5eb9420000dca677b24f3b4877d0eb21eae532bf1a349fe33e4463f9314ddbb5daaa4a7ed4b44872b086fbc44f920f7a2665992f985bc5d0e6ab6818c39bea0b7f78cfb34c49563e272636187c9fffad549a1e67db3390254de096ced734b834ae42ecb6e380e00b1d1b6849f3fcb0c349149d2ebdf073400fa106523886a6c1f8287adf2770ccb2edb5122dccacaa8fef10e7c9f0293933a9a4c7f1480a6fec5570de53d5099eca769cf329c5030b466bdaac046357f5b987823edf1286e10488eac35e717fe71b38aee9662fa09019ef1e5e9dac665fd27621e2ea1e84f8fab7a47a2fcbe9ebf2efc2b423b78cd846a54153272c3ddf848ec86729703d89a164880da3815fa40c2aa8c356a1e847c1c3886cc523967ec5dd1f4aee81ac429fd458a4681a48b624a5283e386e4cd37f709a736b3c1ade0add26514f40c2f3e67f448b673b61e3ef0713b3eb09d5ae1634b5a8e84530d0edf6215f7d0fc1cf6a2c099598f315ed8e382f40e2534c9b523f5bee8d13752d85351241e1e9c00cf70e85557683986b40c9603b872195aad1c4481c629dd6581b0a2c63b9683dfb273b6d8a97a28729437f22f05e55044cd9a9dace1ca0d5c94c58afc80f34fa374edbd2029f673b47aee99bbeee8af9de0328915ddd3b11cbd2020b7b9e1cf75e2eb0b7b775e43cb973735f98906b711ba3cedf3b7ab9e530f69884a5b6d5aa56661fc02dd25f6618c9c820bdfe2ceb48059f862f6f1a246812e5a00c140d704c67b954d7110091ca81e04051216e5c51e9b7d97d54cbda93218ae0dce395ae568f7cb3e8b67ad76d6b16a780ea97aabb2569d5567e602d635383b62de1cdd646740df83ef0a7c87c7add6829c5677a2c8b2da9b436357f9de5168449e1940b98c8de713a6871335653bd951dd045c1fa51be04a65f1f03ffdfea059186ac9767cb5bed547f70e4c82916351b041d69070f923f457ff21192f488c1ba633c53ae02c7689c4b51513ed46e53f0c3b7010171639d02d8171ab59665159a3a0f07cda4bd1cacb1c37c54e864c79ecf64d3214902dad76db205fda7f304112248acc59f022b1d824431275e740262a58c984073fbcf5afa5454e87c4874fa2bb9d9a351994d017eb8e925d2e3cb07ccb71da87739c0453f08ada1f0c97f2bfab9e232cb1f1ebf0aeee3782da1155231f2d39393bb255c5757a91af24e747f816ab1f346ef5b5a643d7fccdbba41018f53837fae8e6220f1239a5a23e84367d993a8bed279aca286c6314768f396ce792fec42790ee421af85fdd7c6f6c9aa9131935e564b036bc4603001f08b1fbb4a60615e13cc9f5f9530095b1c01bdfc3bfa9473dd4df25ed3e405a582a554c7254c81cdde4736109fdfca914abd5015206e7727feda7a83329fc6a72ed0c5bda84e0f239114a27465b5335c051da3901d8741af3fcc360792f9a36c401df045c1d8da4a797b19a60beb7bc6444a72f535934c340b60fa89b0c8605630d56e54b6e007c84dc2d48ea758b7cc827e01c369abc42ee255cd3ece304a6f2f0be84658e517bfda24451a78daffe9b30fda487b54e0d2269ca3e1eb3384e21cbc03381322b50a81630bdd823bc9fcf206a6affd80e48e782ae7ccd2be8629bc82f5b57c3e2fa6d903969d8e4743a89ba6d575daea337b577d06d16d41a634e5be9489e01601228c6f4b9e8f5c23e7b80e9005a409ab42d1d8bf605f6c3f0c81492967b705fe01b79d782780af8113be431da802b38308289f5825e1d255386cd733a33f3ef6f147b8fee5b9631711ecbe637d67a88223cf81cb80bdd11e0fdde9689372aee49f570dfb12c356055d39a80e9c49c416998a2c0e87136443122661e6fe515a243c88514dfbe9a752a610f3f91ce404b8c32650849e6c74d388cff2f1c5cba35ea5f70055583ddd6bf8e7a032e6411df53def5921694d6412363c5c8294a5db38adfa8575b45eb3d480b00b1681cc093ec5d3c70497fbd5a4c15d797ae65e29bac5f24aa8ed633f09bdcd223b4923a324de7740418d56088c3ae4262ca00e05df1e5b3420c4d221794914fc72c2289460cdb92d39a79043a274515018f8ce66cef6ce432cde8d408b252bebdfa53ae25887e572e55c90c77883defcb2f9039889d86b771d91c726ee68ac9e226e7b6d0be92c338974d056c5e01fa82b5f8bb238f8d1dbf399b83300b4447af29c8fa2ea840f2ec85a425609b9c60e660f460683cae377907094a5b8681928640589f8a233608e11d865e2d7e34d0a98b59482ad508f95b57460f55d5fa134bca49b05d3180a51965dc64c28888d4e2454bd8eac18d51de4bf3c0e6ddf3bb60e6424fe203ee7ea2e1d01127cb60d0641b97d9dd6c4701689fccccb154bfc9dac4bbaacfe9cfad4da741cd9b54a75b9f4773cd20057b933a352048629c1da51877c970e9fd5f3d3c710e42be1a6eb9044a01e0a87628db333181faa90259783ac2084b4453c11e56d7da87db5c8af36b5bafe6bbac118dab257799e2f6c9625f5c09b8b80556669ed02511d36e22a82b6616e1f61196be2a756ad0146836e7501421167b7a241caceceb363a29b96345d753f57fc5b6a425a85e249425d57b05b74624eb254e116644563171af42f9d71907dacb95b0a4df699e5587d22cf5b3e28e11688e6d8ee971132899b8cb2c9f21fcd5b5e2656321a22c697f1ca605bf51b4eca4016eac01f892e7cb00eb9bb388096306bb91df421b1962eab44f0add5d61c1e230320ef1ebf4bb0169ed26ec537832bf8b3130c36a685800f814041ecffff09d6eb8ec463ebed75f220ec463ebeffcfcaff9d0ff659947c122b808c6e51f048ae02ffa8aff47c3801faec844c7e6bac412ddd42321c0d4132c687df9235da7d40dae8b7550e8d8c811500d19baa5cc0578a660113ce3c4e478faab38fd511fc79fcb17dd770b2665dd4d2781ca0518f7bb515503166c3095975514132afb8a7c2375ef4fa0b4715f2a42bfed93c0fb338be8700669d2c3e7e80b2a231887779e837de914e8999936fa34571a71f4dd352de911336c9fe5161ec9e8f4bbb1b2c4a72e925da535865e76e1f29dfd72a7023380ea74937de8fcb63e2426d2eb03b84024edc97bc4afcbecad3981aa3cda84ab37d2eb4ad5481b94a9b28627bb69ca95d7b9dfa4ede6557a4b060b14001572b3e26bcef68308cd1411a6831762080de8f85783fa80ba900886095e3fdb158bf97210e2c73b18bbf9c830c04620ec7a77b3b3ad0c5e208ef4c53f9384caef9a4660e0e83016ed9c132dcc9b809d26b13a3963f014104276b26063019cc08db350e64d5476491a2d4202ccf3fc5d4cd7be73d61519ee4b72d68b9dae1060c5e17c7d97808b124a6726f688bed1006e22d806eb46740e3d7fd37522353884b5f63f437e67d1930c49523a492e41594d052dc07642d3749c52896af589979f98806c520a83eab572563a58d2b2345fd1e732e66a76167f1fed8e27d777b15fa11c256c4612c606dc9b6fca3ebc76fe2767f5b7740f5ebadb815a83809a3c199ad0f368cc7bfaae748741b3cbe85ed1154d341a8c3dff31628b96ca72fee743b19b4c6aff2386a2815cfa00aca7699b65ae0cb056923da7754ce7615c63646c792a67b71befc8b6574c40a11327d2a772b7fe12aa5f97eb2e03a6e749eeb61744ae3bb0687fd3f7c8e379cbdf4ef30d81599bb25da6611d46a6145d036b12aa25959d3a496e48434862950901b9727498ed9d710f62b636056e7391c84a09fb7f3f9bf6cec3ffb7dde496de203876b675c480dd2feb93f42aab8f566fecdac5928d996eeb4fc6ac92c9f3a8f7776400c98af6ed9c5ace2d378b77dad86ebd0cad6c1b498d71840bfc259e5dbdb8e6f4ffe47da3f3c198b61357c24a797677d9dce3d9c9ef4463f62c6f9e9f69a0a7bd011f2f3e70a3511c06cfad7fec45a4ce8de7c3287ca7dbbb85e88d783c3f7d6535e92e36bc4e103b91cfcbbde2076476ab23881ed7a3795eef35bd882778b5f5ea810c634a86802b16c630ddeb52faad5b32261c13597a8115daf338ab37955d532f06b3e9fad35aaa7789125e87c791d82ecb8e397d6ec67444908dc6cccba736370b74c8af0c5bfb31b83391a6c928098ee51fc84e85edd3d4b92c51e43f677a2809a8ebd2ab9df801ea689b3adc8e1f68bdc9cbb876a80dd5762b6d8836ae07f4bc2d459d443e2fef67c9016a4832db75546cf7884f322cc1314217c310c55dd3847646a344256ad092de68076e36ead3c73586996e9b1cadf0c5d1047ec36e095ba3378ff3f6f4ecc4b5c12f84ce0d0f7f8a5c5d714b313841180b6624f3536ad875c454bdce288e77f87f13977fd514e3594991bd25a343029fd41aea0ba5c74d32e39121b80f21f6e6129e5d888775e7fee01abf6836a67568485c2dbdcbf93e958113adc289fd1e65191fce3e6efad47ff0977157916962d9b21cd1d5fd567223f4ed0a4d83b2e039f1931638ba69279db1536023da92ac5750015ac3263e8f9ad3babe04111f6f72404f9f146a65b0b641eefddc53196358a422efd79fcafbc737427990a854b3b0cec5dba99c326db567007c5c58a450c3a06bb9e993c35a9aacb01c59a2e4582da2e44be79dc6d58c01105bdf1625233cec523a524df257ea1a6e31cf1c720b539efbbc7c5323870a7e7706f01df0449bf414cc2db8fbcb2cb7f5a9f857da420d266cb050040c5b43ba8001440217b003dd325ed2a098e243241b66e4a348e82b8ffa9914c304c69a816b5976cb827663403b51f2abdb8dbc040b4af2f52da9e1d4517c1c7479a2a88c92aedfb603e514a5884381d3cfa22eaa9f3c3d3bae61a581eea4c6b9756b4774469093660c2350cbf9ff5d4dc1530d547a64c7fa1a6790185b8f83909d7f2ab5fcde661a5ff05e5ea9fc1b90586051b2c42b9d9f24ae7d0791902eed9561b74acb94f1c34fe41f11bc337bd0f1c778dc361e4e0cecc59e0dd1bec2ebed1ecbefd3c956d368f1e355e518912f8b4ae4dd3fc6b5a4931a3c32b0483b8e262b4b871393a3e7705de2dfdd2cbb5a3aa15c187ae60f3f06eee46115333622cd99c33e86da17836c51f3fbfde789eea4b85363015e3375ffe3be3f73ea02694bcdf9d7406f2ca0f0e0d36e01b39d9fae3e25f6ea17aa514cd2bb4e21b55eedfdf65d43b2dd71a61394e4e83e7b418a8ce68ab1d776203bef7996871773820007be0fe8429c734efffda053f7d27aa3e05b7b490772c3965a07857b4153858379f42d40b26aa7a8aa171cdb421cb537e7a3555d3adcf3761002f39dc89eff3102cefe1e79ff5bcc8dff1ef7664378e47111fd79d9a022e68ce1a59a146e01cd5bc123aabda9e2ffd9155f08435578c2fbd206542ec375dc000f5fbbcd86fee346e6e0dd6b55b1d4ba45346a937fd7c248e0a5d81e518898f87542da2a478395e1b4520c95c2da15be45799e5656b00129b989ce612b1c46d74abe31d9e4ce40096fd2ccdf7a3cc79fc5d9a2ac117f9d5fc1c7cefc826356d19e4736e1992bed4476dcf646ad9af9ad4b310d45695f9afafa564ec0d663e1efa97fb17e353b3b9fe23cb816ade4851a80b4df9cb19e0a59684e0b0afd10826fd6f9e7f3d5a320b8ced9699ad7f119982f09a818657c2ea445a53dac0de91f5a450438827f8ca955311ad1029a004d33d81845b7cba431d14716d19cbea585f917a71686849909e7bad2a3ee0ef073038272765fcbc18ab17d759baee563e3121f4a8578042ad3dacc7fa8cae99a5d65124421c5ab3fbf89bb21304ac988cb84dae90d34e34962353f029b2efb9c71aadb30a2baaa6b0b4f24ba29bb641a689e8b32e1c5fde84102146bbb9995d0ba4a81d3d8879900a59e1029c1a3af24d76aaeea2fe0a4cb0d73cb6c974eeac406299f88e84ff7914cab4fdd850c13d792f63d80aa73bb34fef251f45ca9288098f86f43ce4f23f857381f22dfee0bb8d906f9ec22614fcb7eeb9cb6bbdda0e5a1bde527418fc7cf44698711947e7acee085d2cf46bee2c633b6aef87d911f9e30b553a0d1c78b48e4bfdcb22c1af64c0b561f30df1bba670de5edc08eb6c48914f984b47561decd87eed75a00285191f5d096780c75529f009106866a88f6ca24929300926c7960e9096e05983178052c13220d894b05d2ddc2d8f1bc53fa7f9cfba537dfefec93013199c6c74928ff26a26bd349670e72379ca9906a255778cc96497d9eb66827c27b542aec7f444d992ca5cf338e0ce6521377e848effa6242ab269179b88d6e7ee13c35350af82846993d30b16660e1043b98f9034269bb5af9274a661a18c703c05d1570faf526f4724254e9fe7d96227936802af4b641e25801315a9357eb48ff9c1dcec49d679eee159f9f47f076bf51259a8d7ea22130561720000001f101b16b10304cca089e2adb8dd604b75a1d0bd85c2cd2a2205fa00d47c22690bcbfdb07f086a13e3a6e85cb4c987800003bd8b46ff28cf03d28587ee0f00044f2800586ec18a048bf286ea075904ef0f626cc1de634db45b5465a6211c7cdb7302e84828522620875d362433fd8c525e2c29b96ec5a53447a3133eab6aa370b155ba79d0b02c3e45035713b5cda7aaf0909c9f619862df683626c726be7fd8e369de5f03fc36f62135fdfb298949c2984a8a54102fdf6298a2cfd5dcf8d0424c5c59a90b198d81ec804dcc40cf5104ed4711878e761d57a33524aef2c942bc78da04cf64093fee78728c58d5d16556ee4a940c06654c0e3b827890ce863c3bc9600766c9661ac586977367d205594f71c967a7dde151efc76fbeb82ba80f85f9fb283d6684a8c8835c9061b087418c266bea42480388a274c815de6b92542d447f9965601d738d3f09b08f643b6d7106261f1d6bf34a1020c27ca41cd12ed589d83b0d319fae7f8f072ffa23361c1d85facc9b21f144b53cb8f3b557eb86df1f5257eff463be3e04feb8c45b0b989c5ddb298ee41e638aa590ac40fead7e895b0ae1d1270131a1b0ce4c886ae0dd534b90ee1e890f444e774ffe0fb0b4e53462ec7fdba82168e4fd8be5806a49e3d039a8538317e46a364966530aa5e0953d6005b685b9800011fcf740ba7a1db980187874190374a4255f5d37e652d3ea4c9fc3c3ea4609d873e0b1811e971dd01883d2c626e255892e02896eef06f5b287803e2ad1ae1214d16d506b7c07c167fa7117f8208e7ec9c7ccfb2aeefd8b932c1c20ea603930caf15190d703786a334e2dff5c71cdf8643a933105099d92fe7f32601b9155883303c2f45456ca336816df0a0012f1820160fb81b92d3df0035d1342dd2f326641fc94324e0aebae440d5055edc26daa93d7eab5633d00ac8ab42bfccff8aeb06a5d2f99d8a4498608aa9368b1aa795ef0d84f9ce021f8ba35cc054359393cf326632803a2594a4409f612acdd1ca3bfe01a04db8000000
-2	2	\\x52494646d6ac00005745425056503820caac00007055029d012ab004f4013e91469e4b25a3a6a7a5335970f012094dab7deb37fab872ffc7955577ff1e7cce4c5bea0b7fbfd29199dcb6fffef2a5fe67fffe6fffffff1adb5ddc69d7e499cf8e899411e6f7966747d916ddebf257cafe33f5c7e83fc8fa59d91fd3ff71ff35ffe3fe07ba9f0e7ad7cbabcdff6ffd39f955f313fd1fec37b91fe8bfe73d807fa97f91f3acfdc1f73bfdaffe87a81fe9bfe9ff757dd13fccfed0fb9dfebbfeabf6e7ff0fc817f69ff6fffdbdac3fe07fffffb3f049fe97fe87fffffe5f02dfd73fe67fffffcbeef7ff9ff7bbffa7ca6ff6cffc9fbbbffffe48ff6e7fff7fd4f700ffffedd9fc03ffff593f9affb6fef3f947f03be83fc47fafff1bfb6fe8cf9c2f69fd21feffe41bf1ecdff62bff5ffb0f553f95fdf2fddff87f747fd47fc9fb80f4a7e5c7f8df697f20bf997f3aff5dfdeffc67ec67d0a7e3f668701ff13f66fd823dc5fbbfecafb127d8ffedff3fea77dadf602fe8be80ffe3f0bcfcbffddf605fe9ffecbd65ffd8f249fb2ffc8f61bf1fff77fe8f83f927096745eb093cff358b8534addcdef622f624e3fede3bf0516207ffe6b17bcf8215f3362716aaf727f7c57fa2b4f624e3ff36e5ce1031754e49f09695dec793cd41a85e23e937c5cea305b80b74383cb21c16c4b469847c2940d1e562635b37202568b6aaa39bf0a503433c097e3b741b4c3d7f09cf508a10e8aa97a11f4614f3ed15fd2a713b8a2485e7c6e871ca49babbfa2e523a1bb8b45b27aa33fd7ca468ef4ca68ba7762483f8b6f5496635777777773628b92ff6cea2bd39bef5841ae58e43910b55857e495269937e75c1f576ee6c6edc7cf79108233a9cb86e09d8f6ae7f18f5f04386164adfebdf3924d5c19be31f122df15eb8966c2c0f52d02ab3ff7c79eaf1798047774610021e7b32e76317ce9111c94a544540062b803b035246d59594a1f2beb75104397958b71e462b302994de085c0be720a3381be10a2e70a503175c0bb9ac24a4e43003cf76af42bcd738fa6ff031f58f7c06b6bae3c305d937c6a7afa0f361f0a8f1f1e7e555fa506486fe7806814f3a8cfb470a0762f498085c8f024b837db88c03bd64287e45662d7f75bd6f9c3e1271f3c491212f5a027b6020b2908ac96852f55e4ea36d7130c313933d36ca8a3818212e5fe824d484b9025aecde8af41042befb5613b6ed8ab9ebd184dbff1c16ed1df81cecb648477de6efacaa0153e42bc39a3ca357735430cbbf3de80e52a6bb25b8ff996317880725d81cfc695c1c1bdcf7990d12d374d268f6ffd7ba6bf231d9fdc5b0d08e04394b43071ecb03bdbe9374fea8f61d0aa66a1905b886c49b72810944cef495385abe3c986f04f1469d24a732570d6aba7b92e268caa62dcf5f7acf82a154b31c06aa6999e6bafa3174851ba97c0facd7a74974490fe4d1d0c08cf0cce9d0fba05304913b08f632f84a4bbe7937282de68fe337419b791aff1cf5b97ee7fd45425a24fb530ebd556a23735653bddd5ea97ce77e14b110273b9222fcf9797387abae170070b434e6e530479c33ecf38cc723daff443bc47bc202c92e8882e22dbb62b7af8a0f5a70c5f2981dec287e2909b5249abb3346cfab875e98c304e40ff45fc60c05a084fe11adf04f89ba71c39a59ffe0da305f890f9a6da385cc0a024f63aeda7077359d39736fb61edb0fdc30638a6c171d553981182e62f80317b91d324149531a09b5d8bf69892ccc0335322713e17f81c1d56b655993c8b8ccdb74b028df6952c52fd4f39ee6218e1d4978fa34729d08bcd9169bcd0cfce52016222ec5b592f14754e68199cadc7d01c264b7cab073211195d95d4109f6d997a1be4b6e8a17f924ccfec936c6f6816c93c344d74e65b074d8bf6b695183ea4895686d84c1bca9cfbc27f49f8c7ef68d082504fd52d548d82e8075a656ccfdde3e1eda83d101515c68389e8c976981f0fa4ee13d19bc984be45fe4f66295a84d40db2daba1f0e38de654bd98d789f148b30d94ef3a80421ddaa750be631bdb0c5ad8ebec4b8a9d8038db2ba1799395c7230ab3c2114fe47c4ec2d26a9286835102df9eb21bf7bb69b1996455662122ad9f4a744fc0fed82d61802463aaa51772dd657c7f20554ebdba8c5db52e4ad89a8b82da8961dafb0dc79be02a03ba12f3785f3c26213b64f06bbdcdca0d0787e52189cc3fe05b6b49eb41f7d7f2639acab726e2bebbefed684de6c4fcaf959d941f9ec08d4ed69b73e6888c3f12785c771594204eb112804717bda3773a12c6bc68752e4cd1b351003c1859a71cdaca6c729de9c1056cff81926f39b765f1a7cc34388cc6bdfd752356b8966dd3c113dd6c2e17dd3653c71bc2e0afffc7d23be557098d50a2b040fc4963120d83505fdfef3c152ed5ce585ac9cb25b848962375b31716094647e23582762fc3f0b35210cf91a5343a8e0c03e4f717a2d04e266b4640e31db14cc432cc25cc4fdb7b3b7814b0736c5334b702f7af7fc35cebb8ee9a25604faed2653d892249d301b9d36156a6d6d90cb90d4b4fae70bc9e83609649b982c4bae36af96963e8f870c8be4b082fe3ddeeb5a83d4201f2ff75d48649239b0c4d29e9fdc633165c805e8cb9a3b789ce16a878759c8ecf52d8f7e53fb573dc1de018b3a4a931e536af0cd76e6c3abcaca11c9f54d581688988071c8ff22e651f957da0b807073a8bb18e5509e80970a669ba43e1917a3d7a26ece232b07aa843f4ce3fcadcd245f3552e72e64c76ac16b51c5ba4c8118a4a6fcadb7c59693b422ba8cb3018e3f201cf73aeff95c2fbbe8d9b788505900b885337bc1a2545c65bab43bed22c2e4a019fedd468d7353c4ec0d02da058ce0b770d8bad4c0e04c07eb7471a3d2fa012b0ba739cf2941bc7284769788a868e571c3a8d3f3d5b6633114678d773934f5a44f19f88b7a3c58b8830d196fd5b3755795b62918479348ae905abdc23a8ca0c55aecdecae086ff88e1665dce4957c5916e60df1c66f9fdebbc996786ab80f6182e28e8a81b5f608b2ccd4394cad2c62502a6c183770dcbed32e3b5c17894c595c87da94d9cbd7bf1e24c8738b60a7902ccd6f34f3a81a99ca0ad06de88e21695b2dc2998ac309e9e4b59e2ac45c2198241f9d17a6686902ad133a5fa0ca78057fe0b526ae4fa5096b96aaf1d6f186c736b8bd65463123aba0cbd239d2a9dcd90cd07429ee0bf1b2519497881bf10efb4330e8fba53949fc67ddbef1183bb875186257b77315408b7937eda06fadfffb25d30267d3ce75cbf3c33a6af56d9b6b3ef413a1097ce51473396fc102eac62445cf2acd81faca2d3f71efd6cdc8f4d296dccb45c53e10a6020793f03391f7b3e69ffa0fb009def04bc6e7cb725e91dc6d05b11cb6f93884d194dd479c7158c3224bfff59b31e12edc27ae94050606a6d35ff12ae1e0f2100be8ffbabf762966285198d099b5d08947fd7ddfc54ab5b613a91e07f6abc10b7c000618c619da887602432b0ac16b00e0d484b1845a8fb3f4e09660bacdf4a7ff6640d9c0802e343cde56453d5241f38b102e6cc9f93ab66fb8b6c3bb03db74325b3f8882c5435b190cc1b4f967640b39336893ff40d709f3e662e7f73186fadd23b7e41f18ccb2ac6e6754f57db23257aa7d542d6cad3118b7e1708459e8a685c330a0eadbd95fa0873cee1a5275f757ab643b968d338978f251b48769e936561d8a54117f5d0fff1f329e7d8e924174b44b071e5ca5a1baa5942f150dfada7bb2c34a7e73cf7e8e7bfb32b9437a8476a16e7fa3dbb8b3926d62b0b85a8aef03f4920864ef47eee6dd245781bd6084dbfc7e207978de1449f25bc54e1e2ca7c9a4775fda0ec96adb3cb4811643c8ad0a304d5e4f6a9267d65a0a7b3afb5b72e562506ed9f9fcc6c34b6ed5253da01330c920b9402ba0828391610259d7c6512f40a4bf2973c8913f2f171c03824bc623208f45888bb0c5e7ec84d5ee13ef8025a65231a887e9fa0df166cddab0ddeb8f2ae7e8f37755b19792e7c459e063525a70c57e1ce87e732b25491f26b5f4dab105ffffd057d03292744c5381d5c76138ac26de426613711c8fffd58f55cb9c6dac60185f7264791f65cd8f135f821502099d714a8907ce3be767380ea1e6c4efbf2137a10f8b34b239bbebaf301c2073965a1cab787993c649a2b99b334aaa5f54aeea6aa58f1a5da9bc2f5bc6d4d8d7c49d28e78f881596838ee39e1d1286fa0cfbc7e5feee492ac38a08abb23b29d9693e56d9ab0c3684b3561d5f0a5bc5c1ed611e6266cc2a0be684eac835042c3abe383eb5bf122ad39f37c90e55faccb0cb57bf764a182e376042e1eaf52c525b84745ed5d3634671d9e3cfa7a968f8dc814c3f81df71fef45eb7506ac32130b30bdf8a78db30005625049e1344589517ddff971ec5e8c67672d6c206f58ccfa6715b8f54ede7f393f9e91137251fc1d8b4bde4ac17cce523e64e7f673218556a74ab1ed60b6cf5c14c315a1b05c0fdf5f27ecb06961e08c679310c97414a789c5f12f56a8ebcdc80c705665faeacbb2a8768d7553eb8615f1cbf5e9d53d2eb549af12018890e2eef168df077bda174307b684a37950d25528cbd04804e5604d59a9ea49d793e83eb045311677ef53fde7bca226d0751ea0e9af7ee59d7e2e70f1ab1b7278384fe07e39656c957095767af7394733a846235edeb813ee25bdc411517daaeddae8b1ffa42b26ae68338c4d9367a5e5fc5b72d38c67d8c203d54c5c52036a5e2f4bd89504a4abc9e10d0a71da2235211b7e7d55fbd466a3ffe3e9fc3dd88b142943cdc405294d670f332bdef826e5a427bc4d330d378b391551c3d939669e7d11f123f6490fb6b3fe8fbeccced169247191e849bc770e93d00befe2899a9ebfcf8f0244191e47c7a929613c57b71817ea050d0441ca20b5091c35696e6f9089d585b4cef042047877cf06625ab8fc340c4d8a9aac9475562733d377ed9896700ea8c124b70043b35ed350f9b6e4329505c5d02cee58bbe1fefbbba9555e1b0697ec059bcf358612399cff76c283d93726369c99b434673beda8c91024dc01f37106c1d77c3bf56ad54db1e64f60d6de0f1f2eefbae54b5a28453fc80a6d37d81204b37822e87599832e3a5b6e554848358dc88648284a78bc0e8c69a1067c480fed8bb0e52681d7d8b4a9d0c9cc338fc78bab147dd3de8a2297f42120183815cf2f7006e322b45c25791bd1f92813abdd8167ee990dab5208fe511237a340d5b7d48c5b964ba208e9f75621d9f2e40eeef591302445c1e35b53026a954181351ddf538274de20b5365d2e7051abff195f3019c62017720c8f765ce60394c6067d93fea4e593214c1a21c63a3e8a1ce15935ccedb86154cb415e73f418a62a89dce1ba0e2d1e521660df951a30c70e994e361b9c1f37622b2883a9c9b8d7664ebfcd85a72670f9092fc245ef064fc49f8f6dfffe8185410c7147af5363a5d97a4a8f088e076bb136afe33c7a183efb29793a927c0c605ef2c2073fce85cecc344a07a686f107b4b426297d40c211b6ba432c4a3198aa46e16670a5afb004b6b4a4542a86fa76d3c6fbc472a0d11e47cf02e7d5b26e1fb3a09aae3bbc2136259fa83a584b6b6707a0ed987295dc6aa7efcd4344962b04379df8e8cdcea5782774fdcb6218c7674fd40a917896b4e37bf9b1bb87ffeb61559ec9dbc2434291e534540c52584b3de83e4d970bdfff1e70af45552ce1b551c192ac2839e468a2828e28bec3ed8363acc0b9c6b74a8737c145bb7e4ef25ba42002dd5ab654c81cbd5ad03a0b9235bc18f93e2506917fc5b00dbe5a5cb6cc54bb8c135a36b0c59e2889976c2a421871637d1d182beb27c5d5843f3fa1cf01240fbf50fe59e49019847e8836ba1e51aa57f6941774eb011369b2915edc6b12992d0fe3074f81d56a60c7f0676d9774016183ce7fcc9206c1e5f1c19caeabb2eece62d8de6951f24a3a339a73050d351e9562bab63b4b5d4df2ac8fdbcfcdae25ed728f7973ac3ce247aac596d7e9326a778519d838fb55939f8c9e50f47d7e5e2894698f89eb8b05461eb015799893ed67c4279d93ca892b414652a5a937beb59118bcdce7855cf3aefdd68d0e28bd772b1ae9ceda93d0de3d9ada3563888e2d33d03cf4087d35705f20346c3c0a812fcd11d7379e76f6b5a529e2ff0bcb4ba6e10fd8098ece4bd930020c1e98533d13fdaf8b0499219fd1cfc6f1608876adc7bd224703533cedbc2fb8ad5bb946a8a641f1c18842b7240e414915090cf8b8806bbd29d43cbc0ca03f968667a3242f7071c009e7c833a2f584991bea855f5bfe986413ca34d9bc68cea2220c87d03ae10c38b1be8e8d39bbe245b4d11f454b0cb97201f6f391297d9cef25cc4c0047580c07848fe01034237c73749bbe7576d2a22afe5dcbdfc1651a3c9e0c7fdbc7757e07637d18997e9bd93c18f226dac010cdd6a3e1352c9639c266ebbd9748872c03657042e8615775c39340e90132d96fd45b9355ee7e77bc4c1d032f2ee2025a10eb3d68d68472135ee7a83aa5161a293a5c266ff9cad50512acd3febeec72175fbb4b1678aee2fb05719441a25add137e14a25772a49c259d25fe3e5a70966fe3d78f3929e0e88bc67cb280aaa5f7a58064f29d8916ad28c4aa07943ab45059d5b70311d9eed1a4c00df44e222144166ee399ca8eccb6a51744235b015fcb5829e7427763df69a826da76fa55cdd15b3794039fea98c7951ebb3bae527c0f3a98d9000fed2cf0f8cee7e4fb85fa9bd78febff7ee8ff183bf4ba4edde3d7e11fdce9df4d353d3f1fd5e2e97b2097cfb896eedf0c5eba496c35b674785baf1c3109b739251d5643d3639bf90469472121371332aac7add186746628d31cd2684a6f552557be5c9a498710bac89d1784d24c0a190c1abb04d6a6130db33b747f45979c1de10a6e237803579c916ea269b7e3c2e3c752e5edef0aaf138ced642feec8b3dc6e74eed38f4b5b69d9464b5d54c7c7b3e3beb1ce2b694a4851aed5d6d489ce0e9751f4d32bf2e4fcf61fe57058a05241e0366bdbd20a23ba4724c1a83c620a69663c7ee23c516a6bd25a98e432a43a67fa30306f4f84a44955cfbdfe05c18de94feb683667561cb6281434825fa2e77c28a1ebca0608dfa045026906fc1505f8635fe140c385bbc90b01885009f2d6de1fe467359ffc3b2ca51f17e441c3e45b73001995c1004837f25292fa42104d74783e0a6b3c805dc5bb81dc6ab6fb92bdfa0401a1d0d2c9071777ffd60c95d00567a78f501c8b10b0915dc51421cb5de48de94135aadcb51b93ba9903439555b8dd75eb25fd9e1a3135d8c6b5d5ad68ec340bb230891035123208486de8393b09f53e28aacf649590c8919de0052ffb7da9ef33ef0b43fd5560e461929fb5b6002975430cab4cd8a389a88f3d2c0cf1f07524a8d3abc4b2b2a5e5d2a485f4e342ff094b57ebe0ff7515f29aae089fa39a6adff57cd744eb99f4d6519820e15ce1583ae9bb7e55899a4b6b0def41765f5915833279f5a2503624d7feb4944e51bd421e92f4f18cd466a3365926fec2b3540e70e33ddff01c8937ada3204585a6f15d9cb7fe19cac74847ea6e1b53c3631391eaccfba567f3e6d22826aa35730901c58c24826c5422bd47c0b8498dc151aa146818174dc423993facbeb3829e562b5655e3611598922d6fdffba979ae6f88ef361a9b1b906115f3867fea098248455dcc82b227ea0422ec3b295e565a9a3ca5e7730222d189f74dfedcd012b106945257478204a8b3775e86319579827cc0d7e47d8cc6f36506ff8e0b2b9f6c885a62705895d2ee20bed025af52eb2e7e527b85c218876ea6698b3bb731bfd919ce740b02b8d797dde5a0148fef2cac93823e8d8114b9fe33593e19680656d6fd4190e02b0e58a30e5abeeb6b86bb81733f771eb54005f8ad043819e42db5a9900eb8f42fd2e6087fa45fdbd49f7561d5aa284988620efffd32bfd869ebbb3c353e1231fdd032d9cf79a0f3043e6a5d3a5f66a790eaa23e5a9cc7b6a7d671e19dfa1bcc2c7c90ed85cacc031a28d429dcacdd0a9804da9053851154017380022b319e033c3d2487f0000f56fc470df4be0336b8f8286c8952d62f190a7e756446baba89a6cb87b309043634687c840c523837702f140f2e3e109f3655ed74c399b1fedbc03f48b5cd112ba30a58815931f0743a2fb9a169663bc8c195a0e009bee983a2070b9a2089dbf650d8a3d69f1ffacb4be3975fc2d5649e6b899a36f58af7a41709cbf8bef05a5f52e127ca3514c284785e72465e661ae2f3bc03002122f19471b8ebf545cf088bcff79dce180594e50b0fb575c397f4ba7800000000917a8f6bfe66a355ff1ed2216469c0f4d5f50dfe3f28bdc3cddb344872f2f3886ddd792fb0409cf939778d70ef6948b54756643c32bb5482edd1f7cf712e54fd6a3fc6ee875fb1b1fc33d116d4618bd5f7b956d58eab161fc019385610d3c860292981527fdd9472457b21d792c7f4b571f04700befaaec83f6700543b29131a65029635fb350fa7c63528f098f09ceb158e05b24e44a0f091d8b7b2ee87b9317e1f594b187b530e244099ad5841b209e10c278f74e9c717a85e67676d6514c840405068ebcd93d95f1cbbc106f2b14962b297e893f9aedb2b41c27ac5bc091d0c207475af27c789fbc10131b6ddaddbf525592ebd5a20de382ddd7813ada081d1300004faebeb4a9a0b44d066e139aaec541cb04b66ef2f42df4cc192245c387e6fc8a07a41091c774ec3d57dab5d315ab5e9fb66c95e32c582cf756b3e402f45abcfbb23d74773aa6b6f5b76127a865f85d5960824394dfedbc32bb13a6628f6d0491d8c794e7aa9f0fc39356603bfe3728bca84aa4240652f0a2054a403bb69426a8106c8eed15047bfbd7ace037dbf81dafcc3e0258182e888e8964f5827a5fd66626bd7aadf05d580a5a439da39987e9258c2dae8c3fb9048e762cdc1737ebcddbc043dab3e9ec3ce05178d9e64f7af8084330dde39b210049da025015a0551f9e75ee93e55b9697dcec1801ea5a357ec454836c27163df8d6bafd7228128ff160f2b091dacadefdf1ca7509728a489481000005f1bcedc16ff1e112e76d2fdde1ddd7ccd8a5a9b5ea97e4cb1fbe8960017893cb3c1bf6012ca370c3aece387f9c095c5f188de8b76a811672536c80011c8d88c1c5add0e0c9398192a63c1d63ea04c3f73cca5ba3f4eb7531e0307c08590a361fa1ea321c8c32926ec979af88da61037dabef92b214a9c6c38b3796ac221bb268a58a4a57f98fa70c1c1686f0f63e297c219f741a9b961723c942f7a324adfffd516b6a2e163602df6325849b9ecb71f5ab4bf58a67f8b69c6ce64abfbac3b6ad255e9968fa4e54ffdf60b109f7461453ecb3f00755c99cb2f0d64faf9cea1ce0f2800adb52d7445adc362b307b546b225f1e7c70570ba6ab301c17cdd96b8bfddf3375210ed528847aad0300abc7488598b340d00b7ab18a604796343c26597b59bc9b219f7a6ca591401b4f0ac2cb3351a1454c1e1da4fe25c18fc50b296ed88528c16ad720d3c7842cd65862a1bba73d2294abb389cdd7b7fe8aa6ae66070f7098984a2db6a3d57816f20011f04c01d705207d7af425acfcb66740c04ccf05cc168883ff0509493ce5fbe456510ab9398d4c51e333cba96e912a58be68e690d48794804706fdbb7eea79eeb7e79fa6426aabc0dc015527a404726d4386eafea8060383509793e89f6e5d856faeb202fcf622ea3210ea5aea972c284578479928f50cc2027567aa15625e67881f36536240a944215776e0a3d0fc80c735f3fbe8b933af916dcca52f57e783cd6ab6cc8ffffd4200783230880434cd8ff08586ebbc19369e4b97a88e92966909a977feb1d65541108714fb0bc9f39995ccd6703444b42177e39c21f405fbe07f5907a8f9baa3dfba27ec8bad0ddc336f0ed5954e3884b603ee9f6c792c724162dbcbfc1d7e1f6a13374894aab11d5b3f232997e301bb40d626acd6c5058a1e17e5f063952507317def9aa8eb760bce1a38184da056ff14102c9f8eeca1c2bb575fc2901e9f049bb9db4fbeb8d0604aa70653bdfd82bde3b0154f1673473920f49b392273ca181f68b25e21406273dfef3934b9a6e3f9e1b16c76ce3541cc5acc85125b6dd1e79e58f7190a1c7ec5947299104b0a804d11b3a768674d5e2c1b2cc422b80db29d65164bc534e7cd8dc1fa00192a79af4941fbaab2fc4c176bf398b93b27bd9b1e7d0825cd3fbf6ef82b024f0b6406ad6694d5fd6d0b9f4138a7bf173ea93fdef872bccae0a3b64f5abc70f17f725af8f74b1f45d13cb4984600c478ea63c93e3fcab4123ad0137e2803b34d303212a0ee669b0c23c373ef795f48fea618232c19f704981f334b87f32753dd0064bfd5de708171826252072bd24e3e82a4a9eb5d1044a60241e1818f5108e0afa279e62c9d6a178729205bb65bc020a8ce2429b797ea888741c582acc46500511a76928e6327a5a6e99f4a582d2a6501822e9b52629fcfc8c237c756e89b87eccfecbe7707d36352545ce3da772a1b03a0ab9dd287d7b83d10671150f1101105882882ed4c2883682570ebd18749b1f01b71f065d0174603e110f038fc546b64d993282fdfacba1bd4fa16b9cd185bc0808a97c5f0f3ea75532ee865c2aa7acfa834f495d73b57e4f5a20631d9c7a8858ecfc94737973d67634111f726dfeb9ce7545bdeaa28496e07634105203e63ce8f3945957530a723154f1527f8e60f5dbf04a078ecc67e9cd8e5dac7354a8e9f7fdb67c685a7f1f62472000139e6bbd2fbaa6164938e4b5b912ef21746aeea41bbafa89396fb0f2efb183fd0c171119a6f01428b287473dbe5c29c02a653c79252d8452686416e4d68819135c467f63c5167edd9dc7864cf89324e9054df9416219d7b615eb217fa85b282a48a3c989ce317944a52c50262747fc426bd775b463449075b92c13a48af6c832000066f2a0559f70901cf798d0acfdc76142e3909b1464a8cbc876183d04a93d532e48c36768628c8ad05e700d73fd8aac1c8a01ec6ded1d71203efc291fa6962f77ffaebbe01382545af640032c93c69ef2a780e26cee33039582af99c689796f6795fa5ac4d2a8eef0fdb015e12973827072a369c5a5f02fbabe56d1960a7c6e0badce911e3408d7d981f13ccb26065c7233104e37d1fb20d89fc77a3a89f8c1b4f0dc8a3b756123a0c52c1ff993980fb80e6f0ab8d88544265c15c3ba631cfec565b835b38cc0dc48273a033293742ab34dfa40fc7fcbc62a437674b15c056a39b6a91d577bac77c65a4c2eb65bb161551a6dc5a99b244f051a8035a5a99504d88c857f77d6c098f7ceb154c19ae492ea3c7e386f8da0d9b336581682e2e99df7485c56db391f8b252b83d9c62caa47fb24ec8c445c4adcefc1351c7c221185da0c8c5826c0245bb15d6a44601b140ea8264a8741bef9ba96fec5c00eb79cd09983ff5f85f66a7a5cc73aee62e14f32b03b78a272863934671f5b13a71b512fe70d288ad9a219ba81fa4c327b4e9146c14c203adb39375f704c83d42d50f784199572773b731daaf7e8d2e4dbaf6b94cb991337ff47e3b4c87f4777b8231cd1c71b61a731f2a4044b099c2e6aec5f8aae15c95608babca76126de261eed0ba8f5bdade998da4dd338b82fd23c8170e9402b921f18f0486e8b42f906608dc00da57299e3d065633361ea09fa3a31732ddf63fb474b593a8a8f28689fecc4b65d56f96836089b7034d61895a7649c7ac48f9b9555b136dc59e3573db4d4b340879f744d80b77f64bf849fdd518290d5756f7df77d3113871c2690173908df7c1b06c1d51f114a2c608848f6d9e6eac147ac92db786e20b89c58b0a51b52d156dec4ab41daaa64850cd66ae260622f8067a06ba73951828734e39ca836bec435b1b9ba4ac408e99b8ac14e46c54b2ce4e6d1d376da30e9730ad1890017adc20aa44c8f1f5bf819b04f23127ab58738eb869c49f1c59918493a037f4060f4ea6049c131ed06f07d52067541363a33003e208f8eefd5222caab88cdcd68cbf28da1f9785836d16ebc70d4b5d94950322e05bdeb8e67ec5f0c3c0e757fbe6b86f01988f91b4f92337b0b72b4bff8c9734d8cc774cbcdae38c9d894a48926b2cc8cfb5c7ba74f3a6ca16b57e0b59b90acfaae7bf799f83f0d69d6d7655598c78bd3698439bdddc5358f58bc69aedea296a8d9c005dfe80e1b62d1fdc0506865acc0208b363e4bdec4d0584f31365cb3fe70a8508d18f00de34f894314a21068f4eb2c097655afe51b2dbfcd29692a9bab585699a7e7ec87c020c5ed208e07d9280f4c204c02d5bdc88c6a088a088abe1603ea23f8178d91f3753c6c9d6d935d6b0b5a1214b685d59a4cd8951f95e850b09e30e4606de4909bd755dbe5eab2b0752624034889fe5aa9051c51878fe8909f55ef15703f2dafb3ab6900f2c49437f7335a767396d26338f873eec5b04d4300f80b2250536f6d29e3ef7421ade9fcd9e02dc1a876b951577fada47326b05dcabc1796755912e5059332b1d57245d3de9eb65241f7ca2c00d286f81990a3912c150b4d7fb3e894995cc531a5ebdc3baf4d2f8913ccee74a52107f107cba48efb9a1a581014c413c4c06e96bed9c2f1ddcd90429896bf3255d33d601146d261993e8ef0a59b946e1a07ed2378096cca201c8b4e0f1a471e05b7a69dcf7d50c530d9886a34091421a1b754f77820ec52d151d47aabcdb623b130b2958555d15a8b66c8b38b13cbbbd30a8a5989180dc04fbb9cf19daca06b46a12f4c18c1a6ea00b9d96ca914d7b0789631cc4188401cb34b9c99a14a235e9f209ad81d17f2b71a88e1103521c1fd8fe298130c8fa1d9af3991bbcab8e29f5f9312cbd671e56168fa6a812c9fa474a2f56b50099ab6bfcdc54ce45f27f21486bd54de2f5211956000023d701dc2182d713023a2042a9f1243ad50336ffb5eae532e746428395f817528de0cbc7f28189c7ff39dbe32fdf99f58f859fa0fb2470520517deacff64fc9c39c5657228bd6a51bbe997a87c732ed3d4a6f4a9b86c0a6e9b47104a40de3168be6496af006e0371446e289538d63dd671723e618944dc24726aa5225baff45f0ba189a7f8045bad2a660743fc7912956561434a9f64e42a64667837a9ce3a669892274cd5ad42cb7490346b6108770211d6a187a054ae1b28b9b54c9aadc4154c426a097808a8f1d0a997ecfa0b211d987e5f57b9c6b53bfe6802173290e86cde3bbc6c97c09460d8f93a4a971476fa3ac97178771c8bae2c79f6852a5e51bcda1013373b666de09614d8c247d31a6869267dc7bf4559b04e81e4209f2a94e7df63c58f77e02f0165d58b600b3c0b77c405fab7da45dd23bc7998d32b3cf80591d41e62f7eefaf235831cdc539ad16b45b6dda5ffdc9804552d46ac5538a10accaa9871dfbe4df25da42c03d9399da7465dd3766454097d482c704c42c2d4b4179783ce995e0c3c73c6f2e41e93062299125815e9ce31699892241b424da9f858b941f8f91770ab55ea16b929b9ab539e2d21d3ceb2efbe72215b85e2a694b5f5f1372c80a9e2d34e85012473e03c47236eacc6c1816f637ce318e9d151f375fe65ac8e0c58847eb4cad46ea3e7927a12274c158c87cc51e06870bfcbba29a3f6db714b90f41c598069a54d114950eec21080169e700c5f9d135b9699c9f08aed89509cdbf4326a3bcef7c3a96a3ef9ed8c9ca40ffc0e6f85135d20d47e8cbc839bc66cd747ac3958282507a5793c950231f2f03c96600eb69668eba2f65b2740cb1125d26cd40d0c0f8b6d85ad778006842d0122f96352efb8a3df95c72ba28154348796403730e3919fab38d516238e1f55ad8b53f4250e391401e7888731fc0358e3eead715e17691aa2e6e19aadbffd04969226e38dd6b663988c94e8e200c397b776c979d7be0c45371c6a22e9a12dd5376242656a631e81baacae748307238b0cd761092aa2aa2a92473281e024fa923536ac17cd8a8b1b9a9debb4fab735123b06622aec2121f848585b0ee0eeaff64dc7829eadd2741b1cdc410e404e2912ef8f1f8d6ea904f108d87b720155a03c3df0e203c347221a9269c52c4968fe8b506b89830f3de232c858f0d8605abb29f21625a1cfa97bc9d062eb8c9ec0c80f373ea56f03984445aabd27c4c5732fcb1a02af05f846730f73e2903c6669c23b28b10c93c5712825ac26baeaa31fb5886ef58c57633e35cabe6b02d79f83e4931159e1a81074a4660e4be8850672d7d62f10dc6733ced586aa36b7b9d52a7b32bdfb5a7246777e1137aab5bb7a9f124ce07c0a201f93efe28285b45439f7f243d612bc3755c0b4b6b88bbd9b616a439e5cb1a6822ac91908a78b95ceb7aef547fdf3c7ef2cf3265adb1ce048e62151fd0ffe1b2a2c47dbd6d4e4281eb1e72344c92b392c29df21728719e5ab7a929489cd8b63eb5d12a634697886e33d869fb9f6299155cb6d1e3168fe69bfe6f71eb763df3e11beb3dcf5a59b67eecb61122a81ba1a929aa619b67bccf625023d8bc0320cd7f64bd053e009809daae0909dc01a67e648e977a5f9165b9fd6e8b68db1f9fcea2e444862e85b706af4035800006a0b325b9ff2dae1864d2609295c38216f1d3f449b30d76470ab3814f5fcaa42aa3e34553fdbb23c2f1131357504a154bc2491a734136c122777422f100983cb753e4e94c5614ae2f13f2bbaf0dcaca1ce534d5053b5cda87b845fd9f86e7ba7d68c065df7114d9f05ddfab3d3b648893a70222322e2a6bef0ad14b4e5694ff4493230102fc9b06fbf44f44b8a5a49208445e77d0e1587bd5ee63b3bfee90ff8f902e7dd1557408ec55d882d8bab306254dc8981b1e3b3c561633e69753815f41ed28505aaab356828c63032ad7c318748becabd2bc183a92611638d85e8398100f72d6ce3c1c0e521fee9cb0bfb3b4aba55b098316792add432eaca9fb2f7e5965a915d58474bf4863dd2b814628ba2826abfa8090e092380160450a41e3765e350176ec00002b78179a1cab41999088e424ca9eede7949003d0edc4b9d5e780d9297f9d056f1d26efed464414521adf6059f9ac4e4932aa615672d2afb80a8e27c90477f41dc9ccf336c50d0bdaa1cdbf6af8a337208b3527f470a699e53f675437f26ea2ca2ea0bd4cf0a9184f8c8f719455169255b3b98bc1b9f0500e3b203004da0761d0fb7a065dab786355d6e184ec15e9a47a62359214b5e20fd258c9ee4a88e3ae969104da3e28d5424d60664b86bbff5dd72b831e2ba3163cf86f2b5e81db5cd5e911fa4dfc6788f27bdbe0b21d7c1cd95ace4df36f3b63b6a05174d69df89bc1015aea9ec24675a61284cd08b83a03dfc8ce05d5331a6be3f5f0433509bd6e8f020a5114e7c2e61d8f37eb2a7d5c8c97f5da9018f17f30305387e3e0c90612018bca2916e2e7478a3e3c030385a6085c5c9ead1fb827a40fdb12e92e0a3281f6a35485bf0fef5271d46c063a94efdd6ecb00c26c7d1ceb7ae025361a20cb33b1e215c5c96f2cfcfc0738bbc85d91f1de4a164663d7cc129d17969d5855fa30410eeefe5e9162a7006acbe45ff5501dc0a4008e03fb6eded5e5d63c4f1c0000025614e00081020132b24b3a856139f8aa60333fc80cba75ae64ae13f153160b4adf6737fdf2fe25c334f6bef024009701f1769d7300e2bb02b64d6889b56c03d9c1484ad99cdedaa147dca6cbb4f087e104d1a0fe38dab76b6b405b11856990b8e176f001664a89ebb34f4bcf767931b57b970e2af50e98c02daed7dc317f209a7aa35264971509cb0a9fdfa72d774792bbe8ad05a0bf814fc01d4ae6175075da00e6ac0001e414bf81c58e8a3dc0936f8499f2efc01669a85a59c08061a2668878715f16f13ca3aba0825f803d300157cf8309f73073074a91a9abd723cace201824217e389b59fe194a5d42e09d12c5a8495efbcb48bac89b17b8a9d8189e6bf15f2a84dc1094bb7fc7d1c5844e08bf84ad04003976d2527a16bcdecac7ab2b276cd8fb2eb04d94eb4be15f7cb4442f93fdfbf24d0a75ab7a092cbba17e18fc54cfcf0ba0c39ca62a2b1b370af174e3da95d4be58a1338f242f8c683502619a6ebf2a4d807067c85d6f0a63c07d203e117922f9e918a2ad5adb2cdda76cf07c19e8545f177086ad5c3a57db151eb6b1e37d51e6ce134452e1fdaba85d0a8495f7d87ecc2b6fe608ec549b37f12d94582cc549f4bc51773901d8ffc5ac1e52cf86918f329aded371218212376b3668177aa30e3c877d05c86c6bb5fe375d033fee20df068c2b9a3aa433692340da9c5044676fd4b632c1dd706e264d757b2cc7466422313bbe82006bea853d8aad1263a3d910085a800016b2e3b17e087da5331f800436f22104563c2109710157714e2309e7036142f382e57812b80eaa62b3c475b69616e118f526c66f8b3efb0f409fa407eff77262b37692bf2931b68c361c68e563daaae9d28bc04e6be69530787b8f1f8d6169edcfc70bc6977dd2f2ba77d3378b1a6f1290e76e208879897f2ba453ad166d860026eb1e45283a0cce17db85f366a8198453d1087fea7fd8696d68ea4a9d4994022183a3be1f2b349e1e2f7d957da68529fc173b34ee3154ba7b818780d83c55df0712cb2b93f07d605f409442feca2d41c396dcd3532d685060c6a1f75c94d36264f5612db35cdbba511a21ef6424a1bf5f625592216f0714dadda329de67b0d4bf1e0d2f65b5ee360b9a62c29e2933bbe9ad238a16346efdbca4ed877da5731116268527e92620764d74c532a64f27eb8d6ce41d89b63679e17964a4f04e7c0830ca5eec7d9b6397de22fa1a46a31f97ecf1ec1faad981563133bf462cc3d578d9837cedbc287ca69b95e202f9e795d8d63d8e08c1474ed2f720121caa872482847a225f86b49d0327a8426c5751bda3fca413b2f4f30994d51fe5e8722bc8a6ca4eef9667aa8a160e6aee15b604d0be8273aad4e14794b96ade0cbc9a257324f61560071000c1568160a8e3e644390ef1e5d784b72e0571b4c270bd6867d861dc9756114e97e2c24a4b6be443d191999466dfd0f728870189c2ae4f31236427c37b4a839dcc04703976725d3fb2c689f61429ee72b4a454a323223e9feb2cf160a9c8f0cfa02448ea74b093472c9b9147c027763b5e72512f3d20a2dd6d1cce556e98cd8508d5b7013ad51e3d29f50ba26b0fd2282adfbe8a71335c9efbd3c4ed8f431d8ee355e54a7f5800e3f2e2698fa1f1ca932232bd05de1d41126eab95d31eae7f31e37249d4c64e8f8b74313092d82f886be288821de7628b4488d58d16f8a1140efe26ced7c3eb40b5c5d5a9a11bbbc269c4c90d9e3d1359740b022d88619560216657e871f8187b0200269bc8fe83156da4f36978f2c1f43fc290b683fb9e70bdd401e7fed68874d972519a824b24fc27d8f0352f86e18ffd61dc0c1d3299416de7f0d87359612e50255b7478570592be562b50df27384cef541040d815770973ef4979771d73c9c6a3e521291f5be3e677138c44ba5aff372482c1e64459cdc480515940be1a6e6efc8aceadb1ee432c52d94de01bf97f44046585dd6ca45e20e99b46c5883bd4bdb9eff197ea0fcdb735c15a3e7e5fb4777ed4c366262bba8adfaaa7292665046c11adc21a05d02a79e76b7a481648dbd204018dac6ca4ea468320e68eabbbd569def17de74212e05811ed3f830dfa97dc867c6b1f9be378240c4bc238fce16c9f2d57964b500849ffb5c5edc9bf8834f51db2d9aa3221c6ea3d6f545400bc8b0eb26b1e0f4c69d341065f163789faa1b42da98df3e25ce837521f8e88d17ccbb1ad08410c8b58876953984c78c1b073852c3af5367bc3487b89cf0c29c57a377bea7870f71c1b09f46c3d4f5711c07678cf859309134635efa8ede6383b90ee6649ada1305b054227682d087e037b94132a79e0486fc8ed7f85da8c07508366a266d1f8498617788b74eecc85c2cea9543da7fc829f4f7ded23ca6fd11d82928dc5a0844089b877791c8eae8e9b90cfbc37cd1d54177ae84aa12abd81e7a0b53f7ba78c72b7557852d30f18f892fa02cd69252b9e6c7f326037f3ecb2fb9a7462a4a18102a99cfa00d1c4fe1c4e785ef404133ec4deefc5d202056405ae3e03e85f0082f8e190f3713029ebe7c1239667a937fc9dcf21f4f3cc76e564f71605bbcb99a775c3516443d6051efcfaaef4fcad8ad53838c3639b81f2f9819e113ea141d010109b8f78392c9f4d240a4ad44484c0dae507f931b7d1080ead3b470437ffa8e93ade5522f8a47c356a2ee0959814887318cb8af385de1cfff671a5d807814453a3a7c9b8a38d49b9f00bfdbcb233a2cdfdc762a91eba45e68fcc425288eb0681ef6de1b758c29c410868fb6a6150477915975cb6ef6b7e0d21ab2d1baccbc05231e86744abd572d1feb56e3c9e741accf6b3a8526073f51e7e43cc84c1c9214a367148a123737b0876ce5e9917bf4e8f55341798e01b37e9713ae99bec20a95715a7ad9f45baa22227a561cf7ec8b31898e25155a30f0eb9aa4f74c1a0732fec2507f2e7c9db16341e12a8658eee46806ae37a6fbb8528b28548fe3128d3a04ab58974d8dda6dc59a3bec85d1613d61bc991f3c36217db18266a9dae91c48678527ff4f2fb9f734caf50856421687d5004e0bb70e2bc8fe11244b77af680e90c711dc3cc6db264e63bedf0cb493b904cfdcea53c9ef6718cb14eda6cf25e40814da911197a246506433d73283b22e1f7f35256bafa99f699fab3085209a7d49b263ada3157b807458dfa58d8103cf24ed0c9ca6f5a887bddb72b5c41843e78049ba84b4089c6b82e3bdaea5c79282ffaea9cf5fec558da445a47461388d12dff93991604f505f852c8460294ca5e8ed14122bb42a06677280c547b8cc8802de407997abbb3844291172f1fe5128e774f408cc7cd14fad139783ce1182f83dcffc7dc4a7a35f73b40e45257537f301fe54c596320c3005683f3b7308c896e8e1d4e61fb74bcac4518ce64d5e0035fe88a02854d0c76c19b58068b1d5fa8509a7301b26d0d2b8a4c54e0152715ece80eb61f257835da92853654e6485e65dd7774b55e97474061926042d736ad39a5470aa104f25d2cf78fa10895e7bdf51571a187c5f1fca398f5fc5aecc4b6a1121049dc57532e15fe71a1f4bf02c596750fce46af74bc97c11b7e1b8a0a8298b8841b44a5c7e4a4b0e48bcd68b889fc7baf0b9ed14aa987357c3ded96b78c365a441c01e49f9d7a30ee7d2609fc204edda3e90b0db3a462cfbf07d6d9ec66c07fd3d9720701d7386524aec8e47ed579d3f8a4081c88dcf6d0c7e440d86843b8ff9aa5ed455d6b453bc8fba61b7d74ee90fa1170a8fba61bcd140e8beebd9d8c64a65a87d84f6539fff9d847780df1720a93999b1d7048304c5440e45ffca7b264464f7e9ca6e5a5a4f6d38914769cf310d85f6b1186a1be4cc094fccf8bebd631d9a21524206afd43a5b39bb71b4cc852e6d8e0d48dde8d589896e3885ed99b839ddd4d3ba4f67ca49712feafe68330976e516db3ed70e52b896595e6e210a83eca46b9a0bbed41eace29f6ddcff17b239364b41d1ab893137ded690e2bc01954af0083727a99daa0581f9e9a86604a6ff32ef9607c36195c3b5177706b47297dd18e8972d98c83021d34e469f745226c02d3f3092e4b4c368d11398cd7edf812fc194c7ae6efbb5f4a943d44c8af6f210536da5f2724783cca1654611701d5330ad8361345f24119b6117c5b275837206fa8910de0e9181bfb49266f72e406b6388cfda8effb855e4e63e6d5d3d160e8b23b669965d9284398a63a597e6abd2372807dc153d912ee370f435bb1a896f670acbe4cb83b556da5ce66d14bb1f3e12d22a19bac49126a618c67511376abc229f1b32d7861da4d71cb03e0e24636d0ea668cdd1159b7067b5f45d84171b5efc6cc39137b8259822a359986573bb124db246be6f94c4b3ecfc3d53a5294b8827f45d84d50ec23b867db1557e78f7251df3571728ca8ac2202538502b7154907de2748c2080f3744847cfa3ce84d3134b8faef593edcffa9197c9515a2b49fe0b6c0ed0ba071cf16284f5d90b0ba821e16ca2119f413210d2f4c1776a58d078d7ac7006a9a45ff3e3d613ab3a9b1d7ae1bc1c94fa45d7acce9d9668e987bc28662830fe657e3ebf43724bf73fe35ef25160c6817791e5400f0be68e72da380e0646aaa4984775481ee0bb3b6f08fdf758d27d6f95822a86e955c8b05f7f961765c842e5fd151c7a4dd4fc0e5218ed9d81094e6c86447693d136ecdb0e0cdc6ea84edab1ca1711031a9c936d0044539c81edb72dccbd2aa63ac707390510dc2100c99429338f44a93ad9c3e37c8ef0aa8c3614d96087422e742b88e680550269e1226bd95e20cfec7f0847ad127aff9a51feb36831a91e171e7eb93280ba8b0f551f72c75f32e123efad160e9dd53c3a1a4b900fdfdae0f60ecf53af906afe6d269db78e2c34c6bb73477870e863ad8cca603490719b123e516110545dae9e3ff22111f2b265e19344962dcaee582d559865d09f43a63921025ac3f74319e9e48f66a68d50b86f0bb786cbc0a405c9fc982a39a8555293820508145df65e85292cb9c3d0ef73374de9e2b94cca2b5513d08c28fcf667a4ea681ba3ff24d949e89fa3f9e0390fa1bfa68b744f4cfd935059b645b4c78d50bf0483f3d59fb70b36c313101ca534478a6eb32c3db89f31e2d163349eea307e574586dcdc3f6d9ca090d4b0497d41c77dd7cad2639df30b455736d6cf64cbadee029bb629826b882d5350be72599599c6cc9fa75f01ec282c804026d93001f40325864002e0ca7465ff20a605e59443d302c14ddbac4765280d2e3d047f4a132ecb1057335ffbe1ef5cd58f52d63f0b57476342e5294213c3288e61b3f556dd1c1b7ada9ef8111f57ae8382a7094fe24b30b84760e8faa6e28a33d9b0f75f1f21033cab2e953dc5387c7301e5e5bce8a5b281e1cb0eeff7ed8d7bca4a5ce0219738141b4ce934a330c6b137aaa9c25781e9af0696ef8e5812476e515bbd9a24e12c30d0758b21a9b318f45674fc6d146a5fe1ec16303eebb944dd4fe37a52915ec0a3470197153ecd41c0202a6440b383cc9b3e7590cbde0ec5a0a1f1525a4d7a30c82dd2a6a9e2901123bd37f50e246f3c2a0fe88d213472b9daededf3cdbdd8b973e6ea520666a2bb481db4558de5488eb55a70c1bd7ab5cb63160e0626a24f2470f71c1811d51afe6f3c42bbbd347467f6d48a8d13f3abb250af018c71005747dcc93ce42102ed2d12c598af14e0a57ece16754e9aec5018b6202ccf4390812ee352fd70fba8c628019787e5597c1732c7392f1ff3a3afb126384df166b75c4f5f5cf1a1234721457ec85826c8adba3a77b43f377e96a4745b68bc84741f10e436fc58fddaea0e7266d9a1c86abf2668926562d9b9f3e15c25e35397cdb5abac1c9cbd6b62383264d906f3ad02eb599b96673f63c6fde28b34b9f7ae55a292f6cefeccf1c8ad9ba696ab397243f09aaeb84a4d327b244bd5ac96f6b580bbe0b226f2c6fb0082ef079f8ad21defadc0a2e15c2c725408d21d2da6d114457386c7c2671753f6769efa3621d58ad08278cf37d41171961892a2fb5b4692168cd80783f7c088f8defacb7eb4ea6a32f42524fe4a184493fe60f05803236c1f35615aab7038f36d1e04a3a10ed0bd18cf496bc2308bedee53c13f1951df625fea3ee730464fee8d517353574f183944bc999bab4f715d6d97d0e7f58d3b952595870487368dccea50f52f16f22fac4cd8dbee55409f4e147341bf0081bb42210f04bf36f957352981ecd7adc701d101f724b6829e68473fdcdf6a6b20a17ca416ce9ff031655475f85286edee46c4d4edb5161b3ceb3a2454f7b57b5034b2e34ab9678bd35f58b3f7b2cd5dde20daf40a7b455fc9d33276ce24560f14b1e6699400ef454774f36bbabb282612588651fa935ea6a756a7faecf79214c10883a7e8b31b240a410d34673fc74122677a3a20b58a4bffe3489a1b88c40cc28b2d34a4da5faa3af49d9f650d1d97f815d413f4603e7936ede38e7e81142ce3f78d79c2629578441363225c1595ea1bc1e191b2725706f971f854efa94e1704269b874c98f2bb3bbd4da4bcdc94a0e51fbf632a8cb05dc4962a889be2d7613a5725b89f64d9c22ec5460ec0921b62bd80da6f932b824846d836a6651d7f063ac13d7f44988b68fc73e7790a2982cd6e81b7104ffc6c34bf2a795e5cd419375ace6ff55e98df3b2ed7b73d341d425b9c117e8042bc6d9f042aefc1e9037e0e068ba501423aa430f2c74b3b588ad4c2e15bc935e2f9b793e5e5a5fd6f4c0e92e3c30b02cc8fc25132170cf4d5e01f6377a496e19759acd808817b2e1fca16c33ae360604c85e66b126336e84ce46286bb3f14e3ffddb59e680fbd78c3edb02475638d7ec3c09ba2b01e8bb19096c8a9d0cdf4bcb828b5fd46829643b8cb52fd045e5f9445912e373331c7a0008c6b16c359820056f73e93ceae9aae4a988c548c3e8c7ea8d7a1b91b9eab04f595e61863093ef4a8d79eb404f2805dcb65bb62d46be0d11eee042911c142060204151ffa0a26010d6bd82678c4ff526e3bf7adb48e14e85822eb0b957851f8f65954c997d9b8baa2d955049c952339489aaceb0dc88b353c5088cccc8b70f97d9aeae5e76ecadede83dda6850aae8724d080c5fd5b612d8a5091f105b3cbea7bba5cd2440ace12c01dd6b431569e3262ba408f3a8d92eaf2f7cb2926e3b008204d906df549f3f0787b93458575bb4d7b0e561d6ea5414c2c8017396d446c8d332ba2716ae064a400d7f2dcbd58eb868a0699991317a8927b1dee793c004d50e75bfa3a4447cefcb2b1e7b3144b01663af122bdc2c39b791c3bd403506709fe74ad04a891b53cc8ade9e51742ff1c2064f7e81cd421717081192a8cd4f114bc0b55d5bc41519c5cdad6f23534c44b67980a5ff6242023c2644ef38ee1c6848769385f9d08fe1f83c187ed1ccf661cbee6ed82e3be94297fd87f3de5739cb417750f10343162fb2d6e3a73ee76204105da81dff963ce45e2cb4662bc0f16eb7d5933fdbd2eb97ad5ee4fb6559280d22de5fc84c225cc2b7bb6ac4d949dcd52c3501d6ea774dd938c469872cc8133b114f5de50afa6d090d410c6199ac3bd34063679e66caf8df06547e00cb9a91304b204fbb732331abaf0b7f0367ba700bd238799bc18e91cdfd7994c6854f671714b00f7a28f9bf0d3e338f65277376e655f8fd1ba603bd9fc3a9e6303a1f0b5b638a8e22da528686ae4d5887cd61c38bb125a7ac727e6ea015e3dbd698c02d1b23bf1872272055fbbfefc0441079c5bcb12ee2b7518b12b927305ec06930aeb0f46e5c4ddbf63ed8ea47451d13affbee5c9b8650815ed0f02c77217c79afd4cffc78490421017c8d43e07b8ce49094691b92004f35045384ce8b5013f2f86116dcf7a023249c313621c82b69a1c1387f649f8284b284b0a117e77b22be9fa10cc4e9b618e700ccd2a4c40e426c2797404b00ff361e7c44537d83a9875a9cb4e35f2b24d05abde7aeb5dd51d083023b190d81dc38b8e81823852692644ae595a6e0a3db5acd09d01e916d23ebb9cf65a0aa5bdb432e08e9f76cd9e2a5cd26c1a779b7bec7564241b174ab7c117315db10dc870113a0391bf02871f77985d20c4cbdd4aa1cf8c2909b4e386dc0da81ee952a5f13e606e1ad7bd18f1158fccb3df1a5240448a79cd18c7c830f9b853364eff5511e71db5dd509f783b52e36ea03b76d218381f4debfa789578e089d9d51e22d771c40012691bbed8ad57b225d640c028300520028c5990976256b8111702096c1bad49cdb978430d21c073faf1cc963c48aebac9000e7c9a6422a9d1a791e4124a7a53d057804bd992f143941c2a0ed56da30051fb54a3501ca4fcde7bd0456cadda83190ad7612c1be2fa16f785e75b105de76ff61954495627c2630c186d666822301343a99449ef8c7e39285e2cc3188fbff3e34401f962af6f8be89f18ad82de5f974831ea8ef478abd2a058e00c91002decccb906519f46dcff49c27c324d5d78d710ab9bfd9ba64d9cc8e9f8d6f9b21713f750277fea4515160faf8b2e1dc533ef239bd9982a608b3758553d3dfa77c01a2771c3260dfebf2ff42529f73151dd3010029ab036fb5754ad2698b54ab006bc612c6b0e1aaa1e25b5e48ea94f5cafce769801a0df282ac1bcc6bd603fbb97231e93ec3e9bdb908eaa60298c9e3a030a346aca21969e5ee8d0b6578e6afbeac9ee34a826d8fa80b394a249ffd57033d2ceb35779e82da1d4699eb7b349823cd1a923963e7c47a55a8db256ad5309b7a550f77aa6454f58b72723373d59a5aafa6a986c5fca43bcf51bee7e156e2c41020aea610be8fcea28f49527bb43fbdb1809709ac23d6acab45f02f660973f3eb6a9d6b1d761945c557feee3dc086e499e5bc37a0c6818a2000258d31e2613e9776da963ee254b70743b8f63aa2c4c857f4829409713cf3ef1fd5c47f91a1ad0745cb6b1a5ddddd4676474a505b0ca255babafa67d4090ad9cef287dbed4ef35faea786c78e41fc38a6a31df9eaaa6a0eabb33fa9cbe8027dbefd2a4df35c9843c9145696a999516853fcda493a186eff1eb9645f066b42dd4e1560f57083629f03028ecffc936e564fa2b2631e45bd89a0b8439729bcbf1af22a4c4c89566fccc2958f3f1d6c222d82a08588587806dcbfc0bcf0b7424b31318780190a5e879583c88eea02a52fa7ddee2d6b16b551904e22e103deacfc3a712d9dbcf3b447359a353237c05e45001e1c9f8f21971850ef79de5c2e185c0645324de987baa3d781f3109aaf9b9c828fb80a854d36a4692ac8fe67ed049e2fc75f2c5f06bf4917b2247f76dbc957d0a9ad78ed4e99df896c0a05c78a86e47687827cb95b068e6dd6977398b998ecec988590515317691741822ed835f481beed5ef5f5b7b755377530b6464d7aa1945626422577903faac95d9bfe864fe8d134da7cf4452a224714a0177c1e37ba67bb0693dd1252d9811356b774925113e41867cf8c1c0ea36b54d76663b3acb9a7c7877d8198c4fc5b77ef9ea874855da44c751e49bed073d3653cbebc7340e89a5027458e319a9ce566591655f830506b4fc31f85600813030510d16b7ef08531125d6035aff97dd3a260426d03f95e4ef7665b70f5d06f95122fff7263dd7afa766be3018220a8973608f0b6ddef740ce03f75c347f0c90f46c05589f6d0fac539571b9cf1f54b8b50e67396b3a2e00ae22a60623c5de4d89c41f56388ff3414b53e1237fcd6ab6aaae94cf8d22b5980e329292944f48691a5239a51bfb4ccfc537e5e3cdac2adbdc36bee3094b2f016c652a6471cdeab2ee1c44a22bf9f25f0e11ffd95e1fe0c1ef6aabbdb8eab898bc36cc92118418b849e46f07afaaa5b1b07b9dfd6855b399eaccffc27e0f5e3ff3f780dd77e2d1cc2e54685c48643853ec1dfa5fa0bb9a23004300de30696669163b6f16c683beca14118fb3765d9c15c66a87557cf8cdfc4dda01e51edd9c90b4be35d18f1f2c74ad5cd396592dfc9cdca4c11c54fcaf78346c7df6c1b3b295de8eaa1fa86a7c167d238dd34f42c195fa2147815794b2dc54c3a350bb5b328b2c4b07fef7947213458ac18651b0a04ce24577ac20990f263c631152a03c945513bcab1a60141edb7b14a296abd8a2b393b186e79d2cf3f176a359bd89a9b06dab9e96335ab63c84cc67b7f7568c0e3dc0095e026ce4a47bb77c10e57698147246ade06a95220b5238ad4a8be382d2d5d3fa721f3df2edb453daa36d1fb5fdf5550716d9a95e1e987170bb00ee413c5f29e962ae99067b7145c79f4e789736a1ae115e9dab863c5af87d10517c9c610858eef7b4dc9cd4b8270b3b1e6e6da6afac7feabc494051893418c2d104a52f755113ee60317d8e85e77c7fec7efe9e1b7f792c52b547055e947f25bdfb6ea1d63d01d35195267efa6cc698947416b5688b8def3901bb734e30810ad3f17805797aeda800997aa41babcc886244ca3d67d00fe8fe8b4d5eeb10c9b25952f354022d57425a8d3d9209dfecf58358476786094989828a1e31580f0aabac29793066c1d63c683c61b8d97910a91c1e554e78ee86fc0ce97f7b24873ce2e0f574900eb3e526e0f521f18c97e9b8c5694c88de85c30f0952a95d1cd11a337750411310d3f2520dda5be6b8d05e073f32c8cd42ca3870d7a47b27f1405bbeec9f54102ea232fa9fb29210db80f3e92a8c768f5a8a3dc2ea3be84ea9830d01d030f40b234014a41507cc6e75012168f4db0f5342a3d976264e4a3b58a2804daddbd2edc31235cbc3d0c7e0a5a04c3580451271e81b1b608800815dd8397f619a3e263b51794f1461ecff1f666a67e024d20000444801aabbc8bd5e0798050538c06a3515b792e631fe4fbec3735683ed917d30f98ef875a9f562f079e91e045c1fd0b92516f5b1c589a9d8151b6fc65f19f98d9f08fbb162cc8d91749347084ddfd150f3127675d1fd0158e0d1de677dcf5b0103bdb687b615726488f8331494485a4afdc8ebbb7b88768a6276d160229d02a7465cc4e599a122700272f5be14a9aef1bc318754cd5a2b89234120e8a7498184bf8dee18ccd4b13ed0b80ccf86fa996537085f80abe0fe8a44eeb358ae1db80dbaf238f466fc653ba6983a6a0b12a050a8c58b5e13f310d382b7dd9d3ac8c6cbb634fac328c2c26fd1f6de7a73a36b73d79c7e1b642b8b75ff07d538fd133ac895d9181464040cdb72a125a381256544c132ec00000fd02dfdd920133f3909b80790b40a96d5b8823f8a0b0507a02a8897517e2a3005714ef8840d83e7a62f20e68b57219e0acc1944eb30ebbb8137c25dbe9b8a085d45973eed499883483e9b730b2b45ce34f49a013975c044bbceb6ac1c54c02247e640e008284f4dbecde7f4a2f161c8b427db5ecbda556fb1d2b9a2a3760222412a00160034076db9fce0a7f5e59a1ca3ea63470bc9c4a5c125f89049894312c75a64cda0f6474ed4709e45d5de43c7923a4f91239fb4fe0a479e41b8f559e2cbfc34a53e20e785db515edb087c583861e14d98aea22f1639a6a3cc9dea7358e572ef7b2f3c70d8024802d3e1e92d008618f3bf40250e50f918ca8d7202c85193a2b15620471a92eba684f28521b0d0190683237a4a72a40731fb8604c6e09abe9eb20bd415e211d28f82d2427d4b8468b877e9bcfaf5d8879b0c2928aaf0ee318bc75164f1a3c41daff11f10385dc5d1de71a993be93afbbb06f97b47fc000e58d0c6e4e9096eba7cb4694c4e6006ab316bc96aef424a658a16bc85602c4f340fd03eaf346e59212779887a164db8900c16b1c31a7ee3e2d4d48fc1660b91a98269cb3ef407cb18dde37b09cb67b31bcff3371a4eba6b2ad460c70f0a71438d2946cf2a8144fd19d0eb1e9572cc1f9a7a1fc69209f21b0e34ab88ccfa7abadd7063c990e10dafc7293711031c190c505cf6cdbca8ab61e3df1d429b00397c2324a9eda606c7c34189f35479dda5bab1770c1748c4ef1e3b34e1b87b45f56e9662b19489ec48989bfb8c6d31700e52d6d6d70b9198e55f0df7ea9e8d08a4b052868e9c7c7eebaed85cfb0a48cb13a70f32e4f42cc29cc3e6520e65bf9a1623485c69bd5f0fdc778296f7aabbcb5bdffb298878c6d2f8adfc2384ab47718389de77f2eb80c2c7d93858f073738a477c0fdf17ab16a43811d95d45f2fec60444340e744e6e3570ebd3a013c1b70bddf8bbd4eddaec87a55fe9cc6ee66a0ca91203a8ee934a8da387694ac2d5ddef8e24b277d5ffba248b95d9028e14ad54f01339a3c6e11fa642ee6b7f804dc33d05764b5729501d0c152aad1f4195c5192d9feb33679ad582f473ea766751aa8eed4f1f908bf1aaf86c156fab59214eb933bfc4811cc3befcd567a9377027e3726ae7cf9d5d934a2a8fa4bbc0077d2d111d45f2baca88cdd10752db05746de8a26acb239a2f4a21ae22e3e0fee73f067e27842544d7738721d80b23cd1e3754686a53ddeabd0af18467af0b0e0e0c0377da31d6e2915b540525f0200000381d28800bc8261a16beff388089c8a824617d1fd78e9c954933ecfdacf16bd4a0992aa15dd338edf447713fcec1f4e7a9136292042d41c8bab948e5987f0a409d960d0ad6136015ba6ec111d99b548147652fa1cd74be3e94116a3fa449bebd754adc67e85a7a04ada4f19008a0684de11ca586d0fd946f963a1aceee2f76558f4b78f1deebc9f6019844012ee64fbe44374bd2ffc1e084cb8ea15bdf3a2a92b6232a2e6c8fd00e92a1811ac164ff0969a4c71200c1d8ef85cfac6aa14ad2d0f111d63cd9815d09393f7161af6160d2af9a48db133adbc73c70673ace7f813843c9ac2ae3b884da5fac78f8620433fd8f2f8b967c358e5f7f1407d20382c8f3666d67003a2fa89cd1c340231318ad305e14f7f45d6df4e067c40a6641fd08a633c7df7cb9d01effa9daaf8d511fe058b4b295bce39fd4c2000e21b4345cd5530bff96371b9becd5e88c2220e3d906a1776502c476ffd384eee04f165a7cc837ea25b1eacac90687aadd16775e2bb4fccda13c45d8a5dfd7a5fdaeca00c258ae4642adb27e7d2098f5fd8bf3ffb20ee412f5fb2a83073b3f4ebc146b7c09b3062f23a88063a5e3bc1ab63f28bcdbe1757d64e84d7e45b28058ed039778677eb22c9686ae9cecec8001b0c46a0a2a6f7ec4fe74d271806684ba5358e5b910f958a1a13d8e97cff9e4d283d83db7fd9272e416edba602db437596146989303f90cc9db1d2fa0e2859500a57b9d6c1842b543e22970db5b8222690d3665f04fac8efb33a83fd780a0819c1dfeb8ad04834d5401dc18327e3e49a156ae907fc6988d70d8427d924d0b7a157e149c161d8dabb79f58240c6df608cb45828112f02ab6d033ba4d966c6b8879b8d7b650dee7bbb69085230d01525da7ea7d414b4d54beac6f281d88b083cce48c3870da89012c17918516d1f50e6ae6192e54f67f2486c1ec113f07f58202be6e5a9c66985b4b71aab24357183ce88627273fade6b41864efdb75221c2ce05c0002f14f0ad3541b650652f3a3a81e5a45ecbf5e9dcad6f58c130fd2601cf177401447ee3481d9ae8b1becd71a1c9c5c8f0e6745356e620484747ce6bc1f6e21117312447b6350dc402075e12138dddbb576b10eec784618f52e18bac5102f09422fc596b4d9a15a89b869313068d8b8105c1468fc28f68b9d462c6503dac7f36217551f7ae7437f1744ad1aa7ee5d1fff89142ae2edaf4656f55bd12c3a0bb486025366e1df1ada7491cd695cece1792c1e5fec0c2af7378a40247e1d7017b3558944cd7084bc8dd5fef667fc4f5e516f5f868ad6af66a8b7ef09ed0290bedf83f98314ced471c1bb5d3caa5e92d553d281e393c0d82a34f1b1a7162ae63e07bb1c8f0673aa24f3c9d5d48cb9fc10f8a6b562ef06aee9e347ff97dbbbdf7a9727583696be592b47a740b9c5a9fc22ecf802eee167823351c0b84a5500ab3ac94f43216eba9a899f8ab707e9613612212ed19923569b78745b8af58501d1b5a66015eadec1e304ba79b46d4c758d6822fbb391428b6a5dc3313189f7ae27d06c7b48b1de4303d7e9570cc5d6c3d7a6536f60c31b13534278db0a8710074cb18cc70ea21967cf04f2d53b3f40c641110f5d3e5fdc46b63e5713e2eb3ce1e6b8a6dc9726ebf07c2d7a4224e6cd509d2ba9dcb893c28ac55cd422b8d19619f19b67847908cd1c371ebe5dd3b2dabf254f6a4ebe055b14b88b18247d116e6cce8b03c9ef0858a52ab4476320bc5f4d84bfde9cc6ea61c185bd1d20f69073ee3bc3ec842576f7b2b62a99105ee01dc78daab41c83f54ab91705d0b1419183abf0c68b16163fa89930a3693ef64fcd214b7ace1be4076851877cc28db77176ee86847179b4b644b0dfed63548705a3055fe33909c9dc8c8d9f7fee80691f709a1eaa115e5f1c480822431be57c5bb44800824d8784ddd916eb14d10dfe703f42787c4e6bea7f450ee8870cdba1b2195eeb1b7f015d6f9121ef1a4ba0b746b53ed5b3c278f55570d9a1e85160ef710b2661b874aeff34d27ac8d676d8057b731020bdd9b7fd98e2c23a1ad332dff215f9bd79c77559604996ebe287ac28ab6daadeaf331e2894e9e5ce61f68bb8dc733ef70909de469ccd2a3300669320ed72d75bae4f5841b43be0a60bf8cc4b38b8f2a02f02b38c1bbea79b140c0e8ed39b026bf90ae2675b0dcbdf0ab5ef806ac6be1cffe9e9438321b92ed00ac73e204731fd771eff06f595224dab995e4883fe881de2ba29a60252ceb1c69bf5705f811896b3611e11abe372779f6b7aeeb9f964319de35ec4697843ebf2219fd3d255fffe4996d59537a05f38b0c93a2c1a2f446ed20e277d27ee2aa17641b7dadcb96df724a00a4868dc975eb28f760113838b11e99810077eff84c22eb7e07290877366e0cd1ef308522be1d0e84fe5ef1694b67d8267afc2b363f83adac7986377988ab33107076c0457883002c0130194bb3af6fd6fed1e61dd20a0eb4ea334c034185e77baaaf9403378c5d6cee95210c6e03180aa8b345f708596456ec306ae816d9dd79a350ec9d9dccbb644f810423256d26e095c9f605cf0dbf2369f5d8eb5f5a4903c1e966d8188939bf200a4cbca3679610d9eb7d0d2aa02834b870e6bef736fa3fc13ddd7f27541351f3837b23d187efb66fa7dfbb3bd50142ab4fab9eafb36a911b3a1b8706c4e4310c17340bd318a32c7ec9db6660c0aa983ce6e38d1b67d717857ddb4a61756cfabb47f14078f2370d2e0434861ebeb84439a9499a6fa92036dae217087dd823c7aba03b00685eae14427b3808796a3cac2764193d2f187ca2c8844428d3e3097eb13f6edb3575a2ad6e19e65b8e2063d3c14b195da0e02ffbb625fd760de308634a71b85bfcf8a6d3cff53d0f0f3db9dedac839cbf09e389c29662db2d21c1219e582b852c603989d293e9c840c692a5f806b4ab9cdd98038af9d894e7f8700881e900fd8be63591da6d75f2f883179d7c0720a8a0f019dbba4e7de6dd91dec5b8a9bdee3f42f1f6d64f445cc0d5326f9945c31df905bd94bbd94a0536c816359e852d274d86c7b6d9290d1eb398440138f2cef9a2b386a4a7cd3cbeb5c9ce6cc2b2ff7e1c3618d70a845bb22283b7efbb4a5574edeb51fc8bae98d820f930dc57a706a3147d1092ffb56746f4875ea7b3d99494ef4f383b4a31f1efbcd2eb7584c8605d18ffe2cc3b48719a172367a717b6a77dd8ef11feda3db1c600024f23915c9cb73dc91fa24620e4de49c7ea71a36a595c69f78d1462821976f504502b1ea88a17314af86654b0040f9f033b062a603050915e486b2d6f5e5ae604674b240e5a4620c23093a86d3b809cefaf0a05161e11337f421ccf52703423c7aa1c1b06696b9861e007dec034881dc238ceff7999d5d16e64eefcbfd39a9a78004cb00e3720cbdc6899fdfe5f5740e0c39c331216dd6983f6b01c22a2ca6bb23be17dd2b96939205d3039bf408510f50500695c6866f06c1b684ee097a4a7a777f9e4210a0c3955c8d54cb1e248251b483900f2d9e431df028f5ab9e1834a68fbcbd37d4134d9109f5dd8ea00013b5bc612fad08479fb44c8d4aec3f73833ea09ab0dc8d0bc448a06261593543345565fb471f46271e3b5263b9f7b1c0c6be778178407093a40bbf3d3f27f100653b8ba64883131fc14780aaf868d4abbcab9ebbd61934da242b3a895749f55157817f959fdc952ac7f891570bab39ee57edd447222b16d8389246ebba803c3ed51773ffb0bd8943873e0feed58fa30a5654fd175757feca58eeaf4d62db7e13e178e3bdf568671b12cba73cab9190744daffd9d5170a4ee9a2cbee9e72b436446a5c4f1b3cc97efaa8b963bc3d336abd921da5ed1606e87cc38ee97a85a950a02314f82f23852c86a067cf02d627444ea06f3439a53cb5712031e753179a8fd98d2ce54c1f0fa073f51b8feab560543bac83dc1578b3f5bbe1d552c974bb023cc2fe4dc2397e1ead59174a09aae4fdcd263437c54fb28e788c3751b5bf0c9daebcb38c0e45c6d214d37bf2f0e8776a07ae6b652b671d8a62faca6e685cb96869ceada0d51a9c5a0a294bb6035779deb678fc1b119e9ca607c02723101f8ed508fbbdd5f93f0aa15dece40da369e5c0a864e07fbd28fb1c6d16e45e2428befe5e213019e8e9e5940b13d99afe10a0fac6ccc76a02bc09e85b50503d7b0f11e42bb6f940ce3c728bbd1a32851b56f847a0c0dd04ab0e2302c20c30e267a1b7852ca036263c802f330c8960490b66b7eaf623b75a3dff287e878d0b2ecd44393d3827eb7ecb9c5d6ba47de2da3fce79e2fb0d0d75d50b353db61dfb7e21c3f7ca4f1a9c1f32c72661cfc30a0bcae7f8801c0e13739f3a9f938570c82bd3d189ff727069c29b4f62d6cc9785e8a41f4a268863d437b98af446c7bcf7234fd80e3953f5bb46a1ecca5395e4f3a06ebfce7a64d9dabf645e66d2892e712adf9415e7199f1245823570b977ffe72a764e3c0c0c0f83919df95ba81789662e3684e54d73d261e6aa8d7a11f3bdf292a1d96da6b6e6f19008bb2b0014814043aa9d078c0239b525402ca1bfef40238e05973754839c0d4f9d0d2d375cb50cfcaa9cdcac743753e60eaf857d6688bafc9e2a5048c08bcec3baa905bd25f658f30d03c3ae0ec45ce680d4bbefc0659cebda7e81818e4335c6330a7e39689e91e850e2472daa912c72edba53b37499a66a8b7c9c0adcef5c51bfe30eb56464eeef4b54b906ea3a2b139a3b4dce2f007cb71fe81d817c6aec7b904495c447e968b43138118530d853a04af08fa52a6ec5baae03c9233bf2f2e0d1c6e534e50790369457943308a3947a7607c61314688a137985dc552c3da0287b7144e6d02bf937b637a4a2567f6d6339570b2b94cc1d68961a4a4946d10cde5f8627152a8be29087e654006e282b1fb70044bd4c0738e235d9bae8db1a61b802a94be6afa12f39d104857dad22ea1366eef5ceaa40cbce71e76eb48a4e3c55d5d116e0497e8f98d937eb865331ada872a8dcf8293f417bc47538ca038257908cf5d60adf7844b87fdcd95f92153230c06a4514acb5c24a1deb39749a13bf39774fbd0474ddf1ec4f14542be3a50f74fc5f1a6e8a6e9b98c15ac994eaace46c22618a99fbc4c51036effd4530bc07be2402cae72dcff8a25201a2f4e25ac81a08d2d88f8bd3399c80140ecfd35dafd6ddce44dd349242cd54abcebd3736edd8fe621f0281e7c8b8dfdce2acc640b7a482885f608c831c73c52c88ed499b9f2ac7008f282b841bda25f1ce40dc8d7e099eba08762fb40d56cd027573cf37b27d6a8585ea342ff7eea3784de52cdc21856aee883830e55eee536f6edae751f4583cec83d844be7b7ce0c73b8a4fb2c6294b6c326210ac579620b9a4629550f4b5944245c5866bf8cbec184de63ff5877cf8b0bf53691ebf23720347a7e573fd6810492b701cf88ad8e661fc8efb8053952d10bbb21a91aa7e555d92aa69eed715d88110a43664ea689bc85ce85810989af1378ae86a9b7925c2e50a72f1724d3932698bb3d9a7d60dbaf624db626fbee6e13d279cc7c9e84553703e72af157cfa40171541a76b8e19b0c3a39ccc01526cdfd07f690b35ec44ed208fed7a62857b4a874ad7ca4c00c85d8e160d8d1fd75882796b6679aeeebce18cc8480a73415ae1636770c9711472ec20b58c2b6dd430a5447400753e3c4c5d0b3c6fdd0a2cb6f379bc5231c84201c1a9b54409cd3b6e87e1deff792372a6cf3ed68dfcaa0174a1a3fb537905791a244936153cc440353bc2f4d2e3cde3b338ef5e545ff9eace73b70b563371b10b3b84a046295c1b529b50fe6b8291a75492a4e99ef9a7a785d5989ba576f8ffbdb117066317b6dcb3238bacdf65c0081364adb1e1888ded9e655f609d5ae96c52d4a839365b55843e780470a6266de4c75214901b599d76c6c9537c2a3e1cc7d57a7e417c9cdf96dbe9609591c0222e48f3b7f3eec24eb112a566e8aa0cdc1b88617606ca80fc75fc0583edc332665712dbd6c06e09ba36f5199ec2c0abe7a5070a33fde57738b40fde7270626ebe2ad8adecc0a542de605af7088241ebd9567d7449fcf339074a25b47c522749c97f655bec9eefee0486da3f6464c2eb91cf96cd58e72825d93bfb41d4f388997903a576cdbcb47ce54990cf4289579c398f4ec4beea09a7ae3afd78c96721d0f7d16e87f0787de84abd241a309844d325113e0b052a5d98a516becaf42e69283a917c497272d74af80b0fcd90431810558cc8a2ed1afd88aa747cb26f5a57aec9fb105e148dfc659538b81d7223ea7a59236fa6fb446c16238644115a6c66983caaf5d018352a19edfba8fbaa01d84d813c4d172745d64f11e83353cc7d407a6ae878f886ec24ce7ebeab49a2acb5366b518731d2461fbd82df02ce922ed2412bbc37996cc422248f41e10ada8fb31461512dfaaf75cc447f9f2cfd9a012ff5d1d4b904aef91d3652364a1098b7cf6576eb0349d9dd2d013278250dc5ba676290aaf624196ecfd621800b40230b2a0a33fef92d8a6dcc20f3e15950f4273009997c62e5676d0481a46870898721ad94f71726bd5306bf4b122f455f06e12cc2500396be91162b347a577e5996dd5bc9b8b9a6972558e46bb5836d91b1032d2ef89e8aafa220c5f7915fe754df2c2940306153da8dc59a36817c609703ad738e2585c61b1c078e7fb290594fde11855515881ebec8d305958b7fb9c0da9d1ca04dd180b436c2a8ebca5db0b37070585466800007f04095261da4cc693ae41006bb5e16c3bc8ebe139d2ffff147ab5fa1ccdeb8c72de9d2a8f5d1233c933f6e6c35eebeedff367b13bcb5145d03b11ec0961c6e26d239bb2ad174da143594e6d1a4892d0a675dbe87491a67f97a4eb40444d48ac21d19944f1a11043a7947b73d23edd81fb5ffd4b24ac58b0de14eae06122e3558bb59cdc32680b2af1f57e03027a51613e59fdb60f2bdc4b30937d79cb0d2006833922fbe0ea08d00faa88f0168b5ac14dd8e1af54d5ae46ee5f2ff4b4f19fd3ee29285d350428a31b626aa375f216398b476e1381764e2458cecbb944995527e159b9fea05e4eaf05ab65bd4990b565c09e98d2a7bb30102c88b9ab3b01d1ee2ff2a8490c7e6dcabf7c7835bd65fdffc0b6f1b9dd6894417fe735ff6f104fa32ea108d3957e64ba2082081107637c1dbf077eaaebf79108c01c650c4166be1b0f1e2f44e59c64198527e00c99ba856c2ab3c6ec26f713004af01d84272321a9badf9307d7891ace537fe6b4e9712c226958aa414acd30b4919fe9f90a3f54c21df98872e2489fa08aed9588532a09a3c4fb1d3ae7187f2af8877a539b3d9420c5e908e54e746628309db04f0013c7650978fd8614bfb6f13f11d2b4ed218a2c361c6aff1565bf356d985585669e99d96fb6426b7f822e0a3164cdebc89a4ddbefa3bfe5d66902a3b68a4260debfb70da2b14fb21fa56a303fdb31de9781336230173ad049da98cf2c9d243707f9cc568689de8bf4372364091ecb4abb5af301cfb8a3ed1c6383f3c7a3e7a401c59fa90b5b7dd928dc36a05756a90b72efe8a11db771f7327851af2a3d5c6c502dbad947e17fce41c43acf91a6a2f95c994a79e57de19ef36c2f95da78559219241d328a66c52cbb732ac96aa476cb7c4ce7d7c01f958901cc5ebd5e0f04a43d3f71c10932f7c7b44b0a9fab0be476434d0149428bdbf39aec9fe48a3ea4d7621c84afa600faeebc09bae6630ace317e47467d353c5e996a2a8a32418ddf2a0cfb3628e363023bc0273629787cf44f0813e971bcebd8b4b3f7ebc23e094acdd3e5071ff46f0e54093dbbb7c8ba53716abc08eebeb455b4ab9b8e45d19aad67201790f22a89eaca8c3efe4240fc02d803879dd9bb7622d4925c1871a8da9d9d0596fa5a1c712c5fc1adfc02280542b238619f763c696d04400ad7aaf285c71c652851eb488fa85f650a95f9e36cc1808cbe0d5a3a12d20fc101dfa5f443dff023f44f5c38a9d33962c2f011e62b334937137d313debb9f957b59bc1590fa08bb4010ce21e72e1d1aba7f023ef11d5538e27ee827fffa15b766f7a6e56e225524f2bd463aeb96541f79d78f5b9a41f1cb891cd1e6d5dfba907113fba47c089e02ffd094ece8f7fff59e904953b2089260c51d674692037735bec4e3cd3a1d875beaa108e408143c148cf009bff954c1bb63e07624587422a356a962a82c2950b6b72c32790d85562e68efaeb7ee536a1d094fb643052dfc122339679f29fad47f073ae1d642da8697628b2c6a8927fffc4d7cf1cccf9d5d376379e7ef441faa6bfdd24f6692035c5ab34be42fbf24fae69a3f87d273278d3557ff64f98ea1acf4cbb93505ca524346515ab569265b9c55c1a5d5bb1579f9db5c26f3dc8f2bbd3d48dbb2872e7d143eacf44ce816f6ab50ec92aa9aebabc281513c6d95eed53d1f8ed8e1ef0a5e629e7c7b2dff5b12ab918a4c6058034c92d5be2f4b5c15f61729cccf6754cb1c8abec96fcbd4a032780127cc20b7ddf71ace0f19995fbff398b9cbed4005a90ec2d5ae336fb3e77c9bf8bc99f7f5babea8fefacf309e8aa0255bf9e0efa514a397242d7f172bef580f2be2a857a40c85f3d1a1499bd7e78ab197480c03b800a004b9df976a77f621f453aec90ed608ec8c3c946dfdc13af38b9f5331219f1e60e79ebe0757ed290a6359c76bbc69328b2848a16351dfc37c93f23ae5a0737dd6d42d43d8b49e1b66224021062f49004dd2c90e91de7c02accb233c8ed36e27d1a2e65196d96a0681800367b2b7b2b741ceef9ae345f10a6bdec4967d02f0b4782088fa5bc5a6ea569443684d73715b401eebc93c3e40ecee482273229245f1054061b89ebbc177d645db7eb78b0e9db4655f5eec50f3960b97b1245df6ab25dc687b9545610472230aed9633d288de5b087010b5562d497d86485917be2f2ecf201d1586a95defed114bd74a6cf5e7f1d4bc9c1fa9f73b1bd1640facf3e835f040b0d6820a935702cfa0951d3b7e2f02a55111f15677bbc4d34b24a2644206cc38a97fdf3e7145079ba46f6ea484d73348f9f4bc22d75f8383aa442ecbfbaed8c9998b18e9194899a3644b7a80b2eadf65edccbbe9aa98533c018d38d0e0b70f7cb3d710b2e39cfd020a97d1f427bc100bad6604cee43da555d61f32f046858203aece123705100a2ddff7224b88f3105492108e7ddc2d2052fb19b0586faa215e98094a8005b0e928767285c9927000d9b9bb093f2017778d1924722feaaaa998f64f99b2c6e31ced6ab48d77f74e7d9e4416eabe9d654e4f74810dd905ed5c4514ada36eebaf153ee1ebe95ad413d5f86545cc9ff22b0abae8a19c5db959a61b9e6b75f8433f98c1ebb8f40fec0029451bc8808f34c72a1106c2185849548fb89ffd738339c7da32195c96379b1d1866d3b12907fb6c33f74542a340d165b73aabd9d5e37a4c546887022a362799a35b315abb29067db5ce82437ac65c1315955b87818c61d2cdbdcf9c15b6a442dda0a6aa02d1fd171ec18cac427666b0c73ec27544217e76ff4876c27225827fc1bbcc91a9e77faa2de642b7d16acfef373adbdf220084486a76a76f3f6c46f35f03f724666d220721e9c88f719f4c7d766bb39dd2daa97699feca102ec444cb8082ae2565ded7b8b9eb9991db1f64fd01efbdf48f37028169070c350f3bd859b6ce912ca3d3cb7cf6858048727e7eb99786508dd190c55feb6b8b42c1af1fa0cd0f2b876f0475596be1e8c100a294e5fc468c5fe93f505bd45b9eb9866a30996976bbe7383e33036281b25078cee63f5d3e39b1092bf0e4714a63da34b6c400258813856954d78e1300a95c03c1b380d90a554a8446f7245eeab963061a4f62f202451f8f090f97e02a86b41266da440a5baad65aacbd18e91c34ef6726b2030993ed0d780c352cb1345d01b93f303ac663fd15734f95d705f0a653163590f11dc1407515f043871d3063b4a145761e07541e025afe7c8070697665110b8f7df35ebd908b1eb62f1bc4c74e63be6cdd950814e9f19f51aae8508994c6e9048c4280412f06169a915062952845aa95321bd6a21b2ac5624282b5cf1a744ad7d6304d503e160a0a625ef87d3ec0829d4966a31f7abbd15c31e96e9abf1f6c8c1d7017cb395eb0ce6cb3b7cb3c09f598e3114f12e39af17fca6a8d51bb9f0929c88a90780eefad60a04f0cf90286de5fa574ee625650633d9480394d23681f828ce676e543a141014e60e581ddbb7e94ec4493217d5b870d3541aba5283bb4a3a4ccc326a75b137757d469b4df4d8f87ad95b8e002b7bae459754e10087d39aa5a118a0dc289d0d6953b424f71fa58824935ddea1a319b1e589c77437518f4f090483a56d82bc86b6e80901014e8407d483692df956b24ae920d99b997360a7217d7551339ffc4d2f4b5911218e0b12011ce63dde3272e161c67da85c88e306db64c3777ae8ff9eb9dd6f4d3e99ab11beebbeb024ce84bc085e3f1758bbede26e32f80d5abd5164081c355eb8307afb19cb7b489990c4ccfb81cddbc9c060a569aaa12a993cf2dd478c1e12ba6539cc7650ea35f4a65e890c3da5a97ef653bd34dbe3c5fa4a8b77499157bb5a8c80fb0afd8ed593b1abd36ca7c6dec24571877749a9e4836e788be0934e2774c565c13a77fd23450770764c780b07187a2873f1e0682e32cabc062c5d8c74977aeed32b4d6df90457dedbd7a14a35637b46d98cfaee1c7f06048946593b536cc48d3315c86f00beff7ed1343c96709e0c39977019d34f0cf2b278f156f9d3c70207e076e824edf0e1e50b0c0233b35245a0c44258e52d33d36da8e9d4b9ca5c6d2548393a882b686d2dcac51629b7dc5b9c3df1fcd1dfd81b29441b454b612748913d78c5979fc96b1e61b2353544624b6365b2a3f08dafc80524a66af87b74c1afbb72eaf450ba8fb7c6c1cb501dd704568c2af97d66d3469ba8ea4d7635d96b1e8c85a70833d7e53a7d3b823c85d94d4b431dff000946ee22f66203cb1bc5dbbf2c9cf871baabae31ef8ea13c3ea775f4fe43ce55b5491f2c0ecea07cb99b4d17112a92b82ff01bbc545e17fe8599ae9eab98450434e578671c27bc465b867dcff2f7870fd61dda60a508f3b4d33ed69e7c24e91cee49817aa71a544f020af7b4bf68a7e037d5e96dd7188d4d24400cccecab2470d92b64a4107ef2c2e2911e54f35e47ad592221ca25a81dc3af3cff32d38b2d50196713056ba5670a75718d37f408f2f6c818e3b54af5fb2c5159823cfe9b1665c30285264a302f1c217ed458cd7c1fd7c6b919f05b575574918af5d01719b66ff46bc4db62880fb28ebf1933cf4f4eb8dce954f2cf053f503bebb609cc71f04673f6292a19c408521ff7c3ce3f3ca02936a2582eb5cdb41d316b717ffc1a9c82a9ca3cc61566e9b5157faff513e9c18f03d7a814e60b0e9153efad5198b66b94972af749578e62bbf7afc898c7e732b027c947463bd521133458dfca202c22f780c2cc5dce9f703b84b1a8ec625f1e469b58cabe565d144badd160a19a6866e5629b6099bbaec961a8477873018ce4d12b7fa51f0a42e529bf8301322f7482e2874901468feabe07a08385af313c844ebf1dc55c77ac744993f82fc30c8b767063e4823490242566b5238a9985c4af48f0fc8d7ce8ac1c3144f19d27a869e8ed265fbd7b225c90f0399a62e28b44fe60340af91c4d75903739ee261452272d9bd214bd1b58852a92e5887ce25b0601630c763b431566a7a70b03b2db288d3ad2e74789f08c32c47f5310c17962400746f3beee21d1d11a59d06a121c1772484dcbc9b93dade454ba7c8e83148c5141653f017aed70bad65caaf032cae3d5a333997e50f34adad93cbd38364b05a3b8c0584d334cc19d51d46d084cf3b33cfd945e0fd01e7e09efa127e475c2399b770e7888563af0cede80bf95ab99e3541681e1f67ac8202179a6c848dcb5fbebce2b22abe653c33eac58cfbafa8009a051b059fc96eaee5fb06330171e4b9de973da6d34328d633713a93275ef64d0f81c0fa54883d1506c702d4d5ad9a86d459b240bb207da50efdf71898aa4ef5f85d45fc1b7cc6d31fed7ba0b28797b8fbdc793a0d2f9cf9a8cec1d772b728482fe7110fb44813113a2f26da0467be23d05ce44883e762d07b88ee4e56aad6e9e0124d0c16d6527f27b499d64a7e939ab41e4dd43807c455412c522a2b6c53dd55ffe124ca2111abe7d9c3cacacdd0176dd0478a1c52bc0df63c6319e56e4ebea6cac8f55c7f688f3b3756536bbf00f0ff94fbb1fed08df5a41ad0e47d6ec571b67839b7de4f6bce8f1e882a3ed3d05ccc8e1a7199d3a7667807fe36f36baddf5e603416afa7fa8263f20bc84b445be6f1c01d30acf9114807e7665b7b5cda9c0384a608fc580d61fee423498e000505a38d264fef60f2c023d6c90523ef9d423e4601cced98abea28329e26fbe24b22ab000002ec0cc20b231930b60836103f54c63f5bae86b4c028224c33213dde2e3e7a69ac0e52a8c358f84f3b6b928bae1cf20cc335a6514a39f70b9bf18f42dc8d9759f45213b7f3d267e0a36b1ec6184addcb45b3e9e3351cda26896ce0d9fbd30b62feb3281821cb740a82f6d1f44cb594be4c63e76f8d8a222238d31afe101ac33a530b231780361f1b4bb3a68d114424138e0b955786e27d3a95e7b793e1d94cd3ec7bfd227674ca05a644c5cd2e8c640550b04a7f29510b570dec6ecfdbb9d1ec6e4ad185a221e246f9e3583bc9c36a903dc9ecf6c3335c1ede948efbc94f0b261ab631e314ad8363018fceb6c9913f358df21eb5d0e4e38c25efab0386871101afcfb8c434e478a7c34ddf0a568874b600137f168110ff18660067cedff278238c7088591253c7ba153dc1f3d430850d7bfe042b9fedcbdaf6e08aede637be816cda3165992858676b21d56576b5e1ad709c03a54859e36eb96d2f70f869ad6d7bca92049b9b4a4253fabb511d357b807767aa1d134f0a4ab3e5552b267ebfee6fcb6bee45ca4a8c7d179e267bf09655e7b1b89ef3bdb09d6ad438e1bbdc45dd3fdeebe7470f21764b5c40f6bd41c35e4acbc7d75f8788708de6705e36668c855e79621a706dc857d019c488cf04c3d65297dcbce5dd1210ee4a602f97168da6a6fe74538ec27c59d6dcf29c0e64e5f43eb8f7832e49389149522a2a17f8fb275f2bd7b4d80298335d8585f7c0bc586affd9b53a9939dea1284370b35959d4e7ef5071583f712a58bbaf5be1934c0b02471865a5185085b765bcdf9735d7fb3f793a6f2316fc66c451675cbcbeaacaecff6e9177961617458248fa4b4ada486bddc132c3c3c891b07b0da3ff83e08775f962a49b534d29d77508dd3481ccc5072f84fb5afdb8add87714b680cd89c51d7e9f16b13252f3bf706340d4600016f5a6629e04fde1e60fac38085898e1d0a62447020912b131aa48cabe1d1ecb3af6510156d0e5d6fcda8cfdc37f6291698b0cc6297a9d4e123bc925658a9436c5a6d28a4a01ddff19f26966b337354a7024442c0c69599e1dd1632b0eea2565657708a12ed32c034461b62813a11fae2f843c33e469ae2ad489303f9209ed2e9028c486dbc10985ac4a1f45dd975e0567748718ca62026ef38b4b3765cd60e0c42bd35a232deb901e77c358429b7e3d1927608a74d0594142a39022dde2f5064620740510d4c3cdb5cac78368695377e1745361f16da33764595e4669125b265af4783057ca79394031f189025ddc4efc224cd51626f045b87da7f73a569bdacbb2c080fdfe68f330aed812ac76725fc36f5bad9d4a9fa54fe0c84301355b64786ff9a00a933feb41313e30475143c842cd84e41af1200c965968cceae3f345496232fb374001ad24d72574266298e993a8f25d5629298a69b759d1fbcd452026a2db0632ab90019bc06c5ae79d7e169901313d20463bf43dc87effb9335544ae17dd77f69f0cda7def487c3b9863d57a8f5f9039caf65b817910901f01513160ce14ee375e86a4e68af74071bc194cb2fbfd42eb2c10078ead1538e186a776e079aa5d82db060c326ff94dfd896a5f1db70dddd3e70db050ad591c3b6e160a61378faf9b04be7f10ab6c287dfdbf7ca84854d286ab646f15ba9c0321c80067c3bc69c5e8927aca9ab2cdcf9d3270b2b8ff3ca8f691949287e806908130e3af21a6b0d2e17db2fbbce0531b4427adcf59273cba9001cc7344f39599c361f6edc3d9acf34208c88bf8555e81ecb24efbe7e5ff9f15f8a916e1758094aa0fc340bb4867b8866017f868744d6520c00752d3d683e788d57b8d4494a47cb458ca7e16f71ad4d4e7e85fbb850fec93a498e1ee6a45d8d7137f4fe8af59957d05e30c35bc2c973f81271aa72b47d8bc8e0177f641006cffa0466332d33c3019feaecdd3bf42ff935dc44830300397fbdf3a82a260ba046683f6d358edbc5eff8fad6aa45c73b1d8669c33046d07c75e1671ffe13cfb29c83161bb2972918cdfb502031284e1aec4495a56069e6cce1cba6ae9895bf94b0983a7594d5f2c29cd44034ca149c01cb20e57ef24d6a209a792a08c622e9336995b1d608a621af97158250497716431588dc1e2f6f85066fcd0c9a54a93de35a93a273b6d7beb5b1d46e9ca903d256955367a5c3232fa1a01c675ec9e0612b456823a1f2154ee2096a0f025a9e3421e47e00300289d96dd56dd69068506c933b46a9f56486d0d1e3ba8483a858ca6d94c9667d2c8f92dd9bcad052fe6e6b18875fefac635c96c44e72a0e36a77696bb5dd3b43872ec0ffa1a2dbb7e206fe2768d2ea82dcaf8e97d231569c93543f0a422bbaf7b60e8872c8f84a7d170a5ca8c92c17f74e10d6c1147a86b538564572f59595f909e9f8a03b95436957f2ed2dbb36ffcba98ba8948e2e0b2d1bc8c3d96af34732667bd38982501e20d3c4ddb54ed90e338ea2bc0954de9a327098de9e335a9eb64d0e9c0e444fa97c35ba5cf40c5b6f257a40cb2bd9c2b0e21cd2acee66eb1c732dca61f4429ca2791d5659fd8cf5fbff0132d0b108b98871e64b0443250a6637ca2c6e5332166dfa06f811b640a017c24e68f8697af6950017ff33d9249b3aad387ce7ab29c6e0604efa163406cf67fd3edc97683cedc9ffca718b5ce15f863d715d2d885deb8e3836342ebd6226994fdbe2ee6bb7ecd5eb5f3bbede680c2603c102afec3cf6f38237f9dd20fc50473c0117b7ffe902ac7e721c290445e383227c3deaadbc8b589970a8f237df61d40d302eeddc943cc324ae965222ca0ebbabc3c8c988de1e65527bd000314e859cb75add8613a1efc4f15958faf872fdba20ccaef0cb635e87927295a833639328e7b3dd54bcccee9c1680f96ab314e6d4e228d654303f00b01e76e4ffe53d0a03a0976c9e78a60373e17835b7454801b00762d59c135499e5a4bb5825ae435a271db636dfce63bd1add020be5e98ac77ae208677112fde1386a703cfb10ea9628afcaec5e5b0541b45edaf3afad10dfbe8588f8ee7688f7efe705cc553393fd9c60f7e0d88298d6d6a187f1ba9fb21877e4bc3ecd58f2e8fe41210963be7c750edacf09df2ce953cb6f726772ec286aee20037531e3aacd840617e932323341423e16a7fd9fd8728e882c24f2d3935ce748b879af6f3fcd259a6b94fac7b1e2a73d53de207b32ae1164cb88bd7e8108b8a05ec665b8af5618c2cc404b924dadb19025642c7ae3c56ecb0ced01f191cb278a2ebc8f3fc1a8165d5911fc9b537a9e537d5c20c651faf851990191117d070a83dfdb87b536292fecc52c200fe9e6c71ace6ceab01917b67e8952a0b3d15bd2cd639611d17f30247013824b9209b002dd123d8ba605f643b70bb1ad7d67fac468cbf2788721b4b8401e77111711750d67d07f8da65834ca4e9cd167537ded394ee0578ff19c42b51936edfd3c83153a629b87b5d9beed0b1ae369169e23b175403c82256fbf5dcacff6b2319336dd8b30ee3229a8c78a338731580de79e52f6d3a5a45e36e7cc566bb8aa186552eb2f10a2cafc9200b5c10a4a84bc838e1f177748e43ca4cb119e4cce433ec9cd2cc0e045dd10d8df8e5fdd9bd58daa5877a4bd2884263eec8ff81ca53043a879c2e54ed17b65802e4e366f4b2505cb8746fd20007056419514a3016e783502b130d89536eed48d155d457da6a5494e9e58ee9ccbcd864cce2a8182d8fa9edbc99ac704ae0972013225dcdfe6dd34b33765e5ac554273e0db6efc3cbc61f2f477963530094891dcf855853ef4b0879c8acc2e2b027a379c5c0ed36d59edec9bc6a14c30a13abc768626caf4d8539be89108f3ba020544160aaf202ddca82aa119097f9fbc23cabb84072e343f405bfacd61ed304ad1ff3de34a6bea1015d1e4fff21a5d225644fb1b1699de1a5318b7e25d2e9fa0a333f5a03b34ce5aec9b0a962962a8f45a6dfa2f8b5a93bda530ee89fffca511ff0cfb9f905837b9ff8cd23491b09dc01bf092c9ed7e4ad0b449aa536bd6df24572a810739913a7f9f0b3c8213a1ddb65a09a7152c7e590d48dfdc0fe1fee8ef9bdb5e8afde0fd44e2f771d09810d0d0d6188c78e3fe059c1f6cba9a7c5eedc65bcc24972d13f285a2fb65c0f9834a2f3eda2e8efe490114a2ffe311b1b1066690a6214cbcfd9407fb3965e85881517e5f9a99afa219cf3c5efef0b6ebb8179cfcb19c6134dd1ecde0f6d9fd16b567ce4d06538efe05ac04e04713b42f0a580e3db021a5d111c51e9634d7423d02252a7fe8d7b373e156805e1598558c317faa9755e2cbf0662ac15c92db0c57d8f4ccb715de42f1f72288f82d2f8829429177cf065d6338a82d0d8f4c3f06f930e8d6598b66d9199b08cb808767b8e6d3f306da2384c610cf97bb65f8fa8a0ad15b3452eaa26c0aa06394644e31a69d3f165cb5ee761c696ef29a9803168c5e8af34e2edfc6f14a0014523f59e53e092b5f41509b2796e0a18a57e17aecad26d483c8333b48860365d8683fecb0c923741e372b0b5905dfb7a31891f05a3171f10a45ac30bd99baf62868fd299b017bdef913265216c5112ef5f5a3dc267cb2d166db4e9d5e89eb2367613973195e5e4ee894da3628dc10844b8ed6562f2b956654f2976cf0d7e9696b617aa3f44cd08128ae4536842c7d36d48348c8cd0667abb81bd26d536d35f0fce2ea72a1298e1026aa921c35e44682db785e3043a8fad0687850b975425dabdfcd91aa197d4aae99656214cbc2ae751947192454ce8b3274d92d8847964a7af1c6ce9f927d179f3ba35886ea9e5086164681035c46fbba7bd4e0042ca0ac76ae03bd8939479c2cb10728ec8f9b24e6652a8a17af3dca3daed9eaa057e44f18289f8354d041935be11449e8dc863e769683ccfc673f8704c74defc2d314e3049cf04d98892e888efcd9174a9b07a2168c240ee2cf34c2865687a54a56e5cfbd4a529d4c0ee8418f0e972e78f96ce068a832dc4992d2244aad95913c45b4f3378468afd793dfde799d3da703018f5bf5ac5cdd486674ed49ba4b3cb1d9f83159f9ed02c844503f3996b2b96fab8445368366dac0f100fc180a7e6f11dbe85fa3929b835faaef7ca6ee3c64ca43a51186273e4103f608ce25d0e0e15ac43cd74f98e058c6f182d47573f053216934b0e56e43d305d3954f92fae1f13309f7d1370f106eb5c395078d82879fe9971088b6b4aa155f3bb2c8d61418153f4b1ade6d2d1c4754e6f1b262a321fa2da2f020925879858c90f80a499150057497b111815913933e5f1be76a7d70b96fbdc42c4a16c5783a4e4bfb2989cb19c083beee5b9516718ba260f40b0e6233dfba60e4e9bb359a3bf26b9fdecad6545128ef97ae4b103886d992e944ddc8cf560eb1d681bb06f660dbd9b322efc2430f2090027c6e0a4973ea8b82cd1c1a5e37c704e4e1faab9df50f7b290ab3f55a0460a307605ccfd075befac320672cd71a2f6cb23a57d68d302a521affeee213617c3f245b8085ef86f83e80e3ad2bfb5d982b5a374d1e79a87004ae3527ab79dbf9a029c446240f20f6d4d26b15a88bc54e985766b1b516fa29d47b08c1e0001fb085e0117894150905dbb580b3cb8d8a8068385f3c3b3e1ddb09ea6c54221aafb69e0a9689b999e7aa422f755c8e3c35d8d1fcb7e67550f7bbed7a6441740c01802a1cc80bf094c6382c98bd420627c89627c984750f6ab4d67d590ae4a3267a11331292e9c6fb743488f3ac1d56800c25367723b0047d5b0b21f6fec4c83b30d592d744f7c7451ddac1ec7f5358cd2c8a5645511ba4511c5e772a6d53d2245c068372186997e9a040b2fa7ddcf068490b9d8378a41018deb26f2692089903374f580e21e5bad059afc500956246bae20b4a5000cd16805fe4d19cb231022e965caafd9c0d1f11213f1cfe036f283e69be4036ed575603452c0fc96a7af0d730d10e75addf749e2101a9a9b3ee33ba3d67b58a67d952e22d45e4d637d9a792becff0df5600105544d0f7a8864461d4b6b04f4c6ab6660a2205fcdbe6d4544ead52e61eb0e25387a4c80dbacb364f05ee1c714610015bcb80f1c6667364bb2820d1b2451258128ed0d679f50c3e1b21815efa40454ed761b6dc569851ef82a52d85d864b0d7f27e83f281541e8145410e23b113001650f983cc4abc319796b18863bdc21e7f24440858c2f47232abf14f3195e55f83aac5c2574d347f0e3d16db2f26857a14965025d48485b56a3f9106b71c417b884eb81dc995104667916d931b35f1271c0fc771226f15e0750ed50ea9576018bf5cf020137f2d6ebea59bec2bfd552a51c052d8267d3987bf5262dda927e025bddb3789dc9d592871ecd9a247ba9bd58fcd233e90a78ed04d518580cc242b3e16c1fa81f16f7dd5b09582b17200479595b1a002ae515b5189b91e5289964be61ea19043afc431d71c4f68b537667f578aec2d0fcf03c9ebfe6f869d0f46be1e59c674601c354e005750778850d0fc3ccf4596caa1315521619cc67ed4ea30fcc3fcd095804a50fe10e49cd557cbf7fdcfb8d04070a264891a05b87fed3a32c2eba47582e80fc885ae91f6485b217043aa22c2a5d6d51f05e30011e3ca6a0edadf93f301af81c9179d1029a9161267a2800373c9887bfed5063f091004d65fb57f22cef2df03a6ebe204c6699947d990fa63d706c2da5c55ad242b95ef166bc4902d9d3bfcd491b59519856ea152055deadc5c7291ca01a200aa929c9eb887221395e7f81598b6dedc46a16964b8030ba10b8cd314f6d82ab710eb86589adcccfed2e53938c9a5f2afa028f76b3c1e2f1f80982ab30a7228b2e5cc1782edec22695b0e664fc97c7106972c63ce3978de262d5ea6f394d7cb19816c17db384e11f00cacb7f06b1a10ee6b842720f98aa896d749535368a66b9fe612223095adb43d09e3d2cdc5719a513ad2e9df8ca8caec1301854ee59a1f9beb9210986a0ba073f9ed8a8b6981e65fd5cd22b548de358cf1ec14a8cafc3d51e9f7ad86b3ed04f738d3a231c174b0ae99dc83343eb81b2dc3909b1cd78200cc2b537326983c953a3ee986eef3006f657343fe8c38882b691b3503ffe37a6bee85a525c44a4775a99dbac7b6c3ba6d585ffa3b2f84e4123c9db208e96ead930bc6a7617e7ab5b7a5d2614101d275edda2227a1098f62287027e8b63e07c7da3e4802261e03b59d6c140267b433c244bea29090921698a9a3d90134e92e1cc08b06af866a7aa4090f6634eb37a51c0a51da246563032b3e55ce1da7ab4e79ce4b0dfd36a9ef21faf3b633d7b57a88ecf00f0d6384aedd1c9846b24c6c7c44b8f542ca00ed9d7fc773988409805fa77eaf88cca4eab92ba5887af74623a41a6cd37f9b6107a8500d36193c56fcd1479f7c860e078e85d59e5d6a7c7602ff9160fc6593a96fc20eda7d7677a1e87be7807de2f8729501cbe8ca8ceba39ec4a71df977c61e422b91c87ccbcb5dc9c28d30d167287849853e0fd66166dc99eb4e1b6a7a9fca39fa0a3f6e508cb13ba91fe4d1dc41a201a47512bc961a1e00ba89f84a522d1e9d034846910b8e7d5255845432a8a037ac8a8b59d005c379c07c3b6a73b8604758872b0dcaa6ee64d27c77d9bb5b48fe21b7b596933a9cc55482f30bb61b472c6652eedab58c31be5d8e2419f343fc24b13f3116097563c47e006d09910df83ab42ac2924f0ce42c064890c0cc86e860fbffb7189448cb3005432303ea21f859f16e4a80af7f4fe4fe5d0ee59f65ad48d8b56508df3496e43ab237cc7fe6082dc251143a2fc563cb225d06b1905414a1d92ef426c6d658124c7081dc1d8737de19578976275644d35e7aa3ab0299b8fac853f4917c3999f212c3f38e5c2b84f46c665a7b70ccc2e389bc58712c56a80f4f99e8dde2d78a3e82349a930228b51d4cb7ec2f2522e96500f42edfa344d61cc9b1e84931cbffda062479b990ec5d915a73013d204cfb05e6deb70073a2d07ff8a100ca7cda99e6b59a21095c217d217a04269f6409d70a9dac060e1689530912c8d3c577d184b7774fe845b8ff771ee581085e08c7be4861a7b71860c984f9fe79013de8125c8f56e043e247e91bf1d2acf97bc35d9e08e6bba1cd0ef17a11e02d63be4a9a5b1b7b4ac722e7c6b242b367fee0057cfabd4d6104fbf1f10d3983f51b85b3094a7268ceb8fa9b8e4c5dd2a7f21ae52383a7f42eb75815a03ecbe10aa3ca0f3226dbd218424cbfd72695576cdc5aff299aa5481eb18b0d49cf4fdc7041f89487dbf82c7deba08e1da49f95f7f8e41a9a23716620b2d8cdba8508d0080a0b98c300adb58832475ce7bea527c5cef5403da123ebcfd6b38042ad0b37797520a750d098f8b30b5d32d2a7f71e690210a0f1e4c0296774030fcec09ae55e0d3329abf3fc3e4f47d0d5ef2cc0f8dc1b0d6bc1ad80ce912293d7c697a8674e505f935d6571390a7daa800704b38712bcece50ad5b915f03f95ee2e57ae7c4cdf95422f477e75ba82f9e7d4d1540eb19619b82320ed86cffd1683e1d576b443ca11d9260e2f144ba860a8b8541d4668af4f93debff839466913cc1420ed165d10a26fb1a8bd50eff8795b361ce34fc0a580892b329792f4eeea3924159e02b48e6ba4e3f827077b1a395321776a4790db019d7a856262edf414bc35659587646336ec0e70c18d90a00f05e56aa4f9aec696af221979c87f064fedb6bf8a3b6b8433ac1038bc0b0841c5e8e55ef0888e3cd8d4bbf67dde5a70a7cb32b01e3464b1d057b3850855a04df0c6cb4030c27e4410461dee9e199de7ab8f37747aea102dc4fc5c4fc5c4fc6295e2fafc5f5f8bebf15bfc4f7f89eff13dfe38eeb1de4f788ba8982f2ca3c79fb7fb1fef96474c31bb2c65154c8ec83555f9bb9700a217277dd4e5bea86679f592d3ef006c78ec0238bf87551ac67e07cb79596ba2003908bf34dcd90d6346d99c3c4d41b37e7ad0faddf06db72045ee2ae0041c488a1a445d15754f64d4f9c83f449cfff96acb7c089c8cdf0a99cfe72fb1f9040c3e0900b10161febbad1d624ceee700ca63bca80c6e9e832534dcb10842cbb407b2d8a74453db2b5b3119e66205cb454891f20621de9b6cba4996f8eeec90d7e81a24b3485d6b37f1945fedde16aa2ad136ba60f0788f381604ce4a2a5a0813f222eb618929b1e68384a4b48490908214fec721f45289177a5690dbcfecff5c840448ada959217c57a217304c634858d739b7cba3f7c9dfe983219fe987e04372b7e3fa3fdd4480e1c84dcc811602023e3d48d17045362a27b5fea061ef60fed530b20bee8306e7fd407e49122ac60404b8a6814fdc9415c1c192d96f53f3f2a6c7f711768cab1fb33f1d6ae19ec28fccfe7bc3e3bc2dba41fce6891ff066fc7aa8c338c6b4436a4cbb41acdf05454b5913edb244467e9e36bef0f09e42d2ab61a26938f29249ce462da0029a0ac5b779b79dfa54c7b2901d464f967f9b8744988ee3ca76bb54e3b6cabbe0a1310f4105e82f54e9b0d08765dfaff42357ede84c3b030c74bf671657a0995ca1710a19747dafa1a3aec807ac9f7d8873302127513511419c1e41cd7f922ede5921efdfbc1154b7bef2764c91c241312b6b9871ac98afd620188fec3f30ce6183c4d3c92e0e7a277a896d092aee270aa0137dbf3c0d59da782578745170c1c99806e296e0ae5c354cca2a7282bd98a84fd7e03d04f130a73365dfa704e44d8951fb654ba893fceee7608b701567adf7642910cbeb4a44d131b9df2710643d4d0264ee3610dedc6422e526fa59da3049aea088ee3a8c247929e8a4d09a2fa6fffe89f60b29a8bb4f5d386a693819eef598f74c6172b4a44c79541b5791e7c6a1ed65c532d73642d2f5e181e501e988765fa206daf91d6efd26386f7411981378f410bdb2ca57e8580a4d3036febf323871a2ae0bdbc2e5f0df99ca1e3f4fd432fd3cda3c207970897c55f36d0d0ac1670e3ee121c81db5e0531731c95ad10fbbf95fc88a5286bcc1a935b399e9d20e4082bec8ec5b93cd54d243fd7aa8ebde25a6fcb6bd172db94ac762553fb3a5847faddd8187eb7a4ef43238ee576a197f7bdbbe1181781216c35567a7b73718c926d518ef9ad112acb9e736e4de7decec500a21885ab5a6341ef661b881a7f324a31de13a1fd8eed7a4e3d07d2bc48a7da1d1a6b0e1d3e061bfa72b32977fefbac21b032780acf653a8aca2b42f3841488191324c4dba1e4bcb9ceead0eb68c0caebf721d71d2369f0983e21df568448188358200813f30fa31a902aa57cc22735fc29d82ec594ddec13905a452fd0149bdf37749430b2aec16d288efd35e875dde8f3147e2c1663b075d2bc113bc346318919bee329cc7be382bb4dec0f2dc3b660be526a54903bbad8188a7aafb0a28548527adbe18893a5b768dd99fdf6eba0996a0576d4cf0130cca1aa67ce9fbfd24f7fc899a7526c645406438f1b73e79d811b8729a1857db3a790f3c7cf96dad874f8f9ff9098fd06e47d989433de55bc7fbc31cb15622bc755ac0c60aeab23cbb395679356a5a2fc66fbde57984be13ff3d7d8946074d64d404191a6ce829098fad542b6e466f58cefc21eec3959e8c46353c1cafa0a9ad4b0dfd94a34b0e399aef0a0d41891752cf45f44b15514b1031ec0f3fe224ec6ee386ee386ee38db597dd2954f5c5ea1427bf75bc4f7f89eff0d446fcd86bf0e19f07ad9404a0f721e5bcb2020d571ef61311c3238f6f2d64ef86e26afee3c2c6d03e74e85f7413d093d408167e9c14e63ab2d72f302bdee5cbf6bf7db275b97a94ced845af0bfb548e2dc1dccda139b2391e4a06c53853f6d51543bcbf8502fecdf350dca18538c42409e8d7879d4216582848dc61875d7038e3cb7e77b0bcd089f915cdfdac32c605025e70da224e1f72f43e9ea709d6bb5c79a91811c0b092857334e2f14c1b9bca805d558a704237b26a8979a21fee9ca92604b3a57ca97e531e4a24a6d7b9d235d1de9edff9a6c354757d19badc116bb33228c76fe92ed86229d838e9de172af240867efec743900087083e427dd4243dc6028d73be8da937fe637e9e85d50650a3b6ac982f7e312f2e9b52e7d6ab93dc15f32b0bba29e6ffb4073ba9ad512d378d1e7f9cf5d7c879b83fae49749c908cef8fced5d4040252c0e2a580fb4df545b77804e1ae8bc30667ea4098819397567b670ea192167425557708649ce353aa39737ede56e150438a8e12a66b50543cb2a52940c40d24435872b4ad555bc0d1d957b54e2aeb8bb3ac457b5de0784b6c535519a6c96946fda1b49ad5de2388262241e55156e6aaab475659856d620d84019dbe6873ff88302c373b3527ac35c67bd018582cbd031beef41755770ddf70937e8f0bf30b13482885122422c40d6633e44ee5ba57a31754a23e50783eaadac27b5e86a3dbafd6c166e49e1b55fcdf39962539dd660430cdd63d0b4891800282245b9d3d7eded0dc5b4ce542ae6d6eaaf1a8cd61c60645d80aa30905a56c06bbf49a67b907c72533d7a134e8891d418287df980964a9a4bde97cdd8cccd1e47eaccc5c28575ec69aaecd53de176626b000f66e5c00ab07e3a204a419beda4a13108f655001a1a9520290b95c988661c26f8dd8925ba04b090e2bdf6ad11e08b5362281942311a38d9950108ae3a576dcc2b8311d06f0f85fc8e7d79314b5e69b0ae88d3339ea3ec455c8842edc9fc7ae89b0871fc4f4b79d2f0214c85d4ffad9625ed3b297edca9b3d6f2d689aba48a84980adb657595fc76e6ec5a4dd250fc950197430f8094a6e4a489774686424a06888f6521ff0daf867daa79a657d8f82da4c0feed4e2d5eb05df9215e1c412410a5e05dfef69f049535bf0022413347b92d9da23a554bbe1e9769ac1612bf052491ad69bf674ff4b7c21b716987be110a634b799587e356df912453fa142c7ce6f5c5494961062c5145c244190aa7ce883ea352bdbd4414d0df3fd95f9f09c42d847dde2432e5d9f1643a5c304511198d18c8eea4f5f079b0283efd2a943cba3c9cb974e5f999d932bdade530d95bf7e85bd58ac5d92f9927d6d666d69a131d4baca42532f285a39efba33ff4f0fc730c8eade4cc7afa07273a04a1249880df7f7c5cd17e26fd111842603c925d97a1c92adf658afabd5162a1e0ad1efc11176cfddd2c0b3006ce08892151bdd47d5c56ef32fbb0191917310addd0a5a81e1d78a7c2565eaa9f44492235475254a8043f590d86843b577b044c1d6958e338512fb6be20608eeb00eb2ac6861e345f72b005dd42fe0177f083f20a01a909a80f4080abc1dd1181adf81193e8da77587a96cb9fa2d32eaf1f8bba07b4d9133a0057159ce40991647e9421f28f89c11a36df7a863ddeb400024e810042579f646c81b3649123bb3408cf450ccd69830e09349751c31e8da89076d5cdbae238d18e5678f60412072d213ad636ce8a5582da43f53e03738e362fa84b29bbb3c29d668fe169f4f272dda12e03e361f903b7283c85ed1da02fffe89f1a11de5798b191feedd4780d78fdbb1e5c21785b147b87b1c660072f8f8c7ab23006e6ffe9e2586b70892dc602b63d3fcae592d7b26b681702ad32778d46156e41f1d266f38657a01380d799f1fcc5cf384eb29956270a397446133fec45eeeb0fceeaa1b16948d591c339d218673a8e17de5ff492555c8e8033f1867ff722396f1e710300a8a0ccfddf1dda8549cdcad0e4d532ccee92c00ec947c82769a4a854faaf3ea46a02e1aa8aa992833ed0aba25415b780792e691e95bd5277b8e3d1c6f8a068d607605e5067dea690b44b33ca0253d92a8b35f328a99c00cc25996459dab1671345ac320f95c483a6e7426c12951087c4e5c4db9bee35f31617f5efde6b2d94596b0cfe4141f7d12a5f57ea0b5342c2eb4ff2419e30177a914ec29bfe5579fc677780034a7ec192671711c4441d689b6b51c6d4fbc25fcef9ff21d47d3e69c2b47b15d0ace5b6224e7bedc1a60e8c1c5d5a6b2aea6c4ca27c7bb677439e040044eaef2a1fbcbff30d6fb3568c44e6e26f76adac814de1d2a9c8380c62704bad1592ef42a881f0af79837c68f7882d36310199835436d87cf5417c92abded76862e7cce217b9c7fd1959cd3b028f7ad807b4db0d6c1314dc49f5ba9b291459d4969ec7fe3dda25424434b78ab63f225155a368c94c4e83dc58086f979ca9eb08be64853121e0ac5051459f53d212fc1def1b43dea19d11c96cd0d414e806e3fa06542664485c7617d9dbf2049cf56b05463e3dd1dfeb2c9868433a611f1dd57a409f105e2ff11614d8bcba06fd86d843b7c5aef9d5cf4e83d83385c54c8caaae9861a9ce081403e63027bb8f98d502449d0f2b2a482e98dcf0769b4ef33313af06847f3d1de07644492791dad5951730d6f170506c064cf188c0391b7a2761889cae940d13096675fc5ce67fd8e14014e6fcfde6356da5420150cd490a7300c6c49ac5da0cfe6c744a227e36cc0754772a9d93d5b3a186ac7d54d7bf27bdfb7535611ded3367d1f6d5ce16ee7f3ddfb3d201a15e5f212f53a0fcec2794308b779fdb2fa1140e3862812167b379c13fcaf08000051d58a5d807c1141c096b969028746b324acdf75ebb85f0391d89805964879948f77af54a844c2c9a5aabae4fededb891d84ae2522987fc6337f6e52366e9dd3f75d3b5ff8650d38a9b270c6fd64c2c05ab243cd3cc3142b7d05d8e95f527031d84f61205b5459419f12626537aee680146b85024ee0fa708387ce50f2d2d08363b9356e1420c1b707878e70d3187d469ce7cfefb7b6dace2ca1a1886e3a2e573a345ed26f6b1690cc54369a908185b0a067704b91285d22fb589d89c0188b166c97646606600e74047db25e5ea011640ef425aad5a3251fe120280cf70bda36620d338e4e1e2b5f3f27115305227299e3bbf4ebb573ae409e21752cad190f8d4232909dffab554cdb40810b25be9ed1aea363a73ffd652dd772d32ed8f6d90e1f6520c38392f7451156e81f4ad154d0b33fd147e8768d5e38669c34af2e46413b4b8921b14337dd64ac25cf76c4f322b7ce6ff21e1f5291de181c9c0ee66970ecd7aa34a0f14acbef98d3d000308e386be0407524f297b5d25da7122e3ae1b1e20b31fe7bb953c00fdf6c3fd57e69cffbc6fd667600ff5df9f7ddf72544a54dff1616ece4e9845013e4053764727d6cae4998ac7f0a8d6f5cd079817e580f75886168322611957b4fc20056d32bb262360e5dedce44f94c77df181bc48c6fe7ffb7bffc4f1b4be6d867e5f6d65fb96ec34a5fd3e16895df41ae13b6c4ec0efc28073122948b4ae3b357f7de6fa3eae78410a004ce8e9c31a4820e5a01892e36445dc3c39a67a5aa33b9842fe767e3c1ecfe4410dcb9614fa25ef95f8d3eb360d1ffb1757dfda52f5b3a187da25eb54c180ddaf93a2de807840752ce8122e26a53a0820feb036a2bc295451dddc96082b32ff137e352c907c0a960da5c42315ce964d18ef32f7ada70126f6383adb7c2df2140addee6f96f274922ad8c5cb7db4e60ff5c18ee798b10bae7af333de373fd12bcfbefe7a3d186aae6e5d464935fee3d0d20cdd6622328695f863259178324ec7b569b451223680f5238fb2bcd04b25481dd641cd31390ae6184267c5d011573aae77490cf993f4cca1456af2cbdba9769860a3ec709b08889a3511fdc0704127681c276923b617c72288a0f9b23cb7a46eeb2bc9b5c6ca57c7a6a09131804fb9dd0fd137130d1d636d73e5893b2f08c0f710b244e259d1f1e06167ecdfdd2620073ad2f4371e07c25f8c45f559063437b28a3e1571ca2cd0925f0d4eccc4423fe67afa615242dd4446f2b5dbb9498767a1e41df36e5f894b6b6f8911e91c98df660b13787f24ce519056ddc78c7535eef42d2fd1599d4a4c0e77aa7d37a8ae9bc1df74a75665a836d7a4aa402909159a51b7acb534640f07160e85d2a42b49851346b6778ff88e92523df5b63a46080365f43e05aa34d54604758fc51db0d32989baa336947d9c0e2a21401ab1d77f2db59864af3160390c1d6c6e13f6fc3f73d4a6f82ff6fc3350f61345296f09a1d92007c6393f866db276031e3c9a674e390d58ce6d0a867bf409b128bcfc6a5f287838702998ef02f485fb331e0a8223dafca667f2ea6b036df8a077c801bb2db396ea7bc64ccba343b8d8ca64179bcd3fb5b8fa4e8f71f3993e78281d8bd875f55121e338a2ae2cbda4189e84fb20a76da53deb241ca170a79739063b5feaba7f21b53d81eb185938b7f7b98cf07759b0cd7330f6701dc392a0420925b34c1b3b43d0df86ff8e09743414b40e60a9e6f122a0f06f69a950e70c2ece07614caa41a5d6fc5b9c49f3953263b316bce7045bb3ccaf43aa5873a84e6032612edb2734bc4cf7bd611ea77e08c36e9ea274da6460b8ebdb145a0ced70bec7f72874ffbe62f7b16218cecc3126323e7de2283a15749b4f3bd5eb25cb3137752d55ac2f561967967f237735bb4a6ee75dc164e44f1c214debba3221153a1b2574d8c25b725c81f5fc0fbdddbfc919c4931faa575673791f678a13d277b32f9d3b936fee01f177064ca616771dc45b14f8ac1ec53a62f69f3ff5409d776dbbd84690590e4af7b798a19c87f6626db34aada650a06ea7ebdd2357e151599c3e3e3532e33ab0cb81665cf8980518918976c8d11c06f07be91d9328ff8218b94450ff5b29bceaf3c6e61f8ca4897e6da0fe2f8e6214e9f36ccd4484f160c273fef245f3ca59cc311848dc100a4387782de4af08f5a83bdacfd7583457319bf87db7425439eef0fa93771529a80949b270c4037f6d381e7d1cb56c9702e5a5ae94c0c8cc7d87371d7d3bf0fa16ba512c0858931d6e334acaa59faee6699d7ac9fd4a206c51ffc2276bec7566982b6b87df99b212574ec8e91f2c4262197b443a3d3781406b071a104ba5c13c2fd7ffabb8d4232a9456e73affe41b591d57de3536cef286937fdc4fd36acb5969d98f12a104ebb71e02ae028c8d6eef2ceb5aad884c62a37e1a8313bc7a6139eb26489a761acb0d5985bdc6325df61871d2870054b1b0a6b1614ca295c097948078bbff5a2df5e316630e113efef96b6e75408ef16181459e586f61e85918b9b61b31d6045943ccb662ec04ad12d5448166549537c108efb85483e564bf688635746a4a6b9cbc275f2a52a404108e15960e5522cb010731f93f7b195180608af84ef3d466bd14851357e879621dbb695c9218a30fef6d0f832e3efe7206dceb3bb465c8bba7eec1287de078c12fed86223342283db205763c732152b3cf2afaf7be3845e9b854f3d8ad3aa286692770d1063c3ddbf5b3be3bc86718ba09b8736285554340593518670652bb2506117443a659508c581c24e8b968453a2acdebc580f45ecb2c486e6d867e6d86c397b94529c1b05f21b1ced6f8820e7c6ebb9b1e4bf8097e0499c96dc06559028514d57477a3833b22ec1724cba9119de4b082ce6ddbee8a0c27b0c24cdc57ad1db6cbe162a6e263c5ab860060c0b83523d02e402fc4a0c70ba897fbfb6163d9d6c475c18b7d75effc6cbce550a630f93e860050e85a8082701359b5303faa799c29ad7429c423d92900ccf3764016555437063998fd6783b07cb5b7a3ac49cb5fd730666bf386da712cf89e8065b81d0fd3dbfe11fb5eb91bfa658fb6ff2bb9614ae40c7d149c289644890250bc70eb0228751e792a5a7633c7c82bd867718803ee40156dcc2829ce948df5dfb25a3d5bc3061c8cadac8899e9bb455bb65c3de10610f8b7f14f038daa6656083e79307dbf6c9720d093da6833a292eaab69ccd6c2f85422e1abf3a4ea7a4ccd4a0a712497c1bac21d33b2e71d916708a6ad1c71eb3e41831f5df9c1e7c1356b942bf4d88109116b779714598bb71767eeda38b72a3df3dbb3b31791dbdb3a8265558dce21dbac5e7adca44f133245181026c88e83759aa6b9ae265b210b6471a9fe888c0f25bd519f5b48c2baa7ddba7a4bef466533e917aecac79754cc6e4580a49f9cb01ae593f70df773ab2ac01770a0dfd45b9e7847da24b7b37fee6571b85f820718176d710917767622b535b3e239ba58ad789965452e4ea8580783c9e40af3fddc69e5078fc0cac25d62fae60755a4e85397a41205ac40eb8b7b901e6b99b523644e51c06941b48f18570d657bf4a6b24c434a55dfcb2c91e2b0d13e7878dd766c31e7e1bbfd9326c6e8d6116143bb99279dbf9dc839b2f100040079cfad3954287ceeec0937a3c323eeabd66478791729664f932e226c58336cae037eabad9f75f53e167883a086ae026684d7bd97159a75d76acaafe7ae2ec270983db82e61e6e39f976f525c0dc14530c4f5badcb032f34aa3bf04ac35d04764b2a058db9d1ade619a2905266ecca5cdb003bab1f896f3bb129f3669a278de50516097a994f0a20dbcc293da8f85f821eb8e0cc3a152ff8cf6a45f92175b51b8af7232e99690dcfe59164386667742e8a6d5fbf062c1231abac0428b74a8e091e23771c83359bd0197a6ae703358ac3bfde12c7c0e05454c588e7e817765da0e6c47faddbaf04fb4233179a4b28f6eba2f3587b1c66fd5b892908799bad911a48bd21daa0a848e7ef5faf6e6fa333521ac887cdda1e21acf9db065e3ed26575c7f0b9b1dd093f5f04bf9f231dfe6e4ee916b617acac5fba4a888c630d3bdc389a8fc03f57f366281a383f57c4f9117ab48eed6b676c0459e4e248fda08c73ece6be18e68923f172e2163e4932be9fd98e7604915d86dfd718c33ad43ed50121f6b450cb6a2941c2668c16320252ddcd722b30786dbd4ff815fca7635c8823d397b5b646c76bfc1950fdffd79c026abe800e20bc16dbc3b2879e02c50f572adb8dedaedcd5c04713dad876550d18d8056c57aba3cc159bf833d81de85a19a3358208d10126067cf66c15f731d6039198b9f62d99dd837911a1aa057cc7eb778820fbce027526a5a7b0fa384e0a0354532260abdf7c5150ec661ec6fa52bfb7698c7d1654527158d977b95ac15187d5cb502fceaffb023f0a9e6cc24925fb45d89700dd7945c4403bf36adfdfdd5dfbcaa6892839fe77330c11e32359859b6198c7464eb004a2ef2f6079ad94d352871a33cb53ae6b36a2b89630fc7ffaaea90774e7673f697e0a94eab69265f23398c15be8fb0ae8d81f1405df7314f598d03b9e8a3943d0683df1004186b2601765bca939b2d96dfa111e944aa98679c974be6cec367a3e0138385d57e0ea197a4a0b83332f85d1ebb9f8c06d4bb76007bc91264e5210b88fb6384593cb9984cbbc41c602c8daa14901adb32438ebc3729746f834436130c563aadef37c18649f1a2bced147aa00e5c71d182831ed370332b86944cc3f47d89ca804144f0f09f91c23a4af15cf43be8b0b999e5a13e27097ae651864b4354dd614d9345542b8a936501769c8732acaf52a4e09e28b98d54877d681badb37f9fec36b3f353789c394ea4e966419f446c7855e0ba556383d88434c28b3928299bc0f0e32d0de72fb4067e9cfbc8438dccdbd795d7601b8f2d86de2f1d9580cefcb8079d63c9aed826b27665560060e5d0fdc80496cf564918ccf225125f37213f0f73ac11e971e0c93a292e4d4cf543b28a7478c78d7576ea68f32ba6a0a236593666a24e18fa9b0200a7d60df9c4bbfad9c0ad881692f1187102eb442532a1361cb0491caad66fa678a52e5ed7e7f7cc9f9f1069d61b1b8f4b69d450c5389d9fbb49f63250bca5bed57ec2a9f9c2f7437707f98e9facad11d0789457e5870f43be45c2a1a5005dc2f73a5b409ca853ace6a5ba7f700409e2a9983182dc9d86fc4b2f93bb2d9fadbe0893c4f669df40512b3182596c5840e1647e8100e81197985042e9d69aeda08877d89db94089c04fccc47e33d6a0cd1f227358912162bbbf275d27200e23d2652068a2a6573e214a32a061eda463db163b000a89fa3853a741507365eed8752f13f692ef27fd1830d63ef804c83759119c6956f781dd500e8333f8ddd3315e0e76f338ed7aef12cdbf3a164871f34089065e50f7106403543005e451c42d64180281dd067ff68d6728ae8a45c552914eba84132e91a11dbc58fcf2724ffb2e312b86959aae2a210ad117eb69f94fd90e4e228df3b1aa7a5b42e756225e813c9416c280f312a773f566a2f577f3391560fac7126edb41b71fb207bb2994418db77c67601a3c4c00ca0b1708636005d5a6838878e9f7200902512c46366cffd6ef746308d9f910b6393581000ddc03b72d0402d80d58f35b9029c1fc014e2ec7a4ef205f743655781b99e52df856003ac8ed8fb46f6f8d0532a0b2e0320b5d75d30317dabfadc2c1ed28902dc6bd7378ab6a9cb9d678716962b9a42ff1e98f91c150f33eb7f7b0f55885dad5ebd8969c28efb8d304dfb756a929ec51d244a6825a7ee03ce239dbdf4473fd28ca5eb97e8c27231dca2876a65f157747b9af1aa5ff34d7f3422ee6a6ad106ad1b1648915ecd3f37c34b165a01ce23b138a1a7056c4d57d24f0535a89974c16a7157ac35d5298d52c7afdb9f9ae7514b9b3ffd2c916c13b00008ebd4d1b2632e36856bea87d88bf7f2184e645726fb9805d9f74ad25e4990e710397eaf44aee35eba59c087005392b8d9eb9ef16ebc4063c02a01c42f75c59c270cdebf302dc768db0e55d58194a3183da8eab09e2f6c8bb46541892bb5cef1e25b7293d81f5db74193d66691716d1fe18deebbf3108fafbdc94282f587747330d0aaba81e5f2782784085859fbdf519aa21a3801b29f5992c122ea7a3a61b700098eeffa10810d41880000a7c62e60d538705a16edab88178634a6ca9910b6641d7901d282eb69b1706601b882066e6c8c6ab726116140bf319e115437c8ff3744de25b65d8763cb730291ae4b4b8d00ac060bc3edf25b9e6b52640cb3008b0278fbcd6243289e113829d90bbeae75f6050305f59a51321467dffdfe1d6f2cd8037d7a203f14506f244a3c89fb1a53c38c7962ba75c1b35d7ed339c56d3251c9f43475fde742da0f42309e514f9bbbc885d35a37ad9ad234a8a2ce4a601a247b1a87e443ab95ec3a8d946e87cf4141862dcba17642b9960e4e150ef257067022cab502838c4029c89d0c6ddfdcbc129bcdf113bebf553ecc797ab5de17bcb0fc6d56be24e85531a9f1a628f75a2e3402acc9f7b9416fd1297f536158c8ed01bdf5c7c37c4156f60453479c17f71d258e5dc16b0288b09db3a48cc393387b67bd8da6383150ca2eae257ad7284ca1cd9d2429e794469a6165233fa88333ef76a72eedec5e75fa8db8727707175217ee38bc64c3b9f4f004aac7f8f90eb2e7524abb1d88fe37edd30a126f83d8d5f31efbcf8157de9c04d8e703ee2a56d25d2a3aee702959a0c5d156ae002179542c6cc6e8c7fbbec0341e085eabbc6a6bc5d83cef030211dd9f3bd1727575a51b6d4f186ca26454694e324cbf37f4125ab4d87139c69353712a1924197d2cf3caefb6c38f2619ffc39247a4fedabc30dbf67eb209397c1ca6a569b245d7580156961d9116244374471f4ff00808a23c1e518e4c98011e3a268f1171fc677dc04ad37f22e39822ea46915a1651e00018597cdc0307c7cd5a1256d813b26bf5251d15ca8412125700b713a668e3f17cedb4ee66b44edc972d0a26908b7c04190edcee6b784ebb92e423f1dafd12eab8d65e0cd7602e77f8865b6b4b3693dfb673104be60b9e3b888bb58b57a86b3059b9c37ebb2d19a0369249872146855ce58979a6cc2519be6fc1b52761682faf8d8caf38a5910f4c27dfe3b0f1f58c23acfdab1f078a23af953d1d12fafefa1490fcf98ba8d80d27579093fa5be2b15162d7794845cef400527a2059b211ae7508eb0e907d0184e4d64ef356f96240d1a538bf1a52126a5c4b76ecbc9348dd432304d5deda056575bab000d54e812a85bff385f3fef26d0e5881d86aa05e0ce8ab227f84d953d62c6af0b19a837fbe962b3c4e037a7fdcf3e45dce339c98cb49f6a607dac5cc4bd8db0e47fd8a375c0fe7bd702fb8927ce76312125c2b55e3b6759356d74540a06f9f87860db4054265e5c07e379107110c26defc328f2fb99dd2b233a0b31991867f703b2da169ae1892263987f3a74fb742c7a3ba7f257dc8639bf0fe3062b1befb4181e604a00b9dc0abdfdafc98422603ea4ce0416e4aa131646e3d9d801c11ceebbeaf409ec7463e0cb4833173797b48e8306320c5d1054bd3aad8d0dfe85b5f52ec49ce98b4c66e66226668c4a5bb58f9348c27a96ce0dc7bdc5e5a863923a3d3c7ce4583ae65691464638ef18ec6185b690083880e3898b734f960110814e41880e49004547b8d13667b94062b8e1c0b5a69b77c67141c16b45ade07152e263ad997b37ecde4ad3c2c145b2393bea0ec780f2d105eb6c9853013d50702c9e615294492b40d26a46e99f832ecf38590129512c221a89079dc6f616ecf7d3232ac3e358a61a57c623f6d289fa11e790d64cb8cbd7c2bfcbd520b59658631ac31895e0e68e0f269424a4053193e51771e20626afa2153ac935a1efe0285a01d164dcdc87c926d6ebce0199ee73c7c173526b925fff779235da59d7d9828c7e6208f0c29e2c7a24e747c373e661ece83fdeaa5c3957ef125b3d5f7c90f72225b52aad7d4aab5f52ac723fdcaeaaf862190ff65e9733486222268205eaa1f88026a9779202c806866d622b80ebce216c200915c952188d4c10fc4235c3b32c37ab38c0c1a0e32000f41febf8fb1c2123185a8ea4f3a1eeacb7cb59f5a7d8815cd8fa9fda105abe48c5e48c320000
 \.
 
 
@@ -15428,17 +13966,14 @@ COPY public."RewardPointsHistory" ("Id", "CustomerId", "StoreId", "Points", "Poi
 --
 
 COPY public."ScheduleTask" ("Id", "Name", "Type", "Seconds", "LastEnabledUtc", "Enabled", "StopOnError", "LastStartUtc", "LastEndUtc", "LastSuccessUtc") FROM stdin;
-2	Keep alive	Nop.Services.Common.KeepAliveTask, Nop.Services	300	2025-01-18 16:38:31.724	t	f	\N	\N	\N
-3	ResetLicenseCheckTask	Nop.Services.Common.ResetLicenseCheckTask, Nop.Services	2073600	2025-01-18 16:38:31.724	t	f	\N	\N	\N
-4	Delete guests	Nop.Services.Customers.DeleteGuestsTask, Nop.Services	600	2025-01-18 16:38:31.724	t	f	\N	\N	\N
+1	Send emails	Nop.Services.Messages.QueuedMessagesSendTask, Nop.Services	60	2025-02-24 09:16:24.369	t	f	\N	\N	\N
+2	Keep alive	Nop.Services.Common.KeepAliveTask, Nop.Services	300	2025-02-24 09:16:24.369	t	f	\N	\N	\N
+3	ResetLicenseCheckTask	Nop.Services.Common.ResetLicenseCheckTask, Nop.Services	2073600	2025-02-24 09:16:24.369	t	f	\N	\N	\N
+4	Delete guests	Nop.Services.Customers.DeleteGuestsTask, Nop.Services	600	2025-02-24 09:16:24.369	t	f	\N	\N	\N
 5	Clear cache	Nop.Services.Caching.ClearCacheTask, Nop.Services	600	\N	f	f	\N	\N	\N
 6	Clear log	Nop.Services.Logging.ClearLogTask, Nop.Services	3600	\N	f	f	\N	\N	\N
-7	Update currency exchange rates	Nop.Services.Directory.UpdateExchangeRateTask, Nop.Services	3600	2025-01-18 16:38:31.724	t	f	\N	\N	\N
+7	Update currency exchange rates	Nop.Services.Directory.UpdateExchangeRateTask, Nop.Services	3600	2025-02-24 09:16:24.369	t	f	\N	\N	\N
 8	Delete inactive customers (GDPR)	Nop.Services.Gdpr.DeleteInactiveCustomersTask, Nop.Services	86400	\N	f	f	\N	\N	\N
-9	Synchronization (Brevo plugin)	Nop.Plugin.Misc.Brevo.Services.SynchronizationTask	43200	2025-01-18 16:39:16.777785	t	f	\N	\N	\N
-10	Synchronization (PayPal Zettle plugin)	Nop.Plugin.Misc.Zettle.Services.ZettleSyncTask	28800	2025-01-18 16:39:17.161736	f	f	\N	\N	\N
-11	Download tax rates (Tax.Avalara)	Nop.Plugin.Tax.Avalara.Services.DownloadTaxRatesTask	604800	2025-01-18 16:39:18.38446	t	f	\N	\N	\N
-1	Send emails	Nop.Services.Messages.QueuedMessagesSendTask, Nop.Services	60	2025-01-18 16:38:31.724	t	f	2025-01-18 16:39:32.003445	2025-01-18 16:39:32.070003	2025-01-18 16:39:32.070003
 \.
 
 
@@ -15629,7 +14164,6 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 172	catalogsettings.newproductspagesizeoptions	6, 3, 9	0
 173	catalogsettings.compareproductsenabled	True	0
 174	catalogsettings.compareproductsnumber	4	0
-776	amazonpaysettings.publickeyid		0
 175	catalogsettings.productsearchautocompleteenabled	True	0
 176	catalogsettings.productsearchenabled	True	0
 177	catalogsettings.productsearchautocompletenumberofproducts	10	0
@@ -15838,6 +14372,7 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 380	mediasettings.multiplethumbdirectories	False	0
 381	mediasettings.importproductimagesusinghash	True	0
 382	mediasettings.azurecachecontrolheader		0
+383	mediasettings.useabsoluteimagepath	True	0
 384	mediasettings.videoiframeallow	fullscreen	0
 385	mediasettings.videoiframewidth	300	0
 386	mediasettings.videoiframeheight	150	0
@@ -15852,6 +14387,10 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 395	storeinformationsettings.twitterlink	https://twitter.com/nopCommerce	0
 396	storeinformationsettings.youtubelink	https://www.youtube.com/user/nopCommerce	0
 397	storeinformationsettings.instagramlink	https://www.instagram.com/nopcommerce_official	0
+398	externalauthenticationsettings.requireemailvalidation	False	0
+399	externalauthenticationsettings.logerrors	False	0
+400	externalauthenticationsettings.allowcustomerstoremoveassociations	True	0
+401	externalauthenticationsettings.activeauthenticationmethodsystemnames		0
 402	rewardpointssettings.enabled	True	0
 403	rewardpointssettings.exchangerate	1	0
 404	rewardpointssettings.minimumrewardpointstouse	0	0
@@ -15903,10 +14442,6 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 450	ordersettings.isreorderallowed	True	0
 451	ordersettings.minordersubtotalamount	0	0
 452	ordersettings.minordersubtotalamountincludingtax	False	0
-398	externalauthenticationsettings.requireemailvalidation	False	0
-399	externalauthenticationsettings.logerrors	False	0
-400	externalauthenticationsettings.allowcustomerstoremoveassociations	True	0
-401	externalauthenticationsettings.activeauthenticationmethodsystemnames	Payments.AmazonPay	0
 453	ordersettings.minordertotalamount	0	0
 454	ordersettings.autoupdateordertotalsoneditingorder	False	0
 455	ordersettings.anonymouscheckoutallowed	True	0
@@ -15941,7 +14476,7 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 484	ordersettings.displaycustomercurrencyonorders	False	0
 485	ordersettings.displayordersummary	True	0
 486	ordersettings.placeorderwithlock	False	0
-487	securitysettings.encryptionkey	9408110753182556	0
+487	securitysettings.encryptionkey	1190481352704050	0
 488	securitysettings.adminareaallowedipaddresses		0
 489	securitysettings.honeypotenabled	False	0
 490	securitysettings.honeypotinputname	hpinput	0
@@ -15975,6 +14510,13 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 518	shippingsettings.shipseparatelyoneitemeach	False	0
 519	shippingsettings.requestdelay	300	0
 520	shippingsettings.shippingsorting	Position	0
+521	paymentsettings.activepaymentmethodsystemnames	Payments.CheckMoneyOrder,Payments.Manual	0
+522	paymentsettings.allowrepostingpayments	True	0
+523	paymentsettings.bypasspaymentmethodselectionifonlyone	True	0
+524	paymentsettings.showpaymentmethoddescriptions	True	0
+525	paymentsettings.skippaymentinfostepforredirectionpaymentmethods	False	0
+526	paymentsettings.cancelrecurringpaymentsafterfailedpayment	False	0
+527	paymentsettings.regenerateorderguidinterval	180	0
 528	taxsettings.taxbasedon	BillingAddress	0
 529	taxsettings.taxbasedonpickuppointaddress	False	0
 530	taxsettings.taxdisplaytype	ExcludingTax	0
@@ -15991,12 +14533,6 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 541	taxsettings.defaulttaxcategoryid	0	0
 542	taxsettings.shippingistaxable	False	0
 543	taxsettings.shippingpriceincludestax	False	0
-522	paymentsettings.allowrepostingpayments	True	0
-523	paymentsettings.bypasspaymentmethodselectionifonlyone	True	0
-524	paymentsettings.showpaymentmethoddescriptions	True	0
-525	paymentsettings.skippaymentinfostepforredirectionpaymentmethods	False	0
-526	paymentsettings.cancelrecurringpaymentsafterfailedpayment	False	0
-527	paymentsettings.regenerateorderguidinterval	180	0
 544	taxsettings.shippingtaxclassid	0	0
 545	taxsettings.paymentmethodadditionalfeeistaxable	False	0
 546	taxsettings.paymentmethodadditionalfeeincludestax	False	0
@@ -16137,176 +14673,6 @@ COPY public."Setting" ("Id", "Name", "Value", "StoreId") FROM stdin;
 681	robotstxtsettings.disallowlanguages		0
 682	robotstxtsettings.additionsrules		0
 683	robotstxtsettings.allowsitemapxml	True	0
-684	paypalcommercesettings.merchantguid		0
-685	paypalcommercesettings.merchantid		0
-686	paypalcommercesettings.webhookurl		0
-687	paypalcommercesettings.setcredentialsmanually	False	0
-688	paypalcommercesettings.usesandbox	False	0
-689	paypalcommercesettings.clientid		0
-690	paypalcommercesettings.secretkey		0
-691	paypalcommercesettings.paymenttype	Capture	0
-692	paypalcommercesettings.usecardfields	False	0
-693	paypalcommercesettings.customerauthenticationrequired	True	0
-694	paypalcommercesettings.useapplepay	False	0
-695	paypalcommercesettings.usegooglepay	False	0
-696	paypalcommercesettings.usealternativepayments	False	0
-697	paypalcommercesettings.usevault	False	0
-698	paypalcommercesettings.skiporderconfirmpage	False	0
-699	paypalcommercesettings.useshipmenttracking	False	0
-700	paypalcommercesettings.displaybuttonsonshoppingcart	True	0
-701	paypalcommercesettings.displaybuttonsonproductdetails	True	0
-702	paypalcommercesettings.displaybuttonsonpaymentmethod	True	0
-703	paypalcommercesettings.displaylogoinheaderlinks	False	0
-704	paypalcommercesettings.logoinheaderlinks	<!-- PayPal Logo --><li><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img style="padding-top:10px;" src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_now_accepting_pp_2line_w.png" border="0" alt="Now accepting PayPal"></a></li><!-- PayPal Logo -->	0
-705	paypalcommercesettings.displaylogoinfooter	False	0
-706	paypalcommercesettings.logoinfooter	<!-- PayPal Logo --><div><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark"></a></div><!-- PayPal Logo -->	0
-707	paypalcommercesettings.requesttimeout	10	0
-708	paypalcommercesettings.disabledfunding		0
-709	paypalcommercesettings.enabledfunding	paylater,venmo	0
-710	paypalcommercesettings.stylelayout	vertical	0
-711	paypalcommercesettings.stylecolor	gold	0
-712	paypalcommercesettings.styleshape	rect	0
-713	paypalcommercesettings.stylelabel	paypal	0
-714	paypalcommercesettings.styletagline	true	0
-715	paypalcommercesettings.hidecheckoutbutton	False	0
-716	paypalcommercesettings.immediatepaymentrequired	False	0
-717	paypalcommercesettings.ordervalidityinterval	300	0
-718	paypalcommercesettings.configuratorsupported	False	0
-719	paypalcommercesettings.paylaterconfig		0
-720	paypalcommercesettings.merchantidrequired	False	0
-521	paymentsettings.activepaymentmethodsystemnames	Payments.CheckMoneyOrder,Payments.Manual,Payments.PayPalCommerce	0
-722	ecbexchangeratesettings.ecblink	https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml	0
-723	brevosettings.apikey		0
-724	brevosettings.listid	0	0
-725	brevosettings.unsubscribewebhookid	0	0
-726	brevosettings.partnervalueset	False	0
-727	brevosettings.smtpkey		0
-728	brevosettings.usesmtp	False	0
-729	brevosettings.senderid		0
-730	brevosettings.emailaccountid	0	0
-731	brevosettings.usesmsnotifications	False	0
-732	brevosettings.smssendername		0
-733	brevosettings.storeownerphonenumber		0
-734	brevosettings.trackingscript	<!-- Brevo tracking code -->\r\n                <script>\r\n                    (function() {\r\n                        window.sib = { equeue: [], client_key: '{TRACKING_ID}' };\r\n                        window.sib.email_id = '{CUSTOMER_EMAIL}';\r\n                        window.sendinblue = {}; for (var j = ['track', 'identify', 'trackLink', 'page'], i = 0; i < j.length; i++) { (function(k) { window.sendinblue[k] = function() { var arg = Array.prototype.slice.call(arguments); (window.sib[k] || function() { var t = {}; t[k] = arg; window.sib.equeue.push(t);})(arg[0], arg[1], arg[2]);};})(j[i]);}var n = document.createElement('script'),i = document.getElementsByTagName('script')[0]; n.type = 'text/javascript', n.id = 'sendinblue-js', n.async = !0, n.src = 'https://sibautomation.com/sa.js?key=' + window.sib.client_key, i.parentNode.insertBefore(n, i), window.sendinblue.page();\r\n                    })();\r\n                </script>	0
-735	brevosettings.marketingautomationkey		0
-736	brevosettings.usemarketingautomation	False	0
-769	googleauthenticatorsettings.qrpixelspermodule	3	0
-737	omnisendsettings.apikey		0
-738	omnisendsettings.usetracking	True	0
-739	omnisendsettings.brandid		0
-740	omnisendsettings.trackingscript	<!-- Omnisend starts -->\r\n<script type="text/javascript">\r\n    //OMNISEND-SNIPPET-SOURCE-CODE-V1\r\n    window.omnisend = window.omnisend || [];\r\n    omnisend.push(["accountID", "{BrandId}"]);\r\n    omnisend.push(["track", "$pageViewed"]);\r\n    !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();\r\n</script>\r\n<!-- Omnisend stops -->	0
-741	omnisendsettings.logrequests	False	0
-742	omnisendsettings.requesttimeout	30	0
-743	omnisendsettings.logrequesterrors	True	0
-744	omnisendsettings.pagesize	800	0
-745	omnisendsettings.batchesids		0
-746	omnisendsettings.productscript	<!-- Omnisend starts -->\r\n<script type="text/javascript">\r\n    omnisend.push(["track", "$productViewed",{\r\n     $productID:"{ProductId}",\r\n     $variantID: "{SKU}",\r\n     $currency: "{Currency}",\r\n     $price: {Price},\r\n     $title:"{Title}",\r\n     $imageUrl: "{ImageUrl}",\r\n     $productUrl:"{ProductUrl}"\r\n    }]);\r\n</script>\r\n<!-- Omnisend stops -->	0
-747	omnisendsettings.identifycontactscript	<script type="text/javascript">\r\n    omnisend.identifyContact({\r\n        "email": "{Email}"\r\n    })\r\n</script>	0
-383	mediasettings.useabsoluteimagepath	True	0
-748	zettlesettings.clientid		0
-749	zettlesettings.apikey		0
-750	zettlesettings.disconnectonuninstall	False	0
-751	zettlesettings.autosyncenabled	False	0
-752	zettlesettings.autosyncperiod	480	0
-753	zettlesettings.deletebeforeimport	False	0
-754	zettlesettings.syncenabled	True	0
-755	zettlesettings.pricesyncenabled	False	0
-756	zettlesettings.imagesyncenabled	False	0
-757	zettlesettings.inventorytrackingenabled	False	0
-758	zettlesettings.defaulttaxenabled	True	0
-759	zettlesettings.discountsyncenabled	False	0
-760	zettlesettings.webhookurl		0
-761	zettlesettings.webhookkey		0
-762	zettlesettings.importid		0
-763	zettlesettings.importproductsnumber	500	0
-764	zettlesettings.requesttimeout	15	0
-765	zettlesettings.autoaddrecordsenabled	True	0
-766	zettlesettings.logsyncmessages	True	0
-767	zettlesettings.categorysyncenabled	True	0
-768	zettlesettings.clearrecordsonchangecredentials	True	0
-770	googleauthenticatorsettings.businessprefix	Your store name	0
-771	amazonpaysettings.setcredentialsmanually	False	0
-772	amazonpaysettings.paymentregion	Us	0
-773	amazonpaysettings.payload		0
-774	amazonpaysettings.privatekey		0
-775	amazonpaysettings.publickey		0
-777	amazonpaysettings.merchantid		0
-778	amazonpaysettings.storeid		0
-779	amazonpaysettings.usesandbox	False	0
-780	amazonpaysettings.paymenttype	Capture	0
-781	amazonpaysettings.buttonplacement	1	0
-782	amazonpaysettings.buttoncolor	Gold	0
-783	amazonpaysettings.enablelogging	False	0
-784	amazonpaysettings.logoinfooter	<!-- AmazonPay Logo --><div><a href="https://pay.amazon.com/what-is-amazon-pay" title="What is Amazon Pay?"><img src="/Plugins/Payments.AmazonPay/Content/acceptance_mark.png" alt="What is Amazon Pay?" style="margin-top: -15px"></a></div><!-- AmazonPay Logo -->	0
-785	checkmoneyorderpaymentsettings.descriptiontext	<p>Mail Personal or Business Check, Cashier's Check or money order to:</p><p><br /><b>COMPANY NAME</b> <br /><b>your address here,</b> <br /><b>New York, NY 10001 </b> <br /><b>USA</b></p><p>Notice that if you pay by Personal or Business Check, your order may be held for up to 10 days after we receive your check to allow enough time for the check to clear.  If you want us to ship faster upon receipt of your payment, then we recommend your send a money order or Cashier's check.</p><p>P.S. You can edit this text from admin panel.</p>	0
-786	checkmoneyorderpaymentsettings.additionalfeepercentage	False	0
-787	checkmoneyorderpaymentsettings.additionalfee	0	0
-788	checkmoneyorderpaymentsettings.shippableproductrequired	False	0
-789	manualpaymentsettings.transactmode	Pending	0
-790	manualpaymentsettings.additionalfeepercentage	False	0
-791	manualpaymentsettings.additionalfee	0	0
-792	fixedbyweightbytotalsettings.limitmethodstocreated	False	0
-793	fixedbyweightbytotalsettings.shippingbyweightbytotalenabled	False	0
-794	fixedbyweightbytotalsettings.loadallrecord	True	0
-795	upssettings.accountnumber		0
-796	upssettings.clientid		0
-797	upssettings.clientsecret		0
-798	upssettings.usesandbox	True	0
-799	upssettings.additionalhandlingcharge	0	0
-800	upssettings.customerclassification	StandardListRates	0
-801	upssettings.pickuptype	OneTimePickup	0
-802	upssettings.packagingtype	ExpressBox	0
-803	upssettings.carrierservicesoffered		0
-804	upssettings.saturdaydeliveryenabled	False	0
-805	upssettings.insurepackage	False	0
-806	upssettings.passdimensions	True	0
-807	upssettings.packingpackagevolume	5184	0
-808	upssettings.packingtype	PackByDimensions	0
-809	upssettings.tracing	False	0
-810	upssettings.weighttype	LBS	0
-811	upssettings.dimensionstype	IN	0
-812	upssettings.requesttimeout	15	0
-813	avalarataxsettings.accountid		0
-814	avalarataxsettings.licensekey		0
-815	avalarataxsettings.companycode	00000000-0000-0000-0000-000000000000	0
-816	avalarataxsettings.companyid		0
-817	avalarataxsettings.usesandbox	True	0
-818	avalarataxsettings.enablelogging	True	0
-819	avalarataxsettings.committransactions	True	0
-820	avalarataxsettings.validateaddress	False	0
-821	avalarataxsettings.taxoriginaddresstype	DefaultTaxAddress	0
-822	avalarataxsettings.usetaxratetables	True	0
-823	avalarataxsettings.gettaxratebyaddressonly	True	0
-824	avalarataxsettings.taxratebyaddresscachetime	480	0
-825	avalarataxsettings.enablecertificates	False	0
-826	avalarataxsettings.autovalidatecertificate	True	0
-827	avalarataxsettings.alloweditcustomer	True	0
-828	avalarataxsettings.displaynovalidcertificatesmessage	True	0
-829	avalarataxsettings.customerroleids		0
-830	avalarataxsettings.previewcertificate	False	0
-831	avalarataxsettings.uploadonly	False	0
-832	avalarataxsettings.fillonly	False	0
-833	avalarataxsettings.useitemclassification	False	0
-834	avalarataxsettings.selectedcountryids		0
-851	facebookexternalauthsettings.clientkeyidentifier		0
-835	fixedorbycountrystateziptaxsettings.countrystatezipenabled	False	0
-836	googleanalyticssettings.googleid	G-XXXXXXXXXX	0
-837	googleanalyticssettings.apisecret		0
-838	googleanalyticssettings.trackingscript	<!-- Global site tag (gtag.js) - Google Analytics -->\r\n                <script async src='https://www.googletagmanager.com/gtag/js?id={GOOGLEID}'></script>\r\n                <script>\r\n                  window.dataLayer = window.dataLayer || [];\r\n                  function gtag(){dataLayer.push(arguments);}\r\n                  gtag('js', new Date());\r\n\r\n                  gtag('config', '{GOOGLEID}');\r\n                  {CUSTOMER_TRACKING}\r\n                </script>	0
-839	googleanalyticssettings.enableecommerce	False	0
-840	googleanalyticssettings.usesandbox	False	0
-841	googleanalyticssettings.includingtax	False	0
-842	googleanalyticssettings.includecustomerid	False	0
-849	what3wordssettings.apikey		0
-843	swipersettings.shownavigation	False	0
-844	swipersettings.showpagination	True	0
-845	swipersettings.autoplay	True	0
-846	swipersettings.autoplaydelay	3000	0
-847	swipersettings.lazyloading	True	0
-848	swipersettings.slides	[{"PictureId":1,"TitleText":"","LinkUrl":"https://localhost:59579/","AltText":""},{"PictureId":2,"TitleText":"","LinkUrl":"https://localhost:59579/","AltText":""}]	0
-850	what3wordssettings.enabled	False	0
-721	widgetsettings.activewidgetsystemnames	Payments.PayPalCommerce,Misc.Brevo,Misc.Omnisend,Payments.AmazonPay,Tax.Avalara,Widgets.GoogleAnalytics,Widgets.Swiper,Widgets.What3words	0
-852	facebookexternalauthsettings.clientsecret		0
 \.
 
 
@@ -16323,14 +14689,6 @@ COPY public."Shipment" ("Id", "OrderId", "TrackingNumber", "TotalWeight", "Shipp
 --
 
 COPY public."ShipmentItem" ("Id", "ShipmentId", "OrderItemId", "Quantity", "WarehouseId") FROM stdin;
-\.
-
-
---
--- Data for Name: ShippingByWeightByTotalRecord; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."ShippingByWeightByTotalRecord" ("Id", "WeightFrom", "WeightTo", "OrderSubtotalFrom", "OrderSubtotalTo", "AdditionalFixedCost", "PercentageRateOfSubtotal", "RatePerWeightUnit", "LowerWeightLimit", "Zip", "StoreId", "WarehouseId", "CountryId", "StateProvinceId", "ShippingMethodId", "TransitDays") FROM stdin;
 \.
 
 
@@ -18298,15 +16656,6 @@ COPY public."StoreMapping" ("Id", "EntityName", "StoreId", "EntityId") FROM stdi
 
 
 --
--- Data for Name: StorePickupPoint; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."StorePickupPoint" ("Id", "Latitude", "Longitude", "Name", "Description", "AddressId", "PickupFee", "OpeningHours", "DisplayOrder", "StoreId", "TransitDays") FROM stdin;
-1	\N	\N	New York store	\N	2	1.9900	10.00 - 19.00	0	0	\N
-\.
-
-
---
 -- Data for Name: TaxCategory; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -18316,22 +16665,6 @@ COPY public."TaxCategory" ("Id", "Name", "DisplayOrder") FROM stdin;
 3	Downloadable Products	10
 4	Jewelry	15
 5	Apparel	20
-\.
-
-
---
--- Data for Name: TaxRate; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."TaxRate" ("Id", "StoreId", "TaxCategoryId", "CountryId", "StateProvinceId", "Zip", "Percentage") FROM stdin;
-\.
-
-
---
--- Data for Name: TaxTransactionLog; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."TaxTransactionLog" ("Id", "StatusCode", "Url", "RequestMessage", "ResponseMessage", "CustomerId", "CreatedDateUtc") FROM stdin;
 \.
 
 
@@ -18441,14 +16774,6 @@ COPY public."Warehouse" ("Id", "Name", "AdminComment", "AddressId") FROM stdin;
 
 
 --
--- Data for Name: ZettleRecord; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."ZettleRecord" ("Id", "Active", "Uuid", "ProductId", "VariantUuid", "CombinationId", "ImageUrl", "OperationTypeId", "PriceSyncEnabled", "ImageSyncEnabled", "InventoryTrackingEnabled", "ExternalUuid", "UpdatedOnUtc") FROM stdin;
-\.
-
-
---
 -- Name: AclRecord_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -18487,7 +16812,7 @@ SELECT pg_catalog.setval('public."AddressAttribute_Id_seq"', 1, false);
 -- Name: Address_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Address_Id_seq"', 2, true);
+SELECT pg_catalog.setval('public."Address_Id_seq"', 1, true);
 
 
 --
@@ -18495,13 +16820,6 @@ SELECT pg_catalog.setval('public."Address_Id_seq"', 2, true);
 --
 
 SELECT pg_catalog.setval('public."Affiliate_Id_seq"', 1, false);
-
-
---
--- Name: AvalaraItemClassification_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."AvalaraItemClassification_Id_seq"', 1, false);
 
 
 --
@@ -18613,7 +16931,7 @@ SELECT pg_catalog.setval('public."CustomerRole_Id_seq"', 5, true);
 -- Name: Customer_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Customer_Id_seq"', 4, true);
+SELECT pg_catalog.setval('public."Customer_Id_seq"', 3, true);
 
 
 --
@@ -18663,13 +16981,6 @@ SELECT pg_catalog.setval('public."EmailAccount_Id_seq"', 1, true);
 --
 
 SELECT pg_catalog.setval('public."ExternalAuthenticationRecord_Id_seq"', 1, false);
-
-
---
--- Name: FacebookPixelConfiguration_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."FacebookPixelConfiguration_Id_seq"', 1, false);
 
 
 --
@@ -18757,13 +17068,6 @@ SELECT pg_catalog.setval('public."GiftCard_Id_seq"', 1, false);
 
 
 --
--- Name: GoogleAuthenticatorRecord_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."GoogleAuthenticatorRecord_Id_seq"', 1, false);
-
-
---
 -- Name: Language_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -18774,7 +17078,7 @@ SELECT pg_catalog.setval('public."Language_Id_seq"', 1, true);
 -- Name: LocaleStringResource_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."LocaleStringResource_Id_seq"', 7516, true);
+SELECT pg_catalog.setval('public."LocaleStringResource_Id_seq"', 6802, true);
 
 
 --
@@ -18788,7 +17092,7 @@ SELECT pg_catalog.setval('public."LocalizedProperty_Id_seq"', 1, false);
 -- Name: Log_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Log_Id_seq"', 1, true);
+SELECT pg_catalog.setval('public."Log_Id_seq"', 1, false);
 
 
 --
@@ -18869,31 +17173,24 @@ SELECT pg_catalog.setval('public."Order_Id_seq"', 1, false);
 
 
 --
--- Name: PayPalToken_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."PayPalToken_Id_seq"', 1, false);
-
-
---
 -- Name: PermissionRecord_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."PermissionRecord_Id_seq"', 105, true);
+SELECT pg_catalog.setval('public."PermissionRecord_Id_seq"', 1, false);
 
 
 --
 -- Name: PictureBinary_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."PictureBinary_Id_seq"', 2, true);
+SELECT pg_catalog.setval('public."PictureBinary_Id_seq"', 1, false);
 
 
 --
 -- Name: Picture_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Picture_Id_seq"', 2, true);
+SELECT pg_catalog.setval('public."Picture_Id_seq"', 1, false);
 
 
 --
@@ -19124,7 +17421,7 @@ SELECT pg_catalog.setval('public."RewardPointsHistory_Id_seq"', 1, false);
 -- Name: ScheduleTask_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."ScheduleTask_Id_seq"', 11, true);
+SELECT pg_catalog.setval('public."ScheduleTask_Id_seq"', 8, true);
 
 
 --
@@ -19138,7 +17435,7 @@ SELECT pg_catalog.setval('public."SearchTerm_Id_seq"', 1, false);
 -- Name: Setting_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Setting_Id_seq"', 852, true);
+SELECT pg_catalog.setval('public."Setting_Id_seq"', 683, true);
 
 
 --
@@ -19153,13 +17450,6 @@ SELECT pg_catalog.setval('public."ShipmentItem_Id_seq"', 1, false);
 --
 
 SELECT pg_catalog.setval('public."Shipment_Id_seq"', 1, false);
-
-
---
--- Name: ShippingByWeightByTotalRecord_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."ShippingByWeightByTotalRecord_Id_seq"', 1, false);
 
 
 --
@@ -19219,13 +17509,6 @@ SELECT pg_catalog.setval('public."StoreMapping_Id_seq"', 1, false);
 
 
 --
--- Name: StorePickupPoint_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."StorePickupPoint_Id_seq"', 1, true);
-
-
---
 -- Name: Store_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -19237,20 +17520,6 @@ SELECT pg_catalog.setval('public."Store_Id_seq"', 1, true);
 --
 
 SELECT pg_catalog.setval('public."TaxCategory_Id_seq"', 5, true);
-
-
---
--- Name: TaxRate_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."TaxRate_Id_seq"', 1, false);
-
-
---
--- Name: TaxTransactionLog_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."TaxTransactionLog_Id_seq"', 1, false);
 
 
 --
@@ -19324,13 +17593,6 @@ SELECT pg_catalog.setval('public."Warehouse_Id_seq"', 1, false);
 
 
 --
--- Name: ZettleRecord_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public."ZettleRecord_Id_seq"', 1, false);
-
-
---
 -- Name: AclRecord PK_AclRecord; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -19384,14 +17646,6 @@ ALTER TABLE ONLY public."AddressAttributeValue"
 
 ALTER TABLE ONLY public."Affiliate"
     ADD CONSTRAINT "PK_Affiliate" PRIMARY KEY ("Id");
-
-
---
--- Name: AvalaraItemClassification PK_AvalaraItemClassification; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."AvalaraItemClassification"
-    ADD CONSTRAINT "PK_AvalaraItemClassification" PRIMARY KEY ("Id");
 
 
 --
@@ -19619,14 +17873,6 @@ ALTER TABLE ONLY public."ExternalAuthenticationRecord"
 
 
 --
--- Name: FacebookPixelConfiguration PK_FacebookPixelConfiguration; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."FacebookPixelConfiguration"
-    ADD CONSTRAINT "PK_FacebookPixelConfiguration" PRIMARY KEY ("Id");
-
-
---
 -- Name: Forums_Forum PK_Forums_Forum; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -19720,14 +17966,6 @@ ALTER TABLE ONLY public."GiftCard"
 
 ALTER TABLE ONLY public."GiftCardUsageHistory"
     ADD CONSTRAINT "PK_GiftCardUsageHistory" PRIMARY KEY ("Id");
-
-
---
--- Name: GoogleAuthenticatorRecord PK_GoogleAuthenticatorRecord; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."GoogleAuthenticatorRecord"
-    ADD CONSTRAINT "PK_GoogleAuthenticatorRecord" PRIMARY KEY ("Id");
 
 
 --
@@ -19848,14 +18086,6 @@ ALTER TABLE ONLY public."OrderItem"
 
 ALTER TABLE ONLY public."OrderNote"
     ADD CONSTRAINT "PK_OrderNote" PRIMARY KEY ("Id");
-
-
---
--- Name: PayPalToken PK_PayPalToken; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."PayPalToken"
-    ADD CONSTRAINT "PK_PayPalToken" PRIMARY KEY ("Id");
 
 
 --
@@ -20195,14 +18425,6 @@ ALTER TABLE ONLY public."ShipmentItem"
 
 
 --
--- Name: ShippingByWeightByTotalRecord PK_ShippingByWeightByTotalRecord; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."ShippingByWeightByTotalRecord"
-    ADD CONSTRAINT "PK_ShippingByWeightByTotalRecord" PRIMARY KEY ("Id");
-
-
---
 -- Name: ShippingMethod PK_ShippingMethod; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -20283,35 +18505,11 @@ ALTER TABLE ONLY public."StoreMapping"
 
 
 --
--- Name: StorePickupPoint PK_StorePickupPoint; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."StorePickupPoint"
-    ADD CONSTRAINT "PK_StorePickupPoint" PRIMARY KEY ("Id");
-
-
---
 -- Name: TaxCategory PK_TaxCategory; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."TaxCategory"
     ADD CONSTRAINT "PK_TaxCategory" PRIMARY KEY ("Id");
-
-
---
--- Name: TaxRate PK_TaxRate; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."TaxRate"
-    ADD CONSTRAINT "PK_TaxRate" PRIMARY KEY ("Id");
-
-
---
--- Name: TaxTransactionLog PK_TaxTransactionLog; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."TaxTransactionLog"
-    ADD CONSTRAINT "PK_TaxTransactionLog" PRIMARY KEY ("Id");
 
 
 --
@@ -20392,14 +18590,6 @@ ALTER TABLE ONLY public."Video"
 
 ALTER TABLE ONLY public."Warehouse"
     ADD CONSTRAINT "PK_Warehouse" PRIMARY KEY ("Id");
-
-
---
--- Name: ZettleRecord PK_ZettleRecord; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."ZettleRecord"
-    ADD CONSTRAINT "PK_ZettleRecord" PRIMARY KEY ("Id");
 
 
 --
@@ -21086,13 +19276,6 @@ CREATE INDEX "IX_PSAM_AllowFiltering" ON public."Product_SpecificationAttribute_
 --
 
 CREATE INDEX "IX_PSAM_SpecificationAttributeOptionId_AllowFiltering" ON public."Product_SpecificationAttribute_Mapping" USING btree ("SpecificationAttributeOptionId", "AllowFiltering");
-
-
---
--- Name: IX_PayPalToken_CustomerId; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX "IX_PayPalToken_CustomerId" ON public."PayPalToken" USING btree ("CustomerId");
 
 
 --
@@ -22149,14 +20332,6 @@ ALTER TABLE ONLY public."Order"
 
 ALTER TABLE ONLY public."Order"
     ADD CONSTRAINT "FK_Order_ShippingAddressId_Address_Id" FOREIGN KEY ("ShippingAddressId") REFERENCES public."Address"("Id");
-
-
---
--- Name: PayPalToken FK_PayPalToken_CustomerId_Customer_Id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."PayPalToken"
-    ADD CONSTRAINT "FK_PayPalToken_CustomerId_Customer_Id" FOREIGN KEY ("CustomerId") REFERENCES public."Customer"("Id") ON DELETE CASCADE;
 
 
 --
