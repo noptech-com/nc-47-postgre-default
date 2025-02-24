@@ -60,7 +60,7 @@ echo $domain_name
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
-sudo apt-get install -y apt-transport-https aspnetcore-runtime-8.0
+sudo apt-get install -y apt-transport-https aspnetcore-runtime-9.0
 
 sudo apt-get install -y libgdiplus
 
@@ -126,6 +126,10 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $database_name TO $da
 
 sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext; CREATE EXTENSION IF NOT EXISTS pgcrypto;"
 
+sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext;"
+sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+sudo -u postgres psql -c " ALTER USER $database_user WITH SUPERUSER;"
+
 # Switch back to the original user
 #exit
 #echo "after exit"
@@ -135,7 +139,7 @@ sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext; CREATE EXTENSIO
 cd $nopcommerce_directory
 wget https://github.com/nopSolutions/nopCommerce/releases/download/release-4.80.3/nopCommerce_4.80.3_NoSource_linux_x64.zip
 apt-get install -y unzip
-unzip -qq nopCommerce_4.80.3_NoSource_linux_x64.zip
+unzip -qq nopCommerce_4.80.2_NoSource_linux_x64
 mkdir bin
 mkdir logs
 cd ..
@@ -216,8 +220,12 @@ sed -i '/"HostingConfig": {/,/}/c\
 #dotnet Nop.Web.dll
 
 # Inport default DB
+#wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce_default_db.sql
+#sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce_default_db.sql
+#rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 rm nopcommerce48_default_db.sql
+sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
 systemctl restart nopCommerce-$domain_name.service
