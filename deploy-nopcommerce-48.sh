@@ -226,6 +226,6 @@ sed -i '/"HostingConfig": {/,/}/c\
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 rm nopcommerce48_default_db.sql
-sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
+#sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
 systemctl restart nopCommerce-$domain_name.service
