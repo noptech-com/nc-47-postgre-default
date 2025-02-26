@@ -149,7 +149,7 @@ sudo -u postgres psql -c " ALTER USER $database_user WITH SUPERUSER;"
 cd $nopcommerce_directory
 wget https://github.com/nopSolutions/nopCommerce/releases/download/release-4.80.3/nopCommerce_4.80.3_NoSource_linux_x64.zip
 apt-get install -y unzip
-unzip -qq nopCommerce_4.80.2_NoSource_linux_x64
+unzip -qq nopCommerce_4.80.3_NoSource_linux_x64
 mkdir bin
 mkdir logs
 cd ..
