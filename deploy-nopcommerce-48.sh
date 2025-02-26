@@ -40,12 +40,18 @@ database_name=$1
 database_user=$2
 database_password=$3
 domain_name=$4
+nopCommerceEmail=$5
+nopCommercePassword=$6
+nopCommercePasswordSalt=$7
 
 #echo $nopcommerce_version
 echo $database_name
 echo $database_user
 echo $database_password
 echo $domain_name
+echo $nopCommerceEmail
+echo $nopCommercePassword
+echo $nopCommercePasswordSalt
 #exit 1
 
 #read -p "Enter nopCommerce version (e.g., 4.50): " nopcommerce_version
@@ -241,6 +247,10 @@ sed -i '/"HostingConfig": {/,/}/c\
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Store\" SET \"Url\" = 'https://$domain_name' WHERE \"Id\" = 1;"
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Customer\" SET \"Username\" = '$nopCommerceEmail' WHERE \"Id\" = 1;"
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Customer\" SET \"Email\" = '$nopCommerceEmail' WHERE \"Id\" = 1;"
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"CustomerPassword\" SET \"Password\" = '$nopCommercePassword' WHERE \"Id\" = 1;"
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"CustomerPassword\" SET \"PasswordSalt\" = '$nopCommercePasswordSalt' WHERE \"Id\" = 1;"
 rm nopcommerce48_default_db.sql
 #sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
