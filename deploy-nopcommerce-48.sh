@@ -58,7 +58,10 @@ echo $domain_name
 
 
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
 sudo dpkg -i packages-microsoft-prod.deb
+export DEBIAN_FRONTEND=noninteractive
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
 sudo apt-get update
 while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https aspnetcore-runtime-9.0
@@ -237,6 +240,7 @@ sed -i '/"HostingConfig": {/,/}/c\
 #rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE Store SET URL = 'https//$domain_name' WHERE id = 1;"
 rm nopcommerce48_default_db.sql
 #sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
