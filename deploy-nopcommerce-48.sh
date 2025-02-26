@@ -60,7 +60,7 @@ echo $domain_name
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
-sudo apt-get install -y apt-transport-https aspnetcore-runtime-9.0 mailutils
+sudo apt-get install -y apt-transport-https aspnetcore-runtime-9.0
 echo "postfix postfix/main_mailer_type select Internet Site" | sudo debconf-set-selections
 echo "postfix postfix/mailname string $(hostname --fqdn)" | sudo debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mailutils
