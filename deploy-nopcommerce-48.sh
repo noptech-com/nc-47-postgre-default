@@ -240,7 +240,7 @@ sed -i '/"HostingConfig": {/,/}/c\
 #rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
-sudo -u postgres PGPASSWORD=admin123 psql -U ivalsclima -d ivalsclimabg_db -h localhost -c "UPDATE \"Store\" SET \"Url\" = 'https://$domain_name' WHERE \"Id\" = 1;"
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Store\" SET \"Url\" = 'https://$domain_name' WHERE \"Id\" = 1;"
 rm nopcommerce48_default_db.sql
 #sudo -u postgres psql -c " ALTER USER $database_user WITH NOSUPERUSER;"
 
