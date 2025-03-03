@@ -246,7 +246,7 @@ sed -i '/"HostingConfig": {/,/}/c\
 #rm nopcommerce_default_db.sql
 wget https://raw.githubusercontent.com/noptech-com/nc-47-postgre-default/refs/heads/main/nopcommerce48_default_db.sql
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -f nopcommerce48_default_db.sql
-sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Store\" SET \"Url\" = 'https://$domain_name' WHERE \"Id\" = 1;"
+sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Store\" SET \"Url\" = 'https://$domain_name/' WHERE \"Id\" = 1;"
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Customer\" SET \"Username\" = '$nopCommerceEmail' WHERE \"Id\" = 1;"
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"Customer\" SET \"Email\" = '$nopCommerceEmail' WHERE \"Id\" = 1;"
 sudo -u postgres PGPASSWORD=$database_password psql -U $database_user -d $database_name -h localhost -c "UPDATE \"CustomerPassword\" SET \"Password\" = '$nopCommercePassword' WHERE \"Id\" = 1;"
